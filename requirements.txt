@@ -1,0 +1,5 @@
+pydantic-ai
+openai                # for real calls; harmless if you use EchoLLM
+python-jsonnet        # pure-Python fallback if jsonnet CLI is missing
+python-dotenv         # loads OPENAI_API_KEY from .env
+pytest                # (optional) unit tests
