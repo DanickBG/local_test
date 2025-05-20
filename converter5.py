@@ -439,5 +439,5 @@ def convert_grafana_json_to_grafonnet(json_file, output_file):
 
 
 
-convert_grafana_json_to_grafonnet("real_example_dashboard.json", "example.libsonnet")
+convert_grafana_json_to_grafonnet("real_example_dashboard.json", "main.libsonnet")
 
