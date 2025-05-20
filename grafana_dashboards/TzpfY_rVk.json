@@ -1,0 +1,547 @@
+{
+    "meta": {
+        "type": "db",
+        "canSave": true,
+        "canEdit": true,
+        "canAdmin": true,
+        "canStar": true,
+        "canDelete": true,
+        "slug": "7c-tv-youtube-7c-top-videos-template",
+        "url": "/d/TzpfY_rVk/7c-tv-youtube-7c-top-videos-template",
+        "expires": "0001-01-01T00:00:00Z",
+        "created": "2024-06-20T11:48:47Z",
+        "updated": "2024-07-30T08:27:51Z",
+        "updatedBy": "dev",
+        "createdBy": "Anonymous",
+        "version": 6,
+        "hasAcl": false,
+        "isFolder": false,
+        "folderId": 666,
+        "folderUid": "folder-o5ETCxr4z",
+        "folderTitle": "Template Dashboards",
+        "folderUrl": "/dashboards/f/folder-o5ETCxr4z/template-dashboards",
+        "provisioned": false,
+        "provisionedExternalId": "",
+        "annotationsPermissions": {
+            "dashboard": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            },
+            "organization": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            }
+        }
+    },
+    "dashboard": {
+        "annotations": {
+            "list": [
+                {
+                    "builtIn": 1,
+                    "datasource": {
+                        "type": "grafana",
+                        "uid": "-- Grafana --"
+                    },
+                    "enable": true,
+                    "hide": true,
+                    "iconColor": "rgba(0, 211, 255, 1)",
+                    "name": "Annotations & Alerts",
+                    "target": {
+                        "limit": 100,
+                        "matchAny": false,
+                        "tags": [],
+                        "type": "dashboard"
+                    },
+                    "type": "dashboard"
+                }
+            ]
+        },
+        "editable": true,
+        "fiscalYearStartMonth": 0,
+        "graphTooltip": 0,
+        "id": 914,
+        "links": [],
+        "liveNow": true,
+        "panels": [
+            {
+                "gridPos": {
+                    "h": 3,
+                    "w": 2,
+                    "x": 0,
+                    "y": 0
+                },
+                "id": 74,
+                "libraryPanel": {
+                    "name": "TV YT Logo",
+                    "uid": "4Rhqls84z"
+                },
+                "title": ""
+            },
+            {
+                "gridPos": {
+                    "h": 4,
+                    "w": 11,
+                    "x": 2,
+                    "y": 0
+                },
+                "id": 76,
+                "libraryPanel": {
+                    "name": "TV YouTube Titel",
+                    "uid": "qtfCls84k"
+                },
+                "title": ""
+            },
+            {
+                "gridPos": {
+                    "h": 4,
+                    "w": 4,
+                    "x": 13,
+                    "y": 0
+                },
+                "id": 139,
+                "libraryPanel": {
+                    "name": "TV YT VIews gesamtprofil KPI panel",
+                    "uid": "ApRRXs84k"
+                },
+                "title": ""
+            },
+            {
+                "gridPos": {
+                    "h": 4,
+                    "w": 4,
+                    "x": 17,
+                    "y": 0
+                },
+                "id": 141,
+                "libraryPanel": {
+                    "name": "TV YT Kommentare Gesamtprofil",
+                    "uid": "b8Uguy84k"
+                },
+                "title": ""
+            },
+            {
+                "gridPos": {
+                    "h": 3,
+                    "w": 3,
+                    "x": 21,
+                    "y": 0
+                },
+                "id": 72,
+                "libraryPanel": {
+                    "name": "TV YT Letztes update panel",
+                    "uid": "Ps-kus84k"
+                },
+                "title": ""
+            },
+            {
+                "gridPos": {
+                    "h": 2,
+                    "w": 10,
+                    "x": 0,
+                    "y": 4
+                },
+                "id": 137,
+                "libraryPanel": {
+                    "name": "YouTube Top Videos Title",
+                    "uid": "jyuu_s8Vk"
+                },
+                "title": ""
+            },
+            {
+                "gridPos": {
+                    "h": 17,
+                    "w": 24,
+                    "x": 0,
+                    "y": 6
+                },
+                "id": 143,
+                "libraryPanel": {
+                    "name": "YouTube Top Video Main Table",
+                    "uid": "YRp1UMX4z"
+                },
+                "title": ""
+            }
+        ],
+        "refresh": "5m",
+        "schemaVersion": 39,
+        "tags": [
+            "TV YT Video"
+        ],
+        "templating": {
+            "list": [
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "MDR",
+                        "value": "MDR"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 0,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "LRA",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "Select a.LRA  FROM\n(\nSELECT DISTINCT LRA FROM `ndr-code-bi-dashboard.Quintly.profiles` \n) as a \nORDER BY(\nCASE WHEN a.LRA like  LEFT(\"${__user.login}\",3)\nTHEN 1\nELSE 0\nEND\n) DESC",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "Sport im Osten",
+                        "value": "Sport im Osten"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 0,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Profil",
+                    "options": [],
+                    "query": {
+                        "dataset": "QuintlyTest",
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT a.profile \nFROM \n(SELECT profile FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE LRA = '$LRA' AND youtubeId != 0) as a,\n(SELECT  Profil_YT FROM `ndr-code-bi-dashboard.Quintly.default-settings` WHERE LRA = '$LRA') as b\nORDER BY( \nCASE WHEN a.profile = b.Profil_YT THEN 1\nELSE 2\nEND\n), a.profile ASC",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "profile",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        },
+                        "table": "profileTest"
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "403003",
+                        "value": "403003"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "profileID",
+                    "options": [],
+                    "query": {
+                        "dataset": "QuintlyTest",
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CAST(youtubeID AS STRING) FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil'''",
+                        "refId": "tempvar",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "facebookID",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                },
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "instagramID",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                },
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "youtubeID",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        },
+                        "table": "profileTest"
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": " 7.07.2023 \n 10:58 Uhr",
+                        "value": " 7.07.2023 \n 10:58 Uhr"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "lastUpdate",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \r\n  FORMAT_DATETIME(\"%e.%m.%Y %n %H:%M Uhr\", DATETIME(MAX(last_update),\"Europe/Berlin\"))  \r\nFROM `ndr-code-bi-dashboard.Quintly.youtube`\r\nWHERE profileId = $profileID   ",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 2,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": true,
+                        "text": "Letzte 7 Tage",
+                        "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+                    },
+                    "hide": 0,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Zeitraum",
+                    "options": [
+                        {
+                            "selected": false,
+                            "text": "Gestern",
+                            "value": "EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE(), INTERVAL  1 DAY)"
+                        },
+                        {
+                            "selected": true,
+                            "text": "Letzte 7 Tage",
+                            "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Letztes Wochenende",
+                            "value": "DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Letzte 30 Tage",
+                            "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+                        }
+                    ],
+                    "query": "Gestern : EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Letzte 7 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE(), Letztes Wochenende :  DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) ), Letzte 30 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()",
+                    "queryValue": "",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "10",
+                        "value": "10"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "filled_size",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "15",
+                            "value": "15"
+                        }
+                    ],
+                    "query": "15",
+                    "queryValue": "",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "15",
+                        "value": "15"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "filled_size_big",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "10",
+                            "value": "10"
+                        }
+                    ],
+                    "query": "10",
+                    "queryValue": "",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "58",
+                        "value": "58"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "filled_size_headline",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "48",
+                            "value": "48"
+                        }
+                    ],
+                    "query": "48",
+                    "queryValue": "",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "24",
+                        "value": "24"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "filled_size_headline_small",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "48",
+                            "value": "48"
+                        }
+                    ],
+                    "query": "48",
+                    "queryValue": "",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                }
+            ]
+        },
+        "time": {
+            "from": "now-5m",
+            "to": "now"
+        },
+        "timepicker": {
+            "hidden": true,
+            "refresh_intervals": [
+                "5s",
+                "10s",
+                "30s",
+                "1m",
+                "5m",
+                "15m",
+                "30m",
+                "1h",
+                "2h",
+                "1d"
+            ]
+        },
+        "timezone": "",
+        "title": "| TV YouTube | Top Videos Template",
+        "uid": "TzpfY_rVk",
+        "version": 6,
+        "weekStart": ""
+    }
+}

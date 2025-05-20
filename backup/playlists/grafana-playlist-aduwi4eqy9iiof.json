@@ -1,0 +1,19 @@
+{
+  "uid": "aduwi4eqy9iiof",
+  "name": "MDR SACHSEN News",
+  "interval": "30s",
+  "items": [
+    {
+      "type": "dashboard_by_uid",
+      "value": "C-JCJWdIz"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "x0oLADOIk"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "febhf17m2wydcc"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "id": 487,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "f6nlCBGIk",
+  "name": "NDR TV Web Audio Last 7 Days KPI",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "summe"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Wiedergaben ${Zeitraum:text}"
+            },
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 12,
+      "y": 0
+    },
+    "id": 31,
+    "libraryPanel": {
+      "description": "",
+      "meta": {
+        "connectedDashboards": 1,
+        "created": "2023-10-12T14:44:51Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        },
+        "folderName": "Panels Library",
+        "folderUid": "folder-PjWklf8Vz",
+        "updated": "2023-10-13T14:32:40Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        }
+      },
+      "name": "NDR TV Web Audio Last 7 Days KPI",
+      "type": "stat",
+      "uid": "f6nlCBGIk",
+      "version": 3
+    },
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+      },
+      "textMode": "value_and_name"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as summe\r\nFROM \r\n  Piano.av_joined_daily\r\nWHERE \r\nsite_level2 = ${LRA:doublequote}  AND\r\n${Redaktionen:doublequote} IN UNNEST(bi_av_page_chapter1_tags) AND\r\n${Unterkapitel:doublequote} IN UNNEST(bi_av_page_chapter2_tags)\r\nAND ${Sendung:doublequote} IN UNNEST(sendungs_id_tags)\r\nAND date >= ${bq_interval_7_day:doublequote} AND date < ${bq_today:doublequote}\r\nAND av_content_type = \"Audio\"",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "transformations": [],
+    "type": "stat"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 3,
+    "created": "2024-06-20T11:45:39Z",
+    "updated": "2024-06-20T11:45:39Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

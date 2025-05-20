@@ -1,0 +1,4806 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "seo-copy",
+    "url": "/d/sI-aiQDIk/seo-copy",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-06-20T11:48:29Z",
+    "updated": "2024-07-30T05:43:42Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 5,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 660,
+    "folderUid": "folder-F9a5Uxn4k",
+    "folderTitle": "Prototypes",
+    "folderUrl": "/dashboards/f/folder-F9a5Uxn4k/prototypes",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 899,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 65,
+        "panels": [],
+        "title": "Hinweise",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 5,
+          "x": 0,
+          "y": 1
+        },
+        "id": 56,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "**Piano-Daten**\n\n- Die Daten werden für die letzten abgeschlossenen Tage des gewählten Zeitraums angegeben.\n- Der heutige Tag wird also nicht einbezogen.\n- Daten können von Piano-Daten bei den Dashboards von AT Internet abweichen, wenn die Sophora-ID geändert wurde.\n- App-Daten sind nicht enthalten, zu sehen sind nur die Web-Daten.",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 5,
+          "x": 5,
+          "y": 1
+        },
+        "id": 68,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "**GSC-Daten**\n\n- Die neuesten Daten aus der Google Search Console sind grundsätzlich drei Tage alt, da Google keine aktuelleren Daten anbietet.\n- Es fehlen also stets die Daten von heute, gestern und vorgestern.\n- Betrachtet werden die letzten sieben Tage ab diesem Zeitpunkt. ",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 5,
+          "x": 10,
+          "y": 1
+        },
+        "id": 67,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "**Vergleichbarkeit der Daten**\n\n- In Piano wird der Traffic in Visits gezählt, in der Google Search Console in Klicks. Die zwei Metriken sind nicht identisch und weichen deshalb voneinander ab.\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "type": "text"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 8
+        },
+        "id": 4,
+        "panels": [],
+        "title": "Leistungsübersicht (GSC)",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 24,
+          "x": 0,
+          "y": 9
+        },
+        "id": 58,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto",
+            "height": 600
+          },
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "function formatDate(timestamp) {\n  const date = new Date(timestamp);\n  let day = ('0' + date.getDate()).slice(-2);\n  let month = ('0' + (date.getMonth() + 1)).slice(-2);\n  let year = date.getFullYear();\n  return `${day}.${month}.${year}`;\n}\n\nconst selectedTimeRange = data.series[0].fields.find(f => f.name === 'timeRange').values.buffer[0];\n\nconst series = data.series.map(s => {\n  const timeValues = s.fields.find((f) => f.name === 'time').values.buffer; //|| s.fields.find(f => f.type === 'time').values.buffer;\n  const searchValues = s.fields.find((f) => f.name === 'search').values.buffer;\n  const discoverValues = s.fields.find((f) => f.name === 'discover').values.buffer;\n  const newsValues = s.fields.find((f) => f.name === 'news').values.buffer;\n  const totalValues = s.fields.find((f) => f.name === 'total').values.buffer;\n\n  return [\n    {\n      name: 'Websuche',\n      type: 'line',\n      smooth: true,\n      showSymbol: false,\n      data: searchValues.map((value, index) => [timeValues[index], value])\n    },\n    {\n      name: 'Discover',\n      type: 'line',\n      smooth: true,\n      showSymbol: false,\n      data: discoverValues.map((value, index) => [timeValues[index], value])\n    },\n    {\n      name: 'Google News',\n      type: 'line',\n      smooth: true,\n      showSymbol: false,\n      data: newsValues.map((value, index) => [timeValues[index], value])\n    },\n    {\n      name: 'Gesamt',\n      type: 'line',\n      smooth: true,\n      showSymbol: false,\n      data: totalValues.map((value, index) => [timeValues[index], value])\n    }\n  ];\n}).flat();\n\n\n/**\n * Enable Data Zoom by default\n */\nsetTimeout(() => echartsInstance.dispatchAction({\n  type: 'takeGlobalCursor',\n  key: 'dataZoomSelect',\n  dataZoomSelectActive: true,\n}), 500);\n\n/**\n * Update Time Range on Zoom\n */\nechartsInstance.on('datazoom', function (params) {\n  const startValue = params.batch[0]?.startValue;\n  const endValue = params.batch[0]?.endValue;\n  locationService.partial({ from: startValue, to: endValue });\n});\n\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip: {\n    trigger: 'axis',\n    axisPointer: {\n      type: 'cross'\n    },\n    formatter: function (params) {\n      let tooltipContent = formatDate(params[0].axisValue) + '<br/>'; // Datumsformatierung\n      params.forEach(function (item) {\n        let formattedValue = item.data[1].toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.'); // Tausendertrennzeichen einfügen\n        tooltipContent += item.marker + item.seriesName + ': ' + formattedValue + '<br/>';\n      });\n      return tooltipContent;\n    }\n  },\n  legend: {\n    left: '0',\n    bottom: '10',\n    data: data.series.map((s) => {\n      const searchValues = s.fields.find((f) => f.name === 'search').values.buffer;\n      const discoverValues = s.fields.find((f) => f.name === 'discover').values.buffer;\n      const newsValues = s.fields.find((f) => f.name === 'news').values.buffer;\n      const totalValues = s.fields.find((f) => f.name === 'total').values.buffer;;\n      return searchValues, discoverValues, newsValues, totalValues;\n    }),\n    textStyle: {\n      color: 'rgba(128, 128, 128, .9)',\n    },\n  },\n  toolbox: {\n    feature: {\n      dataZoom: {\n        yAxisIndex: 'none',\n        icon: {\n          zoom: 'path://',\n          back: 'path://',\n        },\n      },\n      saveAsImage: {},\n    }\n  },\n  xAxis: {\n    type: 'time',\n    axisLabel: {\n      hideOverlap: true,\n      formatter: function (value) {\n        const date = new Date(value);\n        let day = ('0' + date.getDate()).slice(-2);\n        let month = ('0' + (date.getMonth() + 1)).slice(-2);\n        let year = date.getFullYear();\n        return `${day}.${month}.${year}`;\n      },\n      showMaxLabel: selectedTimeRange === \"7 Tage\"\n    },\n  },\n  yAxis: {\n    type: 'value',\n    min: '0',\n    axisLabel: {\n      formatter: function (value) {\n        // Umwandeln des Werts in einen String und Ersetzen von Kommas durch Punkte\n        return value.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n      }\n    },\n  },\n  grid: {\n    left: '2%',\n    right: '2%',\n    top: '2%',\n    bottom: 24,\n    containLabel: true,\n  },\n  series,\n};",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "canvas",
+          "themeEditor": {
+            "config": "{}",
+            "height": 400,
+            "name": "default"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\nSELECT\n  DATE(data_date) as time,\n  SUM(IF(search_type IN (\"IMAGE\", \"WEB\", \"VIDEO\", \"NEWS\"), clicks, 0)) as search,\n  SUM(IF(search_type IN (\"DISCOVER\"), clicks, 0)) as discover,\n  SUM(IF(search_type IN (\"GOOGLE_NEWS\"), clicks, 0)) as news,\n  SUM(clicks) as total,\n  CASE \"${Zeitraum:text}\"\n    WHEN \"Letzte 7 Tage\" THEN \"7 Tage\"\n    WHEN \"Letzte 28 Tage\" THEN \"28 Tage\"\n    WHEN \"Letzte 3 Monate\" THEN \"3 Monate\"\n    WHEN \"Letzte 6 Monate\" THEN \"6 Monate\"\n  END AS timeRange\nFROM\n  $searchconUrlTable\nWHERE\n  url_property LIKE ${Property:doublequote}\n  AND data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\nGROUP BY data_date\nORDER BY data_date",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Leistung (Clicks)",
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f5f5f5",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 19
+        },
+        "id": 16,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECt ' ' as value",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f5f5f5",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 5,
+          "x": 4,
+          "y": 19
+        },
+        "id": 11,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CONCAT(REPEAT(\" \", $filled_size_headline - CHAR_LENGTH(value)), value)\r\nFROM(\r\nSELECT 'Clicks Total' as value\r\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f5f5f5",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 5,
+          "x": 9,
+          "y": 19
+        },
+        "id": 10,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CONCAT(REPEAT(\" \", $filled_size_headline - CHAR_LENGTH(value)), value)\r\nFROM(\r\nSELECT 'Impressions Total' as value\r\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f5f5f5",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 5,
+          "x": 14,
+          "y": 19
+        },
+        "id": 12,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CONCAT(REPEAT(\" \", $filled_size_headline - CHAR_LENGTH(value)), value)\r\nFROM(\r\nSELECT \"CTR Total\" as value\r\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f5f5f5",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 0,
+          "y": 21
+        },
+        "id": 38,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CONCAT(REPEAT(\" \", $filled_size_headline - CHAR_LENGTH(value)), value)\r\nFROM(\r\nSELECT \"Total\" as value\r\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "summe"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "noValue",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 4,
+          "y": 21
+        },
+        "id": 40,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\r\nSELECT\r\n  SUM(clicks) as summe\r\nFROM\r\n  $searchconUrlTable\r\nWHERE\r\n  data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\r\n  --AND search_type IN (\"WEB\", \"NEWS\", \"DISCOVER\", \"GOOGLE_NEWS\", \"IMAGE\", \"VIDEO\")\r\n  AND url_property LIKE ${Property:doublequote}",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "${Zeitraum:text}",
+                "summe": "",
+                "visits": "${Zeitraum:text}"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "summe"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "noValue",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 9,
+          "y": 21
+        },
+        "id": 39,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\r\nSELECT\r\n  SUM(impressions) as summe\r\nFROM\r\n  $searchconUrlTable\r\nWHERE\r\n  url_property LIKE ${Property:doublequote}\r\n  AND data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "${Zeitraum:text}",
+                "summe": "",
+                "visits": "${Zeitraum:text}"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "f0_"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "decimals",
+                  "value": 2
+                },
+                {
+                  "id": "noValue",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 14,
+          "y": 21
+        },
+        "id": 41,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\r\nSELECT\r\n  AVG(CTR)\r\nFROM\r\n  $searchconUrlTable\r\nWHERE\r\n  data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\r\n  AND url_property LIKE ${Property:doublequote}\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "${Zeitraum:text}",
+                "summe": "",
+                "visits": "${Zeitraum:text}"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f5f5f5",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 0,
+          "y": 24
+        },
+        "id": 14,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CONCAT(REPEAT(\" \", $filled_size_headline - CHAR_LENGTH(value)), value)\r\nFROM(\r\nSELECT \"Suche (Web, Bilder, Videos & News)\" as value\r\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "summe"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "noValue",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 4,
+          "y": 24
+        },
+        "id": 22,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\r\nSELECT\r\n  SUM(clicks) as summe\r\nFROM\r\n  $searchconUrlTable\r\nWHERE\r\n  data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\r\n  AND search_type IN (\"WEB\", \"IMAGE\", \"VIDEO\", \"NEWS\")\r\n  AND url_property LIKE ${Property:doublequote}",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "${Zeitraum:text}",
+                "summe": "",
+                "visits": "${Zeitraum:text}"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "summe"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "noValue",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 9,
+          "y": 24
+        },
+        "id": 19,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\r\nSELECT\r\n  SUM(impressions) as summe\r\nFROM\r\n  $searchconUrlTable\r\nWHERE\r\n  search_type IN (\"WEB\", \"IMAGE\", \"VIDEO\", \"NEWS\")\r\n  AND url_property LIKE ${Property:doublequote}\r\n  AND data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "${Zeitraum:text}",
+                "summe": "",
+                "visits": "${Zeitraum:text}"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "f0_"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "decimals",
+                  "value": 2
+                },
+                {
+                  "id": "noValue",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 14,
+          "y": 24
+        },
+        "id": 28,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\r\nSELECT\r\n  AVG(CTR)\r\nFROM\r\n  $searchconUrlTable\r\nWHERE\r\n  data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\r\n  AND search_type IN (\"IMAGE\", \"WEB\", \"VIDEO\", \"NEWS\")\r\n  AND url_property LIKE ${Property:doublequote}\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "${Zeitraum:text}",
+                "summe": "",
+                "visits": "${Zeitraum:text}"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f5f5f5",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 0,
+          "y": 27
+        },
+        "id": 15,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CONCAT(REPEAT(\" \", $filled_size_headline - CHAR_LENGTH(value)), value)\r\nFROM(\r\nSELECT 'Google News' as value\r\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "summe"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "noValue",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 4,
+          "y": 27
+        },
+        "id": 23,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\r\nSELECT\r\n  SUM(clicks) as summe\r\nFROM\r\n  $searchconUrlTable\r\nWHERE\r\n  data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\r\n  AND search_type IN(\"GOOGLE_NEWS\")\r\n  AND url_property LIKE ${Property:doublequote}\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "${Zeitraum:text}",
+                "summe": "",
+                "visits": "${Zeitraum:text}"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "summe"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "noValue",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 9,
+          "y": 27
+        },
+        "id": 20,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\r\nSELECT\r\n  SUM(impressions) as summe\r\nFROM\r\n  $searchconUrlTable\r\nWHERE\r\n  data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\r\n  AND url_property LIKE ${Property:doublequote}\r\n  AND search_type = \"GOOGLE_NEWS\"\r\n\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "${Zeitraum:text}",
+                "summe": "",
+                "visits": "${Zeitraum:text}"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "summe"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "decimals",
+                  "value": 2
+                },
+                {
+                  "id": "noValue",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 14,
+          "y": 27
+        },
+        "id": 27,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\r\nSELECT\r\n  AVG(CTR) as summe\r\nFROM\r\n  $searchconUrlTable\r\nWHERE\r\n  data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\r\n  AND search_type = \"GOOGLE_NEWS\"\r\n  AND url_property LIKE ${Property:doublequote}\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "${Zeitraum:text}",
+                "summe": "",
+                "visits": "${Zeitraum:text}"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f5f5f5",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 0,
+          "y": 30
+        },
+        "id": 17,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CONCAT(REPEAT(\" \", $filled_size_headline - CHAR_LENGTH(value)), value)\r\nFROM(\r\nSELECT 'Google Discover' as value\r\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "summe"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "noValue",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 4,
+          "y": 30
+        },
+        "id": 24,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\r\nSELECT\r\n  SUM(clicks) as summe\r\nFROM\r\n  $searchconUrlTable\r\nWHERE\r\n  data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\r\n  AND search_type = \"DISCOVER\"\r\n  AND url_property LIKE ${Property:doublequote}\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "${Zeitraum:text}",
+                "summe": "",
+                "visits": "${Zeitraum:text}"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "summe"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "noValue",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 9,
+          "y": 30
+        },
+        "id": 21,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\r\nSELECT\r\n  SUM(impressions) as summe\r\nFROM\r\n  $searchconUrlTable\r\nWHERE\r\n  data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\r\n  AND search_type = \"DISCOVER\"\r\n  AND url_property LIKE ${Property:doublequote}",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "${Zeitraum:text}",
+                "summe": "",
+                "visits": "${Zeitraum:text}"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "summe"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "decimals",
+                  "value": 2
+                },
+                {
+                  "id": "noValue",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 14,
+          "y": 30
+        },
+        "id": 25,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\r\nSELECT\r\n  AVG(CTR) as summe\r\nFROM\r\n  $searchconUrlTable\r\nWHERE\r\n  data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\r\n  AND search_type = \"DISCOVER\"\r\n  AND url_property LIKE ${Property:doublequote}\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "${Zeitraum:text}",
+                "summe": "",
+                "visits": "${Zeitraum:text}"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 33
+        },
+        "id": 60,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": " ",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 35
+        },
+        "id": 6,
+        "panels": [],
+        "title": "Top 20 Visits (Piano)",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "m_suchmaschinen_anteil_visits * 100"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#00b0de",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "unit",
+                  "value": "percent"
+                },
+                {
+                  "id": "displayName",
+                  "value": "Suchmaschinenanteil"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 180
+                },
+                {
+                  "id": "decimals",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "m_homepage_anteil_visits * 100"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                },
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#00b0de",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "Homepageanteil"
+                },
+                {
+                  "id": "decimals",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "page_views"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "displayName",
+                  "value": "Page Views"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "content_id_sophora"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Sophora ID"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "content_titel"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Artikel"
+                },
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "${__data.fields.url}",
+                      "url": "${__data.fields.url}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "visits"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Visits"
+                },
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 90
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Veröffentlicht am"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "time: DD.MM.YY | HH:mm \\U\\h\\r"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 144
+                },
+                {
+                  "id": "noValue",
+                  "value": "nicht verfügbar"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Sophora ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 370
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "url"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Page Views"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 109
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "m_bounce_rate * 100"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Bounce Rate"
+                },
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#00b0de",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "unit",
+                  "value": "percent"
+                },
+                {
+                  "id": "decimals",
+                  "value": 1
+                },
+                {
+                  "id": "custom.width",
+                  "value": 180
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 24,
+          "x": 0,
+          "y": 36
+        },
+        "id": 37,
+        "options": {
+          "footer": {
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "frameIndex": 1,
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Visits"
+            }
+          ]
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "hide": false,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\nSELECT\nveroeffDatum,\ncontent_titel,\nsum(m_visits) as visits,\nsum(m_page_loads) as page_views,\nCASE WHEN SUM(IFNULL(m_visits,0))>0 THEN SUM(m_bounce_rate*m_visits)/SUM(IFNULL(m_visits,0)) ELSE -1 END AS m_bounce_rate,\nCASE WHEN SUM(IFNULL(m_visits,0))>0 THEN SUM(m_suchmaschinen_anteil_visits*m_visits)/SUM(IFNULL(m_visits,0)) ELSE -1 END AS m_suchmaschinen_anteil_visits,\nCASE WHEN SUM(IFNULL(m_visits,0))>0 THEN SUM(m_homepage_anteil_visits*m_visits)/SUM(IFNULL(m_visits,0)) ELSE -1 END AS m_homepage_anteil_visits,\ncontent_id_sophora, url\nFROM\n(\nSELECT\nFIRST_VALUE(publishing_date) OVER (PARTITION BY uuid ORDER BY date DESC) as veroeffDatum,\nFIRST_VALUE(content_id_sophora) OVER (PARTITION BY uuid ORDER BY date DESC) as content_id_sophora, \npage_chapter2, page_chapter1,\nm_visits,\nm_page_loads,\nm_bounce_rate,\nm_suchmaschinen_anteil_visits,\nm_homepage_anteil_visits, \n--FIRST_VALUE(url) OVER (PARTITION BY uuid ORDER BY date DESC) as url,\nFIRST_VALUE(CASE WHEN url != \"N/A\" THEN url ELSE NULL END) OVER (PARTITION BY uuid ORDER BY (CASE WHEN url != \"N/A\" THEN date END) DESC) as url,\nFIRST_VALUE(content_titel) OVER (PARTITION BY uuid ORDER BY date DESC) as content_titel, \nFROM \n`ndr-code-bi-dashboard.Piano.articles_joined_daily`\nWHERE\n--site_level2 LIKE \"${LRA}.de\"\n--AND CASE\n  --WHEN \"${Redaktionen:text}\" != \"None\" THEN page_chapter1 = \"$Redaktionen\"\n  --ELSE page_chapter1 IS NOT NULL\n--END\n--AND CASE\n  --WHEN \"${Unterkapitel:text}\" != \"None\" THEN page_chapter2 = \"$Unterkapitel\"\n  --ELSE page_chapter2 IS NOT NULL\n--END\n\nCASE    \n    WHEN \"${LRA:text}\" = \"Brisant\" THEN page_chapter1 = \"Brisant\"\n    ELSE\n      site_level2 LIKE \"${LRA}.de\"\n      AND CASE\n        WHEN \"${Redaktionen:text}\" != \"None\" THEN page_chapter1 = \"$Redaktionen\"\n        ELSE page_chapter1 IS NOT NULL\n      END\n      AND CASE\n        WHEN \"${Unterkapitel:text}\" != \"None\" THEN page_chapter2 = \"$Unterkapitel\"\n        ELSE page_chapter2 IS NOT NULL\n      END\nEND\n\n--AND CASE\n  --WHEN \"${Redaktionen:text}\" = \"None\" THEN \"Alle Kapitel 1\" IN UNNEST(page_chapter1_tags)\n  --ELSE \"${Redaktionen:text}\" IN UNNEST(page_chapter1_tags)\n--END\n--AND CASE\n  --WHEN \"${Unterkapitel:text}\" = \"None\" THEN \"Alle Kapitel 2\" IN UNNEST(page_chapter2_tags)\n  --ELSE \"${Unterkapitel:text}\" IN UNNEST(page_chapter2_tags)\n--END\n\nAND content_id_sophora NOT LIKE \"%index%\"\nAND content_id_sophora NOT LIKE \"%N/A%\"\nAND content_id_sophora NOT LIKE \"%verteilseite%\"\nAND content_id_sophora NOT LIKE \"%nachrichtenfeed%\"\nAND content_id_sophora NOT LIKE \"nachrichten%\"\nAND content_id_sophora NOT LIKE \"verkehrszentrum%\"\nAND content_id_sophora NOT LIKE \"radiostream%\"\nAND page_chapter1 NOT LIKE \"CONT\"\nAND objekt_typ NOT LIKE \"indexPage\"\n--AND content_titel NOT LIKE \"Live\"\n--AND content_titel NOT LIKE \"%Programmübersicht%\"\n--AND content_titel NOT LIKE \"%Tippspiel%\"\n--AND content_titel NOT LIKE \"%N/A%\"\n--AND content_titel NOT LIKE \"Wetter\"\n--AND url NOT LIKE \"%.json%\"\nAND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote})\nGROUP BY content_id_sophora, content_titel, veroeffDatum, page_chapter2, page_chapter1, url\nORDER BY 4 DESC\nLIMIT 20",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Top 20 Web Artikel | $Zeitraum",
+        "transformations": [
+          {
+            "id": "calculateField",
+            "options": {
+              "binary": {
+                "left": "m_suchmaschinen_anteil_visits",
+                "operator": "*",
+                "reducer": "sum",
+                "right": "100"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "binary": {
+                "left": "m_homepage_anteil_visits",
+                "operator": "*",
+                "reducer": "sum",
+                "right": "100"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "binary": {
+                "left": "m_bounce_rate",
+                "operator": "*",
+                "reducer": "sum",
+                "right": "100"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Kapitel": true,
+                "bounce_rate": true,
+                "bounce_rate * 100": false,
+                "m_bounce_rate": true,
+                "m_homepage_anteil_visits": true,
+                "m_homepage_anteil_visits * 100": true,
+                "m_suchmaschinen_anteil_visits": true,
+                "m_suchmaschinen_anteil_visits * 100": false,
+                "page_views": false,
+                "url": false
+              },
+              "indexByName": {
+                "content_id_sophora": 9,
+                "content_titel": 1,
+                "dateJahr": 12,
+                "m_bounce_rate": 11,
+                "m_bounce_rate * 100": 6,
+                "m_homepage_anteil_visits": 5,
+                "m_homepage_anteil_visits * 100": 8,
+                "m_suchmaschinen_anteil_visits": 4,
+                "m_suchmaschinen_anteil_visits * 100": 7,
+                "page_views": 3,
+                "url": 10,
+                "veroeffDatum": 0,
+                "visits": 2
+              },
+              "renameByName": {
+                "f0_": "Artikel",
+                "f1_": "Visits",
+                "f2_": "Page Impressions",
+                "f3_": "Bounce rate",
+                "f4_": "Suchmachinenanteil",
+                "f5_": "Homepageanteil",
+                "publishing_date": "Veröffentlicht am",
+                "uuid": "Sophora ID",
+                "veroeffDatum": "Veröffentlicht am"
+              }
+            }
+          },
+          {
+            "id": "convertFieldType",
+            "options": {
+              "conversions": [
+                {
+                  "destinationType": "string",
+                  "targetField": "m_suchmaschinen_anteil_visits * 100"
+                },
+                {
+                  "destinationType": "string",
+                  "targetField": "m_homepage_anteil_visits * 100"
+                },
+                {
+                  "destinationType": "string",
+                  "targetField": "m_bounce_rate * 100"
+                },
+                {
+                  "dateFormat": "",
+                  "destinationType": "time",
+                  "targetField": "veroeffDatum"
+                }
+              ],
+              "fields": {}
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 48
+        },
+        "id": 62,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": " ",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 50
+        },
+        "id": 8,
+        "panels": [],
+        "title": "Referrer (Piano)",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visits"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "custom.align",
+                  "value": "left"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 275
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#00b0de",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "referrer"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Referrer"
+                },
+                {
+                  "id": "custom.filterable",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Distribution"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Distribution"
+                },
+                {
+                  "id": "custom.filterable",
+                  "value": true
+                },
+                {
+                  "id": "custom.width",
+                  "value": 110
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "content_id_sophora"
+              },
+              "properties": [
+                {
+                  "id": "custom.filterable",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 16,
+          "w": 24,
+          "x": 0,
+          "y": 51
+        },
+        "id": 53,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Visits"
+            }
+          ]
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Piano",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\nSELECT \n  content_titel,\n  SUM(m_visits) as Visits,\n  referrer,\n  $sophora as content_id_sophora,\n  distribution as Distribution\nFROM\n(\n  SELECT\n  FIRST_VALUE(content_titel) OVER (PARTITION BY $sophora ORDER BY date DESC) as content_titel,\n  --content_titel,\n  m_visits, \n  referrer,\n  $sophora,\n  distribution,\n  date\n  FROM `$distroRefTable`\n  WHERE\n    CASE WHEN \"${LRA:text}\" = \"Brisant\" THEN site_level2 = \"Brisant\"\n    ELSE\n      site_level2 LIKE \"${LRA}.de\"\n      AND CASE\n        WHEN \"${Redaktionen:text}\" != \"None\" THEN page_chapter1 = \"$Redaktionen\"\n        ELSE page_chapter1 IS NOT NULL\n      END\n      AND CASE\n        WHEN \"${Unterkapitel:text}\" != \"None\" THEN page_chapter2 = \"$Unterkapitel\"\n        ELSE page_chapter2 IS NOT NULL\n      END\n    END\n  AND CAST(date as DATE) >= ${bq_timeframe_start:doublequote} AND CAST(date as DATE) <= ${bq_timeframe_end:doublequote}\n  AND referrer NOT LIKE \"%N/A%\"\n  --AND CASE WHEN \n    --    site_level2 = \"mdr.de\" \n      --  THEN (distribution = \"web\" OR distribution =\"amp\")\n        --ELSE 1=1 END\n  --AND NOT distribution IS null AND NOT distribution = \"N/A\" AND NOT distribution = \"404\"\n)\nGROUP BY \nDistribution, \nreferrer,\ncontent_titel,\ncontent_id_sophora\nORDER BY Visits DESC\nLIMIT 15",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "name": "SUM",
+                  "parameters": [
+                    {
+                      "name": "m_visits",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "src_referrer_site_domain",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "name": "src_referrer_site_domain",
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {},
+                "id": "ab88b988-0123-4456-b89a-b1885261c89a",
+                "type": "group"
+              }
+            },
+            "table": "distro"
+          }
+        ],
+        "title": "Web | Top Referrer (nach Artikeln) | $Zeitraum",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {
+                "Distribution": 2,
+                "Visits": 4,
+                "content_id_sophora": 3,
+                "content_titel": 0,
+                "referrer": 1
+              },
+              "renameByName": {
+                "Distribution": "",
+                "content_id_sophora": "Sophora ID",
+                "content_titel": "Artikel",
+                "distribution": "",
+                "f0_": "",
+                "referrer": "",
+                "src_referrer_site_domain": ""
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 67
+        },
+        "id": 83,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": " ",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#00b0de",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 7,
+          "x": 1,
+          "y": 69
+        },
+        "id": 52,
+        "options": {
+          "displayMode": "gradient",
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": true
+          },
+          "showUnfilled": true
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Piano",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\nSELECT \n  SUM(m_visits), \n  src_referrer_site_domain,\nFROM `Piano.distro_joined_daily`\nWHERE \nCASE WHEN \"${LRA:text}\" = \"Brisant\" THEN page_chapter1 = \"Brisant\"\nELSE\n  site_level2 = \"${LRA}.de\"\n  --AND page_chapter1 = \"$Redaktionen\"\n  --AND page_chapter2 = \"$Unterkapitel\"\n  AND CASE\n    WHEN \"${Redaktionen:text}\" = \"None\" THEN page_chapter1 = \"Alle Kapitel 1\"\n    ELSE page_chapter1 = \"${Redaktionen:text}\"\n  END\n  AND CASE\n    WHEN \"${Unterkapitel:text}\" = \"None\" THEN page_chapter2 = \"Alle Kapitel 2\"\n    ELSE page_chapter2 = \"${Unterkapitel:text}\"\n  END\nEND\nAND sendungs_id = \"Alle Sendungs-ID\"\nAND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\nAND src_referrer_site_domain NOT LIKE \"%N/A%\"\nAND CASE WHEN \n      site_level2 = \"mdr.de\" \n      THEN (distribution = \"web\" OR distribution =\"amp\")\n      ELSE 1=1 END\nGROUP BY\nsrc_referrer_site_domain \nORDER BY 1 DESC\nLIMIT 15",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "name": "SUM",
+                  "parameters": [
+                    {
+                      "name": "m_visits",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "src_referrer_site_domain",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "name": "src_referrer_site_domain",
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {},
+                "id": "ab88b988-0123-4456-b89a-b1885261c89a",
+                "type": "group"
+              }
+            },
+            "table": "distro"
+          }
+        ],
+        "title": "Web | Top Referrer (Domains) | $Zeitraum",
+        "transparent": true,
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "decimals": 2,
+            "mappings": [],
+            "unit": "locale"
+          },
+          "overrides": [
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "f0_",
+                    "IE-SearchBox",
+                    "QR-Code"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 10,
+          "x": 11,
+          "y": 69
+        },
+        "id": 44,
+        "options": {
+          "displayLabels": [],
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true,
+            "values": [
+              "percent",
+              "value"
+            ]
+          },
+          "pieType": "pie",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\nSELECT \n  SUM(m_visits), \n  CASE \n    WHEN src IN (\"qr\", \"QR-Code\", \"qrcode\") THEN \"QR-Code\"\n    WHEN src IN (\"Social Media\", \"Social media\", \"social media\", \"Socialmedia\") THEN \"Social Media\"\n    ELSE src\n  END AS grouped_src\nFROM `Piano.distro_joined_daily`\nWHERE \n  CASE WHEN \"${LRA:text}\" = \"Brisant\" THEN page_chapter1 = \"Brisant\"\n  ELSE\n    site_level2 = \"${LRA}.de\"\n    AND CASE\n    WHEN \"${Redaktionen:text}\" = \"None\" THEN page_chapter1 = \"Alle Kapitel 1\"\n    ELSE page_chapter1 = \"${Redaktionen:text}\"\n    END\n  AND CASE\n    WHEN \"${Unterkapitel:text}\" = \"None\" THEN page_chapter2 = \"Alle Kapitel 2\"\n    ELSE page_chapter2 = \"${Unterkapitel:text}\"\n    END\n  END\nAND sendungs_id = \"Alle Sendungs-ID\"\n--AND page_chapter1 = \"$Redaktionen\"\n--AND page_chapter2 = \"$Unterkapitel\"\n--AND sendungs_id = \"$Sendung\"\nAND src NOT LIKE \"%N/A%\"\nAND CASE WHEN \n      site_level2 = \"mdr.de\" \n      THEN (distribution = \"web\" OR distribution =\"amp\")\n      ELSE 1=1 END\nAND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\nGROUP BY grouped_src\nHAVING SUM(m_visits) > 0\nORDER BY 1 DESC\nLIMIT 15",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Web | Traffic Quellen | $Zeitraum",
+        "transparent": true,
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 81
+        },
+        "id": 66,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": " ",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 83
+        },
+        "id": 46,
+        "panels": [],
+        "title": "Top 25 Suchanfragen (GSC)",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Position"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "decimals",
+                  "value": 2
+                },
+                {
+                  "id": "displayName",
+                  "value": "Durchschnittliche Position"
+                },
+                {
+                  "id": "custom.width"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Suchanfragen"
+              },
+              "properties": [
+                {
+                  "id": "custom.filterable",
+                  "value": true
+                },
+                {
+                  "id": "custom.width"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Durchschnittliche Position"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 198
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Clicks"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 103
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 12,
+          "x": 0,
+          "y": 84
+        },
+        "id": 49,
+        "options": {
+          "footer": {
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "frameIndex": 1,
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Clicks"
+            }
+          ]
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "hide": false,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\nSELECT\nsuchanfragen AS Suchanfragen,\nSUM(clicks) AS Clicks,\nAVG(position) AS Position\n--(ROUND((sum(position) / sum(impressions))) + 1.0) AS Position\nFROM $searchconTopQueryTable\nWHERE \nsuchanfragen != \"\"\nAND url_property LIKE \"${Property:value}\"\nAND data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\nGROUP BY suchanfragen\nORDER BY Clicks DESC\nLIMIT 25",
+            "refId": "B",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Top 25 Suchanfragen | $Zeitraum",
+        "transformations": [],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 97
+        },
+        "id": 81,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": " ",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 99
+        },
+        "id": 70,
+        "panels": [],
+        "title": "Top 25 URLs (GSC)",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "url"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "",
+                      "url": "${__value.raw}"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.filterable",
+                  "value": true
+                },
+                {
+                  "id": "displayName",
+                  "value": "URL"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Clicks"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 94
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 24,
+          "x": 0,
+          "y": 100
+        },
+        "id": 50,
+        "options": {
+          "footer": {
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "frameIndex": 1,
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Clicks"
+            }
+          ]
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "hide": false,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\nSELECT\n  sum(clicks) AS Clicks,\n  url\nFROM $searchconTopUrlTable\nWHERE data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\nAND url LIKE \"${Property:value}/%\"\nAND url IS NOT null\nGROUP BY url\nORDER BY Clicks DESC\nLIMIT 25\n",
+            "refId": "B",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Top 25 URLs | Gesamt | $Zeitraum",
+        "transformations": [],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 113
+        },
+        "id": 63,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": " ",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "url"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "",
+                      "url": "${__value.raw}"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.filterable",
+                  "value": true
+                },
+                {
+                  "id": "displayName",
+                  "value": "URL"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Clicks"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 92
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 24,
+          "x": 0,
+          "y": 115
+        },
+        "id": 78,
+        "options": {
+          "footer": {
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "frameIndex": 1,
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Clicks"
+            }
+          ]
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "hide": false,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\nSELECT\n  sum(clicks) AS Clicks,\n  url\nFROM $searchconTopUrlTable\nWHERE data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\nAND url LIKE \"${Property:value}/%\"\nAND search_type IN (\"WEB\", \"IMAGE\", \"VIDEO\", \"NEWS\")\nAND url IS NOT null\nGROUP BY url\nORDER BY Clicks DESC\nLIMIT 25\n",
+            "refId": "B",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Top 25 URLs | Suche (Web, Bilder, Videos & News) | $Zeitraum",
+        "transformations": [],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 128
+        },
+        "id": 82,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": " ",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "url"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "",
+                      "url": "${__value.raw}"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.filterable",
+                  "value": true
+                },
+                {
+                  "id": "displayName",
+                  "value": "URL"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Clicks"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 106
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 24,
+          "x": 0,
+          "y": 130
+        },
+        "id": 72,
+        "options": {
+          "footer": {
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "frameIndex": 1,
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Clicks"
+            }
+          ]
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "hide": false,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\nSELECT\n  sum(clicks) AS Clicks,\n  url\nFROM $searchconTopUrlTable\nWHERE data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\nAND url LIKE \"${Property:value}/%\"\nAND search_type = \"DISCOVER\"\nAND url IS NOt null\nGROUP BY url\nORDER BY Clicks DESC\nLIMIT 25\n",
+            "refId": "B",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Top 25 URLs | Discover | $Zeitraum",
+        "transformations": [],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 143
+        },
+        "id": 80,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": " ",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "url"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "",
+                      "url": "${__value.raw}"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.filterable",
+                  "value": true
+                },
+                {
+                  "id": "displayName",
+                  "value": "URL"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Clicks"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 93
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 24,
+          "x": 0,
+          "y": 145
+        },
+        "id": 76,
+        "options": {
+          "footer": {
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "frameIndex": 1,
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Clicks"
+            }
+          ]
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "hide": false,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--cached version\nSELECT\n  sum(clicks) AS Clicks,\n  url\nFROM $searchconTopUrlTable\nWHERE data_date >= ${bq_gsc_timeframe_start:doublequote} AND data_date <= ${bq_timeframe_end:doublequote}\nAND url LIKE \"${Property:value}%\"\nAND search_type = \"GOOGLE_NEWS\"\nAND url IS NOt null\nGROUP BY url\nORDER BY Clicks DESC\nLIMIT 25\n",
+            "refId": "B",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Top 25 URLs | Google News | $Zeitraum",
+        "transformations": [],
+        "transparent": true,
+        "type": "table"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": true,
+            "text": "NDR",
+            "value": "ndr"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "LRA",
+          "options": [
+            {
+              "selected": false,
+              "text": "MDR",
+              "value": "mdr"
+            },
+            {
+              "selected": true,
+              "text": "NDR",
+              "value": "ndr"
+            },
+            {
+              "selected": false,
+              "text": "Brisant",
+              "value": "brisant"
+            },
+            {
+              "selected": false,
+              "text": "KiKA",
+              "value": "kika"
+            },
+            {
+              "selected": false,
+              "text": "KiKANiNCHEN",
+              "value": "kikaninchen"
+            },
+            {
+              "selected": false,
+              "text": "Eurovision",
+              "value": "eurovision"
+            }
+          ],
+          "query": "MDR : mdr, NDR : ndr, Brisant : brisant, KiKA : kika, KiKANiNCHEN : kikaninchen, Eurovision : eurovision",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "hide": 2,
+          "name": "filled_size_headline",
+          "query": "48",
+          "skipUrlSync": false,
+          "type": "constant"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "ndr-code-bi-dashboard.searchconsole_f.url_impression_ndr_daily",
+            "value": "ndr-code-bi-dashboard.searchconsole_f.url_impression_ndr_daily"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "searchconUrlTable",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \n  CASE \"${LRA:text}\"\n  WHEN \"MDR\" THEN \"ndr-code-bi-dashboard.searchconsole_f.url_impression_mdr_daily\"\n  WHEN \"Brisant\" THEN \"ndr-code-bi-dashboard.searchconsole_f.url_impression_mdr_daily\"\n  WHEN \"KiKA\" THEN \"ndr-code-bi-dashboard.searchconsole_f.url_impression_mdr_daily\"\n  WHEN \"KiKANiNCHEN\" THEN \"ndr-code-bi-dashboard.searchconsole_f.url_impression_mdr_daily\"\n  WHEN \"NDR\" THEN \"ndr-code-bi-dashboard.searchconsole_f.url_impression_ndr_daily\"\n  WHEN \"Eurovision\" THEN \"ndr-code-bi-dashboard.searchconsole_f.url_impression_ndr_daily\"\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "https://www.ndr.de",
+            "value": "https://www.ndr.de"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Property",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT DISTINCT url_property FROM $searchconUrlTable\nWHERE site_url LIKE '%${LRA}.de/'\nAND url_property NOT LIKE 'https://www.mdr.de/%risant%'\nAND url_property NOT LIKE '%-hhttps:'\nORDER BY url_property",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "isNone": true,
+            "selected": false,
+            "text": "None",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "Redaktionen",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  CASE \"${LRA:text}\"\r\n  WHEN \"MDR\" THEN COALESCE(SPLIT(SPLIT(\"${Property:text}\", \"/\")[OFFSET(3)], \"/\")[OFFSET(0)], \"xxxx\")\r\n  WHEN \"Brisant\" THEN COALESCE(SPLIT(SPLIT(\"${Property:text}\", \"/\")[OFFSET(3)], \"/\")[OFFSET(1)], \"xxxx\")\r\n  WHEN \"NDR\" THEN COALESCE(SPLIT(SPLIT(\"${Property:text}\", \"/\")[OFFSET(3)], \"/\")[OFFSET(0)], \"xxxx\")\r\n  WHEN \"KiKA\" THEN COALESCE(SPLIT(SPLIT(\"${Property:text}\", \"/\")[OFFSET(3)], \"/\")[OFFSET(1)], \"xxxx\")\r\n  WHEN \"KiKANiNCHEN\" THEN COALESCE(SPLIT(SPLIT(\"${Property:text}\", \"/\")[OFFSET(3)], \"/\")[OFFSET(1)], \"xxxx\")\r\n  WHEN \"Eurovision\" THEN COALESCE(SPLIT(SPLIT(\"${Property:text}\", \"/\")[OFFSET(3)], \"/\")[OFFSET(1)], \"xxxx\")\r\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "allValue": "AlleKapitel",
+          "current": {
+            "isNone": true,
+            "selected": false,
+            "text": "None",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "Unterkapitel",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT SPLIT(SPLIT('${Property:text}', '/')[OFFSET(4)], '/')[OFFSET(0)] as value\n\n--SELECT value\n--FROM ( SELECT SPLIT(SPLIT('${Property:text}', '/')[OFFSET(4)], '/')[OFFSET(0)] as value )\n-- UNION\n-- (SELECT 'TEST' as value)\n\n--SELECT\n--CASE SPLIT(SPLIT('${Property:text}', '/')[OFFSET(4)], '/')[OFFSET(0)]\n--WHEN NULL THEN 'NULL'\n--WHEN '' THEN 'TEST'\n--ELSE 'XXX'\n--END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "Letzte 7 Tage",
+            "value": "data_date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  9 DAY) AND data_date < DATE_SUB(CURRENT_DATE(), INTERVAL 2 DAY)"
+          },
+          "description": "Zeitraum is used for GSC data, because Google provides the newest data with a delay of three days.Therefore, the last 7 days for instance actually mean the last seven days from 3 days ago",
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Zeitraum",
+          "options": [
+            {
+              "selected": true,
+              "text": "Letzte 7 Tage",
+              "value": "data_date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  9 DAY) AND data_date < DATE_SUB(CURRENT_DATE(), INTERVAL 2 DAY)"
+            },
+            {
+              "selected": false,
+              "text": "Letzte 28 Tage",
+              "value": "data_date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  28 DAY) AND data_date < CURRENT_DATE()"
+            },
+            {
+              "selected": false,
+              "text": "Letzte 3 Monate",
+              "value": "data_date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  3 MONTH) AND data_date < CURRENT_DATE()"
+            },
+            {
+              "selected": false,
+              "text": "Letzte 6 Monate",
+              "value": "data_date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  6 MONTH) AND data_date < CURRENT_DATE()"
+            }
+          ],
+          "query": "Letzte 7 Tage : data_date >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  9 DAY) AND data_date < DATE_SUB(CURRENT_DATE()\\, INTERVAL 2 DAY), Letzte 28 Tage : data_date >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  28 DAY) AND data_date < CURRENT_DATE(), Letzte 3 Monate : data_date >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  3 MONTH) AND data_date < CURRENT_DATE(), Letzte 6 Monate : data_date >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  6 MONTH) AND data_date < CURRENT_DATE()",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "ndr-code-bi-dashboard.searchconsole_f.top_query_ndr_daily",
+            "value": "ndr-code-bi-dashboard.searchconsole_f.top_query_ndr_daily"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "description": "Choose table searchconsole_f.top_query depending on LRA name",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "searchconTopQueryTable",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  CASE \"${LRA:text}\"\r\n  WHEN \"MDR\" THEN \"ndr-code-bi-dashboard.searchconsole_f.top_query_mdr_daily\"\r\n  WHEN \"Brisant\" THEN \"ndr-code-bi-dashboard.searchconsole_f.top_query_mdr_daily\"\r\n  WHEN \"KiKA\" THEN \"ndr-code-bi-dashboard.searchconsole_f.top_query_mdr_daily\"\r\n  WHEN \"KiKANiNCHEN\" THEN \"ndr-code-bi-dashboard.searchconsole_f.top_query_mdr_daily\"\r\n  WHEN \"NDR\" THEN \"ndr-code-bi-dashboard.searchconsole_f.top_query_ndr_daily\"\r\n  WHEN \"Eurovision\" THEN \"ndr-code-bi-dashboard.searchconsole_f.top_query_ndr_daily\"\r\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "ndr-code-bi-dashboard.searchconsole_f.top_url_ndr_daily",
+            "value": "ndr-code-bi-dashboard.searchconsole_f.top_url_ndr_daily"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "searchconTopUrlTable",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  CASE \"${LRA:text}\"\r\n  WHEN \"MDR\" THEN \"ndr-code-bi-dashboard.searchconsole_f.top_url_mdr_daily\"\r\n  WHEN \"Brisant\" THEN \"ndr-code-bi-dashboard.searchconsole_f.top_url_mdr_daily\"\r\n  WHEN \"KiKA\" THEN \"ndr-code-bi-dashboard.searchconsole_f.top_url_mdr_daily\"\r\n  WHEN \"KiKANiNCHEN\" THEN \"ndr-code-bi-dashboard.searchconsole_f.top_url_mdr_daily\"\r\n  WHEN \"NDR\" THEN \"ndr-code-bi-dashboard.searchconsole_f.top_url_ndr_daily\"\r\n  WHEN \"Eurovision\" THEN \"ndr-code-bi-dashboard.searchconsole_f.top_url_ndr_daily\"\r\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "2023-12-13",
+            "value": "2023-12-13"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "bq_timeframe_start",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  CASE \r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 7 Tage\" THEN FORMAT_DATE(\"%Y-%m-%d\", interval_7_day)\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 28 Tage\" THEN FORMAT_DATE(\"%Y-%m-%d\", DATE_SUB(interval_7_day, INTERVAL 21 DAY))\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 3 Monate\" THEN FORMAT_DATE(\"%Y-%m-%d\", DATE_SUB(interval_30_day, INTERVAL 2 MONTH))\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 6 Monate\" THEN FORMAT_DATE(\"%Y-%m-%d\", DATE_SUB(interval_30_day, INTERVAL 5 MONTH))\r\n  END AS relevant_value\r\nFROM `grafana.current_date`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "2023-12-19",
+            "value": "2023-12-19"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "description": "This data point is also used for GSC time frames, because the data from GSC is always three days old --> the endpoint of the time frame is thereby set by the last available date",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "bq_timeframe_end",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  FORMAT_DATE('%Y-%m-%d', DATE_SUB(today, INTERVAL 1 DAY))\r\nFROM `grafana.current_date`\r\n",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "ndr-code-bi-dashboard.Piano.NDR_articles_distro_referrer_daily",
+            "value": "ndr-code-bi-dashboard.Piano.NDR_articles_distro_referrer_daily"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "distroRefTable",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  CASE \"${LRA:text}\"\r\n  WHEN \"MDR\" THEN \"ndr-code-bi-dashboard.Piano.MDR_articles_distro_referrer_daily\"\r\n  WHEN \"Brisant\" THEN \"ndr-code-bi-dashboard.Piano.MDR_articles_distro_referrer_daily\"\r\n  WHEN \"KiKA\" THEN \"ndr-code-bi-dashboard.Piano.MDR_articles_distro_referrer_daily\"\r\n  WHEN \"KiKANiNCHEN\" THEN \"ndr-code-bi-dashboard.Piano.MDR_articles_distro_referrer_daily\"\r\n  WHEN \"NDR\" THEN \"ndr-code-bi-dashboard.Piano.NDR_articles_distro_referrer_daily\"\r\n  WHEN \"Eurovision\" THEN \"ndr-code-bi-dashboard.Piano.NDR_articles_distro_referrer_daily\"\r\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "content_id_sophora",
+            "value": "content_id_sophora"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "sophora",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\nCASE \"${LRA:text}\"\r\nWHEN \"MDR\" THEN \"cms_id\"\r\nWHEN \"Brisant\" THEN \"cms_id\"\r\nWHEN \"KiKA\" THEN \"cms_id\"\r\nWHEN \"KiKANiNCHEN\" THEN \"cms_id\"\r\nWHEN \"NDR\" THEN \"content_id_sophora\"\r\nWHEN \"Eurovision\" THEN \"content_id_sophora\"\r\nEND as cis",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "2023-12-11",
+            "value": "2023-12-11"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "bq_gsc_timeframe_start",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  CASE \r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 7 Tage\" THEN FORMAT_DATE(\"%Y-%m-%d\", DATE_SUB(interval_7_day, INTERVAL 2 DAY))\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 28 Tage\" THEN FORMAT_DATE(\"%Y-%m-%d\", DATE_SUB(interval_7_day, INTERVAL 21 DAY))\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 3 Monate\" THEN FORMAT_DATE(\"%Y-%m-%d\", DATE_SUB(interval_30_day, INTERVAL 2 MONTH))\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 6 Monate\" THEN FORMAT_DATE(\"%Y-%m-%d\", DATE_SUB(interval_30_day, INTERVAL 5 MONTH))\r\n  END AS relevant_value\r\nFROM `grafana.current_date`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "2023-10-25T00:00:00.000Z",
+      "to": "2023-10-30T00:00:00.000Z"
+    },
+    "timepicker": {
+      "hidden": true
+    },
+    "timezone": "",
+    "title": "SEO Copy",
+    "uid": "sI-aiQDIk",
+    "version": 5,
+    "weekStart": ""
+  }
+}

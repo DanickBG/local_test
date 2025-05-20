@@ -1,0 +1,232 @@
+{
+  "id": 548,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "NP1LUfGSk",
+  "name": "MDR TV Web Audio Heute",
+  "kind": 1,
+  "type": "table",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "custom": {
+          "align": "auto",
+          "cellOptions": {
+            "type": "auto",
+            "wrapText": false
+          },
+          "inspect": false
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "bi_av_content"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Titel"
+            },
+            {
+              "id": "unit",
+              "value": "short"
+            },
+            {
+              "id": "decimals",
+              "value": 2
+            },
+            {
+              "id": "custom.align",
+              "value": "left"
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "bi_av_content_id"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Sophora ID"
+            },
+            {
+              "id": "unit",
+              "value": "short"
+            },
+            {
+              "id": "decimals",
+              "value": 2
+            },
+            {
+              "id": "custom.align",
+              "value": "left"
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "wiedergabe"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Wiedergaben"
+            },
+            {
+              "id": "unit",
+              "value": "locale"
+            },
+            {
+              "id": "decimals",
+              "value": 2
+            },
+            {
+              "id": "custom.align",
+              "value": null
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "wiedergabe"
+          },
+          "properties": [
+            {
+              "id": "custom.width",
+              "value": 115
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 22,
+      "w": 12,
+      "x": 0,
+      "y": 6
+    },
+    "id": 48,
+    "options": {
+      "cellHeight": "sm",
+      "footer": {
+        "countRows": false,
+        "fields": "",
+        "reducer": [
+          "sum"
+        ],
+        "show": false
+      },
+      "showHeader": true,
+      "sortBy": []
+    },
+    "pluginVersion": "11.1.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT \r\n-- bi_av_content_id,\r\n-- bi_av_content,\r\n  CASE\r\n    WHEN length(bi_av_content) > 45 THEN SUBSTR(bi_av_content, 0 , 40) || '...'\r\n    ELSE bi_av_content\r\n  END AS bi_av_content,\r\nsum(m_av_playbacks) as wiedergabe,\r\nFROM\r\n(\r\nSELECT\r\nbi_av_content_id,\r\nm_av_playbacks,\r\nFIRST_VALUE(bi_av_content) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) as bi_av_content, \r\nFROM \r\nPiano.av_joined_today\r\nWHERE site_level2 = ${LRA:doublequote} AND\r\n${Redaktionen:doublequote} IN UNNEST(bi_av_page_chapter1_tags) AND\r\n${Unterkapitel:doublequote} IN UNNEST(bi_av_page_chapter2_tags) AND \r\n${Sendung:doublequote} IN UNNEST(sendungs_id_tags) AND\r\n(av_content_type = \"audio\" OR av_content_type = \"Audio\")\r\nAND bi_av_content_id NOT LIKE '%index%'\r\nAND bi_av_broadcasting_type = \"ondemand\"\r\nAND date = ${bq_today:doublequote})\r\n--AND CASE\r\n---    WHEN ${Zeitraum:doublequote} = \"Heute\" THEN date = ${bq_today:doublequote}\r\n    -- Else date = ${bq_today:doublequote} \r\n--    END)\r\n GROUP BY bi_av_content,bi_av_content_id\r\n--,device_type \r\nORDER BY 2 DESC\r\nLimit 10",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "av_content_duration": true,
+            "av_content_type": true,
+            "bi_av_publication_date": false,
+            "device_type": true,
+            "wiedergaberate": true
+          },
+          "indexByName": {
+            "bi_av_content": 0,
+            "bi_av_content_id": 1,
+            "wiedergabe": 2
+          },
+          "renameByName": {
+            "bi_av_content": "Title",
+            "bi_av_publication_date": "Publiziert"
+          }
+        }
+      },
+      {
+        "id": "merge",
+        "options": {
+          "reducers": []
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "table"
+  },
+  "version": 3,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 2,
+    "created": "2024-06-20T11:45:48Z",
+    "updated": "2024-08-02T10:48:01Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
+      "id": 1,
+      "name": "admin"
+    }
+  }
+}

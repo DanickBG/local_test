@@ -1,0 +1,351 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "tv-google-trends-7c-schlagzeilen",
+    "url": "/d/NfrMYY94z/tv-google-trends-7c-schlagzeilen",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:42:18Z",
+    "updated": "2025-05-09T12:43:23Z",
+    "updatedBy": "daniel hristov dev",
+    "createdBy": "Anonymous",
+    "version": 4,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 1181,
+    "folderUid": "folder-LfjQIrw4z",
+    "folderTitle": "Google Trends",
+    "folderUrl": "/dashboards/f/folder-LfjQIrw4z/google-trends",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1282,
+    "links": [],
+    "liveNow": true,
+    "panels": [
+      {
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 0,
+          "y": 0
+        },
+        "id": 139,
+        "libraryPanel": {
+          "name": "Google Trends Logo",
+          "uid": "2VimoXQ4z"
+        },
+        "title": ""
+      },
+      {
+        "description": "",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 11,
+          "x": 2,
+          "y": 0
+        },
+        "id": 76,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<font size=\"8\" style=\"color:rgb(255, 0, 0);\">Google Trends</font><font size=\"8\">  ${category} </font>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.3.1",
+        "title": "",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 21,
+          "y": 0
+        },
+        "id": 72,
+        "libraryPanel": {
+          "name": "Google Trends Timestamp",
+          "uid": "5-tUfYrVk"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 2,
+          "w": 10,
+          "x": 0,
+          "y": 3
+        },
+        "id": 137,
+        "libraryPanel": {
+          "name": "Google Trends Table Title",
+          "uid": "xmOwBL9Vk"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 26,
+          "w": 24,
+          "x": 0,
+          "y": 5
+        },
+        "id": 133,
+        "libraryPanel": {
+          "name": "Google Trends Table",
+          "uid": "unJ_fL9Vk"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 6,
+          "y": 31
+        },
+        "id": 70,
+        "libraryPanel": {
+          "name": "Google Trends Title",
+          "uid": "z0lsBYrVz"
+        }
+      }
+    ],
+    "preload": false,
+    "refresh": false,
+    "schemaVersion": 40,
+    "tags": [
+      "Google Trends",
+      "NDR MV",
+      "NDR SH",
+      "NDR HH",
+      "NDR Info",
+      "NDR NDS"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": " 9.05.2025 \n 13:06 Uhr",
+            "value": " 9.05.2025 \n 13:06 Uhr"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "lastUpdate",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  FORMAT_DATETIME(\"%e.%m.%Y %n %H:%M Uhr\", DATETIME(MAX(last_update),\"Europe/Berlin\"))  \r\nFROM `ndr-code-bi-dashboard.Quintly.youtube`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "15",
+            "value": "15"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size",
+          "options": [
+            {
+              "selected": true,
+              "text": "15",
+              "value": "15"
+            }
+          ],
+          "query": "15",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "10",
+            "value": "10"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size_big",
+          "options": [
+            {
+              "selected": true,
+              "text": "10",
+              "value": "10"
+            }
+          ],
+          "query": "10",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "48",
+            "value": "48"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size_headline",
+          "options": [
+            {
+              "selected": true,
+              "text": "48",
+              "value": "48"
+            }
+          ],
+          "query": "48",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "48",
+            "value": "48"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size_headline_small",
+          "options": [
+            {
+              "selected": true,
+              "text": "48",
+              "value": "48"
+            }
+          ],
+          "query": "48",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "Schlagzeilen",
+            "value": "Schlagzeilen"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "category",
+          "options": [
+            {
+              "selected": false,
+              "text": "Business",
+              "value": "Business"
+            },
+            {
+              "selected": true,
+              "text": "Headlines",
+              "value": "Schlagzeilen"
+            },
+            {
+              "selected": false,
+              "text": "Science_Tech",
+              "value": "Wissen & Technik"
+            },
+            {
+              "selected": false,
+              "text": "Sport",
+              "value": "Sport"
+            },
+            {
+              "selected": false,
+              "text": "Entertainment",
+              "value": "Unterhaltung"
+            },
+            {
+              "selected": false,
+              "text": "Health",
+              "value": "Gesundheit"
+            }
+          ],
+          "query": "Business : Business, Headlines : Schlagzeilen, Science_Tech : Wissen & Technik, Sport : Sport, Entertainment :  Unterhaltung, Health : Gesundheit",
+          "type": "custom"
+        }
+      ]
+    },
+    "time": {
+      "from": "2023-05-30T12:50:11.779Z",
+      "to": "2023-05-30T13:10:11.779Z"
+    },
+    "timepicker": {
+      "hidden": true
+    },
+    "timezone": "",
+    "title": "TV Google Trends | Schlagzeilen",
+    "uid": "NfrMYY94z",
+    "version": 4,
+    "weekStart": ""
+  }
+}

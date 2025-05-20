@@ -1,0 +1,143 @@
+{
+  "id": 470,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "D35Wi-94k",
+  "name": "NDR TV Web Quellen Total Visits Differenz",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "decimals": 1,
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "Differenz"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "percent"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 19,
+      "y": 21
+    },
+    "id": 35,
+    "libraryPanel": {
+      "name": "NDR TV Web Quellen Total Visits Differenz"
+    },
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+      },
+      "textMode": "value_and_name"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH current_value AS (\r\nSELECT \r\n  SUM(m_visits) as current_sum\r\nFROM Piano.distro\r\nWHERE  \r\nsite_level2 = ${LRA:doublequote}\r\nAND page_chapter1 = ${Redaktionen:doublequote}\r\nAND page_chapter2 = ${Unterkapitel:doublequote}\r\nAND sendungs_id = ${Sendung:doublequote}\r\nAND ${Zeitraum:raw}\r\nAND src NOT LIKE '%N/A%'\r\n), past_value AS (\r\nSELECT \r\n  SUM(m_visits) as past_sum\r\nFROM Piano.distro\r\nWHERE  \r\nsite_level2 = ${LRA:doublequote}\r\nAND page_chapter1 = ${Redaktionen:doublequote}\r\nAND page_chapter2 = ${Unterkapitel:doublequote}\r\nAND sendungs_id = ${Sendung:doublequote}\r\nAND ${Vergleichszeitraum:raw}\r\nAND src NOT LIKE '%N/A%'\r\n)\r\nSELECT ((current_sum-past_sum)/past_sum)*100 FROM current_value,past_value as relative_difference",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "Differenz"
+          }
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 1,
+    "created": "2024-06-20T11:45:36Z",
+    "updated": "2025-05-09T13:13:45Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/9774780e31622dad09ce78835d06ec07",
+      "id": 39,
+      "name": "sa-1-fortestdaniel"
+    }
+  }
+}

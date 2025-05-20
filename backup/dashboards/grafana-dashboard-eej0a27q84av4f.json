@@ -1,0 +1,3150 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "ca94496",
+    "url": "/d/eej0a27q84av4f/ca94496",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-04-15T17:40:02Z",
+    "updated": "2025-04-22T14:41:19Z",
+    "updatedBy": "daniel hristov dev",
+    "createdBy": "daniel hristov dev",
+    "version": 8,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 660,
+    "folderUid": "folder-F9a5Uxn4k",
+    "folderTitle": "Prototypes",
+    "folderUrl": "/dashboards/f/folder-F9a5Uxn4k/prototypes",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "description": "mit letzter Stunde und Heute vor 7 Tagen",
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1663,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 51,
+        "panels": [],
+        "title": "Top Artikel",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Sophora"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Sophora ID"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "visits_web"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Web"
+                },
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "visits_app"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "App"
+                },
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "page_views"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Page V."
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "page_web"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Web"
+                },
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "page_app"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "App"
+                },
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Artikel"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 526
+                },
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "title": "${__data.fields.url}",
+                      "url": "${__data.fields.url}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Sophora ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 328
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visits"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 98
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Web"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 91
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "App"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 85
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Page V."
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 95
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Publiziert"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 187
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "url"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visits"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "page_views"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 24,
+          "x": 0,
+          "y": 1
+        },
+        "id": 102,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "-- STEP 1: Define matching combinations\r\nWITH distinct_combos AS (\r\n  SELECT DISTINCT content_titel, content_id_sophora\r\n  FROM `ndr-code-bi-dashboard.Piano.articles_joined_daily`\r\n  WHERE content_id_sophora = \"$Sophora_ID\"\r\n),\r\n\r\n-- STEP 2: Web logic\r\nweb_raw AS (\r\n  SELECT \r\n    publishing_date,\r\n    content_id_sophora,\r\n    content_titel,\r\n    url,\r\n    m_visits,\r\n    m_page_loads,\r\n    uuid,\r\n    page_chapter1 AS Kapitel\r\n  FROM `ndr-code-bi-dashboard.Piano.articles_joined_daily`\r\n  WHERE \r\n    CONTAINS_SUBSTR(site_level2, 'mdr.de') AND \r\n    CONTAINS_SUBSTR(page_chapter1, 'nachrichten') AND\r\n    'Alle Kapitel 2' IN UNNEST(page_chapter2_tags) AND \r\n    'Alle Sendungs-ID' IN UNNEST(sendungs_id_tags)\r\n    AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}AND\r\n    objekt_typ NOT LIKE 'indexPage' AND\r\n    content_id_sophora NOT LIKE '%index%' AND\r\n    content_id_sophora NOT LIKE '%N/A%' AND\r\n    content_id_sophora NOT LIKE '%verteilseite%' AND\r\n    content_id_sophora NOT LIKE '%nachrichtenfeed%' \r\n    AND content_id_sophora = \"$Sophora_ID\"\r\n),\r\n-- 1. Total visits/views per article\r\nweb_agg AS (\r\n  SELECT \r\n    content_id_sophora,\r\n    SUM(m_visits) AS total_visits,\r\n    SUM(m_page_loads) AS total_page_views\r\n  FROM web_raw\r\n  GROUP BY content_id_sophora\r\n),\r\n\r\n-- 2. Deduplicate by content_titel + content_id_sophora, and pick latest\r\nweb_ranked AS (\r\n  SELECT \r\n    *,\r\n    ROW_NUMBER() OVER (\r\n      PARTITION BY content_titel, content_id_sophora\r\n      ORDER BY publishing_date DESC\r\n    ) AS row_num\r\n  FROM web_raw\r\n),\r\n\r\n-- 3. Join total traffic to the selected title\r\nweb AS (\r\n  SELECT \r\n    w.publishing_date,\r\n    w.content_id_sophora,\r\n    w.content_titel,\r\n    w.url,\r\n    agg.total_visits AS m_visits,\r\n    agg.total_page_views AS m_page_loads,\r\n    w.uuid,\r\n    w.Kapitel\r\n  FROM web_ranked w\r\n  JOIN web_agg agg ON w.content_id_sophora = agg.content_id_sophora\r\n  WHERE w.row_num = 1\r\n),\r\n\r\n\r\n-- STEP 3: App logic\r\napp_raw AS (\r\n  SELECT \r\n    publishing_date,\r\n    content_id_sophora,\r\n    content_titel,\r\n    url,\r\n    m_visits,\r\n    m_page_loads,\r\n    uuid\r\n  FROM `ndr-code-bi-dashboard.Piano.articles_joined_daily`\r\n  WHERE \r\n    CONTAINS_SUBSTR(site_level2, 'app_mdraktuell') AND\r\n    date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote} AND\r\n    content_id_sophora NOT LIKE '%index%' AND\r\n    content_id_sophora NOT LIKE '%N/A%' \r\n    AND content_id_sophora = \"$Sophora_ID\"\r\n    AND\r\n    (\r\n      CASE \r\n        WHEN \"MDR\" = 'NDR' THEN\r\n          content_titel NOT LIKE '%Video Livestream%' AND\r\n          content_titel NOT LIKE '%Startteaser%' AND\r\n          content_titel NOT LIKE '%startteaser%' AND\r\n          content_titel NOT LIKE '%-Anmelden%' AND\r\n          content_titel NOT LIKE '%_Start' AND\r\n          content_titel != 'Anmelden' AND\r\n          content_titel != 'Jetzt läuft'\r\n        ELSE TRUE\r\n      END\r\n    )\r\n),\r\n\r\n-- 1. Total visits/views per article\r\napp_agg AS (\r\n  SELECT \r\n    content_id_sophora,\r\n    SUM(m_visits) AS total_visits,\r\n    SUM(m_page_loads) AS total_page_views\r\n  FROM app_raw\r\n  GROUP BY content_id_sophora\r\n),\r\n\r\n-- 2. Deduplicate by content_titel + content_id_sophora, and pick the latest\r\napp_ranked AS (\r\n  SELECT \r\n    *,\r\n    ROW_NUMBER() OVER (\r\n      PARTITION BY content_titel, content_id_sophora\r\n      ORDER BY publishing_date DESC\r\n    ) AS row_num\r\n  FROM app_raw\r\n),\r\n\r\n-- 3. Join the total traffic back to the most recent title\r\napp AS (\r\n  SELECT \r\n    a.publishing_date,\r\n    a.content_id_sophora,\r\n    a.content_titel,\r\n    a.url,\r\n    agg.total_visits AS m_visits,\r\n    agg.total_page_views AS m_page_loads,\r\n    a.uuid\r\n  FROM app_ranked a\r\n  JOIN app_agg agg ON a.content_id_sophora = agg.content_id_sophora\r\n  WHERE a.row_num = 1\r\n)\r\n\r\n\r\n-- select * from web\r\n,\r\n-- STEP 4: Merge app + web\r\n-- STEP: Join totals for reuse\r\njoined_totals AS (\r\n  SELECT \r\n    COALESCE(w.content_id_sophora, a.content_id_sophora) AS content_id_sophora,\r\n    SUM(IFNULL(w.m_visits, 0)) + SUM(IFNULL(a.m_visits, 0)) AS total_visits,\r\n    SUM(IFNULL(w.m_page_loads, 0)) + SUM(IFNULL(a.m_page_loads, 0)) AS total_page_views\r\n  FROM web w\r\n  FULL OUTER JOIN app a\r\n    ON w.content_id_sophora = a.content_id_sophora\r\n  GROUP BY COALESCE(w.content_id_sophora, a.content_id_sophora)\r\n)\r\n,\r\n\r\n-- STEP: Merge web and app entries with shared totals\r\nsum_raw AS (\r\n  SELECT \r\n    w.publishing_date,\r\n    w.content_titel,\r\n    w.content_id_sophora,\r\n    w.url,\r\n    w.uuid,\r\n    joined.total_visits,\r\n    w.m_visits AS visits_web,\r\n    0 AS visits_app,\r\n    joined.total_page_views,\r\n    w.m_page_loads AS page_web,\r\n    0 AS page_app,\r\n    w.Kapitel\r\n  FROM web w\r\n  JOIN joined_totals joined ON w.content_id_sophora = joined.content_id_sophora\r\n\r\n  UNION ALL\r\n\r\n  SELECT \r\n    a.publishing_date,\r\n    a.content_titel,\r\n    a.content_id_sophora,\r\n    a.url,\r\n    a.uuid,\r\n    joined.total_visits,\r\n    0 AS visits_web,\r\n    a.m_visits AS visits_app,\r\n    joined.total_page_views,\r\n    0 AS page_web,\r\n    a.m_page_loads AS page_app,\r\n    NULL AS Kapitel\r\n  FROM app a\r\n  JOIN joined_totals joined ON a.content_id_sophora = joined.content_id_sophora\r\n)\r\n\r\n-- SELECT * from sum_raw\r\nSELECT \r\n  FORMAT_DATETIME('%d.%m.%Y | %R Uhr', DATETIME(ANY_VALUE(publishing_date))) AS Datum,\r\n  content_titel AS Artikel,\r\n  ANY_VALUE(content_id_sophora) AS Sophora,\r\n  ANY_VALUE(uuid) AS uuid,\r\n  ANY_VALUE(url) AS url,\r\n\r\n  -- Sum visits/views\r\n  SUM(visits_web + visits_app) AS Visits,\r\n  SUM(visits_web) AS visits_web,\r\n  SUM(visits_app) AS visits_app,\r\n  SUM(page_web + page_app) AS page_views,\r\n  SUM(page_web) AS page_web,\r\n  SUM(page_app) AS page_app,\r\n  IFNULL(MAX(Kapitel), \"Null\") AS Kapitel\r\n\r\nFROM sum_raw\r\nGROUP BY content_titel\r\nORDER BY Visits DESC\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Top Artikel",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "uuid": true
+              },
+              "includeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "Datum": "Publiziert"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "preload": false,
+    "refresh": false,
+    "schemaVersion": 40,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "MDR",
+            "value": "MDR"
+          },
+          "includeAll": false,
+          "name": "LRA",
+          "options": [
+            {
+              "selected": false,
+              "text": "NDR",
+              "value": "NDR"
+            },
+            {
+              "selected": true,
+              "text": "MDR",
+              "value": "MDR"
+            }
+          ],
+          "query": "NDR,MDR",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND date < CURRENT_DATE()",
+            "value": "date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND date < CURRENT_DATE()"
+          },
+          "includeAll": false,
+          "name": "Zeitraum",
+          "options": [
+            {
+              "selected": false,
+              "text": "Letzte Stunde",
+              "value": "CAST(tmstp AS DATE) = CURRENT_DATE()"
+            },
+            {
+              "selected": false,
+              "text": "Heute",
+              "value": "date = CURRENT_DATE"
+            },
+            {
+              "selected": false,
+              "text": "Heute -7d",
+              "value": "date = CURRENT_DATE()"
+            },
+            {
+              "selected": false,
+              "text": "Gestern",
+              "value": "date = DATE_SUB(CURRENT_DATE(), INTERVAL  1 DAY)"
+            },
+            {
+              "selected": false,
+              "text": "Letztes Wochenende",
+              "value": "date >= (SELECT saturday FROM(SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 2 DAY) as saturday)) AND date <= (SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 1 DAY) as sunday)"
+            },
+            {
+              "selected": false,
+              "text": "Letzte 7 Tage",
+              "value": "date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND date < CURRENT_DATE()"
+            },
+            {
+              "selected": true,
+              "text": "Letzte 30 Tage",
+              "value": "date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND date < CURRENT_DATE()"
+            }
+          ],
+          "query": "Letzte Stunde : CAST(tmstp AS DATE) = CURRENT_DATE(),    Heute : date = CURRENT_DATE,  Heute -7d : date = CURRENT_DATE(), Gestern : date = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Letztes Wochenende :  date >= (SELECT saturday FROM(SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\,WEEK(MONDAY)) - INTERVAL 2 DAY) as saturday)) AND date <= (SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\,WEEK(MONDAY)) - INTERVAL 1 DAY) as sunday), Letzte 7 Tage : date >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  7 DAY) AND date < CURRENT_DATE(), Letzte 30 Tage : date >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  30 DAY) AND date < CURRENT_DATE()",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "Letzte 31-60 Tage",
+            "value": "Letzte 31-60 Tage"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Vergleichszeitraum",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '${Zeitraum:text}'\r\n    WHEN 'Letzte Stunde' THEN 'Vorletzte Stunde'\r\n    WHEN 'Heute' THEN 'Gestern'\r\n    WHEN 'Heute -7d' THEN 'Heute vor 7 Tagen'\r\n    WHEN 'Gestern' THEN 'Vorgestern'\r\n    WHEN 'Letzte 7 Tage' THEN 'Letzte 8-14 Tage'\r\n    WHEN 'Letztes Wochenende' THEN 'Vorletztes Wochenende'\r\n    WHEN 'Letzte 30 Tage' THEN 'Letzte 31-60 Tage'\r\nEND\r\n\r\n\r\n\r\n\r\n\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "30",
+            "value": "30"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Tage",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CAST(tage AS STRING) FROM(\r\nSELECT CASE '${Zeitraum:text}'\r\n    WHEN 'Letzte Stunde' THEN 0\r\n    WHEN 'Heute' THEN 1\r\n    WHEN 'Heute -7d' THEN 7\r\n    WHEN 'Gestern' THEN 7\r\n    WHEN 'Letzte 7 Tage' THEN 7\r\n    WHEN 'Letztes Wochenende' THEN 7\r\n    WHEN 'Letzte 30 Tage' THEN 30\r\nEND AS tage)\r\n\r\n\r\n\r\n\r\n\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "app_mdraktuell",
+            "value": "app_mdraktuell"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "app_name",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$LRA'\r\n  WHEN 'NDR' THEN\r\n    CASE '$Redaktionen'\r\n      WHEN \"Kultur\" THEN \"kultur-app\"\r\n      WHEN \"Nachrichten\" THEN \r\n        CASE '$Unterkapitel'\r\n          WHEN 'Info'  THEN 'ndrinfo-app'\r\n          WHEN 'Hamburg' THEN 'hh-app'\r\n          WHEN 'Mecklenburg-Vorpommern' THEN 'mv-app'\r\n          WHEN 'Niedersachsen' THEN 'nds-app'\r\n          WHEN 'Schleswig-Holstein' THEN 'sh-app'\r\n          ELSE 'KEINE APP'\r\n        END\r\n        WHEN \"Alle Kapitel 1\" THEN \r\n        CASE '$Unterkapitel'\r\n          WHEN 'Info'  THEN 'ndrinfo-app'\r\n          WHEN 'Hamburg' THEN 'hh-app'\r\n          WHEN 'Mecklenburg-Vorpommern' THEN 'mv-app'\r\n          WHEN 'Niedersachsen' THEN 'nds-app'\r\n          WHEN 'Schleswig-Holstein' THEN 'sh-app'\r\n          ELSE 'KEINE APP'\r\n        END\r\n      ELSE 'KEINE APP'\r\n    END\r\n  WHEN 'MDR' THEN \r\n    CASE \"${Redaktionen}\"\r\n      WHEN \"Sport\" THEN 'app_mdrsport'\r\n      WHEN \"Jump\" THEN 'app_mdrjump'\r\n      WHEN \"Nachrichten\" THEN \r\n        CASE '$Unterkapitel'\r\n          WHEN 'Aktuell' THEN 'app_mdraktuell'\r\n          WHEN 'Sachsen' THEN 'app_mdrsachsen'\r\n          WHEN 'Sachsen-Anhalt' THEN 'app_mdrsachsenanhalt'\r\n          WHEN 'Thüringen' THEN 'app_mdrthueringen'\r\n          ELSE 'KEINE APP'\r\n      END\r\n      WHEN \"Sorbisches Programm\" THEN 'app_mdrserbja'\r\n      ELSE 'KEINE APP'\r\n    END\r\nEND\r\n-- radio-app, orchester-app, hh-app, kultur-app, sesamstraßen-app, ndrinfo-app, sh-app, nds-app, n-joy-app, mv-app",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "mdr.de",
+            "value": "mdr.de"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "site_level2",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$LRA'\r\n  WHEN 'MDR' THEN \r\n    CASE '$Redaktionen'\r\n      WHEN 'Jump' THEN 'mdr.de'\r\n      ELSE 'mdr.de'\r\n    END\r\n  WHEN 'NDR' THEN 'ndr.de'\r\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "nachrichten",
+            "value": "nachrichten"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "page_chapter1",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$Redaktionen'\r\n  WHEN 'Nachrichten' THEN 'nachrichten'\r\n  WHEN 'Sport' THEN 'sport'\r\n  WHEN 'Sorbisches Programm' THEN 'sorbisches-programm'\r\n  WHEN 'Jump' THEN 'Jump'\r\n  WHEN 'Kultur' THEN 'kultur'\r\n  WHEN 'Alle Kapitel 1' THEN 'Alle Kapitel 1'\r\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Alle Kapitel 2",
+            "value": "Alle Kapitel 2"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "page_chapter2",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$LRA'\r\n  WHEN 'NDR' THEN\r\n    CASE '$Redaktionen'\r\n      WHEN \"Kultur\" THEN 'Alle Kapitel 2'\r\n      WHEN \"Nachrichten\" THEN \r\n        CASE '$Unterkapitel'\r\n          WHEN 'Info'  THEN 'Alle Kapitel 2'\r\n          WHEN 'Hamburg' THEN 'hamburg'\r\n          WHEN 'Mecklenburg-Vorpommern' THEN 'mecklenburg-vorpommern'\r\n          WHEN 'Niedersachsen' THEN 'niedersachsen'\r\n          WHEN 'Schleswig-Holstein' THEN 'schleswig-holstein'\r\n          ELSE 'Alle Kapitel 2'\r\n        END\r\n      WHEN \"Alle Kapitel 1\" THEN 'Alle Kapitel 2'\r\n      ELSE 'Alle Kapitel 2'\r\n    END\r\n  WHEN 'MDR' THEN \r\n    CASE \"${Redaktionen}\"\r\n      WHEN \"Sport\" THEN 'Alle Kapitel 2'\r\n      WHEN \"Jump\" THEN 'Alle Kapitel 2'\r\n      WHEN \"Nachrichten\" THEN \r\n        CASE '$Unterkapitel'\r\n          WHEN 'Aktuell' THEN 'Alle Kapitel 2'\r\n          WHEN 'Sachsen' THEN 'sachsen'\r\n          WHEN 'Sachsen-Anhalt' THEN 'sachsen-anhalt'\r\n          WHEN 'Thüringen' THEN 'thueringen'\r\n          ELSE 'Alle Kapitel 2'\r\n      END\r\n      WHEN \"Sorbisches Programm\" THEN ''\r\n      ELSE 'Alle Kapitel 2'\r\n    END\r\nEND\r\n\r\n",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Alle Sendungs-ID",
+            "value": "Alle Sendungs-ID"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "sendungsid",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$LRA'\r\n  WHEN 'NDR' THEN\r\n    CASE '$Redaktionen'\r\n      WHEN \"Kultur\" THEN 'Alle Sendungs-ID'\r\n      WHEN \"Alle Kapitel 1\" THEN \r\n        CASE '$Unterkapitel'\r\n          WHEN 'Info'  THEN 'Alle Sendungs-ID'\r\n          WHEN 'Hamburg' THEN 'Hamburg'\r\n          WHEN 'Mecklenburg-Vorpommern' THEN 'Mecklenburg-Vorpommern'\r\n          WHEN 'Niedersachsen' THEN 'Niedersachsen'\r\n          WHEN 'Schleswig-Holstein' THEN 'Schleswig-Holstein'\r\n          ELSE 'Alle Sendungs-ID'\r\n        END\r\n      WHEN \"Nachrichten\" THEN 'Alle Sendungs-ID'\r\n      ELSE 'Alle Sendungs-ID'\r\n    END\r\n  WHEN 'MDR' THEN \r\n    CASE \"${Redaktionen}\"\r\n      WHEN \"Sport\" THEN 'Alle Sendungs-ID'\r\n      WHEN \"Jump\" THEN 'Alle Sendungs-ID'\r\n      WHEN \"Nachrichten\" THEN  'Alle Sendungs-ID'\r\n      WHEN \"Sorbisches Programm\" THEN 'Alle Sendungs-ID'\r\n      ELSE 'Alle Sendungs-ID'\r\n    END\r\nEND\r\n\r\n",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "CONTAINS_SUBSTR(bi_av_url, \"mdrde.nachrichten.app_aktuell\") AND  bi_av_broadcasting_type NOT IN (\"live\", \"Live\")",
+            "value": "CONTAINS_SUBSTR(bi_av_url, \"mdrde.nachrichten.app_aktuell\") AND  bi_av_broadcasting_type NOT IN (\"live\", \"Live\")"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "av_condition",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$LRA'\r\n  WHEN 'MDR' THEN 'CONTAINS_SUBSTR(bi_av_url, \"$app_name_long\") AND  bi_av_broadcasting_type NOT IN (\"live\", \"Live\")'\r\n  WHEN 'NDR' THEN 'CONTAINS_SUBSTR(site_level2, \"$app_name\" ) AND  bi_av_broadcasting_type NOT IN (\"live\", \"Live\")'\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "mdrde.nachrichten.app_aktuell",
+            "value": "mdrde.nachrichten.app_aktuell"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "app_name_long",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$LRA'\r\n  WHEN 'NDR' THEN\r\n    CASE '$Redaktionen'\r\n      WHEN \"Kultur\" THEN 'kultur-app'\r\n      WHEN \"Nachrichten\" THEN \r\n        CASE '$Unterkapitel'\r\n          WHEN 'Info'  THEN 'ndrinfo-app'\r\n          WHEN 'Hamburg' THEN 'hh-app'\r\n          WHEN 'Mecklenburg-Vorpommern' THEN 'mv-app'\r\n          WHEN 'Niedersachsen' THEN 'nds-app'\r\n          WHEN 'Schleswig-Holstein' THEN 'sh-app'\r\n          ELSE 'KEINE APP'\r\n        END\r\n      ELSE 'KEINE APP'\r\n    END\r\n  WHEN 'MDR' THEN \r\n    CASE \"${Redaktionen}\"\r\n      WHEN \"Sport\" THEN 'mdrde.sport.app_sport'\r\n      WHEN \"Jump\" THEN 'jump.jump.app_jump'\r\n      WHEN \"Nachrichten\" THEN \r\n        CASE '$Unterkapitel'\r\n          WHEN 'Aktuell' THEN 'mdrde.nachrichten.app_aktuell'\r\n          WHEN 'Sachsen' THEN 'mdrde.nachrichten.sachsen.app_sachsen'\r\n          WHEN 'Sachsen-Anhalt' THEN 'mdrde.nachrichten.sachsen-anhalt.app_sachsenanhalt'\r\n          WHEN 'Thüringen' THEN 'mdrde.nachrichten.thueringen.app_thueringen'\r\n          ELSE 'KEINE APP'\r\n      END\r\n      WHEN \"Sorbisches Programm\" THEN 'mdrde.serbski-program.app_serbja'\r\n      ELSE 'KEINE APP'\r\n    END\r\nEND\r\n-- radio-app, orchester-app, hh-app, kultur-app, sesamstraßen-app, ndrinfo-app, sh-app, nds-app, n-joy-app, mv-app",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "DAY",
+            "value": "DAY"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Einheit",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '${Zeitraum:text}'\r\n    WHEN 'Letzte Stunde' THEN 'DAY'\r\n    WHEN 'Heute' THEN 'DAY'\r\n    WHEN 'Gestern' THEN 'DAY'\r\n    WHEN 'Letzte 7 Tage' THEN 'DAY'\r\n    WHEN 'Letztes Wochenende' THEN 'DAY'\r\n    WHEN 'Letzte 30 Tage' THEN 'DAY'\r\n    ELSE 'DAY'\r\nEND\r\n\r\n\r\n\r\n\r\n\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "_joined_daily",
+            "value": "_joined_daily"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "av_table_fever_curve",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '${Zeitraum:text}'\r\n    WHEN 'Letzte Stunde' THEN '_joined_last_hour'\r\n    WHEN 'Heute' THEN '_joined_today'\r\n    WHEN 'Heute -7d' THEN '_joined_today'\r\n    WHEN 'Gestern' THEN '_joined_daily'\r\n    WHEN 'Letzte 7 Tage' THEN '_joined_daily'\r\n    WHEN 'Letztes Wochenende' THEN '_joined_daily'\r\n    WHEN 'Letzte 30 Tage' THEN '_joined_daily'\r\n    ELSE '_joined_daily'\r\nEND\r\n\r\n\r\n\r\n\r\n\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "17.03.25",
+            "value": "17.03.25"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "fromDay",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '${Zeitraum:text}'\r\n  WHEN 'Heute' THEN FORMAT_DATE(\"%d.%m.%y\", CURRENT_DATE())\r\n  WHEN 'Gestern' THEN FORMAT_DATE(\"%d.%m.%y\", DATE_SUB(CURRENT_DATE(), INTERVAL 2 DAY))\r\n  WHEN 'Letzte 7 Tage' THEN FORMAT_DATE(\"%d.%m.%y\", DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY))\r\n  WHEN 'Letzte 30 Tage' THEN FORMAT_DATE(\"%d.%m.%y\", DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY))\r\n  WHEN 'Letztes Wochenende' THEN FORMAT_DATE(\"%d.%m.%y\", DATE_SUB(DATE_TRUNC(CURRENT_DATE(), WEEK(MONDAY)), INTERVAL 2 DAY))\r\n  ELSE FORMAT_DATE(\"%d.%m.%y\", CURRENT_DATE())\r\nEND\r\n",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "16.04.25",
+            "value": "16.04.25"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "toDay",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '${Zeitraum:text}'\r\n  WHEN 'Heute' THEN FORMAT_DATE(\"%d.%m.%y\", CURRENT_DATE())\r\n  WHEN 'Gestern' THEN FORMAT_DATE(\"%d.%m.%y\", DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY))\r\n  WHEN 'Letzte 7 Tage' THEN FORMAT_DATE(\"%d.%m.%y\", CURRENT_DATE())\r\n  WHEN 'Letzte 30 Tage' THEN FORMAT_DATE(\"%d.%m.%y\", CURRENT_DATE())\r\n  WHEN 'Letztes Wochenende' THEN FORMAT_DATE(\"%d.%m.%y\", DATE_SUB(DATE_TRUNC(CURRENT_DATE(), WEEK(MONDAY)), INTERVAL 1 DAY))\r\n  ELSE FORMAT_DATE(\"%d.%m.%y\", CURRENT_DATE())\r\nEND\r\n",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Alle Kapitel 2",
+            "value": "Alle Kapitel 2"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "av_page_chapter2",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$LRA'\r\n  WHEN 'NDR' THEN\r\n    CASE '$Redaktionen'\r\n      WHEN \"Kultur\" THEN 'Alle Kapitel 2'\r\n      WHEN \"Nachrichten\" THEN \r\n        CASE '$Unterkapitel'\r\n          WHEN 'Info'  THEN 'Alle Kapitel 2'\r\n          WHEN 'Hamburg' THEN 'hamburg'\r\n          WHEN 'Mecklenburg-Vorpommern' THEN 'mecklenburg-vorpommern'\r\n          WHEN 'Niedersachsen' THEN 'niedersachsen'\r\n          WHEN 'Schleswig-Holstein' THEN 'schleswig-holstein'\r\n          ELSE 'Alle Kapitel 2'\r\n        END\r\n      ELSE 'Alle Kapitel 2'\r\n    END\r\n  WHEN 'MDR' THEN \r\n    CASE \"${Redaktionen}\"\r\n      WHEN \"Sport\" THEN 'Alle Kapitel 2'\r\n      WHEN \"Jump\" THEN 'Alle Kapitel 2'\r\n      WHEN \"Nachrichten\" THEN \r\n        CASE '$Unterkapitel'\r\n          WHEN 'Aktuell' THEN 'Alle Kapitel 2'\r\n          WHEN 'Sachsen' THEN 'sachsen'\r\n          WHEN 'Sachsen-Anhalt' THEN 'sachsen-anhalt'\r\n          WHEN 'Thüringen' THEN 'thueringen'\r\n          ELSE 'Alle Kapitel 2'\r\n      END\r\n      WHEN \"Sorbisches Programm\" THEN 'Alle Kapitel 2'\r\n      ELSE 'Alle Kapitel 2'\r\n    END\r\nEND\r\n\r\n",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "site_level2 = 'mdr.de' AND page_chapter1 = 'nachrichten' AND page_chapter2 = 'Alle Kapitel 2' AND sendungs_id = 'Alle Sendungs-ID' ",
+            "value": "site_level2 = 'mdr.de' AND page_chapter1 = 'nachrichten' AND page_chapter2 = 'Alle Kapitel 2' AND sendungs_id = 'Alle Sendungs-ID' "
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "webFilter",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ('$Redaktionen' LIKE 'Sorbisches Programm') THEN (\r\n  SELECT \"CONTAINS_SUBSTR(site_level2, '$site_level2') AND (CONTAINS_SUBSTR(page_chapter1, '$page_chapter1') OR CONTAINS_SUBSTR(page_chapter1, 'serbski-program')) AND CONTAINS_SUBSTR(page_chapter2, '$page_chapter2') AND sendungs_id = '$sendungsid'\"\r\n);\r\n--ELSEIF ('$Unterkapitel' LIKE 'Aktuell') THEN (\r\n--  SELECT \"CONTAINS_SUBSTR(site_level2, '$site_level2') AND CONTAINS_SUBSTR(page_chapter1, '$page_chapter1') AND NOT CONTAINS_SUBSTR(page_chapter2, 'sachsen') AND NOT CONTAINS_SUBSTR(page_chapter2, 'sachsen-anhalt') AND NOT CONTAINS_SUBSTR(page_chapter2, 'thueringen')\"\r\n--);\r\nELSE (\r\n  SELECT \"site_level2 = '$site_level2' AND page_chapter1 = '$page_chapter1' AND page_chapter2 = '$page_chapter2' AND sendungs_id = '$sendungsid' \"\r\n);\r\nEND IF\r\n\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "CONTAINS_SUBSTR(site_level2, 'mdr.de') AND 'nachrichten' IN UNNEST(bi_av_page_chapter1_tags) AND 'Alle Kapitel 2' IN UNNEST(bi_av_page_chapter2_tags) AND 'Alle Sendungs-ID' IN UNNEST(sendungs_id_tags) AND bi_av_broadcasting_type NOT IN ('live', 'Live')",
+            "value": "CONTAINS_SUBSTR(site_level2, 'mdr.de') AND 'nachrichten' IN UNNEST(bi_av_page_chapter1_tags) AND 'Alle Kapitel 2' IN UNNEST(bi_av_page_chapter2_tags) AND 'Alle Sendungs-ID' IN UNNEST(sendungs_id_tags) AND bi_av_broadcasting_type NOT IN ('live', 'Live')"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "avwebFilter",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ('$Redaktionen' LIKE 'Sorbisches Programm') THEN (\r\n  SELECT \"CONTAINS_SUBSTR(site_level2, '$site_level2') AND (('$page_chapter1' IN UNNEST(bi_av_page_chapter1_tags) AND '$av_page_chapter2' IN UNNEST(bi_av_page_chapter2_tags)) OR ('serbski-program' IN UNNEST(bi_av_page_chapter1_tags) AND '$av_page_chapter2' IN UNNEST(bi_av_page_chapter2_tags))) AND '$sendungsid' IN UNNEST(sendungs_id_tags)  AND bi_av_broadcasting_type NOT IN ('live', 'Live')\"\r\n);\r\nELSE (\r\n  SELECT \"CONTAINS_SUBSTR(site_level2, '$site_level2') AND '$page_chapter1' IN UNNEST(bi_av_page_chapter1_tags) AND '$av_page_chapter2' IN UNNEST(bi_av_page_chapter2_tags) AND '$sendungsid' IN UNNEST(sendungs_id_tags) AND bi_av_broadcasting_type NOT IN ('live', 'Live')\"\r\n);\r\nEND IF\r\n\r\n\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "_joined_daily",
+            "value": "_joined_daily"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "articleTable",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \r\n  WHEN '${Zeitraum:text}' = \"Letzte Stunde\" THEN \"_joined_last_hour\"\r\n  WHEN '${Zeitraum:text}' = \"Gestern\" THEN \"_joined_daily\" --hier noch Unklarheit welche Tabelle die Richtige ist\r\n  WHEN '${Zeitraum:text}' = \"Heute\" THEN \"_joined_today\"\r\n  WHEN '${Zeitraum:text}' = \"Heute -7d\" THEN \"_joined_today\"\r\n  --WHEN '${Zeitraum:text}' = \"Letzte Stunde\" THEN \"_last_hour\"\r\n  ELSE \"_joined_daily\"\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "CONTAINS_SUBSTR(site_level2, 'mdr.de') AND CONTAINS_SUBSTR(page_chapter1, 'nachrichten') AND 'Alle Kapitel 2' IN UNNEST(page_chapter2_tags) AND 'Alle Sendungs-ID' IN UNNEST(sendungs_id_tags)",
+            "value": "CONTAINS_SUBSTR(site_level2, 'mdr.de') AND CONTAINS_SUBSTR(page_chapter1, 'nachrichten') AND 'Alle Kapitel 2' IN UNNEST(page_chapter2_tags) AND 'Alle Sendungs-ID' IN UNNEST(sendungs_id_tags)"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "listwebFilter",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ('$Redaktionen' LIKE 'Sorbisches Programm') THEN (\r\n  SELECT \"CONTAINS_SUBSTR(site_level2, '$site_level2') AND (CONTAINS_SUBSTR(page_chapter1, '$page_chapter1') OR CONTAINS_SUBSTR(page_chapter1, 'serbski-program')) AND CONTAINS_SUBSTR(page_chapter2, '$list_page_chapter2') AND CONTAINS_SUBSTR(sendungs_id, '$sendungsid')\"\r\n);\r\nELSEIF ('$Unterkapitel' LIKE 'Aktuell') THEN (\r\n  SELECT \"CONTAINS_SUBSTR(site_level2, '$site_level2') AND CONTAINS_SUBSTR(page_chapter1, '$page_chapter1') AND 'Alle Kapitel 2' IN UNNEST(page_chapter2_tags) AND '$sendungsid' IN UNNEST(sendungs_id_tags)\"\r\n);\r\nELSEIF ('$LRA' LIKE 'MDR' AND '$Redaktionen' LIKE 'Sport') THEN (\r\n  SELECT \"site_level2 = '$site_level2' AND '$page_chapter1' IN UNNEST(page_chapter1_tags) AND 'Alle Kapitel 2' IN UNNEST(page_chapter2_tags) AND '$sendungsid' IN UNNEST(sendungs_id_tags)\"\r\n);\r\nELSE (\r\n  SELECT \"CONTAINS_SUBSTR(site_level2, '$site_level2') AND '$page_chapter1' IN UNNEST(page_chapter1_tags) AND '$page_chapter2' IN UNNEST(page_chapter2_tags) AND '$sendungsid' in UNNEST(sendungs_id_tags)\"\r\n);\r\nEND IF\r\n\r\n",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "list_page_chapter2",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$LRA'\r\n  WHEN 'NDR' THEN\r\n    CASE '$Redaktionen'\r\n      WHEN \"Kultur\" THEN ''\r\n      WHEN \"Nachrichten\" THEN \r\n        CASE '$Unterkapitel'\r\n          WHEN 'Info'  THEN 'Alle Kapitel 2'\r\n          WHEN 'Hamburg' THEN 'hamburg'\r\n          WHEN 'Mecklenburg-Vorpommern' THEN 'mecklenburg-vorpommern'\r\n          WHEN 'Niedersachsen' THEN 'niedersachsen'\r\n          WHEN 'Schleswig-Holstein' THEN 'schleswig-holstein'\r\n          ELSE 'Alle Kapitel 2'\r\n        END\r\n      ELSE 'Alle Kapitel 2'\r\n    END\r\n  WHEN 'MDR' THEN \r\n    CASE \"${Redaktionen}\"\r\n      WHEN \"Sport\" THEN 'sport'\r\n      WHEN \"Jump\" THEN ''\r\n      WHEN \"Nachrichten\" THEN \r\n        CASE '$Unterkapitel'\r\n          WHEN 'Aktuell' THEN ''\r\n          WHEN 'Sachsen' THEN 'sachsen'\r\n          WHEN 'Sachsen-Anhalt' THEN 'sachsen-anhalt'\r\n          WHEN 'Thüringen' THEN 'thueringen'\r\n          ELSE 'Alle Kapitel 2'\r\n      END\r\n      WHEN \"Sorbisches Programm\" THEN ''\r\n      ELSE 'Alle Kapitel 2'\r\n    END\r\nEND\r\n\r\n",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "site_level2 = 'app_mdraktuell' AND page_chapter1 = 'Alle Kapitel 1' AND page_chapter2 = 'Alle Kapitel 2'  AND sendungs_id = 'Alle Sendungs-ID'",
+            "value": "site_level2 = 'app_mdraktuell' AND page_chapter1 = 'Alle Kapitel 1' AND page_chapter2 = 'Alle Kapitel 2'  AND sendungs_id = 'Alle Sendungs-ID'"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "appFilter",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \"site_level2 = '$app_name' AND page_chapter1 = 'Alle Kapitel 1' AND page_chapter2 = 'Alle Kapitel 2'  AND sendungs_id = 'Alle Sendungs-ID'\"",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "date >= DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND date <= CURRENT_DATE()",
+            "value": "date >= DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND date <= CURRENT_DATE()"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "avzeitraumListe",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN \"date >= CURRENT_DATE() AND date <= CURRENT_DATE()\"\r\n  WHEN \"Gestern\" THEN \"date >= DATE_SUB(CURRENT_DATE(),INTERVAL 1 DAY) AND date <= DATE_SUB(CURRENT_DATE(),INTERVAL 1 DAY)\"\r\n  WHEN \"Letztes Wochenende\" THEN \"date  >= (SELECT saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_DATE(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_DATE(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND date  <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_DATE(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday, DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) ) \"\r\n  WHEN \"Letzte 7 Tage\" THEN \"date >= DATE_SUB(CURRENT_DATE(),INTERVAL 7 DAY) AND date <= CURRENT_DATE()\"\r\n  WHEN \"Letzte 30 Tage\" THEN \"date >= DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND date <= CURRENT_DATE()\"\r\n  ELSE \"False\"\r\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  60 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY)",
+            "value": "date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  60 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY)"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "comp_var",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  CASE \"${Zeitraum:text}\"\r\n  WHEN \"Letzte Stunde\" THEN \"date = CURRENT_DATE()\"\r\n  WHEN \"Heute\" THEN \"date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)\"\r\n  WHEN \"Heute -7d\" THEN \"date = DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)\"\r\n  WHEN \"Gestern\" THEN \"date = DATE_SUB(CURRENT_DATE(), INTERVAL 8 DAY)\"\r\n  WHEN \"Letztes Wochenende\" THEN \"date >= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY),INTERVAL 7 DAY) as saturday) AND date <= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY), INTERVAL 7 DAY) as sunday)\"\r\n  WHEN \"Letzte 7 Tage\" THEN \"date >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)\"\r\n  WHEN \"Letzte 30 Tage\" THEN \"date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  60 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY)\"\r\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "48",
+            "value": "48"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size_headline",
+          "options": [
+            {
+              "selected": true,
+              "text": "48",
+              "value": "48"
+            }
+          ],
+          "query": "48",
+          "skipUrlSync": true,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "lim",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN  \"\"\r\n  WHEN \"Gestern\" THEN  \"\"\r\n  WHEN \"Letzte Stunde\" THEN \"LIMIT 7\"\r\n  ELSE \"\"\r\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "daily_data",
+            "value": "daily_data"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "dataset",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN  \"adjusted_lagged_data\"\r\n  WHEN \"Heute -7d\" THEN  \"adjusted_lagged_data\"\r\n  WHEN \"Letzte Stunde\" THEN \"adjusted_lagged_data\"\r\n  WHEN \"Gestern\" THEN \"adjusted_lagged_data\"\r\n  ELSE \"daily_data\"\r\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "feverCurveDataset",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN  \"_today_append\"\r\n  WHEN \"Heute -7d\" THEN  \"_today_append\"\r\n  WHEN \"Gestern\" THEN \"_today_append\"\r\n  WHEN \"Letzte Stunde\" THEN \"_today_append\"\r\n  ELSE \"\"\r\n  END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "bar",
+            "value": "bar"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "type",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN  \"line\"\r\n  WHEN \"Heute -7d\" THEN  \"line\"\r\n  WHEN \"Gestern\" THEN  \"line\"\r\n  WHEN \"Letzte Stunde\" THEN \"line\"\r\n  ELSE \"bar\"\r\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Letzte 30 Tage",
+            "value": "Letzte 30 Tage"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Zeitraumlabels",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  CASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute -7d\" THEN \"Heute\"\r\n  ELSE \"${Zeitraum:text}\"\r\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "True",
+            "value": "True"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Zeitraumfever",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN  \" EXTRACT(Hour from tmstp) <= ((SELECT EXTRACT(HOUR FROM max_tmstp) from min_time))\"\r\n  WHEN \"Heute -7d\" THEN  \" EXTRACT(Hour from tmstp) <= ((SELECT EXTRACT(HOUR FROM max_tmstp) from min_time))\"\r\n  WHEN \"Gestern\" THEN  \"EXTRACT(Hour from tmstp) <= 24\"\r\n  WHEN \"Letzte Stunde\" THEN \"DATETIME_DIFF((SELECT min_tmstp FROM min_time), tmstp, MINUTE) <=70 AND tmstp <= ((SELECT min_tmstp FROM min_time))\"\r\n  ELSE \"True\"\r\n  END\r\n",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  60 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY)",
+            "value": "date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  60 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY)"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Vergleichszeitraum_var",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  CASE \"${Zeitraum:text}\"\r\n  WHEN \"Letzte Stunde\" THEN \"date = CURRENT_DATE()\"\r\n  WHEN \"Heute\" THEN \"date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)\"\r\n  WHEN \"Heute -7d\" THEN \"date = DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)\"\r\n  WHEN \"Gestern\" THEN \"date = DATE_SUB(CURRENT_DATE(), INTERVAL 8 DAY)\"\r\n  WHEN \"Letztes Wochenende\" THEN \"date >= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY),INTERVAL 7 DAY) as saturday) AND date <= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY), INTERVAL 7 DAY) as sunday)\"\r\n  WHEN \"Letzte 7 Tage\" THEN \"date >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)\"\r\n  WHEN \"Letzte 30 Tage\" THEN \"date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  60 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY)\"\r\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "30",
+            "value": "30"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "time_shift",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CAST(time_shift AS STRING) FROM(\r\nSELECT\r\nCASE\r\nWHEN \"${Zeitraum:text}\" = \"Letzte Stunde\" THEN 0\r\nWHEN \"${Zeitraum:text}\" = \"Heute\" THEN 1\r\nWHEN \"${Zeitraum:text}\" = \"Heute -7d\" THEN 7\r\nWHEN \"${Zeitraum:text}\" = \"Gestern\" THEN 7\r\nWHEN \"${Zeitraum:text}\" = \"Letztes Wochenende\" THEN 7\r\nWHEN CONTAINS_SUBSTR(\"${Zeitraum:text}\", \"7\") THEN 7\r\nWHEN CONTAINS_SUBSTR(\"${Zeitraum:text}\", \"30\") THEN 30 END AS time_shift)",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Letzte 31-60 Tage",
+            "value": "Letzte 31-60 Tage"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Vergleichszeitraumlabels",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  CASE \"${Zeitraum:text}\"\r\n  WHEN \"Letzte Stunde\" THEN \"Vorletzte Stunde\"\r\n  WHEN \"Heute\" THEN \"Gestern\"\r\n  WHEN \"Heute -7d\" THEN \"Heute vor 7 Tagen\"\r\n  WHEN \"Gestern\" THEN \"Gestern vor 7 Tagen\"\r\n  WHEN \"Letztes Wochenende\" THEN \"Vorletztes Wochenende\"\r\n  WHEN \"Letzte 7 Tage\" THEN \"Letzte 8-14 Tage\"\r\n  WHEN \"Letzte 30 Tage\" THEN \"Letzte 31-60 Tage\"\r\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": " EXTRACT(date from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) ",
+            "value": " EXTRACT(date from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) "
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Zeitraumfever_app",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  CASE \"${Zeitraum:text}\"\r\n  WHEN \"Letzte Stunde\" THEN \" EXTRACT(date from time) = DATE_SUB(CURRENT_DATE(), INTERVAL 0 DAY)\"\r\n  WHEN \"Heute\" THEN \" EXTRACT(date from time) = DATE_SUB(CURRENT_DATE(), INTERVAL 0 DAY)\"\r\n  WHEN \"Heute -7d\" THEN \" EXTRACT(date from time) = DATE_SUB(CURRENT_DATE(), INTERVAL 0 DAY)\"\r\n  WHEN \"Gestern\" THEN \"EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY) AND EXTRACT(date from time) = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)\"\r\n  WHEN \"Letztes Wochenende\" THEN \" EXTRACT(date from time) >= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY),INTERVAL 0 DAY) as saturday) AND EXTRACT(date from time) <= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY), INTERVAL 0 DAY) as sunday)\"\r\n  WHEN \"Letzte 7 Tage\" THEN \" EXTRACT(date from time) >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)\"\r\n  WHEN \"Letzte 30 Tage\" THEN \" EXTRACT(date from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) \"\r\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Uhrzeit",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"${Zeitraum:text}\"\r\nWHEN \"Heute\" THEN FORMAT_DATE('%H:%M', TIMESTAMP_ADD(MAX(tmstp), INTERVAL 1 SECOND))\r\nWHEN \"Heute -7d\" THEN FORMAT_DATE('%H:%M', TIMESTAMP_ADD(MAX(tmstp), INTERVAL 1 SECOND))\r\nELSE \"\" END\r\nFROM Piano.total_visits_today_append",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2025-04-16 11:53:04.722714",
+            "value": "2025-04-16 11:53:04.722714"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "comp_fever",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  CASE \r\n    WHEN \"${Zeitraum:text}\" = \"Letzte Stunde\" THEN CURRENT_DATETIME(\"Europe/Berlin\")\r\n    WHEN \"${Zeitraum:text}\" = \"Heute\" THEN  CURRENT_DATETIME(\"Europe/Berlin\")--FORMAT_DATE('%Y-%m-%d-', yesterday)\r\n    ELSE  CURRENT_DATETIME(\"Europe/Berlin\")\r\n  END AS relevant_value\r\n--FROM `grafana.current_date`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "daily_data",
+            "value": "daily_data"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "dataset_kpi",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN  \"adjusted_lagged_data\"\r\n  WHEN \"Heute -7d\" THEN  \"adjusted_lagged_data\"\r\n  WHEN \"Letzte Stunde\" THEN \"daily_data\"\r\n  WHEN \"Gestern\" THEN \"adjusted_lagged_data\"\r\n  ELSE \"daily_data\"\r\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "10",
+            "value": "10"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size_big",
+          "options": [
+            {
+              "selected": true,
+              "text": "10",
+              "value": "10"
+            }
+          ],
+          "query": "10",
+          "skipUrlSync": true,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "_joined_daily",
+            "value": "_joined_daily"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "av_table_fever_curve_comp",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '${Zeitraum:text}'\r\n    WHEN 'Letzte Stunde' THEN '_last_2_hour'\r\n    WHEN 'Heute' THEN '_joined_daily'\r\n    WHEN 'Gestern' THEN '_joined_daily'\r\n    WHEN 'Letzte 7 Tage' THEN '_joined_daily'\r\n    WHEN 'Letztes Wochenende' THEN '_joined_daily'\r\n    WHEN 'Letzte 30 Tage' THEN '_joined_daily'\r\n    ELSE '_joined_daily'\r\nEND\r\n\r\n\r\n\r\n\r\n\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "(av_content_type = \"video\" OR av_content_type = \"Video\")",
+            "value": "(av_content_type = \"video\" OR av_content_type = \"Video\")"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "av_app_condition_video",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$LRA\"\r\n        WHEN \"MDR\" THEN \"\"\"(av_content_type = \"video\" OR av_content_type = \"Video\")\"\"\"\r\n        WHEN \"NDR\" THEN \"\"\"(objekt_typ = \"video\" OR objekt_typ = \"Video\")\"\"\"\r\n        END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "(av_content_type = \"audio\" OR av_content_type = \"Audio\")",
+            "value": "(av_content_type = \"audio\" OR av_content_type = \"Audio\")"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "av_app_condition_audio",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$LRA\"\r\n        WHEN \"MDR\" THEN \"\"\"(av_content_type = \"audio\" OR av_content_type = \"Audio\")\"\"\"\r\n        WHEN \"NDR\" THEN \"\"\"(objekt_typ = \"audio\" OR objekt_typ = \"Audio\")\"\"\"\r\n        END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "bi_av_publication_date",
+            "value": "bi_av_publication_date"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "av_pub_date",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$LRA\"\r\n        WHEN \"MDR\" THEN \"\"\"bi_av_publication_date\"\"\"\r\n        WHEN \"NDR\" THEN \"\"\"content_last_editoral_update\"\"\"\r\n        END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "bi_av_content_id",
+            "value": "bi_av_content_id"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "av_content_id",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$LRA\"\r\n        WHEN \"MDR\" THEN \"\"\"bi_av_content_id\"\"\"\r\n        WHEN \"NDR\" THEN \"\"\"content_id_sophora\"\"\"\r\n        END\r\n        ",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "bi_av_content",
+            "value": "bi_av_content"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "av_content",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$LRA\"\r\n        WHEN \"MDR\" THEN \"\"\"bi_av_content\"\"\"\r\n        WHEN \"NDR\" THEN \"\"\"content_titel\"\"\"\r\n        END\r\n        ",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "(\"ondemand\") ",
+            "value": "(\"ondemand\") "
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "av_on_demand_filter",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$LRA\"\r\n        WHEN \"MDR\" THEN \"\"\"(\"ondemand\") \"\"\"\r\n        WHEN \"NDR\" THEN \"\"\"(\"video\",\"audio\",\"podcast\") \"\"\"\r\n        END\r\n        ",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "(\"live\") ",
+            "value": "(\"live\") "
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "av_live_stream_filter",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$LRA\"\r\n        WHEN \"MDR\" THEN \"\"\"(\"live\") \"\"\"\r\n        WHEN \"NDR\" THEN \"\"\"(\"audioLivestream\",\"videoLivestream\",\"videoEventlivestream\") \"\"\"\r\n        END\r\n        ",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Piano.distro_joined_daily",
+            "value": "Piano.distro_joined_daily"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "distro_table",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN  \"Piano.distro_joined_today\"\r\n  WHEN \"Heute -7d\" THEN  \"Piano.distro_joined_today\"\r\n  WHEN \"Letzte Stunde\" THEN \"Piano.distro_joined_last_hour\"\r\n  ELSE \"Piano.distro_joined_daily\"\r\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2025-03-17",
+            "value": "2025-03-17"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "bq_timeframe_start",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  CASE \r\n    WHEN \"${Zeitraum:text}\" = \"Letzte Stunde\" THEN FORMAT_DATE('%Y-%m-%d', today)\r\n    WHEN \"${Zeitraum:text}\" = \"Heute\" THEN FORMAT_DATE('%Y-%m-%d', today)\r\n    WHEN \"${Zeitraum:text}\" = \"Heute -7d\" THEN FORMAT_DATE('%Y-%m-%d', today)\r\n    WHEN \"${Zeitraum:text}\" = \"Gestern\" THEN FORMAT_DATE('%Y-%m-%d', yesterday)\r\n    WHEN \"${Zeitraum:text}\" = \"Letztes Wochenende\" THEN FORMAT_DATE('%Y-%m-%d', last_saturday)\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 7 Tage\" THEN FORMAT_DATE('%Y-%m-%d', interval_7_day)\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 30 Tage\" THEN FORMAT_DATE('%Y-%m-%d', interval_30_day)\r\n    ELSE FORMAT_DATE('%Y-%m-%d', today)\r\n  END AS relevant_value\r\nFROM `grafana.current_date`",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2025-04-15",
+            "value": "2025-04-15"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "bq_timeframe_end",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  CASE \r\n    WHEN \"${Zeitraum:text}\" = \"Letzte Stunde\" THEN FORMAT_DATE('%Y-%m-%d', today)\r\n    WHEN \"${Zeitraum:text}\" = \"Heute\" THEN FORMAT_DATE('%Y-%m-%d', today)\r\n    WHEN \"${Zeitraum:text}\" = \"Heute -7d\" THEN FORMAT_DATE('%Y-%m-%d', today)\r\n    WHEN \"${Zeitraum:text}\" = \"Gestern\" THEN FORMAT_DATE('%Y-%m-%d', yesterday)\r\n    WHEN \"${Zeitraum:text}\" = \"Letztes Wochenende\" THEN FORMAT_DATE('%Y-%m-%d', last_sunday)\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 7 Tage\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(today, INTERVAL 1 DAY))\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 30 Tage\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(today, INTERVAL 1 DAY))\r\n    ELSE FORMAT_DATE('%Y-%m-%d', today)\r\n  END AS relevant_value\r\nFROM `grafana.current_date`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2025-02-15",
+            "value": "2025-02-15"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "bq_comp_timeframe_start",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  CASE \r\n    WHEN \"${Zeitraum:text}\" = \"Letzte Stunde\" THEN FORMAT_DATE('%Y-%m-%d', today)\r\n    WHEN \"${Zeitraum:text}\" = \"Heute\" THEN FORMAT_DATE('%Y-%m-%d', yesterday)\r\n    WHEN \"${Zeitraum:text}\" = \"Heute -7d\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(today, INTERVAL 7 DAY))\r\n    WHEN \"${Zeitraum:text}\" = \"Gestern\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(yesterday, INTERVAL 7 DAY))\r\n    WHEN \"${Zeitraum:text}\" = \"Letztes Wochenende\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(last_saturday, INTERVAL 7 DAY))\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 7 Tage\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(interval_7_day, INTERVAL 7 DAY))\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 30 Tage\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(interval_30_day, INTERVAL 30 DAY))\r\n    ELSE FORMAT_DATE('%Y-%m-%d', today)\r\n  END AS relevant_value\r\nFROM `grafana.current_date`",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2025-03-16",
+            "value": "2025-03-16"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "bq_comp_timeframe_end",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  CASE \r\n    WHEN \"${Zeitraum:text}\" = \"Letzte Stunde\" THEN FORMAT_DATE('%Y-%m-%d', today)\r\n    WHEN \"${Zeitraum:text}\" = \"Heute\" THEN FORMAT_DATE('%Y-%m-%d', yesterday)\r\n    WHEN \"${Zeitraum:text}\" = \"Heute -7d\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(today, INTERVAL 7 DAY))\r\n    WHEN \"${Zeitraum:text}\" = \"Gestern\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(yesterday, INTERVAL 7 DAY))\r\n    WHEN \"${Zeitraum:text}\" = \"Letztes Wochenende\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(last_sunday, INTERVAL 7 DAY))\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 7 Tage\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(interval_7_day, INTERVAL 1 DAY))\r\n    WHEN \"${Zeitraum:text}\" = \"Letzte 30 Tage\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(interval_30_day, INTERVAL 1 DAY))\r\n    ELSE FORMAT_DATE('%Y-%m-%d', today)\r\n  END AS relevant_value\r\nFROM `grafana.current_date`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2000-01-01",
+            "value": "2000-01-01"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "bq_fever",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"${Zeitraum:text}\"\r\n     WHEN \"Letzte Stunde\" THEN DATE(CURRENT_DATE)\r\n     WHEN \"Gestern\" THEN  DATE(DATE_SUB(CURRENT_DATE, INTERVAL 1 DAY))\r\n     WHEN \"Heute\" THEN  DATE(CURRENT_DATE)\r\n      WHEN \"Heute -7d\" THEN DATE(CURRENT_DATE)\r\n      ELSE DATE(2000,01,01)\r\n     END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "dataset_zeitraum_web",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN  \"\"\r\n  WHEN \"Letzte Stunde\" THEN \"_last_hour\"\r\n  ELSE \"\"\r\n  END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "dataset_zeitraum_app",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  CASE \"${Zeitraum:text}\"\r\n  WHEN \"Letzte Stunde\" \r\n    THEN \"_last_hour_app\"\r\n  ELSE \"\"\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "dataset_vergleichs_zeitraum_web",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"${Zeitraum:text}\"\r\n  WHEN \"Letzte Stunde\" THEN \"_last_2_hour\"\r\n  ELSE \"\"\r\n  END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "dataset_vergleichs_zeitraum_app",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  CASE \"${Zeitraum:text}\"\r\n  WHEN \"Letzte Stunde\" \r\n    THEN \"_last_2_hour_app\"\r\n  ELSE \"\"\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Piano.av_joined_daily",
+            "value": "Piano.av_joined_daily"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "dataset_zeitraum_av",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN  \"Piano.av_joined_today\"\r\n  WHEN \"Heute -7d\" THEN  \"Piano.av_joined_today\"\r\n  WHEN \"Letzte Stunde\" THEN \"Piano.av_joined_last_hour\"\r\n  ELSE \"Piano.av_joined_daily\"\r\n  END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Piano.av_joined_daily",
+            "value": "Piano.av_joined_daily"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "dataset_vergleichszeitraum_av",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"${Zeitraum:text}\"\r\n  WHEN \"Letzte Stunde\" THEN \"Piano.av_last_2_hour\"\r\n  ELSE \"Piano.av_joined_daily\"\r\n  END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "daily_data",
+            "value": "daily_data"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "dataset_not_fevercurve",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN  \"adjusted_lagged_data\"\r\n  WHEN \"Heute -7d\" THEN \"adjusted_lagged_data\"\r\n  WHEN \"Letzte Stunde\" THEN \"daily_data\"\r\n  ELSE \"daily_data\"\r\n  END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "CONTAINS_SUBSTR(bi_av_url, \"mdrde.nachrichten.app_aktuell\")",
+            "value": "CONTAINS_SUBSTR(bi_av_url, \"mdrde.nachrichten.app_aktuell\")"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "av_condition_without_live",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$LRA'\r\n  WHEN 'MDR' THEN 'CONTAINS_SUBSTR(bi_av_url, \"$app_name_long\")'\r\n  WHEN 'NDR' THEN 'CONTAINS_SUBSTR(site_level2, \"$app_name\" )'\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "CONTAINS_SUBSTR(site_level2, 'mdr.de') AND 'nachrichten' IN UNNEST(bi_av_page_chapter1_tags) AND 'Alle Kapitel 2' IN UNNEST(bi_av_page_chapter2_tags) AND 'Alle Sendungs-ID' IN UNNEST(sendungs_id_tags)",
+            "value": "CONTAINS_SUBSTR(site_level2, 'mdr.de') AND 'nachrichten' IN UNNEST(bi_av_page_chapter1_tags) AND 'Alle Kapitel 2' IN UNNEST(bi_av_page_chapter2_tags) AND 'Alle Sendungs-ID' IN UNNEST(sendungs_id_tags)"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "avwebFilter_without_live",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ('$Redaktionen' LIKE 'Sorbisches Programm') THEN (\r\n  SELECT \"CONTAINS_SUBSTR(site_level2, '$site_level2') AND (('$page_chapter1' IN UNNEST(bi_av_page_chapter1_tags) AND '$av_page_chapter2' IN UNNEST(bi_av_page_chapter2_tags)) OR ('serbski-program' IN UNNEST(bi_av_page_chapter1_tags) AND '$av_page_chapter2' IN UNNEST(bi_av_page_chapter2_tags))) AND '$sendungsid' IN UNNEST(sendungs_id_tags)\"\r\n);\r\nELSE (\r\n  SELECT \"CONTAINS_SUBSTR(site_level2, '$site_level2') AND '$page_chapter1' IN UNNEST(bi_av_page_chapter1_tags) AND '$av_page_chapter2' IN UNNEST(bi_av_page_chapter2_tags) AND '$sendungsid' IN UNNEST(sendungs_id_tags)\"\r\n);\r\nEND IF\r\n\r\n\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "default",
+            "value": "default"
+          },
+          "definition": "",
+          "includeAll": false,
+          "name": "Sophora_ID",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT 'default'",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "hidden": true
+    },
+    "timezone": "",
+    "title": "Web & App Dashboard fester Zeitraum SOPHORA ID search",
+    "uid": "eej0a27q84av4f",
+    "version": 8,
+    "weekStart": "monday"
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "id": 551,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "nYaDwIKIk",
+  "name": "NDR TV Web Quellen Letztes WE KPI",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "summe"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Visits ${copy_of_Zeitraum:text}"
+            },
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 12,
+      "y": 0
+    },
+    "id": 45,
+    "libraryPanel": {
+      "meta": {
+        "connectedDashboards": 0,
+        "created": "2024-01-02T12:05:39Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        },
+        "folderName": "",
+        "folderUid": "",
+        "updated": "2024-01-02T12:05:42.637296478Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        }
+      },
+      "name": "NDR TV Web Quellen Letztes WE KPI",
+      "uid": "nYaDwIKIk",
+      "version": 2
+    },
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+      },
+      "textMode": "value_and_name"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "-- cache version \r\n\r\nSELECT \r\n  SUM(COALESCE(m_visits,0)) as summe\r\nFROM \r\n  `Piano.distro_joined_daily`\r\nWHERE \r\nsite_level2 = \"$LRA\"\r\nAND page_chapter1 = \"$Redaktionen\"\r\nAND page_chapter2 = \"$Unterkapitel\"\r\nAND sendungs_id = \"$Sendung\"\r\nAND date >= ${bq_saturday:doublequote} AND date <= ${bq_sunday:doublequote}\r\n",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "transformations": [],
+    "type": "stat"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 1,
+    "created": "2024-06-20T11:45:49Z",
+    "updated": "2024-06-20T11:45:49Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

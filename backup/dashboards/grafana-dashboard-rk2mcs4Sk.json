@@ -1,0 +1,749 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "crowdtangle-tv",
+    "url": "/d/rk2mcs4Sk/crowdtangle-tv",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:45:10Z",
+    "updated": "2024-07-30T05:43:40Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 2,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 660,
+    "folderUid": "folder-F9a5Uxn4k",
+    "folderTitle": "Prototypes",
+    "folderUrl": "/dashboards/f/folder-F9a5Uxn4k/prototypes",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1409,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 14,
+          "x": 0,
+          "y": 0
+        },
+        "id": 6,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<font size=\"6\" style=\"color:#07a1c5;\">Crowdtangle</font><font size=\"6\"> ${ListenClean:text} </font>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "dark-red",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 0
+                },
+                {
+                  "color": "semi-dark-green",
+                  "value": 1
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "PageURL"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Page"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "${__data.fields.PageURL}",
+                      "url": "${__data.fields.PageURL}"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.filterable",
+                  "value": true
+                },
+                {
+                  "id": "custom.width",
+                  "value": 150
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "PostURL"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Post"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "${__data.fields.PostURL}",
+                      "url": "${__data.fields.PostURL}"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "OVP"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                },
+                {
+                  "id": "displayName",
+                  "value": "OVP Value"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ReaktionenActual"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                },
+                {
+                  "id": "displayName",
+                  "value": "Reaktionen"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ReaktionenDiff"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                },
+                {
+                  "id": "displayName",
+                  "value": "OVP Reaktionen"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "semi-dark-green",
+                    "mode": "thresholds"
+                  }
+                },
+                {
+                  "id": "custom.displayMode",
+                  "value": "color-text"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "LikesActual"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                },
+                {
+                  "id": "displayName",
+                  "value": "Likes"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "LikesDiff"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                },
+                {
+                  "id": "displayName",
+                  "value": "OVP Likes"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "thresholds"
+                  }
+                },
+                {
+                  "id": "custom.displayMode",
+                  "value": "color-text"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "CommentsActual"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                },
+                {
+                  "id": "displayName",
+                  "value": "Kommentare"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "CommentsDiff"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                },
+                {
+                  "id": "displayName",
+                  "value": "OVP Kommentare"
+                },
+                {
+                  "id": "color"
+                },
+                {
+                  "id": "custom.displayMode",
+                  "value": "color-text"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "SharesActual"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                },
+                {
+                  "id": "displayName",
+                  "value": "Shares"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "SharesDiff"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                },
+                {
+                  "id": "displayName",
+                  "value": "OVP Shares"
+                },
+                {
+                  "id": "color"
+                },
+                {
+                  "id": "custom.displayMode",
+                  "value": "color-text"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ReaktionenExpected"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "LikesExpected"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "CommentsExpected"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "SharesExpected"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "OVP Value"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 109
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Reaktionen"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 94
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "OVP Reaktionen"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 123
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Likes"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 80
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "OVP Likes"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 91
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Kommentare"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 104
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "OVP Kommentare"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 137
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Shares"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 63
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "OVP Shares"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 93
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 24,
+          "w": 24,
+          "x": 0,
+          "y": 2
+        },
+        "id": 4,
+        "options": {
+          "footer": {
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "OVP Value"
+            }
+          ]
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH \r\n  Calc AS (\r\n    SELECT\r\n    item.account.name AS Page,\r\n    item.account.url AS PageURL,\r\n    item.message,\r\n    item.description,\r\n    item.postUrl AS PostURL,\r\n    item.score AS OVP,\r\n    (statistics.actual.sadCount + statistics.actual.angryCount + statistics.actual.hahaCount + statistics.actual.careCount + statistics.actual.wowCount + statistics.actual.loveCount + statistics.actual.thankfulCount + statistics.actual.likeCount) AS ReaktionenActual,\r\n    (statistics.expected.sadCount + statistics.expected.angryCount + statistics.expected.hahaCount + statistics.expected.careCount + statistics.expected.wowCount + statistics.expected.loveCount + statistics.expected.thankfulCount + statistics.expected.likeCount) AS ReaktionenExpected,\r\n    statistics.actual.likeCount AS LikesActual,\r\n    statistics.expected.likeCount AS LikesExpected,\r\n    statistics.actual.commentCount AS CommentsActual,\r\n    statistics.expected.commentCount AS CommentsExpected,\r\n    statistics.actual.shareCount AS SharesActual,\r\n    statistics.expected.shareCount AS SharesExpected,\r\n    TIMESTAMP(item.date) as Datum,\r\n    ROW_NUMBER() OVER (PARTITION BY item.message, item.description ORDER BY TIMESTAMP(item.date) DESC) as rn\r\n    FROM `ndr-code-bi-dashboard.CrowdTangle.ct_dataset`,\r\n    UNNEST(`$Listen`) AS item\r\n  )\r\n\r\nSELECT\r\n  Page,\r\n  PageURL,\r\n  CASE\r\n    WHEN message != \"not_available\" THEN REGEXP_REPLACE(message, r\"�\", \"\")\r\n    ELSE\r\n      CASE\r\n        WHEN description != \"not_available\" THEN REGEXP_REPLACE(description, r\"�\", \"\")\r\n        ELSE \"<Keine Vorschau des Posts verfügbar>\"\r\n      END\r\n  END AS Post,\r\n  PostURL,\r\n  OVP,\r\n  ReaktionenActual,\r\n  ReaktionenExpected,\r\n  ReaktionenActual - ReaktionenExpected AS ReaktionenDiff,\r\n  LikesActual,\r\n  LikesExpected,\r\n  LikesActual - LikesExpected AS LikesDiff,\r\n  CommentsActual,\r\n  CommentsExpected,\r\n  CommentsActual - CommentsExpected AS CommentsDiff,\r\n  SharesActual,\r\n  SharesExpected,\r\n  SharesActual - SharesExpected AS SharesDiff\r\n  , Datum\r\nFROM Calc\r\nWHERE OVP > 1\r\nAND rn = 1\r\n--AND Datum >= DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 6 HOUR) AND Datum < CURRENT_TIMESTAMP()\r\nORDER BY OVP DESC\r\nLIMIT 10\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Trending Facebook Posts TV",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "CommentsActual": true,
+                "CommentsDiff": true,
+                "Datum": true,
+                "LikesActual": true,
+                "LikesDiff": true,
+                "LikesExpected": false,
+                "Page": false,
+                "ReaktionenDiff": false,
+                "ReaktionenExpected": false,
+                "SharesActual": true,
+                "SharesDiff": true
+              },
+              "indexByName": {},
+              "renameByName": {}
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      }
+    ],
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": true,
+            "text": "SportZone_Protagonisten_Fußball",
+            "value": "1474994"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Listen",
+          "options": [
+            {
+              "selected": true,
+              "text": "SportZone_Medien",
+              "value": "1470515"
+            },
+            {
+              "selected": false,
+              "text": "SportZone_Multisport",
+              "value": "1474995"
+            },
+            {
+              "selected": false,
+              "text": "SportZone_Protagonisten_Fußball",
+              "value": "1474994"
+            },
+            {
+              "selected": false,
+              "text": "00 NDR Hamburg Watchlist",
+              "value": "464158"
+            },
+            {
+              "selected": false,
+              "text": "00 NDR MV Watchlist",
+              "value": "562406"
+            },
+            {
+              "selected": false,
+              "text": "00 NDR NDS Watchlist",
+              "value": "628247"
+            },
+            {
+              "selected": false,
+              "text": "00 NDR SH Watchlist",
+              "value": "643836"
+            },
+            {
+              "selected": false,
+              "text": "01 NDR Auftritte FB",
+              "value": "187796"
+            },
+            {
+              "selected": false,
+              "text": "01 Medien Norddeutschland",
+              "value": "278778"
+            },
+            {
+              "selected": false,
+              "text": "02 Kultur auf FB",
+              "value": "221758"
+            },
+            {
+              "selected": false,
+              "text": "03 Gesundheit / Visite",
+              "value": "313959"
+            }
+          ],
+          "query": "SportZone_Medien : 1470515, SportZone_Multisport : 1474995, SportZone_Protagonisten_Fußball : 1474994, 00 NDR Hamburg Watchlist : 464158, 00 NDR MV Watchlist : 562406, 00 NDR NDS Watchlist : 628247, 00 NDR SH Watchlist : 643836, 01 NDR Auftritte FB : 187796, 01 Medien Norddeutschland : 278778, 02 Kultur auf FB : 221758, 03 Gesundheit / Visite : 313959",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "SportZone Protagonisten Fußball",
+            "value": "SportZone Protagonisten Fußball"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "ListenClean",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  CASE ${Listen:doublequote}\r\n  WHEN \"1470515\" THEN \"SportZone Medien\"\r\n  WHEN \"1474995\" THEN \"SportZone Multisport\"\r\n  WHEN \"1474994\" THEN \"SportZone Protagonisten Fußball\"\r\n  WHEN \"464158\" THEN \"NDR Hamburg Watchlist\"\r\n  WHEN \"562406\" THEN \"NDR MV Watchlist\"\r\n  WHEN \"628247\" THEN \"NDR NDS Watchlist\"\r\n  WHEN \"643836\" THEN \"NDR SH Watchlist\"\r\n  WHEN \"187796\" THEN \"NDR Auftritte FB\"\r\n  WHEN \"278778\" THEN \"Medien Norddeutschland\"\r\n  WHEN \"221758\" THEN \"Kultur auf FB\"\r\n  WHEN \"313959\" THEN \"Gesundheit / Visite\"\r\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Crowdtangle TV",
+    "uid": "rk2mcs4Sk",
+    "version": 2,
+    "weekStart": ""
+  }
+}

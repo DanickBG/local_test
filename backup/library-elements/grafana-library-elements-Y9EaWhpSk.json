@@ -1,0 +1,179 @@
+{
+  "id": 632,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "Y9EaWhpSk",
+  "name": "Facebook KPI Aktive Nutzere Updated",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "#0165e1",
+          "mode": "fixed"
+        },
+        "decimals": 0,
+        "mappings": [],
+        "noValue": "N/A",
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            }
+          ]
+        },
+        "unit": "string"
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 13,
+      "y": 0
+    },
+    "id": 78,
+    "libraryPanel": {
+      "meta": {
+        "connectedDashboards": 1,
+        "created": "2024-01-29T19:32:46Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        },
+        "folderName": "",
+        "folderUid": "",
+        "updated": "2024-01-29T19:49:44.208229476Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        }
+      },
+      "name": "Facebook KPI Aktive Nutzere Updated",
+      "uid": "Y9EaWhpSk",
+      "version": 6
+    },
+    "options": {
+      "colorMode": "background",
+      "graphMode": "none",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "reduceOptions": {
+        "calcs": [
+          "last"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "text": {},
+      "textMode": "value_and_name"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "dataset": "Quintly",
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size - CHAR_LENGTH(CAST(page_engaged_users as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(page_engaged_users) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\n  SELECT ROUND(SUM(A.engaged_users) / MAX(${day_count}),0) as page_engaged_users\nFROM\n-- Get engaged users in time range\n(SELECT \npage_engaged_users as engaged_users\nFROM `ndr-code-bi-dashboard.Quintly.facebookInsights`\nWHERE profileId = $profileID \nAND $Zeitraum\n) AS A\n)",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [
+                {
+                  "name": "page_engaged_users",
+                  "type": "functionParameter"
+                }
+              ],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50,
+          "whereJsonTree": {
+            "children1": {
+              "baa899a9-cdef-4012-b456-718364767b70": {
+                "properties": {
+                  "field": "profileId",
+                  "operator": "equal",
+                  "value": [
+                    null
+                  ],
+                  "valueSrc": [
+                    "value"
+                  ],
+                  "valueType": [
+                    "number"
+                  ]
+                },
+                "type": "rule"
+              }
+            },
+            "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+            "type": "group"
+          }
+        },
+        "table": "facebookInsights"
+      }
+    ],
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "Aktive Nutzer pro Tag – Gesamtprofil",
+            "page_engaged_users": "⌀ pro Tag"
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "stat"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 2,
+    "created": "2024-06-20T11:46:01Z",
+    "updated": "2024-06-20T11:46:01Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

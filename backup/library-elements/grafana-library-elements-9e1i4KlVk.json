@@ -1,0 +1,134 @@
+{
+  "id": 447,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "9e1i4KlVk",
+  "name": "Visits letzte 8-14 Tage KPI Audio TV WEB",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "summe"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Wiedergaben ${copy_of_Vergleichszeitraumlabels:text}"
+            },
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 16,
+      "y": 0
+    },
+    "id": 33,
+    "libraryPanel": {
+      "name": "Visits letzte 8-14 Tage KPI Audio TV WEB"
+    },
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+      },
+      "textMode": "value_and_name"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as summe\r\nFROM \r\n  Piano.av\r\nWHERE \r\nsite_level2 = \"$LRA\" AND\r\n\"$Redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n\"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags)\r\nAND \"$Sendung\" IN UNNEST(sendungs_id_tags)\r\nAND $Vergleichszeitraum \r\nAND av_content_type = \"Audio\"",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 0,
+    "created": "2024-06-20T11:45:32Z",
+    "updated": "2024-06-20T11:45:32Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

@@ -1,0 +1,509 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "f51790e",
+    "url": "/d/1H4w_IKIz/f51790e",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:40:53Z",
+    "updated": "2025-02-24T08:09:44Z",
+    "updatedBy": "daniel hristov dev",
+    "createdBy": "Anonymous",
+    "version": 7,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 1176,
+    "folderUid": "folder-8Bt7Gb8Vz",
+    "folderTitle": "TV_NDR",
+    "folderUrl": "/dashboards/f/folder-8Bt7Gb8Vz/tv-ndr",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1197,
+    "links": [],
+    "liveNow": true,
+    "panels": [
+      {
+        "gridPos": {
+          "h": 4,
+          "w": 2,
+          "x": 0,
+          "y": 0
+        },
+        "id": 130,
+        "libraryPanel": {
+          "name": "Facebook Logo",
+          "uid": "AQq5xyU4k"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 4,
+          "w": 11,
+          "x": 2,
+          "y": 0
+        },
+        "id": 105,
+        "libraryPanel": {
+          "name": "Facebook Top Videos Channel label",
+          "uid": "O9MtTreVk"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 13,
+          "y": 0
+        },
+        "id": 121,
+        "libraryPanel": {
+          "name": "Facebook Top Videos Top Videostarts 10 sec",
+          "uid": "-StDwwUVz"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 17,
+          "y": 0
+        },
+        "id": 123,
+        "libraryPanel": {
+          "name": "Facebook Top Videos Top Videostarts 3 sec",
+          "uid": "BtjKor64z"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 4,
+          "w": 3,
+          "x": 21,
+          "y": 0
+        },
+        "id": 125,
+        "libraryPanel": {
+          "name": "Last update panel",
+          "uid": "18SYJy8Vz"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 2,
+          "w": 8,
+          "x": 0,
+          "y": 4
+        },
+        "id": 129,
+        "libraryPanel": {
+          "name": "Facebook Top Videos label",
+          "uid": "xUp9fs84k"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 22,
+          "w": 24,
+          "x": 0,
+          "y": 6
+        },
+        "id": 127,
+        "libraryPanel": {
+          "name": "Facebook Top Videos Main Table zeitraum",
+          "uid": "o4acT96Vz"
+        },
+        "title": ""
+      }
+    ],
+    "preload": false,
+    "refresh": false,
+    "schemaVersion": 40,
+    "tags": [
+      "TV FB Videos",
+      "NDR SH"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "NDR",
+            "value": "NDR"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "LRA",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "Select a.LRA  FROM\n(\nSELECT DISTINCT LRA FROM `ndr-code-bi-dashboard.Quintly.profiles` \n) as a \nORDER BY(\nCASE WHEN a.LRA like  LEFT(\"${__user.login}\",3)\nTHEN 1\nELSE 0\nEND\n) DESC",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "NDR Schleswig-Holstein",
+            "value": "NDR Schleswig-Holstein"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Profil",
+          "options": [],
+          "query": {
+            "dataset": "QuintlyTest",
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT a.profile \nFROM \n(SELECT profile FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE LRA = '$LRA' AND facebookId != 0) as a,\n(SELECT  Profil_FB FROM `ndr-code-bi-dashboard.Quintly.default-settings` WHERE LRA = '$LRA') as b\nORDER BY( \nCASE WHEN a.profile = b.Profil_FB THEN 1\nELSE 2\nEND\n), a.profile ASC",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "profile",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "profileTest"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()",
+            "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+          },
+          "description": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Zeitraum",
+          "options": [
+            {
+              "selected": false,
+              "text": "Gestern",
+              "value": "EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE(), INTERVAL  1 DAY)"
+            },
+            {
+              "selected": false,
+              "text": "Letztes Wochenende",
+              "value": "DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )"
+            },
+            {
+              "selected": true,
+              "text": "Letzte 7 Tage",
+              "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+            },
+            {
+              "selected": false,
+              "text": "Letzte 30 Tage",
+              "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+            }
+          ],
+          "query": "Gestern : EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Letztes Wochenende :  DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) ), Letzte 7 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE(), Letzte 30 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "20.02.2025 | 18:08 Uhr",
+            "value": "20.02.2025 | 18:08 Uhr"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "lastUpdate",
+          "options": [],
+          "query": {
+            "dataset": "Quintly",
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE MAX(last_update)\r\n  WHEN NULL THEN \"N/A\"\r\n  ELSE FORMAT_DATETIME(\"%d.%m.%Y | %H:%M Uhr\", DATETIME(MAX(last_update),\"Europe/Berlin\"))\r\n  END\r\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\r\nWHERE profileId = $profileID  ",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "last_update",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "facebookInsightsOwnPosts"
+          },
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "10",
+            "value": "10"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size_big",
+          "options": [
+            {
+              "selected": true,
+              "text": "10",
+              "value": "10"
+            }
+          ],
+          "query": "10",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "106580",
+            "value": "106580"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "profileID",
+          "options": [],
+          "query": {
+            "dataset": "QuintlyTest",
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CAST(facebookID as STRING) FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil''' ",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "facebookID",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "instagramID",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "youtubeID",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "profileTest"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "13",
+            "value": "13"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size",
+          "options": [
+            {
+              "selected": true,
+              "text": "13",
+              "value": "13"
+            }
+          ],
+          "query": "13",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "48",
+            "value": "48"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size_headline",
+          "options": [
+            {
+              "selected": true,
+              "text": "48",
+              "value": "48"
+            }
+          ],
+          "query": "48",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "20",
+            "value": "20"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size_headline_small",
+          "options": [
+            {
+              "selected": true,
+              "text": "20",
+              "value": "20"
+            }
+          ],
+          "query": "20",
+          "type": "custom"
+        }
+      ]
+    },
+    "time": {
+      "from": "2023-08-14T09:31:19.724Z",
+      "to": "2023-08-14T09:31:49.724Z"
+    },
+    "timepicker": {
+      "hidden": true
+    },
+    "timezone": "",
+    "title": "NDR SH | TV Facebook | Top Videos | Letzte 7 Tage",
+    "uid": "1H4w_IKIz",
+    "version": 7,
+    "weekStart": ""
+  }
+}

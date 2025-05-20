@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "piano",
+    "url": "/dashboards/f/folder-BlnPG9Q4k/piano",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:39:58Z",
+    "updated": "2024-07-29T12:39:58Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 1,
+    "hasAcl": false,
+    "isFolder": true,
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "id": 1177,
+    "schemaVersion": 17,
+    "title": "Piano",
+    "uid": "folder-BlnPG9Q4k",
+    "version": 1
+  }
+}

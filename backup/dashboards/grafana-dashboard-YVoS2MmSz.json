@@ -1,0 +1,3346 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "crossmedia-dashboard-prototype",
+    "url": "/d/YVoS2MmSz/crossmedia-dashboard-prototype",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:43:56Z",
+    "updated": "2024-07-30T05:40:19Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 2,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 660,
+    "folderUid": "folder-F9a5Uxn4k",
+    "folderTitle": "Prototypes",
+    "folderUrl": "/dashboards/f/folder-F9a5Uxn4k/prototypes",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1330,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 30,
+        "panels": [],
+        "title": "KPI Boxes - Online Data",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f4f4f4",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "mappings": [],
+            "noValue": "N/A",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 8,
+          "x": 0,
+          "y": 1
+        },
+        "id": 12,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "text": {
+            "titleSize": 20
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT  CONCAT(REPEAT(\" \", 30 - CHAR_LENGTH('Web')), 'Web')\nFROM(\nSELECT 'Web:innen' as Interaktionen\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nLIMIT 1\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": " "
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f4f4f4",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "mappings": [],
+            "noValue": "N/A",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 8,
+          "x": 8,
+          "y": 1
+        },
+        "id": 11,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "text": {
+            "titleSize": 20
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT  CONCAT(REPEAT(\" \", 30 - CHAR_LENGTH('App')), 'App')\nFROM(\nSELECT 'App:innen' as Interaktionen\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nLIMIT 1\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": " "
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f4f4f4",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "mappings": [],
+            "noValue": "N/A",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 16,
+          "y": 1
+        },
+        "id": 5,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "text": {
+            "titleSize": 20
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT  CONCAT(REPEAT(\" \", 30 - CHAR_LENGTH('Facebook')), 'Facebook')\nFROM(\nSELECT 'Facebook:innen' as Interaktionen\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nLIMIT 1\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": " "
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f4f4f4",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "mappings": [],
+            "noValue": "N/A",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 20,
+          "y": 1
+        },
+        "id": 8,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "text": {
+            "titleSize": 20
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT  CONCAT(REPEAT(\" \", 30 - CHAR_LENGTH('Instagram')), 'Instagram')\nFROM(\nSELECT 'Instagram:innen' as Interaktionen\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nLIMIT 1\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": " "
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f4f4f4",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "mappings": [],
+            "noValue": "N/A",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 3
+        },
+        "id": 13,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "text": {
+            "titleSize": 20
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT  CONCAT(REPEAT(\" \", 30 - CHAR_LENGTH('Visits')), 'Visits')\nFROM(\nSELECT 'Visits:innen' as Interaktionen\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nLIMIT 1\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": " "
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f4f4f4",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "mappings": [],
+            "noValue": "N/A",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 4,
+          "y": 3
+        },
+        "id": 14,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "text": {
+            "titleSize": 20
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT  CONCAT(REPEAT(\" \", 30 - CHAR_LENGTH('Audio- und Videostarts')), 'Audio- und Videostarts')\nFROM(\nSELECT 'Audio- und Videostarts:innen' as Interaktionen\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nLIMIT 1\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": " "
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f4f4f4",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "mappings": [],
+            "noValue": "N/A",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 8,
+          "x": 8,
+          "y": 3
+        },
+        "id": 17,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "text": {
+            "titleSize": 20
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT  CONCAT(REPEAT(\" \", 30 - CHAR_LENGTH('Visits')), 'Visits')\nFROM(\nSELECT 'Visits:innen' as Interaktionen\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nLIMIT 1\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": " "
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f4f4f4",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "mappings": [],
+            "noValue": "N/A",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 16,
+          "y": 3
+        },
+        "id": 2,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "text": {
+            "titleSize": 20
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT  CONCAT(REPEAT(\" \", 30 - CHAR_LENGTH('Aktive Nutzer')), 'Aktive Nutzer')\nFROM(\nSELECT 'Aktive Nutzer:innen' as Interaktionen\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nLIMIT 1\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": " "
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#f5f5f5",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "mappings": [],
+            "noValue": "N/A",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 20,
+          "y": 3
+        },
+        "id": 7,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "text": {
+            "titleSize": 20
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT  CONCAT(REPEAT(\" \", 30 - CHAR_LENGTH('Interaktionen')), 'Interaktionen')\nFROM(\nSELECT 'Interaktionen' as Interaktionen\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nLIMIT 1\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": " "
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "summe"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "$Monat_abkuerzung $Jahr"
+                },
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 0,
+          "y": 5
+        },
+        "id": 20,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT SUM(IFNULL(m_visits,0)) as summe \r\nFROM `ndr-code-bi-dashboard.Piano.total_visits`\r\nWHERE site_level2 = \"ndr.de\" AND\r\n${web_redaktionen:doublequote} = page_chapter1 AND\r\n${Unterkapitel:doublequote} = page_chapter2 AND\r\n\"Alle Sendungs-ID\" = sendungs_id \r\nAND EXTRACT(MONTH from date) = $Monat AND EXTRACT(YEAR from date) = $Jahr\r\n\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "f0_"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "$Monat_abkuerzung $Jahr"
+                },
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 4,
+          "y": 5
+        },
+        "id": 24,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH vid_sum AS(\r\nSELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as summeVideo\r\nFROM \r\n  `Piano.av`\r\nWHERE \r\nsite_level2 = \"ndr.de\" AND\r\n\"$web_redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n\"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags)\r\nAND \"Alle Sendungs-ID\" IN UNNEST(sendungs_id_tags)\r\nAND EXTRACT(MONTH from date) = $Monat AND EXTRACT(YEAR from date) = $Jahr\r\nAND av_content_type = \"Video\" \r\n),\r\naudio_sum as(SELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as summeAudio\r\nFROM \r\n  `Piano.av`\r\nWHERE \r\nsite_level2 = \"ndr.de\" AND\r\n\"$web_redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n\"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags)\r\nAND \"Alle Sendungs-ID\" IN UNNEST(sendungs_id_tags)\r\nAND EXTRACT(MONTH from date) = $Monat AND EXTRACT(YEAR from date) = $Jahr\r\nAND av_content_type = \"Audio\")\r\nSELECT\r\n  (summeVideo + summeAudio)\r\nFROM\r\n  vid_sum, audio_sum as relative_sum\r\n-- OR \r\n-- AND \r\n-- av_content_type =\"Audio\"",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "f0_"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 8,
+          "y": 5
+        },
+        "id": 27,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "hide": false,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  SUM(COALESCE(m_visits,0))\nFROM\n  Piano.total_visits\nWHERE site_level2 = '${app_name}'\n  AND page_chapter1 = \"$page_chapter1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\nAND EXTRACT(MONTH from date) = $Monat AND EXTRACT(YEAR from date) = $Jahr\n",
+            "refId": "B",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "f0_": false
+              },
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "${Zeitraum:text}",
+                "summe": "$Monat_abkuerzung $Jahr",
+                "visits": "${Zeitraum:text}"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#0165e1",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "mappings": [],
+            "noValue": "N/A",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "current_value"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "⌀ pro Tag"
+                },
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 16,
+          "y": 5
+        },
+        "id": 4,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "text": {
+            "titleSize": 20
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT  CONCAT(REPEAT(\" \", 5- CHAR_LENGTH(CAST(page_engaged_users as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(page_engaged_users) as NUMERIC)) AS STRING), \",\", \".\")) AS current_value\nFROM\n(\n  SELECT ROUND(SUM(page_engaged_users) / \n              DATE_DIFF(\n                LAST_DAY(DATE($Jahr, $Monat, 1), MONTH),\n                DATE($Jahr, $Monat, 1),\n                DAY\n              ) + 1,0) as page_engaged_users\nFROM `ndr-code-bi-dashboard.Quintly.facebookInsights`\nWHERE profileId = $profile_ID_FB \nAND EXTRACT(MONTH from time) = $Monat AND EXTRACT(YEAR from time) = $Jahr\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "page_engaged_users": "⌀ pro Tag"
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#d62976",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "mappings": [],
+            "noValue": "N/A",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "totalInteractions"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "⌀ pro Tag"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 20,
+          "y": 5
+        },
+        "id": 10,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "text": {
+            "titleSize": 20
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF $profile_ID_INSTA = 0 THEN\nSELECT\n  \"N/A(No account)\";\nELSE\nSELECT\n  CONCAT(\n    REPEAT(\n      \" \",\n      5 - CHAR_LENGTH(CAST(totalInteractions as STRING))\n    ),\n    REPLACE(\n      CAST(\n        FORMAT(\n          \"%'.0f\",\n          CAST(ROUND(totalInteractions) as NUMERIC)\n        ) AS STRING\n      ),\n      \",\",\n      \".\"\n    )\n  ) totalInteractions\nFROM\n  (\n    SELECT\n      ROUND(\n        SUM(\n          CASE\n            WHEN type = 'Reel' THEN IFNULL(totalInteractions, 0)\n            ELSE IFNULL(engagement, 0)\n          END\n        ) / DATE_DIFF(\n          LAST_DAY(DATE($Jahr, $Monat, 1), MONTH),\n          DATE($Jahr, $Monat, 1),\n          DAY\n        ) + 1,\n        0\n      ) AS totalInteractions\n    FROM\n      `ndr-code-bi-dashboard.Quintly.instagramInsightsOwnPosts`\n    WHERE\n      profileId = $profile_ID_INSTA\n      AND EXTRACT(\n        MONTH\n        from\n          time\n      ) = $Monat\n      AND EXTRACT(\n        YEAR\n        from\n          time\n      ) = $Jahr\n  );\nEND IF;",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": " Summe",
+                "page_impressions_unique": "Potentielle Reichweite"
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "decimals": 1,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 0,
+          "y": 9
+        },
+        "id": 22,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH past_value as(\r\n  SELECT\r\n    SUM(IFNULL(m_visits, 0)) as past_sum\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.total_visits`\r\n  WHERE\r\n    site_level2 = \"ndr.de\"\r\n    AND ${web_redaktionen:doublequote} = page_chapter1\r\n    AND ${Unterkapitel:doublequote} = page_chapter2\r\n    AND \"Alle Sendungs-ID\" = sendungs_id\r\n    AND EXTRACT(\r\n      MONTH\r\n      from\r\n        date\r\n    ) = EXTRACT(\r\n      MONTH\r\n      from\r\n        DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 1 MONTH)\r\n    )\r\n    AND EXTRACT(\r\n      YEAR\r\n      from\r\n        date\r\n    ) = EXTRACT(\r\n      YEAR\r\n      from\r\n        DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 1 MONTH)\r\n    )\r\n),\r\ncurrent_value AS (\r\n  SELECT\r\n    SUM(IFNULL(m_visits, 0)) as current_sum\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.total_visits`\r\n  WHERE\r\n    site_level2 = \"ndr.de\"\r\n    AND ${web_redaktionen:doublequote} = page_chapter1\r\n    AND ${Unterkapitel:doublequote} = page_chapter2\r\n    AND \"Alle Sendungs-ID\" = sendungs_id\r\n    AND EXTRACT(\r\n      MONTH\r\n      from\r\n        date\r\n    ) = $Monat\r\n    AND EXTRACT(\r\n      YEAR\r\n      from\r\n        date\r\n    ) = $Jahr\r\n)\r\nSELECT\r\n  ((current_sum - past_sum) / past_sum) * 100\r\nFROM\r\n  current_value, past_value as relative_difference",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "Differenz in %"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "decimals": 1,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 4,
+          "y": 9
+        },
+        "id": 25,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH vid_sum_current AS(\r\n  SELECT\r\n    SUM(COALESCE(m_av_playbacks, 0)) as summeVideoCurrent\r\n  FROM\r\n    `Piano.av`\r\n  WHERE\r\n    site_level2 = \"ndr.de\"\r\n    AND \"$web_redaktionen\" IN UNNEST(bi_av_page_chapter1_tags)\r\n    AND \"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags)\r\n    AND \"Alle Sendungs-ID\" IN UNNEST(sendungs_id_tags)\r\n    AND EXTRACT(\r\n      MONTH\r\n      from\r\n        date\r\n    ) = $Monat\r\n    AND EXTRACT(\r\n      YEAR\r\n      from\r\n        date\r\n    ) = $Jahr\r\n    AND av_content_type = \"Video\"\r\n),\r\nvid_sum_past AS(\r\n  SELECT\r\n    SUM(COALESCE(m_av_playbacks, 0)) as summeVideoPast\r\n  FROM\r\n    `Piano.av`\r\n  WHERE\r\n    site_level2 = \"ndr.de\"\r\n    AND \"$web_redaktionen\" IN UNNEST(bi_av_page_chapter1_tags)\r\n    AND \"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags)\r\n    AND \"Alle Sendungs-ID\" IN UNNEST(sendungs_id_tags)\r\n    AND EXTRACT(\r\n      MONTH\r\n      from\r\n        date\r\n    ) = EXTRACT(\r\n      MONTH\r\n      from\r\n        DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 1 MONTH)\r\n    )\r\n    AND EXTRACT(\r\n      YEAR\r\n      from\r\n        date\r\n    ) = EXTRACT(\r\n      YEAR\r\n      from\r\n        DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 1 MONTH)\r\n    )\r\n    AND av_content_type = \"Video\"\r\n),\r\naudio_sum_current as(\r\n  SELECT\r\n    SUM(COALESCE(m_av_playbacks, 0)) as summeAudioCurrent\r\n  FROM\r\n    `Piano.av`\r\n  WHERE\r\n    site_level2 = \"ndr.de\"\r\n    AND \"$web_redaktionen\" IN UNNEST(bi_av_page_chapter1_tags)\r\n    AND \"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags)\r\n    AND \"Alle Sendungs-ID\" IN UNNEST(sendungs_id_tags)\r\n    AND EXTRACT(\r\n      MONTH\r\n      from\r\n        date\r\n    ) = $Monat\r\n    AND EXTRACT(\r\n      YEAR\r\n      from\r\n        date\r\n    ) = $Jahr\r\n    AND av_content_type = \"Audio\"\r\n),\r\naudio_sum_past as(\r\n  SELECT\r\n    SUM(COALESCE(m_av_playbacks, 0)) as summeAudioPast\r\n  FROM\r\n    `Piano.av`\r\n  WHERE\r\n    site_level2 = \"ndr.de\"\r\n    AND \"$web_redaktionen\" IN UNNEST(bi_av_page_chapter1_tags)\r\n    AND \"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags)\r\n    AND \"Alle Sendungs-ID\" IN UNNEST(sendungs_id_tags)\r\n    AND EXTRACT(\r\n      MONTH\r\n      from\r\n        date\r\n    ) = EXTRACT(\r\n      MONTH\r\n      from\r\n        DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 1 MONTH)\r\n    )\r\n    AND EXTRACT(\r\n      YEAR\r\n      from\r\n        date\r\n    ) = EXTRACT(\r\n      YEAR\r\n      from\r\n        DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 1 MONTH)\r\n    )\r\n    AND av_content_type = \"Audio\"\r\n)\r\nSELECT\r\n  (\r\n    (\r\n      (summeVideoCurrent + summeAudioCurrent) - (summeVideoPast + summeAudioPast)\r\n    ) /(summeVideoPast + summeAudioPast)\r\n  ) * 100\r\nFROM\r\n  vid_sum_current,\r\n  vid_sum_past,\r\n  audio_sum_current,\r\n  audio_sum_past as relative_difference",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "Differenz in %"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "decimals": 1,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 8,
+          "y": 9
+        },
+        "id": 28,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH past_value as(\r\n SELECT\r\n  SUM(COALESCE(m_visits,0)) AS past_sum\r\nFROM\r\n  Piano.total_visits\r\nWHERE site_level2 = '${app_name}'\r\n  AND page_chapter1 = \"$page_chapter1\"\r\n  AND page_chapter2 = \"Alle Kapitel 2\"\r\n  AND sendungs_id = \"Alle Sendungs-ID\"\r\n    AND EXTRACT(\r\n      MONTH\r\n      from\r\n        date\r\n    ) = EXTRACT(\r\n      MONTH\r\n      from\r\n        DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 1 MONTH)\r\n    )\r\n    AND EXTRACT(\r\n      YEAR\r\n      from\r\n        date\r\n    ) = EXTRACT(\r\n      YEAR\r\n      from\r\n        DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 1 MONTH)\r\n    )\r\n),\r\ncurrent_value AS (\r\n SELECT\r\n  SUM(COALESCE(m_visits,0)) AS current_sum\r\nFROM\r\n  Piano.total_visits\r\nWHERE site_level2 = '${app_name}'\r\n  AND page_chapter1 = \"Alle Kapitel 1\"\r\n  AND page_chapter2 = \"Alle Kapitel 2\"\r\n  AND sendungs_id = \"Alle Sendungs-ID\"\r\nAND EXTRACT(MONTH from date) = $Monat AND EXTRACT(YEAR from date) = $Jahr\r\n\r\n)\r\nSELECT\r\n  ((current_sum - past_sum) / past_sum) * 100\r\nFROM\r\n  current_value, past_value as relative_difference",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "Differenz in %"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "decimals": 1,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 16,
+          "y": 9
+        },
+        "id": 31,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH past_value as(\r\n  SELECT\r\n    page_engaged_users AS past_tagesmittel\r\n  FROM\r\n    (\r\n      SELECT\r\n        ROUND(\r\n          SUM(page_engaged_users) / DATE_DIFF(\r\n            LAST_DAY(DATE($Jahr, $Monat, 1), MONTH),\r\n            DATE($Jahr, $Monat, 1),\r\n            DAY\r\n          ) + 1,\r\n          0\r\n        ) as page_engaged_users\r\n      FROM\r\n        `ndr-code-bi-dashboard.Quintly.facebookInsights`\r\n      WHERE\r\n        profileId = $profile_ID_FB\r\n        AND EXTRACT(\r\n          MONTH\r\n          from\r\n            time\r\n        ) = EXTRACT(\r\n          MONTH\r\n          from\r\n            DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 1 MONTH)\r\n        )\r\n        AND EXTRACT(\r\n          YEAR\r\n          from\r\n            time\r\n        ) = EXTRACT(\r\n          YEAR\r\n          from\r\n            DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 1 MONTH)\r\n        )\r\n    )\r\n),\r\ncurrent_value AS (\r\n  SELECT\r\n    page_engaged_users AS current_tagesmittel\r\n  FROM\r\n    (\r\n      SELECT\r\n        ROUND(\r\n          SUM(page_engaged_users) / DATE_DIFF(\r\n            LAST_DAY(DATE($Jahr, $Monat, 1), MONTH),\r\n            DATE($Jahr, $Monat, 1),\r\n            DAY\r\n          ) + 1,\r\n          0\r\n        ) as page_engaged_users\r\n      FROM\r\n        `ndr-code-bi-dashboard.Quintly.facebookInsights`\r\n      WHERE\r\n        profileId = $profile_ID_FB\r\n        AND EXTRACT(\r\n          MONTH\r\n          from\r\n            time\r\n        ) = $Monat\r\n        AND EXTRACT(\r\n          YEAR\r\n          from\r\n            time\r\n        ) = $Jahr\r\n    )\r\n)\r\nSELECT\r\n  (\r\n    (current_tagesmittel - past_tagesmittel) / past_tagesmittel\r\n  ) * 100\r\nFROM\r\n  current_value,\r\n  past_value as relative_difference",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "Differenz in %"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#d62976",
+              "mode": "fixed"
+            },
+            "decimals": 1,
+            "mappings": [],
+            "min": 0,
+            "noValue": "N/A",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": " Summe"
+              },
+              "properties": [
+                {
+                  "id": "displayName"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 20,
+          "y": 9
+        },
+        "id": 32,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "text": {
+            "titleSize": 20
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH past_value as(\n  SELECT\n    totalInteractions as past_totalInteractions\n  FROM\n    (\n      SELECT\n        ROUND(\n          SUM(\n            CASE\n              WHEN type = 'Reel' THEN IFNULL(totalInteractions, 0)\n              ELSE IFNULL(engagement, 0)\n            END\n          ) / DATE_DIFF(\n            LAST_DAY(DATE($Jahr, $Monat, 1), MONTH),\n            DATE($Jahr, $Monat, 1),\n            DAY\n          ) + 1,\n          0\n        ) AS totalInteractions\n      FROM\n        `ndr-code-bi-dashboard.Quintly.instagramInsightsOwnPosts`\n      WHERE\n        profileId = $profile_ID_INSTA\n        AND EXTRACT(\n          MONTH\n          from\n            time\n        ) = EXTRACT(\n          MONTH\n          from\n            DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 1 MONTH)\n        )\n        AND EXTRACT(\n          YEAR\n          from\n            time\n        ) = EXTRACT(\n          YEAR\n          from\n            DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 1 MONTH)\n        )\n    )\n),\ncurrent_value AS (\n  SELECT\n    totalInteractions as current_totalInteractions\n  FROM\n    (\n      SELECT\n        ROUND(\n          SUM(\n            CASE\n              WHEN type = 'Reel' THEN IFNULL(totalInteractions, 0)\n              ELSE IFNULL(engagement, 0)\n            END\n          ) / DATE_DIFF(\n            LAST_DAY(DATE($Jahr, $Monat, 1), MONTH),\n            DATE($Jahr, $Monat, 1),\n            DAY\n          ) + 1,\n          0\n        ) AS totalInteractions\n      FROM\n        `ndr-code-bi-dashboard.Quintly.instagramInsightsOwnPosts`\n      WHERE\n        profileId = $profile_ID_INSTA\n        AND EXTRACT(\n          MONTH\n          from\n            time\n        ) = $Monat\n        AND EXTRACT(\n          YEAR\n          from\n            time\n        ) = $Jahr\n    )\n)\nSELECT\n  (\n    (\n      current_totalInteractions - past_totalInteractions\n    ) / past_totalInteractions\n  ) * 100\nFROM\n  current_value,\n  past_value as relative_difference",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "Differenz in %",
+                "page_impressions_unique": "Potentielle Reichweite"
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 13
+        },
+        "id": 36,
+        "panels": [],
+        "title": "Graphs",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 3,
+              "pointSize": 7,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Summe Interaktionen f0_"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Facebook Engaged Users"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Summe insta f0_"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Instagram Interaktionen"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 12,
+          "x": 0,
+          "y": 14
+        },
+        "id": 38,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 0,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\nSUM(page_engaged_users), time\r\nFROM `ndr-code-bi-dashboard.Quintly.facebookInsights` \r\n-- as facebook\r\nWHERE profileId = $profile_ID_FB \r\nAND time BETWEEN timestamp('${__from:date}') AND timestamp('${__to:date}')\r\n-- JOIN `ndr-code-bi-dashboard.Quintly.profiles` as profiles ON (facebook.profileId = profiles.facebookID AND profiles.LRA = \"$LRA\")\r\n-- Daten des ausgewählten Zeitraums minus 1 Jahr\r\n-- WHERE DATE(EXTRACT(YEAR from time),EXTRACT(MONTH from time), 1) <= DATE($Jahr, $Monat, 1) AND DATE(EXTRACT(YEAR from time),EXTRACT(MONTH from time), 1)  >= DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 12 MONTH) \r\nGROUP BY time\r\nORDER BY time ASC",
+            "refId": "Summe Interaktionen",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 0,
+            "hide": false,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\nROUND(SUM(CASE WHEN type = 'Reel' THEN IFNULL(totalInteractions, 0) ELSE IFNULL(engagement, 0)END),0),\ntimestamp(time) as time\nFROM `ndr-code-bi-dashboard.Quintly.instagramInsightsOwnPosts`\nWHERE profileId = $profile_ID_INSTA\nAND time BETWEEN timestamp('${__from:date}') AND timestamp('${__to:date}')\n--  as instagram\n-- JOIN `ndr-code-bi-dashboard.Quintly.profiles` as profiles ON (instagram.profileId = profiles.instagramID AND profiles.LRA = \"$LRA\")\n-- Daten des ausgewählten Zeitraums minus 1 Jahr\n-- WHERE DATE(EXTRACT(YEAR from time),EXTRACT(MONTH from time), 1) <= DATE($Jahr, $Monat, 1) AND DATE(EXTRACT(YEAR from time),EXTRACT(MONTH from time), 1)  >= DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 12 MONTH) \nGROUP BY time\nORDER BY time ASC",
+            "refId": "Summe insta",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Facebook vs Insta Timepicker",
+        "transparent": true,
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 3,
+              "pointSize": 7,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visits Web summe_web"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Visits Web"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visits app visits_app"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Visits App"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 12,
+          "x": 12,
+          "y": 14
+        },
+        "id": 39,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 0,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT SUM(IFNULL(m_visits,0)) as summe_web, timestamp(date) as date\r\nFROM `ndr-code-bi-dashboard.Piano.total_visits`\r\nWHERE site_level2 = \"ndr.de\" AND\r\n${web_redaktionen:doublequote} = page_chapter1 AND\r\n${Unterkapitel:doublequote} = page_chapter2 AND\r\n\"Alle Sendungs-ID\" = sendungs_id \r\nAND date BETWEEN DATE('${__from:date}') AND DATE('${__to:date}')\r\n-- AND EXTRACT(MONTH from date) = $Monat AND EXTRACT(YEAR from date) = $Jahr\r\nGROUP BY date\r\nORDER BY date ASC",
+            "refId": "Visits Web",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 0,
+            "hide": false,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "-- SELECT\n-- ROUND(SUM(CASE WHEN type = 'Reel' THEN IFNULL(totalInteractions, 0) ELSE IFNULL(engagement, 0)END),0),\n-- timestamp(time) as time\n-- FROM `ndr-code-bi-dashboard.Quintly.instagramInsightsOwnPosts`\n-- WHERE profileId = $profile_ID_INSTA\n\n-- --  as instagram\n-- -- JOIN `ndr-code-bi-dashboard.Quintly.profiles` as profiles ON (instagram.profileId = profiles.instagramID AND profiles.LRA = \"$LRA\")\n-- -- Daten des ausgewählten Zeitraums minus 1 Jahr\n-- -- WHERE DATE(EXTRACT(YEAR from time),EXTRACT(MONTH from time), 1) <= DATE($Jahr, $Monat, 1) AND DATE(EXTRACT(YEAR from time),EXTRACT(MONTH from time), 1)  >= DATE_SUB(DATE($Jahr, $Monat, 1), INTERVAL 12 MONTH) \n-- GROUP BY time\n-- ORDER BY time ASC\n-- ....\nSELECT\n  SUM(COALESCE(m_visits,0)) as visits_app,\n   timestamp(date) as time\nFROM\n  Piano.total_visits\nWHERE site_level2 = '${app_name}'\n  AND page_chapter1 = \"$page_chapter1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\nAND date BETWEEN DATE('${__from:date}') AND DATE('${__to:date}')\nGROUP BY time\nORDER BY time ASC\n\n",
+            "refId": "Visits app",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Web vs App Timepicker",
+        "transparent": true,
+        "type": "timeseries"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": true,
+            "text": "NDR",
+            "value": "NDR"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "LRA",
+          "options": [
+            {
+              "selected": true,
+              "text": "NDR",
+              "value": "NDR"
+            },
+            {
+              "selected": false,
+              "text": "MDR",
+              "value": "MDR"
+            }
+          ],
+          "query": "NDR, MDR",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "Mecklenburg-Vorpommern",
+            "value": "Mecklenburg-Vorpommern"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Redaktionen",
+          "options": [
+            {
+              "selected": false,
+              "text": "Info",
+              "value": "Info"
+            },
+            {
+              "selected": true,
+              "text": "Sport",
+              "value": "Sport"
+            },
+            {
+              "selected": false,
+              "text": "Hamburg",
+              "value": "Hamburg"
+            },
+            {
+              "selected": false,
+              "text": "Niedersachen",
+              "value": "Niedersachen"
+            },
+            {
+              "selected": false,
+              "text": "Schleswig-Holstein",
+              "value": "Schleswig-Holstein"
+            },
+            {
+              "selected": false,
+              "text": "Mecklenburg-Vorpommern",
+              "value": "Mecklenburg-Vorpommern"
+            }
+          ],
+          "query": "Info, Sport, Hamburg, Niedersachen, \t\nSchleswig-Holstein, Mecklenburg-Vorpommern",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "August",
+            "value": "8"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Monat",
+          "options": [
+            {
+              "selected": false,
+              "text": "Januar",
+              "value": "1"
+            },
+            {
+              "selected": false,
+              "text": "Februar",
+              "value": "2"
+            },
+            {
+              "selected": false,
+              "text": "März",
+              "value": "3"
+            },
+            {
+              "selected": false,
+              "text": "April",
+              "value": "4"
+            },
+            {
+              "selected": false,
+              "text": "Mai",
+              "value": "5"
+            },
+            {
+              "selected": false,
+              "text": "Juni",
+              "value": "6"
+            },
+            {
+              "selected": false,
+              "text": "Juli",
+              "value": "7"
+            },
+            {
+              "selected": true,
+              "text": "August",
+              "value": "8"
+            },
+            {
+              "selected": false,
+              "text": "September",
+              "value": "9"
+            },
+            {
+              "selected": false,
+              "text": "Oktober",
+              "value": "10"
+            },
+            {
+              "selected": false,
+              "text": "November",
+              "value": "11"
+            },
+            {
+              "selected": false,
+              "text": "Dezember",
+              "value": "12"
+            }
+          ],
+          "query": "Januar : 1, Februar :  2, März : 3, April : 4, Mai : 5, Juni : 6, Juli : 7, August : 8, September : 9, Oktober : 10, November : 11, Dezember : 12 ",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "2023",
+            "value": "2023"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Jahr",
+          "options": [
+            {
+              "selected": false,
+              "text": "2022",
+              "value": "2022"
+            },
+            {
+              "selected": true,
+              "text": "2023",
+              "value": "2023"
+            },
+            {
+              "selected": false,
+              "text": "2024",
+              "value": "2024"
+            }
+          ],
+          "query": "2022 : 2022, 2023 : 2023, 2024 : 2024",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "81780",
+            "value": "81780"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "profile_ID_FB",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$Redaktionen\"\n   WHEN \"Info\" THEN 26568\n   WHEN \"Sport\" THEN 46842\n   WHEN \"Hamburg\" THEN 81784\n   WHEN \"Niedersachen\" THEN 26036\n   WHEN \"Schleswig-Holstein\" THEN 106580\n   WHEN \"Mecklenburg-Vorpommern\" THEN 81780\nEND\n",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "403292",
+            "value": "403292"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "profile_ID_INSTA",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$Redaktionen\"\n   WHEN \"Info\" THEN 404008\n   WHEN \"Sport\" THEN 0\n   WHEN \"Hamburg\" THEN 400977\n   WHEN \"Niedersachen\" THEN 396752\n   WHEN \"Schleswig-Holstein\" THEN 409406\n   WHEN \"Mecklenburg-Vorpommern\" THEN 403292\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "234531",
+            "value": "234531"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "profile_ID_Twitter",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$Redaktionen\"\n   WHEN \"Info\" THEN 234533\n   WHEN \"Sport\" THEN 234532\n   WHEN \"Hamburg\" THEN Null\n   WHEN \"Niedersachen\" THEN 234536\n   WHEN \"Schleswig-Holstein\" THEN 276307\n   WHEN \"Mecklenburg-Vorpommern\" THEN 234531\n   ELSE Null\nEND\n",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "Letzte 7 Tage",
+            "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "Zeitraum",
+          "options": [
+            {
+              "selected": false,
+              "text": "Gestern",
+              "value": "EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE(), INTERVAL  1 DAY)"
+            },
+            {
+              "selected": false,
+              "text": "Letztes Wochenende",
+              "value": "DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )"
+            },
+            {
+              "selected": true,
+              "text": "Letzte 7 Tage",
+              "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+            },
+            {
+              "selected": false,
+              "text": "Letzte 30 Tage",
+              "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+            }
+          ],
+          "query": "Gestern : EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Letztes Wochenende :  DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) ), Letzte 7 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE(), Letzte 30 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "nachrichten",
+            "value": "nachrichten"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "web_redaktionen",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$Redaktionen\"\nWHEN \"Info\" THEN \"nachrichten\"\nWHEN \"Hamburg\" THEN \"nachrichten\"\nWHEN \"Niedersachen\" THEN \"nachrichten\"\nWHEN \"Schleswig-Holstein\" THEN \"nachrichten\"\nWHEN \"Mecklenburg-Vorpommern\" THEN \"nachrichten\"\nWHEN \"Sport\" THEN \"sport\"\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "mecklenburg-vorpommern",
+            "value": "mecklenburg-vorpommern"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "Unterkapitel",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$Redaktionen\"\nWHEN \"Info\" THEN \"info\"\nWHEN \"Hamburg\" THEN \"hamburg\"\nWHEN \"Niedersachen\" THEN \"niedersachsen\"\nWHEN \"Schleswig-Holstein\" THEN \"schleswig-holstein\"\nWHEN \"Mecklenburg-Vorpommern\" THEN \"mecklenburg-vorpommern\"\nWHEN \"Sport\" THEN \"Alle Kapitel 2\"\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "Aug.",
+            "value": "Aug."
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "Monat_abkuerzung",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\nCASE $Monat\nWHEN 1 THEN \"Jan.\"\nWHEN 2 THEN \"Feb.\"\nWHEN 3 THEN \"März\"\nWHEN 4 THEN \"Apr.\"\nWHEN 5 THEN \"Mai\"\nWHEN 6 THEN \"Juni\"\nWHEN 7 THEN \"Juli\"\nWHEN 8 THEN \"Aug.\"\nWHEN 9 THEN \"Sep.\"\nWHEN 10 THEN \"Okt.\"\nWHEN 11 THEN \"Nov.\"\nWHEN 12 THEN \"Dez.\"\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "mv-app",
+            "value": "mv-app"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "app_name",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "\nSELECT CASE \"$Redaktionen\"\n  WHEN \"Info\" THEN \"ndrinfo-app\"\n  WHEN \"Sport\" THEN \"ndr.de\"\n  WHEN \"Hamburg\" THEN \"hh-app\"\n  WHEN \"Niedersachen\" THEN \"nds-app\"\n  WHEN \"Schleswig-Holstein\" THEN \"sh-app\"\n  WHEN \"Mecklenburg-Vorpommern\" THEN \"mv-app\"\nEND\n\n-- radio-app, orchester-app, hh-app, kultur-app, sesamstraßen-app, ndrinfo-app, sh-app, nds-app, n-joy-app, mv-app",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "Alle Kapitel 1",
+            "value": "Alle Kapitel 1"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "page_chapter1",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$Redaktionen\"\n  WHEN \"Sport\" THEN \"sport\"\n  ELSE \"Alle Kapitel 1\"\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6M",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "utc",
+    "title": "Crossmedia Dashboard Prototype",
+    "uid": "YVoS2MmSz",
+    "version": 2,
+    "weekStart": ""
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "id": 542,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "MMjqtInSz",
+  "name": "MDR/NDR TV App Artikel Weekend/past weeked KPI Difference",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "decimals": 1,
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "Differenz"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "percent"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 20,
+      "y": 0
+    },
+    "id": 35,
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "percentChangeColorMode": "standard",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "showPercentChange": false,
+      "textMode": "value_and_name",
+      "wideLayout": true
+    },
+    "pluginVersion": "11.3.1",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH current_value AS (\r\nSELECT\r\n  SUM(COALESCE(m_visits,0)) AS current_sum\r\nFROM\r\n  `ndr-code-bi-dashboard.Piano.total_visits${dataset_visits_zeitraum:raw}`\r\nWHERE site_level2 = ${app_name:doublequote}\r\n  AND page_chapter1 = \"Alle Kapitel 1\"\r\n  AND page_chapter2 = \"Alle Kapitel 2\"\r\n  AND sendungs_id = \"Alle Sendungs-ID\"\r\n  AND date >= ${bq_saturday:doublequote} AND date <= ${bq_sunday:doublequote}\r\n\r\n\r\n), past_value AS (\r\nSELECT\r\n  SUM(COALESCE(m_visits,0)) AS past_sum\r\nFROM\r\n  Piano.total_visits\r\nWHERE site_level2 = ${app_name:doublequote}\r\n  AND page_chapter1 = \"Alle Kapitel 1\"\r\n  AND page_chapter2 = \"Alle Kapitel 2\"\r\n  AND sendungs_id = \"Alle Sendungs-ID\"\r\n  AND ${Vergleichszeitraum:raw}\r\n)\r\n-- SELECT ((current_sum-past_sum)/past_sum)*100 FROM current_value,past_value as relative_difference\r\nSELECT CONCAT(REPLACE(CAST(ROUND(((current_sum-past_sum)/past_sum)*100,1) as string), \".\", \",\"), \"%\") FROM current_value,past_value as relative_difference",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "includeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "Differenz"
+          }
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 3,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 3,
+    "created": "2024-06-20T11:45:47Z",
+    "updated": "2025-03-28T06:59:52Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

@@ -1,0 +1,2150 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "ml-mock-up",
+    "url": "/d/un7-HruVk/ml-mock-up",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:45:18Z",
+    "updated": "2024-07-30T05:44:19Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 2,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 660,
+    "folderUid": "folder-F9a5Uxn4k",
+    "folderTitle": "Prototypes",
+    "folderUrl": "/dashboards/f/folder-F9a5Uxn4k/prototypes",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1419,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 9,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "A score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Facebook Vor 7 Tagen"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "B score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Facebook Vor 8-14 Tagen"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "C score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Instagram Heute"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "D score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Instagram Gestern"
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 12,
+              "x": 0,
+              "y": 1
+            },
+            "id": 2,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "9.2.3",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST([0.5, 0.7, 0.2, 0.3, 0.5, 0.4, 0.9]) AS score\r\n) AS dummy_data\r\n",
+                "refId": "A",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              },
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "hide": false,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST([0.2, 0.4, 0.6, 0.4, 0.7, 0.1, 0.6]) AS score\r\n) AS dummy_data\r\n",
+                "refId": "B",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            ],
+            "title": "Sentiment Analyse ${Plattform} | ${Zeitraum}",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "A score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Facebook Vor 7 Tagen"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "B score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Facebook Vor 8-14 Tagen"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "C score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Instagram Heute"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "D score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Instagram Gestern"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Instagram Heute"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "dark-red",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Instagram Gestern"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "dark-blue",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 12,
+              "x": 12,
+              "y": 1
+            },
+            "id": 7,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "9.2.3",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "hide": false,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST([0.5, 0.1, 0.2, 0.8, 0.3, 0.5, 0.8]) AS score\r\n) AS dummy_data\r\n",
+                "refId": "C",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              },
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "hide": false,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST([0.8, 0.6, 0.1, 0.8, 0.9, 0.5, 0.4]) AS score\r\n) AS dummy_data\r\n",
+                "refId": "D",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            ],
+            "title": "Sentiment Analyse ${Vergleichsplattform} | ${Zeitraum}",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Sentiment Analyse",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 1
+        },
+        "id": 11,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "smooth",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "A score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Facebook Vor 7 Tagen"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "B score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Facebook Vor 8-14 Tagen"
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 17
+            },
+            "id": 6,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST([5,30,50,80,98,100,100]) AS score\r\n) AS dummy_data\r\n",
+                "refId": "A",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              },
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "hide": false,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST([3,10,15,30,40,100,100]) AS score\r\n) AS dummy_data\r\n",
+                "refId": "B",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            ],
+            "title": "Relative Interaktionen zum ersten abgeschlossenen Tag ${Plattform} | ${Zeitraum}",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "smooth",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "A score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Instagram Vor 7 Tagen"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "B score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Instagram Vor 8-14 Tagen"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Instagram Heute"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "dark-red",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Instagram Gestern"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "dark-blue",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Instagram Vor 7 Tagen"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "dark-red",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Instagram Vor 8-14 Tagen"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "dark-blue",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 17
+            },
+            "id": 12,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST([10,50,60,70,88,98,100]) AS score\r\n) AS dummy_data\r\n",
+                "refId": "A",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              },
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "hide": false,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST([20,40,65,75,80,95,100]) AS score\r\n) AS dummy_data\r\n",
+                "refId": "B",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            ],
+            "title": "Relative Interaktionen zum ersten abgeschlossenen Tag ${Vergleichsplattform} | ${Zeitraum}",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  }
+                },
+                "mappings": []
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 6,
+              "y": 25
+            },
+            "id": 4,
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "pieType": "pie",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  score[0],score[1]\r\nFROM (\r\n  SELECT\r\n    score\r\n  FROM UNNEST([(RAND()*1000,\"Montag\"), (RAND()*1000,\"Dienstag\"), (RAND()*1000,\"Mittwoch\"), (RAND()*1000,\"Donnerstag\"), (RAND()*1000,\"Freitag\"), (RAND()*1000,\"Samstag\"), (RAND()*1000,\"Sonntag\")]) AS score\r\n) AS dummy_data\r\n",
+                "refId": "A",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            ],
+            "title": "Durchschnittliche Interaktionen Pro Wochentag",
+            "type": "piechart"
+          }
+        ],
+        "title": "Interaktionen",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 2
+        },
+        "id": 14,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "fillOpacity": 41,
+                  "gradientMode": "hue",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineWidth": 1,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Veröffentlichte Posts"
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 18
+            },
+            "id": 16,
+            "options": {
+              "barRadius": 0.05,
+              "barWidth": 0.96,
+              "groupWidth": 0.7,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "orientation": "auto",
+              "showValue": "auto",
+              "stacking": "none",
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              },
+              "xTickLabelRotation": 0,
+              "xTickLabelSpacing": 0
+            },
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  CAST(number AS STRING) AS zeit,\r\n  ROUND(RAND() * 100) AS score\r\nFROM\r\n  UNNEST(GENERATE_ARRAY(1, 24)) AS number\r\n",
+                "refId": "A",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            ],
+            "title": "Anzahl der Posts pro Stunde",
+            "transparent": true,
+            "type": "barchart"
+          },
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "fillOpacity": 48,
+                  "gradientMode": "hue",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineWidth": 1,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Interaktionen"
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 26
+            },
+            "id": 17,
+            "options": {
+              "barRadius": 0.05,
+              "barWidth": 0.96,
+              "groupWidth": 0.7,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "orientation": "auto",
+              "showValue": "auto",
+              "stacking": "none",
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              },
+              "xTickLabelRotation": 0,
+              "xTickLabelSpacing": 0
+            },
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  CAST(number AS STRING) AS zeit,\r\n  ROUND(RAND() * 1000) AS score\r\nFROM\r\n  UNNEST(GENERATE_ARRAY(1, 24)) AS number\r\n",
+                "refId": "A",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            ],
+            "title": "Interaktionen pro Stunde",
+            "transparent": true,
+            "type": "barchart"
+          }
+        ],
+        "title": "Clustering",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 3
+        },
+        "id": 19,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "A score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Facebook Vor 7 Tagen"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "B score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Facebook Vor 8-14 Tagen"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "C score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Instagram Heute"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "D score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Instagram Gestern"
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 12,
+              "x": 0,
+              "y": 4
+            },
+            "id": 22,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "9.2.3",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST(ARRAY_REVERSE(GENERATE_ARRAY(100000,120000,20000/6))) AS score\r\n) AS dummy_data\r\n",
+                "refId": "A",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              },
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "hide": false,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST(ARRAY_REVERSE(GENERATE_ARRAY(80000,100000,20000/6))) AS score\r\n) AS dummy_data\r\n",
+                "refId": "B",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            ],
+            "title": "Followers ${Plattform} | ${Zeitraum}",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Facebook Nächste 7 Tagen"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "B score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Facebook Vor 8-14 Tagen"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "C score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Instagram Heute"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "D score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Instagram Gestern"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Facebook Nächste 7 Tagen"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "dark-orange",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 12,
+              "x": 12,
+              "y": 4
+            },
+            "id": 24,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "9.2.3",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST(ARRAY_REVERSE(GENERATE_ARRAY(100000,120000,20000/6))) AS score\r\n) AS dummy_data\r\n",
+                "refId": "A",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            ],
+            "title": "Followers ${Plattform} | ${Schaetzungszeitraum}",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "A score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Facebook Vor 7 Tagen"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "B score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Facebook Vor 8-14 Tagen"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "C score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Instagram Heute"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "D score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Instagram Gestern"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Instagram Heute"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "dark-red",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Instagram Gestern"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "dark-blue",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 12,
+              "x": 0,
+              "y": 11
+            },
+            "id": 23,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "9.2.3",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "hide": false,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST(ARRAY_REVERSE(GENERATE_ARRAY(60000,70000,10000/6))) AS score\r\n) AS dummy_data\r\n",
+                "refId": "C",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              },
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "hide": false,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST(ARRAY_REVERSE(GENERATE_ARRAY(40000,60000,20000/6))) AS score\r\n) AS dummy_data\r\n",
+                "refId": "D",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            ],
+            "title": "Followers ${Vergleichsplattform} | ${Zeitraum}",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "score"
+                  },
+                  "properties": [
+                    {
+                      "id": "displayName",
+                      "value": "Instagram Nächste 7 Tage"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Instagram Nächste 7 Tage"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "dark-purple",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 12,
+              "x": 12,
+              "y": 11
+            },
+            "id": 25,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "9.2.3",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-bigquery-datasource",
+                  "uid": "qUaUqEk4k"
+                },
+                "editorMode": "code",
+                "format": 1,
+                "hide": false,
+                "location": "europe-west3",
+                "project": "ndr-code-bi-dashboard",
+                "rawQuery": true,
+                "rawSql": "SELECT\r\n  *\r\nFROM (\r\n  SELECT\r\n    score,\r\n    DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL (ROW_NUMBER() OVER () - 1) DAY) AS zeit\r\n  FROM UNNEST(ARRAY_REVERSE(GENERATE_ARRAY(60000,70000,10000/6))) AS score\r\n) AS dummy_data\r\n",
+                "refId": "C",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            ],
+            "title": "Followers ${Vergleichsplattform} | ${Schaetzungszeitraum}",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Vorhersage",
+        "type": "row"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "NDR Info",
+            "value": "NDR Info"
+          },
+          "description": "",
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Profil",
+          "options": [
+            {
+              "selected": true,
+              "text": "NDR Info",
+              "value": "NDR Info"
+            },
+            {
+              "selected": false,
+              "text": "NDR Sport",
+              "value": "NDR Sport"
+            }
+          ],
+          "query": "NDR Info, NDR Sport",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "Vor 7 Tagen",
+            "value": "Vor 7 Tagen"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Zeitraum",
+          "options": [
+            {
+              "selected": false,
+              "text": "Heute",
+              "value": "Heute"
+            },
+            {
+              "selected": false,
+              "text": "Gestern",
+              "value": "Gestern"
+            },
+            {
+              "selected": true,
+              "text": "Vor 7 Tagen",
+              "value": "Vor 7 Tagen"
+            },
+            {
+              "selected": false,
+              "text": "Vor 31 Tagen",
+              "value": "Vor 31 Tagen"
+            }
+          ],
+          "query": "Heute, Gestern, Vor 7 Tagen, Vor 31 Tagen",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "Nächste 7 Tage",
+            "value": "Nächste 7 Tage"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Schaetzungszeitraum",
+          "options": [
+            {
+              "selected": false,
+              "text": "Morgen",
+              "value": "Morgen"
+            },
+            {
+              "selected": true,
+              "text": "Nächste 7 Tage",
+              "value": "Nächste 7 Tage"
+            },
+            {
+              "selected": false,
+              "text": "Nächste 31 Tage",
+              "value": "Nächste 31 Tage"
+            }
+          ],
+          "query": "Morgen, Nächste 7 Tage, Nächste 31 Tage",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "Facebook",
+            "value": "Facebook"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Plattform",
+          "options": [
+            {
+              "selected": true,
+              "text": "Facebook",
+              "value": "Facebook"
+            }
+          ],
+          "query": "Facebook",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "Instagram",
+            "value": "Instagram"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Vergleichsplattform",
+          "options": [
+            {
+              "selected": true,
+              "text": "Instagram",
+              "value": "Instagram"
+            },
+            {
+              "selected": false,
+              "text": "Youtube",
+              "value": "Youtube"
+            },
+            {
+              "selected": false,
+              "text": "Tiktok",
+              "value": "Tiktok"
+            }
+          ],
+          "query": "Instagram, Youtube, Tiktok",
+          "skipUrlSync": false,
+          "type": "custom"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-7d",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "ML - Mock Up",
+    "uid": "un7-HruVk",
+    "version": 2,
+    "weekStart": ""
+  }
+}

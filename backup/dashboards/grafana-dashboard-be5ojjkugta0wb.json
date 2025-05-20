@@ -1,0 +1,742 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "minerva-langzeittrends",
+    "url": "/d/be5ojjkugta0wb/minerva-langzeittrends",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-12-02T06:56:05Z",
+    "updated": "2025-03-13T14:41:40Z",
+    "updatedBy": "bernd kuch dev",
+    "createdBy": "chams khoury dev",
+    "version": 11,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 1656,
+    "folderUid": "eefpxafenu7eoa",
+    "folderTitle": "Archive_delete_30-03-2025",
+    "folderUrl": "/dashboards/f/eefpxafenu7eoa/archive-delete-30-03-2025",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1576,
+    "links": [],
+    "panels": [
+      {
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 13,
+          "x": 0,
+          "y": 0
+        },
+        "id": 4,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "# 📊 Hinweise\n\n- Teilweise unterscheiden sich die vorliegenden Daten je nach Kennwert, Profil und Plattform. Liegen keine Daten vor, wird 0 ausgewiesen.",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.3.1",
+        "title": "",
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byType",
+                "options": "number"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 24,
+          "x": 0,
+          "y": 3
+        },
+        "id": 3,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "DECLARE monat STRING;\nSET monat = \"\"\"$table_months\"\"\";\n\nEXECUTE IMMEDIATE format(\"\"\"\nSELECT * FROM (\n  SELECT \n  profile AS profile, \n  IFNULL(($metrik_feld),0) AS metric,\n  CASE monat\n  WHEN 1 THEN CONCAT(\"Januar\", jahr)\n  WHEN 2 THEN CONCAT(\"Februar\", jahr)\n  WHEN 3 THEN CONCAT(\"März\", jahr)\n  WHEN 4 THEN CONCAT(\"April\", jahr)\n  WHEN 5 THEN CONCAT(\"Mai\", jahr)\n  WHEN 6 THEN CONCAT(\"Juni\", jahr)\n  WHEN 7 THEN CONCAT(\"Juli\", jahr)\n  WHEN 8 THEN CONCAT(\"August\", jahr)\n  WHEN 9 THEN CONCAT(\"September\", jahr)\n  WHEN 10 THEN CONCAT(\"Oktober\", jahr)\n  WHEN 11 THEN CONCAT(\"November\", jahr)\n  WHEN 12 THEN CONCAT(\"Dezember\", jahr) END AS year_month\n  FROM Quintly_frozen.${Table:raw}\n  WHERE monat != 13 \n  AND profile IN UNNEST(SPLIT(\"${Profil:raw}\", \",\"))\n  AND DATE(jahr, monat, 1) BETWEEN DATE_SUB(DATE(EXTRACT(YEAR FROM DATE(\"$todayDate\")), EXTRACT(MONTH FROM DATE(\"$todayDate\")),1), INTERVAL $Monate - 0 MONTH) AND DATE(\"$langzeittrends_toDate\")\n)\nPIVOT (MAX(metric) FOR year_month IN (%s))\nORDER BY profile;\n\"\"\", monat);",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$SocialMedia | $Metriken | Letzte $Monate Monate",
+        "transformations": [
+          {
+            "id": "renameByRegex",
+            "options": {
+              "regex": "(Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)(\\d{4})",
+              "renamePattern": "$1 $2"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "includeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "profile": "Profil"
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 14,
+          "w": 24,
+          "x": 0,
+          "y": 13
+        },
+        "id": 1,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto",
+            "height": 600
+          },
+          "editorMode": "code",
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "function formatDate(timestamp) {\n  const date = new Date(timestamp);\n  let day = ('0' + date.getDate()).slice(-2);\n  let month = ('0' + (date.getMonth() + 1)).slice(-2);\n  let year = date.getFullYear();\n  return `${month}.${year}`;\n}\n\nconst profilesData = {};\nconst timeValues = context.panel.data.series[0].fields.find(f => f.name === 'datum').values;\n\nconst colorPalette = [\n  \"rgb(24, 116, 255)\", \"rgb(255, 99, 71)\", \"rgb(60, 179, 113)\",\n  \"rgb(255, 215, 0)\", \"rgb(138, 43, 226)\", \"rgb(255, 165, 0)\",\n  \"rgb(75, 0, 130)\", \"rgb(173, 255, 47)\", \"rgb(47, 79, 79)\"\n];\n\ncontext.panel.data.series.forEach((s) => {\n  const profile = s.fields.find(f => f.name === 'profile').values;\n  const impressions = s.fields.find(f => f.name === 'metric').values;\n\n  profile.forEach((profileName, index) => {\n    if (!profilesData[profileName]) {\n      profilesData[profileName] = [];\n    }\n    profilesData[profileName].push([timeValues[index], impressions[index]]);\n  });\n});\n\nconst series = Object.keys(profilesData).map((profileName, idx) => ({\n  name: profileName,\n  type: 'line',\n  smooth: false,\n  showSymbol: false,\n  itemStyle: {\n    color: colorPalette[idx % colorPalette.length]\n  },\n  data: profilesData[profileName],\n}));\n\nconst xAxis = {\n  type: 'category',\n  data: timeValues,\n  axisLabel: {\n    hideOverlap: true,\n  },\n};\n\nconst yAxis = {\n  type: 'value',\n  min: '0',\n  axisLabel: {\n    formatter: function (value) {\n      return value.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n    }\n  },\n};\n\nconst legend = {\n  orient: 'horizontal',\n  left: 'center',\n  bottom: '0%',\n  itemGap: 10,\n  textStyle: {\n    fontSize: 16\n  },\n  // selected: Object.fromEntries(Object.keys(profilesData).map(profileName => [profileName, false]))\n\n};\n\nconst tooltip = {\n  trigger: 'axis',\n  axisPointer: {\n    type: 'cross'\n  }\n};\n\nconst grid = {\n  left: '2%',\n  right: '2%',\n  top: '2%',\n  bottom: '18%',\n  containLabel: true,\n};\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip,\n  legend,\n  xAxis,\n  yAxis,\n  grid,\n  series,\n};\n",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "canvas",
+          "themeEditor": {
+            "config": "{}",
+            "height": 400,
+            "name": "default"
+          },
+          "visualEditor": {
+            "code": "return {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+            "dataset": [],
+            "series": []
+          }
+        },
+        "pluginVersion": "6.1.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  IFNULL($metrik_feld,0) AS metric,\r\n  profile,\r\n  CASE monat\r\n  WHEN 1 THEN CONCAT(\"Jan. \", jahr)\r\n  WHEN 2 THEN CONCAT(\"Feb. \", jahr)\r\n  WHEN 3 THEN CONCAT(\"März \", jahr)\r\n  WHEN 4 THEN CONCAT(\"Apr. \", jahr)\r\n  WHEN 5 THEN CONCAT(\"Mai \", jahr)\r\n  WHEN 6 THEN CONCAT(\"Juni \", jahr)\r\n  WHEN 7 THEN CONCAT(\"Juli \", jahr)\r\n  WHEN 8 THEN CONCAT(\"Aug. \", jahr)\r\n  WHEN 9 THEN CONCAT(\"Sep. \", jahr)\r\n  WHEN 10 THEN CONCAT(\"Okt. \", jahr)\r\n  WHEN 11 THEN CONCAT(\"Nov. \", jahr)\r\n  WHEN 12 THEN CONCAT(\"Dez. \", jahr) END AS datum,\r\n  \"line\" AS typ\r\nFROM Quintly_frozen.${Table}\r\nWHERE monat != 13 \r\n      AND profile IN UNNEST(SPLIT(\"${Profil:raw}\", \",\"))\r\n      AND DATE(jahr, monat, 1) BETWEEN DATE_SUB(DATE(EXTRACT(YEAR FROM DATE(\"$todayDate\")), EXTRACT(MONTH FROM DATE(\"$todayDate\")), 1), INTERVAL $Monate - 0 MONTH) AND DATE(\"$langzeittrends_toDate\")\r\nORDER BY DATE(jahr, monat, 1) ASC",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$SocialMedia | $Metriken | Letzte $Monate Monate",
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      }
+    ],
+    "preload": false,
+    "schemaVersion": 40,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "Facebook",
+            "value": "Facebook"
+          },
+          "label": "Social Media",
+          "name": "SocialMedia",
+          "options": [
+            {
+              "selected": true,
+              "text": "Facebook",
+              "value": "Facebook"
+            },
+            {
+              "selected": false,
+              "text": "Instagram",
+              "value": "Instagram"
+            },
+            {
+              "selected": false,
+              "text": "YouTube",
+              "value": "YouTube"
+            }
+          ],
+          "query": "Facebook, Instagram, YouTube",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "facebookID",
+            "value": "facebookID"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "profileIdField",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$SocialMedia\"\r\nWHEN \"Facebook\" THEN \"facebookID\"\r\nWHEN \"Instagram\" THEN \"instagramID\"\r\nWHEN \"YouTube\" THEN \"youtubeID\"\r\nWHEN \"TikTok\" THEN \"tiktokID\" END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Follower",
+            "value": "Follower"
+          },
+          "definition": "",
+          "name": "Metriken",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  *\r\nFROM UNNEST(\r\n  CASE '$SocialMedia'\r\n    WHEN 'Facebook' THEN [\r\n      'Follower',\r\n      'Ø Potenzielle Reichweite/Tag',\r\n      'Videostarts 10 Sek.',\r\n      'Videostarts 3 Sek.',\r\n      'Ges. Wiedergabed. in Std.',\r\n      'Interaktionen',\r\n      'Reaktionen',\r\n      'Kommentare',\r\n      'Shares',\r\n      'Ø Interaktionsrate/Post',\r\n      'Ø Potenzielle Reichweite/Post',\r\n      '10s Views/Video',\r\n      '3s Views/Video',\r\n      'Ø Wiedergabedauer in %/Video',\r\n      'Ø Wiedergabedauer in Sek/Video',\r\n      'Anzahl Posts',\r\n      'Anzahl Videos'\r\n    ]\r\n    WHEN 'Instagram' THEN [\r\n      'Follower',\r\n      'Ø Potenzielle Reichweite/Tag',\r\n      'Ø Potenzielle Reichweite/Post',\r\n      'Interaktionen',\r\n      'Ø Interaktionsrate/Post',\r\n      'Videostarts',\r\n      'Ges. Wiedergabed. in Std.',\r\n      'Ø Wiedergabedauer in Sek/Reel',\r\n      'Ø Potenzielle Reichweite/Story',\r\n      'Anzahl Beiträge',\r\n      'Anzahl Reels',\r\n      'Anzahl Storys'\r\n    ]\r\n    WHEN 'YouTube' THEN [\r\n      'Abonnenten',\r\n      'Videostarts',\r\n      'Interaktionen',\r\n      'Ges. Wiedergabed. in Std.',\r\n      'Ges. Wiedergabed. in Sek.',\r\n      'Ges. Wiedergabed. in %',\r\n      'Videostarts (Videos im Zeitraum veröffentlicht)',\r\n      'Interaktionen (Videos im Zeitraum veröffentlicht)',\r\n      'Ø Interaktionsrate/Video (Videos im Zeitraum veröffentlicht)',\r\n      'Ges. Wiedergabed. in Std. (Videos im Zeitraum veröffentlicht)',\r\n      'Ø Wiedergabedauer in Sek/Video (Videos im Zeitraum veröffentlicht)',\r\n      'Veröffentlichte Videos'\r\n    ]\r\n  END\r\n)\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "definition": "",
+          "includeAll": true,
+          "multi": true,
+          "name": "Profil",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT DISTINCT profile\r\nFROM Quintly.profiles \r\nWHERE $profileIdField != 0\r\nAND LRA = \"NDR\"\r\nUNION ALL\r\nSELECT \"Tagesschau\"\r\nORDER BY LOWER(profile) ASC",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "25",
+            "value": "25"
+          },
+          "name": "Monate",
+          "options": [
+            {
+              "selected": false,
+              "text": "13",
+              "value": "13"
+            },
+            {
+              "selected": true,
+              "text": "25",
+              "value": "25"
+            }
+          ],
+          "query": "13, 25",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "2024-10-01",
+            "value": "2024-10-01"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "langzeittrends_toDate",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE\nWHEN CURRENT_DATE > DATE(EXTRACT(YEAR from CURRENT_DATE), EXTRACT(MONTH from CURRENT_DATE), 7) THEN DATE(EXTRACT(YEAR from DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH)), EXTRACT(MONTH from DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH)), 1)\nELSE DATE(EXTRACT(YEAR from DATE_SUB(CURRENT_DATE, INTERVAL 2 MONTH)), EXTRACT(MONTH from DATE_SUB(CURRENT_DATE, INTERVAL 2 MONTH)), 1) END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2024-12-02",
+            "value": "2024-12-02"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "todayDate",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CURRENT_DATE()\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "'November2022','Dezember2022','Januar2023','Februar2023','März2023','April2023','Mai2023','Juni2023','Juli2023','August2023','September2023','Oktober2023','November2023','Dezember2023','Januar2024','Februar2024','März2024','April2024','Mai2024','Juni2024','Juli2024','August2024','September2024','Oktober2024'",
+            "value": "'November2022','Dezember2022','Januar2023','Februar2023','März2023','April2023','Mai2023','Juni2023','Juli2023','August2023','September2023','Oktober2023','November2023','Dezember2023','Januar2024','Februar2024','März2024','April2024','Mai2024','Juni2024','Juli2024','August2024','September2024','Oktober2024'"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "table_months",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CONCAT(\"'\",STRING_AGG(datum, \"','\" ORDER BY jahr ASC, monat ASC), \"'\") FROM (\nSELECT DISTINCT CASE monat\nWHEN 1 THEN CONCAT(\"Januar\", jahr)\nWHEN 2 THEN CONCAT(\"Februar\", jahr)\nWHEN 3 THEN CONCAT(\"März\", jahr)\nWHEN 4 THEN CONCAT(\"April\", jahr)\nWHEN 5 THEN CONCAT(\"Mai\", jahr)\nWHEN 6 THEN CONCAT(\"Juni\", jahr)\nWHEN 7 THEN CONCAT(\"Juli\", jahr)\nWHEN 8 THEN CONCAT(\"August\", jahr)\nWHEN 9 THEN CONCAT(\"September\", jahr)\nWHEN 10 THEN CONCAT(\"Oktober\", jahr)\nWHEN 11 THEN CONCAT(\"November\", jahr)\nWHEN 12 THEN CONCAT(\"Dezember\", jahr)\nEND AS datum,\nmonat,\njahr\nFROM Quintly_frozen.facebook_metrics\nWHERE profile IS NOT NULL\nAND LRA = \"$LRA\"\nAND monat IS NOT NULL\nAND monat != 13\nAND DATE(jahr,monat,1) BETWEEN DATE_SUB(DATE(EXTRACT(YEAR FROM DATE(\"$todayDate\")), EXTRACT(MONTH FROM DATE(\"$todayDate\")), 1), INTERVAL $Monate MONTH)\n              AND DATE(\"$langzeittrends_toDate\"))\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2023",
+            "value": "2023"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "langzeittrends_year",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CAST(jahr AS STRING) AS string_value FROM `ndr-code-bi-dashboard.Quintly_frozen.facebook_metrics` where jahr is not null ",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "NDR",
+            "value": "NDR"
+          },
+          "hide": 2,
+          "name": "LRA",
+          "options": [
+            {
+              "selected": true,
+              "text": "NDR",
+              "value": "NDR"
+            }
+          ],
+          "query": "NDR",
+          "skipUrlSync": true,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "facebook_metrics",
+            "value": "facebook_metrics"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "Table",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "Select CASE \nWHEN \"$SocialMedia\" = \"Facebook\" THEN \"facebook_metrics\"\nWHEN \"$SocialMedia\" = \"YouTube\" THEN \"youtube_metrics\"\nWHEN \"$SocialMedia\" = \"Instagram\" THEN \"instagram_metrics\"\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "page_follows",
+            "value": "page_follows"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "metrik_feld",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"$SocialMedia\"\r\nWHEN \"Facebook\" THEN\r\n    CASE \"$Metriken\"\r\n    WHEN \"Follower\" THEN \"page_follows\"\r\n    WHEN \"Ø Potenzielle Reichweite/Tag\" THEN \"pot_reichweite_pro_tag\"\r\n    WHEN \"Videostarts 10 Sek.\" THEN \"views_10s\"\r\n    WHEN \"Videostarts 3 Sek.\" THEN \"views_3s\"\r\n    WHEN \"Ges. Wiedergabed. in Std.\" THEN \"Sehvolumen\"\r\n    WHEN \"Interaktionen\" THEN \"interactions\"\r\n    WHEN \"Reaktionen\" THEN \"reactions\"\r\n    WHEN \"Kommentare\" THEN \"comments\"\r\n    WHEN \"Shares\" THEN \"shares\"\r\n    WHEN \"Ø Interaktionsrate/Post\" THEN \"interaction_rate_per_post\"\r\n    WHEN \"Ø Potenzielle Reichweite/Post\" THEN \"pot_reichweite_pro_post\"\r\n    WHEN \"10s Views/Video\" THEN \"views_10s_per_video\"\r\n    WHEN \"3s Views/Video\" THEN \"views_3s_per_video\"\r\n    WHEN \"Ø Wiedergabedauer in %/Video\" THEN \"avg_wiedergabedauer_in_video\"\r\n    WHEN \"Ø Wiedergabedauer in Sek/Video\" THEN \"avg_wiedergabedauer_in_sec_pro_video\"\r\n    WHEN \"Anzahl Posts\" THEN \"anzahlPosts\"\r\n    WHEN \"Anzahl Videos\" THEN \"anzahlVideos\" END \r\nWHEN \"Instagram\" THEN\r\n    CASE \"$Metriken\"\r\n    WHEN \"Follower\" THEN \"followers\"\r\n    WHEN \"Ø Potenzielle Reichweite/Tag\" THEN \"pot_reichweite_pro_tag\"\r\n    WHEN \"Ø Potenzielle Reichweite/Post\" THEN \"pot_reichweite_pro_post\"\r\n    WHEN \"Interaktionen\" THEN \"interactions\"\r\n    WHEN \"Ø Interaktionsrate/Post\" THEN \"interaction_rate_per_post\"\r\n    WHEN \"Videostarts\" THEN \"videostarts\"\r\n    WHEN \"Ges. Wiedergabed. in Std.\" THEN \"Sehvolumen\"\r\n    WHEN \"Ø Wiedergabedauer in Sek/Reel\" THEN \"avg_wiedergabedauer_in_sec_pro_reel\"\r\n    WHEN \"Ø Potenzielle Reichweite/Story\" THEN \"pot_reichweite_pro_story\"\r\n    WHEN \"Anzahl Beiträge\" THEN \"anzahlPosts\"\r\n    WHEN \"Anzahl Reels\" THEN \"post_reels\"\r\n    WHEN \"Anzahl Storys\" THEN \"anzahlStory\" END\r\nWHEN \"YouTube\" THEN\r\n    CASE \"$Metriken\"\r\n    WHEN \"Abonnenten\" THEN \"abonnements\"\r\n    WHEN \"Videostarts\" THEN \"videostarts_zeitraum_genutzt\"\r\n    WHEN \"Interaktionen\" THEN \"interactions_zeitraum_genutzt\"\r\n    WHEN \"Ges. Wiedergabed. in Std.\" THEN \"sehVolumen_in_std_zeitraum_genutzt\"\r\n    WHEN \"Ges. Wiedergabed. in Sek.\" THEN \"avg_wiedergabedauer_in_sec_pro_video\"\r\n    WHEN \"Ges. Wiedergabed. in %\" THEN \"percentage_avg_wiedergabendauer_zeitraum_genutzt\"\r\n    WHEN \"Videostarts (Videos im Zeitraum veröffentlicht)\" THEN \"videostarts_zeitraum_veroeffentlicht\"\r\n    WHEN \"Interaktionen (Videos im Zeitraum veröffentlicht)\" THEN \"interactions_zeitraum_veroeffentlicht\"\r\n    WHEN \"Ø Interaktionsrate/Video (Videos im Zeitraum veröffentlicht)\" THEN \"interaction_rate_per_video\"\r\n    WHEN \"Ges. Wiedergabed. in Std. (Videos im Zeitraum veröffentlicht)\" THEN \"sehVolumen_in_std_zeitraum_veroeffentlicht\"\r\n    WHEN \"Ø Wiedergabedauer in Sek/Video (Videos im Zeitraum veröffentlicht)\" THEN \"avg_wiedergabedauer_in_sec_pro_video_zeitraum_veroeffentlicht\"\r\n    WHEN \"Veröffentlichte Videos\" THEN \"anzahlVideos_zeitraum_veroffentlicht\" END\r\nEND\r\n    ",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "hidden": true
+    },
+    "timezone": "Europe/Berlin",
+    "title": "Minerva Langzeittrends",
+    "uid": "be5ojjkugta0wb",
+    "version": 11,
+    "weekStart": ""
+  }
+}

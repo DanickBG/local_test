@@ -1,0 +1,197 @@
+{
+  "id": 566,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "pRVRn-94k",
+  "name": "MDR TV Top Web Video Vergleichszeitraum ",
+  "kind": 1,
+  "type": "table-old",
+  "description": "",
+  "model": {
+    "columns": [],
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fontSize": "200%",
+    "gridPos": {
+      "h": 20,
+      "w": 12,
+      "x": 12,
+      "y": 6
+    },
+    "id": 39,
+    "libraryPanel": {
+      "description": "",
+      "meta": {
+        "connectedDashboards": 2,
+        "created": "2023-07-04T12:06:24Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/4a92c2b6018592d02496e79aad6725b0",
+          "id": 10,
+          "name": "david.josiger@ida.me"
+        },
+        "folderName": "Panels Library",
+        "folderUid": "folder-PjWklf8Vz",
+        "updated": "2023-12-04T13:57:23Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        }
+      },
+      "name": "MDR TV Top Web Video Vergleichszeitraum ",
+      "type": "table-old",
+      "uid": "pRVRn-94k",
+      "version": 17
+    },
+    "options": {
+      "footer": {
+        "fields": "",
+        "reducer": [
+          "sum"
+        ],
+        "show": false
+      },
+      "showHeader": true
+    },
+    "pageSize": null,
+    "pluginVersion": "9.2.3",
+    "showHeader": true,
+    "sort": {
+      "col": 2,
+      "desc": true
+    },
+    "styles": [
+      {
+        "$$hashKey": "object:132",
+        "alias": "Sophora ID",
+        "align": "left",
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "decimals": 2,
+        "mappingType": 1,
+        "pattern": "bi_av_content_id",
+        "thresholds": [],
+        "type": "string",
+        "unit": "short"
+      },
+      {
+        "$$hashKey": "object:1695",
+        "alias": "Titel",
+        "align": "auto",
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "decimals": 2,
+        "mappingType": 1,
+        "pattern": "bi_av_content",
+        "thresholds": [],
+        "type": "number",
+        "unit": "short"
+      },
+      {
+        "$$hashKey": "object:1706",
+        "alias": "Wiedergaben",
+        "align": "center",
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "decimals": 2,
+        "mappingType": 1,
+        "pattern": "wiedergabe",
+        "thresholds": [],
+        "type": "number",
+        "unit": "locale"
+      }
+    ],
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT \r\nCASE\r\n    WHEN length(bi_av_content) > 90 THEN SUBSTR(bi_av_content, 0 , 90) || '...'\r\n    ELSE bi_av_content\r\n  END AS bi_av_content,sum(m_av_playbacks) as wiedergabe,\r\nFROM\r\n(\r\nSELECT\r\nbi_av_content_id,\r\nm_av_playbacks,\r\nFIRST_VALUE(bi_av_content) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) as bi_av_content, \r\nFROM \r\nndr-code-bi-dashboard.Piano.av_joined_daily\r\nWHERE site_level2 = \"$LRA\" AND\r\n\"$Redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n\"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags) AND\r\n(\"$Sendung\" = sendungs_id OR \"$Sendung\" IN UNNEST(sendungs_id_tags)) AND\r\n(av_content_type = \"video\" OR av_content_type = \"Video\")\r\nAND bi_av_content_id NOT LIKE '%index%'\r\nAND $Vergleichszeitraum) GROUP BY bi_av_content,bi_av_content_id\r\nORDER BY 2 DESC\r\nLimit 10",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "transform": "table",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "av_content_duration": true,
+            "av_content_type": true,
+            "bi_av_publication_date": false,
+            "device_type": true,
+            "wiedergaberate": true
+          },
+          "indexByName": {
+            "bi_av_content": 0,
+            "bi_av_content_id": 1,
+            "wiedergabe": 2
+          },
+          "renameByName": {
+            "bi_av_content": "Title",
+            "bi_av_publication_date": "Publiziert"
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "table-old"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 1,
+    "created": "2024-06-20T11:45:51Z",
+    "updated": "2024-06-20T11:45:51Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

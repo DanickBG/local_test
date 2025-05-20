@@ -1,0 +1,4390 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "quotenreport-copy-silke",
+    "url": "/d/IbLuvZoIk/quotenreport-copy-silke",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:41:54Z",
+    "updated": "2024-07-30T05:38:49Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 2,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 1185,
+    "folderUid": "folder-eyYMKsQIk",
+    "folderTitle": "Archive_delete_30-09-2024",
+    "folderUrl": "/dashboards/f/folder-eyYMKsQIk/archive-delete-30-09-2024",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1258,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "Nur zur ARD-internen Verwendung!",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 11,
+          "y": 0
+        },
+        "id": 163,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 9,
+          "x": 15,
+          "y": 0
+        },
+        "id": 136,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "# Dataset:  ${dataset}\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \"$dataset\"",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Debugging Panel ",
+        "type": "text"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 3
+        },
+        "id": 145,
+        "panels": [],
+        "title": "Jahresdaten | ${LRA:text}",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 2,
+          "y": 4
+        },
+        "id": 87,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "</br><center><font size=\"5\" style=\"font-weight:bold;\">Anzahl Sendungen</font></center>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "transparent",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 6,
+          "y": 4
+        },
+        "id": 89,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quotenreport_Sample",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "--SELECT Anzahl_Elemente\r\n--FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts` \r\nSELECT COUNT(Datum)\r\nFROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Sendungsliste`\r\nWHERE EXTRACT(YEAR from CAST(LEFT(Datum, 10) as DATE FORMAT \"DD.MM.YYYY\")) = $Jahr\r\n--AND EXTRACT(MONTH from CAST(LEFT(Datum, 10) as DATE FORMAT \"DD.MM.YYYY\")) = $Monat",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$Jahr",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#525258",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 10,
+          "y": 4
+        },
+        "id": 90,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT COUNT(Datum)\r\nFROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Sendungsliste`\r\nWHERE EXTRACT(YEAR from CAST(LEFT(Datum, 10) as DATE FORMAT \"DD.MM.YYYY\")) = $LastJahr\r\n--AND EXTRACT(MONTH from CAST(LEFT(Datum, 10) as DATE FORMAT \"DD.MM.YYYY\")) = $Monat",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$LastJahr",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#525258",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 12,
+          "y": 4
+        },
+        "id": 91,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT COUNT(Datum)\r\nFROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Sendungsliste`\r\nWHERE EXTRACT(YEAR from CAST(LEFT(Datum, 10) as DATE FORMAT \"DD.MM.YYYY\")) =  $LastLastJahr\r\n--AND EXTRACT(MONTH from CAST(LEFT(Datum, 10) as DATE FORMAT \"DD.MM.YYYY\")) = $Monat",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$LastLastJahr",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "transparent",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 7
+        },
+        "id": 85,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "transparent",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 2,
+          "x": 0,
+          "y": 8
+        },
+        "id": 69,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 2,
+          "y": 8
+        },
+        "id": 169,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "\n<center><font size=\"5\" style=\"font-weight:bold;\">Sehbeteiligung in Mio.</font></center>\n",
+          "mode": "html"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 6,
+          "y": 8
+        },
+        "id": 78,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<center><font size=\"5\" style=\"font-weight:bold;\">Marktanteil in %</font></center>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 10,
+          "y": 8
+        },
+        "id": 79,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<center><font size=\"5\" style=\"font-weight:bold;\">Seher in Mio.</font></center>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 14,
+          "y": 8
+        },
+        "id": 80,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<center><font size=\"5\" style=\"font-weight:bold;\">Verweildauer</font></center>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 18,
+          "y": 8
+        },
+        "id": 81,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<center><font size=\"5\" style=\"font-weight:bold;\">Durchschnittsalter</font></center>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 2,
+          "x": 0,
+          "y": 10
+        },
+        "id": 82,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<br/><br/>\n<font size=\"6\" color=\"#2671c6\" style=\"font-weight:bold;\">BRD</font>\n<br/>\n<font size=\"6\" color=\"#2671c6\" style=\"font-weight:bold;\"> Gesamt</font>",
+          "mode": "html"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 0.5
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Sehbeteiligung"
+              },
+              "properties": [
+                {
+                  "id": "displayName"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 2,
+          "y": 10
+        },
+        "id": 72,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ($LRA = 2) THEN (\r\n  --SELECT \"\" as Sehbeteiligung\r\n  SELECT \r\n      Sehbeteiligung\r\n    FROM (SELECT  2024 as Jahr, avg(Sehbeteiligung) as Sehbeteiligung\r\n    FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts` \r\n    WHERE Zielgruppe = \"BRD gesamt\"\r\n    GROUP BY Jahr)\r\n    WHERE Jahr = $Jahr\r\n);\r\nELSE (\r\n      SELECT \r\n      Sehbeteiligung\r\n    FROM (SELECT  2024 as Jahr, avg(Sehbeteiligung) as Sehbeteiligung\r\n    FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Monatswerte` \r\n    GROUP BY Jahr)\r\n    WHERE Jahr = $Jahr\r\n);\r\nEND IF;\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$Jahr:",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 20
+                },
+                {
+                  "color": "green",
+                  "value": 25
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 6,
+          "y": 10
+        },
+        "id": 92,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ($LRA = 2) THEN (\r\n  SELECT Marktanteil\r\n  FROM (SELECT  2024 as Jahr, avg(Marktanteil) as Marktanteil,\r\n  FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Monatswerte` \r\n  WHERE Zielgruppe = \"BRD gesamt\"\r\n  GROUP BY Jahr)\r\n  WHERE Jahr = $Jahr \r\n);\r\nELSE (\r\n  SELECT Marktanteil\r\n  FROM (SELECT  2024 as Jahr, avg(Marktanteil) as Marktanteil,\r\n  FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Monatswerte` \r\n  GROUP BY Jahr)\r\n  WHERE Jahr = $Jahr\r\n);\r\nEND IF",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$Jahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 7.5
+                },
+                {
+                  "color": "green",
+                  "value": 10
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 10,
+          "y": 10
+        },
+        "id": 122,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT Seher\r\nFROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts` \r\nWHERE Zielgruppe = \"BRD gesamt\"",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$Jahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "orange",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "dthms"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 14,
+          "y": 10
+        },
+        "id": 94,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT (EXTRACT(HOUR from Verweildauer)*3600)+(EXTRACT(MINUTE from Verweildauer)*60)+(EXTRACT(SECOND from Verweildauer)) as Verweildauer_in_Sec\r\nFROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Verweildauer` \r\n--WHERE Zielgruppe = \"BRD gesamt\"\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$Jahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 1,
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#cd6aff",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 18,
+          "y": 10
+        },
+        "id": 95,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT Durchschnittsalter\r\nFROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts` \r\nWHERE Zielgruppe = \"BRD gesamt\"",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$Jahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#063561ab",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Sehbeteiligung"
+              },
+              "properties": [
+                {
+                  "id": "displayName"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 2,
+          "y": 13
+        },
+        "id": 137,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ($LRA = 2) THEN (\r\n  SELECT \"\" as Sehbeteiligung\r\n);\r\nELSE (\r\n      SELECT \r\n      Sehbeteiligung\r\n    FROM (SELECT  2023 as Jahr, avg(Sehbeteiligung) as Sehbeteiligung\r\n    FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Monatswerte` \r\n    GROUP BY Jahr)\r\n    WHERE Jahr = $LastJahr\r\n);\r\nEND IF;\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$LastJahr:",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#06356163",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Sehbeteiligung"
+              },
+              "properties": [
+                {
+                  "id": "displayName"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 4,
+          "y": 13
+        },
+        "id": 74,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ($LRA = 2) THEN (\r\n  SELECT \"\" as Sehbeteiligung\r\n);\r\nELSE (\r\n      SELECT \r\n      Sehbeteiligung\r\n    FROM (SELECT  2022 as Jahr, avg(Sehbeteiligung) as Sehbeteiligung\r\n    FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Monatswerte` \r\n    GROUP BY Jahr)\r\n    WHERE Jahr = $LastLastJahr\r\n);\r\nEND IF;\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$LastLastJahr:",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#57000a9e",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 6,
+          "y": 13
+        },
+        "id": 96,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ($LRA = 2) THEN (\r\n  SELECT Marktanteil\r\n  FROM (SELECT  2023 as Jahr, avg(Marktanteil) as Marktanteil,\r\n  FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Monatswerte` \r\n  WHERE Zielgruppe = \"BRD gesamt\"\r\n  GROUP BY Jahr)\r\n  WHERE Jahr = $LastJahr \r\n);\r\nELSE (\r\n  SELECT Marktanteil\r\n  FROM (SELECT  2023 as Jahr, avg(Marktanteil) as Marktanteil,\r\n  FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Monatswerte` \r\n  GROUP BY Jahr)\r\n  WHERE Jahr = $LastJahr\r\n);\r\nENd IF",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$LastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#57000a7d",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 8,
+          "y": 13
+        },
+        "id": 97,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ($LRA = 2) THEN (\r\n  SELECT Marktanteil\r\n  FROM (SELECT  2022 as Jahr, avg(Marktanteil) as Marktanteil,\r\n  FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Monatswerte` \r\n  WHERE Zielgruppe = \"BRD gesamt\"\r\n  GROUP BY Jahr)\r\n  WHERE Jahr = $LastLastJahr \r\n);\r\nELSE (\r\n  SELECT Marktanteil\r\n  FROM (SELECT  2022 as Jahr, avg(Marktanteil) as Marktanteil,\r\n  FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Monatswerte` \r\n  GROUP BY Jahr)\r\n  WHERE Jahr = $LastLastJahr\r\n);\r\nENd IF",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$LastLastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#1b4f14a1",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 10,
+          "y": 13
+        },
+        "id": 123,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT Seher\r\nFROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts` \r\nWHERE Zielgruppe = \"BRD gesamt\"",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$LastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#1b4f145c",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 12,
+          "y": 13
+        },
+        "id": 124,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT Seher\r\nFROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts` \r\nWHERE Zielgruppe = \"BRD gesamt\"",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$LastLastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#963e039c",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 14,
+          "y": 13
+        },
+        "id": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "title": "$LastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#963e035c",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 16,
+          "y": 13
+        },
+        "id": 101,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "title": "$LastLastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#3b0e528f",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 18,
+          "y": 13
+        },
+        "id": 102,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "title": "$LastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#3b0e5252",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 20,
+          "y": 13
+        },
+        "id": 103,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "title": "$LastLastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "transparent",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 16
+        },
+        "id": 108,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 2,
+          "x": 0,
+          "y": 17
+        },
+        "id": 83,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<br/><br/>\n<font size=\"6\" color=\"#2671c6\" style=\"font-weight:bold;\">NDR</font>\n<br/>\n<font size=\"6\" color=\"#2671c6\" style=\"font-weight:bold;\"> Gebiet</font>",
+          "mode": "html"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 0.5
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 2,
+          "y": 17
+        },
+        "id": 119,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ($LRA = 2) THEN (\r\n  --SELECT \"\" as Sehbeteiligung\r\n  SELECT \r\n      Sehbeteiligung\r\n    FROM (SELECT  2024 as Jahr, avg(Sehbeteiligung) as Sehbeteiligung\r\n    FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts` \r\n    WHERE Zielgruppe = \"NDR Gebiet\"\r\n    GROUP BY Jahr)\r\n    WHERE Jahr = $Jahr\r\n);\r\nELSE (\r\n      SELECT \r\n      Sehbeteiligung\r\n    FROM (SELECT  2024 as Jahr, avg(Sehbeteiligung) as Sehbeteiligung\r\n    FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Monatswerte` \r\n    GROUP BY Jahr)\r\n    WHERE Jahr = $Jahr\r\n);\r\nEND IF;\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$Jahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 20
+                },
+                {
+                  "color": "green",
+                  "value": 25
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 6,
+          "y": 17
+        },
+        "id": 104,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ($LRA = 2) THEN (\r\n  SELECT Marktanteil\r\n  FROM (SELECT  2024 as Jahr, avg(Marktanteil) as Marktanteil,\r\n  FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Monatswerte` \r\n  WHERE Zielgruppe = \"NDR Gebiet\"\r\n  GROUP BY Jahr)\r\n  WHERE Jahr = $Jahr \r\n);\r\nELSE (\r\n  SELECT Marktanteil\r\n  FROM (SELECT  2024 as Jahr, avg(Marktanteil) as Marktanteil,\r\n  FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Monatswerte` \r\n  GROUP BY Jahr)\r\n  WHERE Jahr = $Jahr\r\n);\r\nENd IF",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$Jahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 1
+                },
+                {
+                  "color": "green",
+                  "value": 2
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 10,
+          "y": 17
+        },
+        "id": 125,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT Seher\r\nFROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts` \r\nWHERE Zielgruppe = \"NDR Gebiet\"",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$Jahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "orange",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "dthms"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 14,
+          "y": 17
+        },
+        "id": 128,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT (EXTRACT(HOUR from Verweildauer)*3600)+(EXTRACT(MINUTE from Verweildauer)*60)+(EXTRACT(SECOND from Verweildauer)) as Verweildauer_in_Sec\r\nFROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Verweildauer` ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$Jahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 1,
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#cd6aff",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 18,
+          "y": 17
+        },
+        "id": 131,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT Durchschnittsalter\r\nFROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts` \r\nWHERE Zielgruppe = \"NDR Gebiet\"",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$Jahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#063561ab"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 2,
+          "y": 20
+        },
+        "id": 120,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "title": "$LastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#06356163"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 4,
+          "y": 20
+        },
+        "id": 121,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$LastLastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#57000a9e"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 6,
+          "y": 20
+        },
+        "id": 117,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "title": "$LastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#57000a7d"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 8,
+          "y": 20
+        },
+        "id": 118,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "title": "$LastLastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#1b4f14a1"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 10,
+          "y": 20
+        },
+        "id": 126,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "title": "$LastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#1b4f145c"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 12,
+          "y": 20
+        },
+        "id": 127,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$LastLastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#963e039c"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 14,
+          "y": 20
+        },
+        "id": 129,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "title": "$LastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#963e035c"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 16,
+          "y": 20
+        },
+        "id": 130,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "title": "$LastLastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#3b0e528f"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 18,
+          "y": 20
+        },
+        "id": 132,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "title": "$LastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "-",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#3b0e5252"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 20,
+          "y": 20
+        },
+        "id": 133,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "title": "$LastLastJahr",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "transparent"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 23
+        },
+        "id": 134,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 25
+        },
+        "id": 147,
+        "panels": [],
+        "title": "Sinusmilieus / DMT | ${LRA:text}",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 20,
+          "x": 2,
+          "y": 26
+        },
+        "id": 141,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto",
+            "height": 600
+          },
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "const categoryColors = {\n  'Konservativ-Gehobene (KOG)': '#006600',\n  'Postmaterielle (PMA)': '#009800',\n  'Performer (PER)': '#02ce64',\n  'Expeditive (EPE)': '#ff9801',\n  \"Neo-Ökologische (NÖK)\": '#ffbe01',\n  \"Adaptiv-Pragmatische (ADA)\": '#0054a8',\n  \"Konsum-Hedonisten (HED)\": '#0066fe',\n  \"Prekäre (PRE)\": '#67cbff',\n  \"Nostalgisch-Bürgerliche (NOB)\": '#cb0066',\n  \"Traditionelle (TRA)\": '#FF66CC'\n};\n\nconst sMilieus = data.series[0].fields.find((f) => f.name === 'Zielgruppe').values.buffer;\nconst sSehbeteiligung = data.series[0].fields.find((f) => f.name === 'Sehbeteiligung').values.buffer;\nconst sMarktanteil = data.series[0].fields.find((f) => f.name === 'Marktanteil').values.buffer;\n\nreturn {\n  backgroundColor: 'transparent',\n\n  tooltip: {\n    trigger: 'item',\n    borderWidth: 3,\n    formatter: function (item) {\n      let tooltipContent = '';\n\n      let number = item.value.toFixed(2);\n      let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n      tooltipContent += item.marker + item.seriesName + \": \" + formattedNumber + '<br/>';\n      return tooltipContent\n    },\n    axisPointer: {\n      type: 'shadow'\n    }\n  },\n\n  legend: {\n    itemStyle: {\n      color: '#2671c6',\n    },\n    icon: 'circle',\n    inactiveColor: '#767676',\n    borderColor: '#969696',\n    borderWidth: 2,\n    borderRadius: 5,\n    padding: 7,\n    itemGap: 30,\n    textStyle: { fontSize: 14, fontWeight: 'bold' },\n    selectedMode: 'single',\n    symbolRotate: 90\n  },\n\n  toolbox: {\n    show: true,\n    feature: {\n      restore: { show: true },\n      saveAsImage: { show: true },\n    }\n  },\n  calculable: true,\n  xAxis: [\n    {\n      type: 'category',\n      data: sMilieus,\n      label: { show: true },\n\n      axisLabel: {\n        show: true,\n        interval: 0,\n        margin: 15,\n        fontWeight: 'bold',\n        fontSize: 13,\n        formatter: function (value) {\n          var labelContent = '';\n          var milieu = value;\n          var truncated = milieu.substring(0, value.length - 6)\n          labelContent = truncated;\n          return labelContent\n        },\n      }\n    }\n  ],\n  yAxis: [\n    {\n      type: 'value',\n    }\n  ],\n  grid: {\n    left: '2%',\n    right: '2%',\n    top: '8%',\n    bottom: '2%',\n    containLabel: true,\n  },\n  series: [\n    {\n      name: 'Sehbeteiligung',\n      colorBy: 'series',\n      type: 'bar',\n      label: {\n        show: 'true',\n        position: 'top',\n        fontSize: 14,\n        fontWeight: 'bold',\n        formatter: function (params) {\n          let labelContent = '';\n          let number = params.value.toFixed(0);\n          let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n          labelContent = formattedNumber;\n          return labelContent\n        },\n      },\n      data: sSehbeteiligung.map((m, index) => ({\n        value: sSehbeteiligung[index],\n        itemStyle: {\n          color: categoryColors[sMilieus[index]] || '#000',\n          opacity: 0.9, // Standardfarbe, falls keine Kategorie vorhanden ist\n        },\n      })),\n    },\n    {\n      name: 'Marktanteil in %',\n      colorBy: 'series',\n      type: 'bar',\n      label: {\n        show: 'true',\n        fontSize: 14,\n        fontWeight: 'bold',\n        position: 'top',\n        formatter: function (params) {\n          let labelContent = '';\n          let number = params.value.toFixed(2);\n          let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n          labelContent = formattedNumber + ' %';\n          return labelContent\n        },\n      },\n\n      data: sMarktanteil.map((m, index) => ({\n        value: sMarktanteil[index],\n        itemStyle: {\n          color: categoryColors[sMilieus[index]] || '#000',\n          opacity: 0.9, // Standardfarbe, falls keine Kategorie vorhanden ist\n        },\n      })),\n    },\n  ],\n};\n",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "svg",
+          "themeEditor": {
+            "config": "{}",
+            "height": 400,
+            "name": "default"
+          }
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": " SELECT Zielgruppe, Marktanteil, (Sehbeteiligung*1000000) as Sehbeteiligung\r\n FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts`\r\n WHERE Zielgruppe IN (\r\n    \"Konservativ-Gehobene (KOG)\",\r\n    \"Postmaterielle (PMA)\",\r\n    \"Performer (PER)\",\r\n    \"Expeditive (EPE)\",\r\n    \"Neo-Ökologische (NÖK)\",\r\n    \"Adaptiv-Pragmatische (ADA)\", \r\n    \"Konsum-Hedonisten (HED)\",\r\n    \"Prekäre (PRE)\", \r\n    \"Nostalgisch-Bürgerliche (NOB)\",\r\n    \"Traditionelle (TRA)\"\r\n  )\r\n  ---ORDER BY Zielgruppe ASC\r\n  ORDER BY $SinusOrder",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Sinusmilieus / DMT | ${LRA:text} | $Sendung",
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "transparent"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 37
+        },
+        "id": 143,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 20,
+          "x": 2,
+          "y": 39
+        },
+        "id": 154,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto",
+            "height": 600
+          },
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "const categoryColors = {\n  'Konservativ-Gehobene (KOG)': '#006600',\n  'Postmaterielle (PMA)': '#009800',\n  'Performer (PER)': '#02ce64',\n  'Expeditive (EPE)': '#ff9801',\n  \"Neo-Ökologische (NÖK)\": '#ffbe01',\n  \"Adaptiv-Pragmatische (ADA)\": '#0054a8',\n  \"Konsum-Hedonisten (HED)\": '#0066fe',\n  \"Prekäre (PRE)\": '#67cbff',\n  \"Nostalgisch-Bürgerliche (NOB)\": '#cb0066',\n  \"Traditionelle (TRA)\": '#FF66CC'\n};\n\nconst sMilieus = data.series[0].fields.find((f) => f.name === 'Zielgruppe').values.buffer;\nconst sSeher = data.series[0].fields.find((f) => f.name === 'Seher').values.buffer;\n\n\nconst sMap = [{\n  data: sMilieus.map((m, i) => ({ value: sSeher[i], name: sMilieus[i] }))\n}];\n\nconst sumValues = sSeher.reduce((partialSum, a) => partialSum + a, 0);\n\nlet series = [];\nsMilieus.forEach((milieu) => {\n  let index = sMilieus.indexOf(milieu);\n  series.push({\n    name: sMilieus[index],\n    type: 'bar',\n    stack: 'total',\n    emphasis: {\n      //focus: 'series'\n    },\n\n    label: {\n      show: true,\n      fontSize: 14,\n\n      formatter: function (params) {\n        let labelContent = '';\n        let number = params.value.toFixed(2);\n        let temp = params.value.toFixed(0);\n        let percentage = ((number / sumValues) * 100).toFixed(1);\n        let formattedNumber = new Intl.NumberFormat('de-DE').format(temp);\n        labelContent = formattedNumber + \"\\n\\n(\" + percentage + \"%)\";\n        return labelContent\n      },\n    },\n    data: [sSeher[index]],\n    itemStyle: {\n      color: categoryColors[sMilieus[index]] || '#000',\n    },\n\n  });\n});\n\n\nreturn {\n  legend: {\n    top: '5%',\n    left: 'center',\n    selectedMode: false,\n    textStyle: {\n      fontSize: 14,\n    },\n  },\n\n  tooltip: {\n    trigger: 'item',\n    padding: 2,\n    borderWidth: 3,\n    show: true,\n    borderWidth: 3,\n    //position: [10, 10],\n    position: function (point, pos, dom, rect, size) {\n      return [point[0] - 60, point[1] - 45]\n    },\n    formatter: function (params) {\n      let tooltipContent = '';\n      let number = params.value.toFixed(2);\n      let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n      tooltipContent += params.seriesName + '<br/>' + params.marker + params.name + \": \" + formattedNumber + '<br/>';\n      return tooltipContent;\n    },\n  },\n\n  yAxis: [{\n    type: 'category',\n    data: ['Seher'],\n    axisLabel: {\n      fontSize: 14,\n      fontWeight: 'bold'\n    }\n  }],\n  xAxis: [{\n    type: 'value',\n    max: sumValues,\n    show: false,\n    axisLabel: {\n      show: false,\n    }\n  }],\n  series,\n  grid: {\n    left: 120,\n    right: '1%',\n    top: '45%',\n    bottom: 0,\n    containLabel: false,\n  },\n\n\n};\n",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "svg",
+          "themeEditor": {
+            "config": "{}",
+            "height": 400,
+            "name": "default"
+          }
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": " SELECT Zielgruppe, Seher*1000000 as Seher\r\n FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts`\r\n WHERE Zielgruppe IN (\r\n    \"Konservativ-Gehobene (KOG)\",\r\n    \"Postmaterielle (PMA)\",\r\n    \"Performer (PER)\",\r\n    \"Expeditive (EPE)\",\r\n    \"Neo-Ökologische (NÖK)\",\r\n    \"Adaptiv-Pragmatische (ADA)\", \r\n    \"Konsum-Hedonisten (HED)\",\r\n    \"Prekäre (PRE)\", \r\n    \"Nostalgisch-Bürgerliche (NOB)\",\r\n    \"Traditionelle (TRA)\"\r\n  )\r\n  --ORDER BY Zielgruppe ASC\r\n  ORDER BY $SinusOrder",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Sinusmilieus / DMT | ${LRA:text} | $Sendung",
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 20,
+          "x": 2,
+          "y": 45
+        },
+        "id": 157,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto",
+            "height": 600
+          },
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "const categoryColors = {\n  'Konservativ-Gehobene (KOG)': '#006600',\n  'Postmaterielle (PMA)': '#009800',\n  'Performer (PER)': '#02ce64',\n  'Expeditive (EPE)': '#ff9801',\n  \"Neo-Ökologische (NÖK)\": '#ffbe01',\n  \"Adaptiv-Pragmatische (ADA)\": '#0054a8',\n  \"Konsum-Hedonisten (HED)\": '#0066fe',\n  \"Prekäre (PRE)\": '#67cbff',\n  \"Nostalgisch-Bürgerliche (NOB)\": '#cb0066',\n  \"Traditionelle (TRA)\": '#FF66CC'\n};\n\nconst sMilieus = data.series[0].fields.find((f) => f.name === 'Zielgruppe').values.buffer;\nconst sTVGesamt = data.series[0].fields.find((f) => f.name === 'TV_Gesamt').values.buffer;\n\nconst sMap = [{\n  data: sMilieus.map((m, i) => ({ value: sTVGesamt[i], name: sMilieus[i] }))\n}];\n\nconst sumValues = sTVGesamt.reduce((partialSum, a) => partialSum + a, 0);\n\nlet series = [];\nsMilieus.forEach((milieu) => {\n  let index = sMilieus.indexOf(milieu);\n  series.push({\n    name: sMilieus[index],\n    type: 'bar',\n    stack: 'total',\n    emphasis: {\n      //focus: 'series'\n    },\n    label: {\n      show: true,\n      fontSize: 14,\n      formatter: function (params) {\n        let labelContent = '';\n        let number = params.value.toFixed(2);\n        let temp = params.value.toFixed(0);\n        let percentage = ((number / sumValues) * 100).toFixed(1);\n        let formattedNumber = new Intl.NumberFormat('de-DE').format(temp);\n        labelContent = formattedNumber + \"\\n\\n(\" + percentage + \"%)\";\n        return labelContent\n      },\n    },\n    data: [sTVGesamt[index]],\n    itemStyle: {\n      color: categoryColors[sMilieus[index]] || '#000',\n    }\n  });\n});\n\n\nreturn {\n\n  yAxis: [{\n    type: 'category',\n    data: ['TV Gesamt'],\n    axisLabel: {\n      fontSize: 14,\n      fontWeight: 'bold'\n    }\n  }],\n  xAxis: [{\n    type: 'value',\n    max: sumValues,\n    show: false,\n    axisLabel: {\n      show: false,\n    }\n  }],\n  series,\n  grid: {\n    left: 120,\n    right: '1%',\n    top: 0,\n    bottom: 0,\n    containLabel: false,\n  },\n\n  tooltip: {\n    trigger: 'item',\n    padding: 2,\n    show: true,\n    borderWidth: 3,\n    position: function (point, pos, dom, rect, size) {\n      return [point[0] - 60, point[1] - 45]\n    },\n    formatter: function (params) {\n      let tooltipContent = '';\n      let number = params.value;\n      let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n      tooltipContent += params.seriesName + '<br/>' + params.marker + params.name + \": \" + formattedNumber + '<br/>';\n      return tooltipContent;\n    },\n  },\n};\n",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "svg",
+          "themeEditor": {
+            "config": "{}",
+            "height": 400,
+            "name": "default"
+          }
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": " SELECT Zielgruppe, TV_Gesamt*1000000 as TV_Gesamt\r\n FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts`\r\n WHERE Zielgruppe IN (\r\n    \"Konservativ-Gehobene (KOG)\",\r\n    \"Postmaterielle (PMA)\",\r\n    \"Performer (PER)\",\r\n    \"Expeditive (EPE)\",\r\n    \"Neo-Ökologische (NÖK)\",\r\n    \"Adaptiv-Pragmatische (ADA)\", \r\n    \"Konsum-Hedonisten (HED)\",\r\n    \"Prekäre (PRE)\", \r\n    \"Nostalgisch-Bürgerliche (NOB)\",\r\n    \"Traditionelle (TRA)\"\r\n  )\r\n  --ORDER BY Zielgruppe ASC\r\n  ORDER BY $SinusOrder",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 20,
+          "x": 2,
+          "y": 48
+        },
+        "id": 155,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto",
+            "height": 600
+          },
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "const categoryColors = {\n  'Konservativ-Gehobene (KOG)': '#006600',\n  'Postmaterielle (PMA)': '#009800',\n  'Performer (PER)': '#02ce64',\n  'Expeditive (EPE)': '#ff9801',\n  \"Neo-Ökologische (NÖK)\": '#ffbe01',\n  \"Adaptiv-Pragmatische (ADA)\": '#0054a8',\n  \"Konsum-Hedonisten (HED)\": '#0066fe',\n  \"Prekäre (PRE)\": '#67cbff',\n  \"Nostalgisch-Bürgerliche (NOB)\": '#cb0066',\n  \"Traditionelle (TRA)\": '#FF66CC'\n};\n\nconst sMilieus = data.series[0].fields.find((f) => f.name === 'Zielgruppe').values.buffer;\nconst sSehbeteiligung = data.series[0].fields.find((f) => f.name === 'Sehbeteiligung').values.buffer;\n\nconst sMap = [{\n  data: sMilieus.map((m, i) => ({ value: sSehbeteiligung[i], name: sMilieus[i] }))\n}];\n\nconst sumValues = sSehbeteiligung.reduce((partialSum, a) => partialSum + a, 0);\n\nlet series = [];\nsMilieus.forEach((milieu) => {\n  let index = sMilieus.indexOf(milieu);\n  series.push({\n    name: sMilieus[index],\n    type: 'bar',\n    stack: 'total',\n    emphasis: {\n      //focus: 'series'\n    },\n    label: {\n      show: true,\n      fontSize: 14,\n      formatter: function (params) {\n        let labelContent = '';\n        let number = params.value.toFixed(0);\n        let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n        labelContent = formattedNumber;\n        return labelContent\n      },\n    },\n    data: [sSehbeteiligung[index]],\n    itemStyle: {\n      color: categoryColors[sMilieus[index]] || '#000',\n    }\n  });\n});\n\n\n\nreturn {\n  yAxis: [{\n    type: 'category',\n    data: ['Sehbeteiligung'],\n    axisLabel: {\n      fontSize: 14,\n      fontWeight: 'bold'\n    }\n  }],\n  xAxis: [{\n    type: 'value',\n    max: '100%',\n    axisLabel: {\n      show: false,\n    }\n  }],\n  series,\n  grid: {\n    left: 120,\n    right: '1%',\n    top: 0,\n    bottom: 0,\n    containLabel: false,\n  },\n  tooltip: {\n    trigger: 'item',\n    padding: 2,\n    show: true,\n    borderWidth: 3,\n    position: function (point, pos, dom, rect, size) {\n      return [point[0] - 60, point[1] - 45]\n    },\n    formatter: function (params) {\n      let tooltipContent = '';\n      let number = params.value.toFixed(2);\n      let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n      tooltipContent += params.seriesName + '<br/>' + params.marker + params.name + \": \" + formattedNumber + '<br/>';\n      return tooltipContent;\n    },\n  },\n};\n",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "svg",
+          "themeEditor": {
+            "config": "{}",
+            "height": 400,
+            "name": "default"
+          }
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": " SELECT Zielgruppe, (Sehbeteiligung*1000000) as Sehbeteiligung\r\n FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts`\r\n WHERE Zielgruppe IN (\r\n    \"Konservativ-Gehobene (KOG)\",\r\n    \"Postmaterielle (PMA)\",\r\n    \"Performer (PER)\",\r\n    \"Expeditive (EPE)\",\r\n    \"Neo-Ökologische (NÖK)\",\r\n    \"Adaptiv-Pragmatische (ADA)\", \r\n    \"Konsum-Hedonisten (HED)\",\r\n    \"Prekäre (PRE)\", \r\n    \"Nostalgisch-Bürgerliche (NOB)\",\r\n    \"Traditionelle (TRA)\"\r\n  )\r\n  --ORDER BY Zielgruppe ASC\r\n  ORDER BY $SinusOrder",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 20,
+          "x": 2,
+          "y": 51
+        },
+        "id": 156,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto",
+            "height": 600
+          },
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "const categoryColors = {\n  'Konservativ-Gehobene (KOG)': '#006600',\n  'Postmaterielle (PMA)': '#009800',\n  'Performer (PER)': '#02ce64',\n  'Expeditive (EPE)': '#ff9801',\n  \"Neo-Ökologische (NÖK)\": '#ffbe01',\n  \"Adaptiv-Pragmatische (ADA)\": '#0054a8',\n  \"Konsum-Hedonisten (HED)\": '#0066fe',\n  \"Prekäre (PRE)\": '#67cbff',\n  \"Nostalgisch-Bürgerliche (NOB)\": '#cb0066',\n  \"Traditionelle (TRA)\": '#FF66CC'\n};\n\nconst sMilieus = data.series[0].fields.find((f) => f.name === 'Zielgruppe').values.buffer;\nconst sMarktanteil = data.series[0].fields.find((f) => f.name === 'Marktanteil').values.buffer;\n\nconst sMap = [{\n  data: sMilieus.map((m, i) => ({ value: sMarktanteil[i], name: sMilieus[i] }))\n}];\n\nconst sumValues = sMarktanteil.reduce((partialSum, a) => partialSum + a, 0);\n\nlet series = [];\nsMilieus.forEach((milieu) => {\n  let index = sMilieus.indexOf(milieu);\n  series.push({\n    name: sMilieus[index],\n    type: 'bar',\n    stack: 'total',\n    emphasis: {\n      //focus: 'series'\n    },\n    label: {\n      show: true,\n      fontSize: 14,\n      formatter: function (params) {\n        let labelContent = '';\n        let number = params.value.toFixed(2);\n        let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n        labelContent = formattedNumber + \" %\";\n        return labelContent\n      },\n    },\n    data: [sMarktanteil[index]],\n    itemStyle: {\n      color: categoryColors[sMilieus[index]] || '#000',\n    }\n  });\n});\n\n\nreturn {\n  tooltip: {\n    trigger: 'item',\n    padding: 2,\n    borderWidth: 3,\n    show: true,\n    position: function (point, pos, dom, rect, size) {\n      return [point[0] - 60, point[1] - 45]\n    },\n    formatter: function (params) {\n      let tooltipContent = '';\n      let number = params.value;\n      let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n      tooltipContent += params.seriesName + '<br/>' + params.marker + params.name + \": \" + formattedNumber + ' %<br/>';\n      return tooltipContent;\n    },\n  },\n  yAxis: [{\n    type: 'category',\n    data: ['Marktanteil'],\n    axisLabel: {\n      fontSize: 14,\n      fontWeight: 'bold'\n    }\n  }],\n  xAxis: [{\n    type: 'value',\n    max: sumValues,\n    show: false,\n    axisLabel: {\n      show: false,\n    }\n  }],\n  series,\n  grid: {\n    left: 120,\n    right: '1%',\n    top: 0,\n    bottom: 0,\n    containLabel: false,\n  },\n};\n",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "svg",
+          "themeEditor": {
+            "config": "{}",
+            "height": 400,
+            "name": "default"
+          }
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": " SELECT Zielgruppe, Marktanteil\r\n FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_ZielgruppenFacts`\r\n WHERE Zielgruppe IN (\r\n    \"Konservativ-Gehobene (KOG)\",\r\n    \"Postmaterielle (PMA)\",\r\n    \"Performer (PER)\",\r\n    \"Expeditive (EPE)\",\r\n    \"Neo-Ökologische (NÖK)\",\r\n    \"Adaptiv-Pragmatische (ADA)\", \r\n    \"Konsum-Hedonisten (HED)\",\r\n    \"Prekäre (PRE)\", \r\n    \"Nostalgisch-Bürgerliche (NOB)\",\r\n    \"Traditionelle (TRA)\"\r\n  )\r\n  --ORDER BY Zielgruppe ASC\r\n  ORDER BY $SinusOrder ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "transparent"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 54
+        },
+        "id": 140,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 56
+        },
+        "id": 149,
+        "panels": [],
+        "title": "Hitlist von Sendungen | ${LRA:text}",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Nummer"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 100
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Datum"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 123
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Titel"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 599
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Marktanteil"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "basic"
+                },
+                {
+                  "id": "min",
+                  "value": 0
+                },
+                {
+                  "id": "max",
+                  "value": 100
+                },
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Sehbeteiligung"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Seher"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "short"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 20,
+          "x": 2,
+          "y": 57
+        },
+        "id": 139,
+        "options": {
+          "footer": {
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ($LRA = 2) THEN ( \r\n  SELECT \r\n    ROW_NUMBER() OVER (ORDER BY -Marktanteil) AS Nummer, \r\n    Sender__kurz_ as Sender, \r\n    Datum_5 as Datum, \r\n    Seher*1000000 as Seher,\r\n    Marktanteil\r\n FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Sendungsliste`);\r\nELSE ( \r\n  SELECT \r\n    ROW_NUMBER() OVER (ORDER BY -Sehbeteiligung) AS Nummer, \r\n    Sender__kurz_ as Sender, \r\n    Datum, Titel, \r\n    Sehbeteiligung, \r\n    Marktanteil\r\n FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Sendungsliste`);\r\nEND IF;",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Hitliste von Sendungen |  ${LRA:text} | $Sendung",
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "transparent"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 69
+        },
+        "id": 160,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 71
+        },
+        "id": 171,
+        "panels": [],
+        "title": "Top 10 Sender zur Sendezeit nach Marktanteil",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 20,
+          "x": 2,
+          "y": 72
+        },
+        "id": 173,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto",
+            "height": 600
+          },
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "const categoryColors = {\n  'NDR': '#2671C6',\n  'NDR Fernsehen': '#2671C6',\n  'ARD Das Erste': '#003480',\n  'SWR / SR Fernsehen': '#003480',\n  'BR-Fernsehen': '#003480',\n  'ARD-alpha': '#003480',\n  'hr-fernsehen': '#003480',\n  'MDR Fernsehen': '#003480',\n  'ONE': '#003480',\n  'RBB Fernsehen': '#003480',\n  'Tagesschau24': '#003480',\n  'WDR Fernsehen': '#003480',\n  '3SAT': '#003480',\n  'ARD/ZDF Kinderkanal': '#003480',\n  'arte': '#003480',\n  'Phoenix': '#003480',\n  'ZDF': '#F88100',\n  'ZDFinfo': '#F88100',\n  'ZDFneo': '#F88100'\n};\n\nconst sSender = data.series[0].fields.find((f) => f.name === 'Vergleichssender').values.buffer\nconst sMarktanteil = data.series[0].fields.find((f) => f.name === 'Marktanteil').values.buffer\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip: {\n    trigger: 'axis',\n    padding: [0, 4, 0, 4],\n    borderWidth: 3,\n    formatter: function (params) {\n      let tooltipContent = '';\n      params.forEach(function (item) {\n        let number = item.value;\n        let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n        tooltipContent += item.name + '</br>' + item.marker + item.seriesName + \": \" + formattedNumber + ' %<br/>';\n      });\n      return tooltipContent\n    },\n    axisPointer: {\n      type: 'shadow',\n    },\n  },\n\n  toolbox: {\n    show: true,\n    feature: {\n      saveAsImage: { show: true }\n    }\n  },\n  calculable: true,\n  xAxis: [\n    {\n      type: 'category',\n      data: sSender,\n      label: { show: true },\n\n      axisLabel: {\n        show: true,\n        interval: 0,\n        margin: 15,\n        fontWeight: 'bold',\n        fontSize: 12,\n      }\n    }\n  ],\n  yAxis: [\n    { type: 'value' }\n  ],\n  grid: {\n    left: '2%',\n    right: '2%',\n    top: '5%',\n    bottom: 24,\n    containLabel: true,\n  },\n  series: [\n    {\n      name: 'Marktanteil',\n      colorBy: 'series',\n      type: 'bar',\n\n      label: {\n        show: true,\n        position: 'top',\n        fontSize: 14,\n        fontWeight: 'bold',\n        formatter: function (params) {\n          let labelContent = '';\n          let number = params.value.toFixed(1);\n          //let roundNumber = Math.round(number);\n          let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n          labelContent = formattedNumber + ' %';\n          return labelContent\n        },\n      },\n\n      data: sSender.map((sender, index) => ({\n        value: sMarktanteil[index],\n        itemStyle: {\n          color: categoryColors[sender] || '#A9CCEA',\n          opacity: 0.9,// Standardfarbe, falls keine Kategorie vorhanden ist\n        },\n      })),\n    },\n  ]\n};",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "svg",
+          "themeEditor": {
+            "config": "{}",
+            "height": 400,
+            "name": "default"
+          }
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quotenreport_Sample",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT Vergleichssender, Marktanteil \r\nFROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Vergleichssender`\r\nORDER BY Marktanteil DESC\r\nLIMIT 10",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "*",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "Sender_NDR-Fernsehen_Sendetag"
+          }
+        ],
+        "title": "Top 10 Sender zur Sendezeit nach Marktanteil | ${LRA:text}",
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 82
+        },
+        "id": 168,
+        "panels": [],
+        "title": "Sendungen im Zeitverlauf",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 20,
+          "x": 2,
+          "y": 83
+        },
+        "id": 159,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto",
+            "height": 600
+          },
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "const sSehbeteiligung = data.series[0].fields.find((f) => f.name === 'Sehbeteiligung').values.buffer;\nconst sMarktanteil = data.series[0].fields.find((f) => f.name === 'Marktanteil').values.buffer;\nconst sTime = data.series[0].fields.find((f) => f.name === 'Datum').values.buffer;\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip: {\n    trigger: 'axis',\n    formatter: function (params) {\n      let tooltipContent = '';\n      params.forEach(function (item) {\n        let number = item.value.toFixed(2);\n        let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n        tooltipContent += item.marker + item.seriesName + \": \" + formattedNumber + '<br/>';\n      });\n      return tooltipContent\n    },\n  },\n  legend: {\n    data: ['Sehbeteiligung in Tsd.', 'Marktanteil in %'],\n    textStyle: {\n      fontSize: 14,\n      fontWeight: 'bold'\n    },\n    padding: 5,\n    selected: {\n      'Marktanteil in %': true, 'Sehbeteiligung in Tsd.': true\n    },\n    inactiveColor: '#9C9C9C',\n  },\n  toolbox: {\n    feature: {\n      magicType: { type: ['line', 'bar'] },\n      restore: { show: true },\n      saveAsImage: { show: true },\n      dataView: { show: false }\n    }\n  },\n  xAxis: {\n    type: 'category',\n    data: sTime,\n    boundaryGap: false,\n    axisLabel: {\n      textStyle: {\n        fontSize: 12,\n        fontWeight: 'bold'\n      },\n    },\n    axisTick: {\n      alignWithLabel: true,\n    }\n  },\n  yAxis: {\n    type: 'log',\n    min: function (value) {\n      if (value.min < 1) {\n        return value.min + 1;\n      } else {\n        return value.min;\n      }\n    },\n    max: 'dataMax',\n    axisLabel: {\n      formatter: function (value, index) {\n        let formattedNumber = new Intl.NumberFormat('de-DE').format(value);\n        return formattedNumber\n      }\n    },\n  },\n  grid: {\n    left: '5%',\n    right: '2.5%',\n    top: 45,\n    bottom: 24,\n    containLabel: false,\n  },\n  series: [\n    {\n      name: 'Sehbeteiligung in Tsd.',\n      type: 'line',\n      color: '#4992FF',\n      data: sSehbeteiligung,\n      markLine: {\n        data: [{\n          type: 'average',\n          show: true,\n          name: 'avg',\n          label: {\n            position: 'insideMiddleBottom',\n            distance: 15,\n            fontWeight: 'bold',\n            fontSize: 14,\n            formatter: function (params) {\n              let labelContent = '';\n              let temp = params.value.toFixed(2);\n              let formattedNumber = new Intl.NumberFormat('de-DE').format(temp);\n              labelContent = \"Durchschnitt: \" + formattedNumber + \"k\";\n              return labelContent\n            },\n          }\n        }],\n      },\n    },\n    {\n      name: 'Marktanteil in %',\n      type: 'line',\n      data: sMarktanteil,\n      color: '#7CFFB2',\n      markLine: {\n        data: [{\n          type: 'average',\n          show: true,\n          name: 'avg',\n          label: {\n            position: 'insideMiddleTop',\n            distance: 10,\n            fontWeight: 'bold',\n            fontSize: 14,\n            formatter: function (params) {\n              let labelContent = '';\n              let number = params.value;\n              let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n              labelContent += \"Durchschnitt: \" + formattedNumber + \" %\";\n              return labelContent\n            },\n          }\n        }],\n      },\n    },\n  ],\n};",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "svg",
+          "themeEditor": {
+            "config": "{}",
+            "height": 400,
+            "name": "default"
+          }
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "-- Line chart / time series of all shows with market share (default) and coverage (Reichweite)\r\n\r\nIF ($LRA = 2) THEN ( \r\n    SELECT 0 as Sehbeteiligung, ROUND(Marktanteil, 3) as Marktanteil,  Datum_5 as Datum\r\n    FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Sendungsliste`\r\n    ORDER by Datum_5 ASC);\r\nELSE ( \r\n    SELECT ROUND(Sehbeteiligung*1000,3) as Sehbeteiligung, ROUND(Marktanteil, 3) as Marktanteil,  Datum\r\n    FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Sendungsliste`\r\n    ORDER by Datum ASC);\r\nEND IF;\r\n\r\n\r\n\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Sendungen im Zeitverlauf |  ${LRA:text} | $Sendung",
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 20,
+          "x": 2,
+          "y": 93
+        },
+        "id": 164,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto",
+            "height": 600
+          },
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "const sSehbeteiligung = data.series[0].fields.find((f) => f.name === 'Sehbeteiligung').values.buffer;\nconst sMarktanteil = data.series[0].fields.find((f) => f.name === 'Marktanteil').values.buffer;\nconst sTime = data.series[0].fields.find((f) => f.name === 'Datum').values.buffer;\n\n\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip: {\n    trigger: 'axis',\n    formatter: function (params) {\n      let tooltipContent = '';\n      params.forEach(function (item) {\n        let number = item.value.toFixed(2);\n        let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n        tooltipContent += item.marker + item.seriesName + \": \" + formattedNumber + '<br/>';\n      });\n      return tooltipContent\n    },\n  },\n  legend: {\n    data: ['Sehbeteiligung in Tsd.', 'Marktanteil in %'],\n    textStyle: {\n      fontSize: 14,\n      fontWeight: 'bold'\n    },\n    inactiveColor: '#9C9C9C',\n  },\n  toolbox: {\n    feature: {\n      magicType: { type: ['line', 'bar'] },\n      restore: { show: true },\n      saveAsImage: { show: true },\n      dataView: { show: false }\n    }\n  },\n  xAxis: {\n    type: 'category',\n    data: sTime,\n    boundaryGap: false,\n    axisLabel: {\n      textStyle: {\n        fontSize: 12,\n        fontWeight: 'bold'\n      },\n    },\n    axisTick: {\n      alignWithLabel: true,\n    }\n  },\n  yAxis: {\n    type: 'log',\n    min: function (value) {\n      if (value.min < 1) {\n        return value.min + 1;\n      } else {\n        return value.min;\n      }\n    },\n    max: 'dataMax',\n    axisLabel: {\n      formatter: function (value, index) {\n        let formattedNumber = new Intl.NumberFormat('de-DE').format(value);\n        return formattedNumber\n      }\n    },\n  },\n  grid: {\n    left: '5%',\n    right: '2.5%',\n    top: 45,\n    bottom: 24,\n    containLabel: false,\n  },\n  series: [\n    {\n      name: 'Sehbeteiligung in Tsd.',\n      type: 'line',\n      color: '#49B9FF',\n      smooth: true,\n      areaStyle: {\n        opacity: 0.5,\n        origin: 'start',\n        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [\n\n          {\n            offset: 0,\n            color: 'rgb(55, 162, 255)'\n          },\n          {\n            offset: 1,\n            color: 'rgb(116, 21, 219)'\n          }\n        ])\n      },\n      data: sSehbeteiligung,\n      markLine: {\n        data: [{\n          type: 'average',\n          show: true,\n          name: 'avg',\n          lineStyle: {\n            width: 1.5,\n          },\n          label: {\n            position: 'insideMiddleBottom',\n            distance: 15,\n            fontWeight: 'bold',\n            fontSize: 14,\n            formatter: function (params) {\n              let labelContent = '';\n              let number = params.value;\n              let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n              labelContent += \"Durchschnitt: \" + formattedNumber + \"k\";\n              return labelContent\n            },\n          }\n        }],\n      },\n    },\n    {\n      name: 'Marktanteil in %',\n      type: 'line',\n      smooth: true,\n      color: '#7CFFB2',\n      data: sMarktanteil,\n      areaStyle: {\n        origin: 'start',\n        opacity: 0.5,\n        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [\n          {\n            offset: 0,\n            color: 'rgb(128, 255, 165)'\n          },\n          {\n            offset: 1,\n            color: 'rgb(1, 191, 236)'\n          }\n        ])\n      },\n      markLine: {\n        data: [{\n          type: 'average',\n          show: true,\n          name: 'avg',\n          lineStyle: {\n            width: 1.5,\n          },\n          label: {\n            position: 'insideMiddleTop',\n            distance: 10,\n            fontWeight: 'bold',\n            fontSize: 14,\n\n            formatter: function (params) {\n              let labelContent = '';\n              let number = params.value;\n              let formattedNumber = new Intl.NumberFormat('de-DE').format(number);\n              labelContent += \"Durchschnitt: \" + formattedNumber + \" %\";\n              return labelContent\n            },\n          }\n        }],\n      },\n    },\n\n\n  ],\n};",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "svg",
+          "themeEditor": {
+            "config": "{}",
+            "height": 400,
+            "name": "default"
+          }
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "-- Line chart / time series of all shows with market share (default) and coverage (Reichweite)\r\n\r\nIF ($LRA = 2) THEN ( \r\n    SELECT 0 as Sehbeteiligung, ROUND(Marktanteil, 3) as Marktanteil,  Datum_5 as Datum\r\n    FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Sendungsliste`\r\n    ORDER by Datum_5 ASC);\r\nELSE ( \r\n    SELECT ROUND(Sehbeteiligung*1000,3) as Sehbeteiligung, ROUND(Marktanteil, 3) as Marktanteil,  Datum\r\n    FROM `ndr-code-bi-dashboard.Quotenreport_Sample.${dataset}_Sendungsliste`\r\n    ORDER by Datum ASC);\r\nEND IF;\r\n\r\n\r\n\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Sendungen im Zeitverlauf |  ${LRA:text} | $Sendung",
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": true,
+            "text": "ARD",
+            "value": "ard"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "LRA",
+          "options": [
+            {
+              "selected": true,
+              "text": "ARD",
+              "value": "0"
+            },
+            {
+              "selected": false,
+              "text": "NDR",
+              "value": "1"
+            },
+            {
+              "selected": false,
+              "text": "Senderreports (NDR FS)",
+              "value": "2"
+            }
+          ],
+          "query": "ARD : 0,NDR : 1,Senderreports (NDR FS) : 2",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "31.01.2024",
+            "value": "31.01.2024"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "LastDayOfMonth",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\nFORMAT_DATE(\"%d.%m.%Y\", DATE_SUB(today, INTERVAL EXTRACT(DAY from today) DAY))\r\nFROM `grafana.current_date`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "2022",
+            "value": "2022"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "LastJahr",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT $Jahr - 1",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "2021",
+            "value": "2021"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "LastLastJahr",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT $Jahr - 2",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "allValue": "Alle",
+          "current": {
+            "selected": false,
+            "text": "DAS!",
+            "value": "DAS!"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Sendung",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF (${LRA} = 0) THEN (\r\n    SELECT 'Tatort' as Sendung\r\n    UNION ALL\r\n  SELECT 'Anne Will' \r\n  UNION ALL\r\n  SELECT 'Das Erste'\r\n  UNION ALL\r\n  SELECT 'Extra3'\r\n  UNION ALL\r\n  SELECT 'Großstadtrevier'\r\n  UNION ALL\r\n  SELECT 'Morden im Norden'\r\n  UNION ALL\r\n  SELECT 'Nachtmagazin'\r\n  UNION ALL\r\n  SELECT 'Panorama'\r\n  UNION ALL\r\n  SELECT 'Plusminus'\r\n  UNION ALL\r\n  SELECT 'Polizeiruf 110'\r\n  UNION ALL\r\n  SELECT 'Rote Rosen'\r\n  UNION ALL\r\n  SELECT 'Sturm der Liebe'\r\n  UNION ALL\r\n  SELECT 'Tagesschau 20 Uhr'\r\n  UNION ALL\r\n  SELECT 'tagesschau24'\r\n  UNION ALL\r\n  SELECT 'Tagesthemen'\r\n    UNION ALL\r\n  SELECT 'ttt - titel thesen temperamente'\r\n    UNION ALL\r\n  SELECT 'W wie Wissen'\r\n    UNION ALL\r\n  SELECT 'Weltspiegel');\r\nEND IF ;\r\nIF (${LRA} = 1) THEN (\r\n  SELECT 'DAS!'\r\n  UNION ALL\r\n  SELECT '3 nach 9'\r\n   UNION ALL\r\n   SELECT '45 Min'\r\n   UNION ALL\r\n    SELECT 'BINGO! - DIE UMWELTLOTTERIE'\r\n  UNION ALL\r\n  SELECT 'buten un binnen'\r\n  UNION ALL\r\n  \r\n  SELECT 'Die NDR-Quizshow'\r\n  UNION ALL\r\n  SELECT 'Dokumentationen und Service'\r\n  UNION ALL\r\n  SELECT 'Expeditionen ins Tierreich'\r\n  UNION ALL\r\n  SELECT 'extra 3'\r\n  UNION ALL\r\n  SELECT 'Hallo Niedersachsen'\r\n  UNION ALL\r\n  SELECT 'Hamburg Journal'\r\n  UNION ALL\r\n  SELECT 'LÄNDER - MENSCHEN - ABENTEUER'\r\n  UNION ALL\r\n  SELECT 'mare TV'\r\n  UNION ALL\r\n  SELECT 'Markt'\r\n  UNION ALL\r\n  SELECT 'NDR Fernsehen'\r\n  UNION ALL\r\n  SELECT 'NDR Info 14 Uhr'\r\n  UNION ALL\r\n  SELECT 'NDR Info 16 Uhr'\r\n  UNION ALL\r\n  SELECT 'NDR Info 17 Uhr'\r\n  UNION ALL\r\n  SELECT 'NDR Info 21:45 Uhr'\r\n  UNION ALL\r\n  SELECT 'NDR Kultur - Das Journal'\r\n  UNION ALL\r\n  SELECT 'NDR regional 18 Uhr'\r\n  UNION ALL\r\n  SELECT 'NDR regional 19:30 Uhr'\r\n  UNION ALL\r\n  SELECT 'NDR TALK SHOW'\r\n  UNION ALL\r\n  SELECT 'Nordmagazin'\r\n  UNION ALL\r\n  SELECT 'Nordreportage Hofgeschichten'\r\n  UNION ALL\r\n  SELECT 'Nordreportage Mo-Do'\r\n  UNION ALL\r\n  SELECT 'Nordsee-Report'\r\n  UNION ALL\r\n  SELECT 'Nordstory'\r\n  UNION ALL\r\n  SELECT 'Nordtour'\r\n  UNION ALL\r\n  SELECT 'Nrdt. Factual Entertainment'\r\n  UNION ALL\r\n  SELECT 'Ostsee-Report'\r\n  UNION ALL\r\n  SELECT 'Panorama - die Reporter'\r\n  UNION ALL\r\n  SELECT 'Panorama 3'\r\n  UNION ALL\r\n  SELECT 'Rund um den Michel'\r\n  UNION ALL\r\n  SELECT 'Schleswig-Holstein-Magazin'\r\n  UNION ALL\r\n  SELECT 'Sportclub'\r\n  UNION ALL\r\n  SELECT 'Sportclub Story'\r\n  UNION ALL\r\n  SELECT 'Tagesschau'\r\n  UNION ALL\r\n  SELECT 'Tiere & Co.'\r\n  UNION ALL\r\n  SELECT 'Unsere Geschichten'\r\n  UNION ALL\r\n  SELECT 'Visite'\r\n  UNION ALL\r\n  SELECT 'Weltbilder'\r\n  UNION ALL\r\n  SELECT 'Zapp');\r\nEND IF ;\r\nIF (${LRA} = 2) THEN (SELECT \"Alle Sendungen\" as Sendung);\r\nEND IF\r\n\r\n",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "NDR_DAS",
+            "value": "NDR_DAS"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "dataset",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE '${Sendung}'\r\n  WHEN 'Tatort' THEN \"ARD_Tatort\"\r\n  WHEN 'DAS!' THEN \"NDR_DAS\"\r\n  WHEN 'Alle Sendungen' THEN \"Sender_NDR-Fernsehen\"\r\n  --ELSE \"NDR-Fernsehen\"\r\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "2024",
+            "value": "2024"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Jahr",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT EXTRACT(YEAR from CURRENT_DATE)",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "Januar",
+            "value": "1"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "Monat",
+          "options": [
+            {
+              "selected": true,
+              "text": "Januar",
+              "value": "1"
+            },
+            {
+              "selected": false,
+              "text": "Februar",
+              "value": "2"
+            },
+            {
+              "selected": false,
+              "text": "März",
+              "value": "3"
+            },
+            {
+              "selected": false,
+              "text": "April",
+              "value": "4"
+            },
+            {
+              "selected": false,
+              "text": "Mai",
+              "value": "5"
+            },
+            {
+              "selected": false,
+              "text": "Juni",
+              "value": "6"
+            },
+            {
+              "selected": false,
+              "text": "Juli",
+              "value": "7"
+            },
+            {
+              "selected": false,
+              "text": "August",
+              "value": "8"
+            },
+            {
+              "selected": false,
+              "text": "September",
+              "value": "9"
+            },
+            {
+              "selected": false,
+              "text": "Oktober",
+              "value": "10"
+            },
+            {
+              "selected": false,
+              "text": "November",
+              "value": "11"
+            },
+            {
+              "selected": false,
+              "text": "Dezember",
+              "value": "12"
+            }
+          ],
+          "query": "Januar : 1,Februar : 2,März : 3,April : 4,Mai : 5,Juni : 6,Juli : 7,August : 8,September : 9,Oktober : 10,November : 11,Dezember : 12",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "CASE Zielgruppe\n    WHEN \"Konservativ-Gehobene (KOG)\" THEN 1\n    WHEN \"Postmaterielle (PMA)\" THEN 2\n    WHEN \"Performer (PER)\" THEN 3\n    WHEN \"Expeditive (EPE)\" THEN 4\n    WHEN \"Neo-Ökologische (NÖK)\" THEN 5\n    WHEN \"Adaptiv-Pragmatische (ADA)\" THEN 6\n    WHEN \"Konsum-Hedonisten (HED)\" THEN 7\n    WHEN \"Prekäre (PRE)\" THEN 8\n    WHEN \"Nostalgisch-Bürgerliche (NOB)\" THEN 9\n    WHEN \"Traditionelle (TRA)\" THEN 10\n  END",
+            "value": "CASE Zielgruppe\n    WHEN \"Konservativ-Gehobene (KOG)\" THEN 1\n    WHEN \"Postmaterielle (PMA)\" THEN 2\n    WHEN \"Performer (PER)\" THEN 3\n    WHEN \"Expeditive (EPE)\" THEN 4\n    WHEN \"Neo-Ökologische (NÖK)\" THEN 5\n    WHEN \"Adaptiv-Pragmatische (ADA)\" THEN 6\n    WHEN \"Konsum-Hedonisten (HED)\" THEN 7\n    WHEN \"Prekäre (PRE)\" THEN 8\n    WHEN \"Nostalgisch-Bürgerliche (NOB)\" THEN 9\n    WHEN \"Traditionelle (TRA)\" THEN 10\n  END"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "SinusOrder",
+          "options": [
+            {
+              "selected": true,
+              "text": "CASE Zielgruppe\n    WHEN \"Konservativ-Gehobene (KOG)\" THEN 1\n    WHEN \"Postmaterielle (PMA)\" THEN 2\n    WHEN \"Performer (PER)\" THEN 3\n    WHEN \"Expeditive (EPE)\" THEN 4\n    WHEN \"Neo-Ökologische (NÖK)\" THEN 5\n    WHEN \"Adaptiv-Pragmatische (ADA)\" THEN 6\n    WHEN \"Konsum-Hedonisten (HED)\" THEN 7\n    WHEN \"Prekäre (PRE)\" THEN 8\n    WHEN \"Nostalgisch-Bürgerliche (NOB)\" THEN 9\n    WHEN \"Traditionelle (TRA)\" THEN 10\n  END",
+              "value": "CASE Zielgruppe\n    WHEN \"Konservativ-Gehobene (KOG)\" THEN 1\n    WHEN \"Postmaterielle (PMA)\" THEN 2\n    WHEN \"Performer (PER)\" THEN 3\n    WHEN \"Expeditive (EPE)\" THEN 4\n    WHEN \"Neo-Ökologische (NÖK)\" THEN 5\n    WHEN \"Adaptiv-Pragmatische (ADA)\" THEN 6\n    WHEN \"Konsum-Hedonisten (HED)\" THEN 7\n    WHEN \"Prekäre (PRE)\" THEN 8\n    WHEN \"Nostalgisch-Bürgerliche (NOB)\" THEN 9\n    WHEN \"Traditionelle (TRA)\" THEN 10\n  END"
+            }
+          ],
+          "query": "CASE Zielgruppe\n    WHEN \"Konservativ-Gehobene (KOG)\" THEN 1\n    WHEN \"Postmaterielle (PMA)\" THEN 2\n    WHEN \"Performer (PER)\" THEN 3\n    WHEN \"Expeditive (EPE)\" THEN 4\n    WHEN \"Neo-Ökologische (NÖK)\" THEN 5\n    WHEN \"Adaptiv-Pragmatische (ADA)\" THEN 6\n    WHEN \"Konsum-Hedonisten (HED)\" THEN 7\n    WHEN \"Prekäre (PRE)\" THEN 8\n    WHEN \"Nostalgisch-Bürgerliche (NOB)\" THEN 9\n    WHEN \"Traditionelle (TRA)\" THEN 10\n  END",
+          "skipUrlSync": false,
+          "type": "custom"
+        }
+      ]
+    },
+    "time": {
+      "from": "2023-11-30T10:08:12.740Z",
+      "to": "2023-12-02T10:08:12.740Z"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Quotenreport Copy Silke",
+    "uid": "IbLuvZoIk",
+    "version": 2,
+    "weekStart": ""
+  }
+}

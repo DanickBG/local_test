@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "tv-dashboard-test-02-28-2024",
+    "url": "/d/cdtlz8861akn4b/tv-dashboard-test-02-28-2024",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-08-02T12:02:00Z",
+    "updated": "2024-08-06T21:47:21Z",
+    "updatedBy": "daniel hristov dev",
+    "createdBy": "chams khoury dev",
+    "version": 18,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 660,
+    "folderUid": "folder-F9a5Uxn4k",
+    "folderTitle": "Prototypes",
+    "folderUrl": "/dashboards/f/folder-F9a5Uxn4k/prototypes",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1443,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 20,
+          "w": 14,
+          "x": 0,
+          "y": 0
+        },
+        "id": 14,
+        "options": {
+          "afterRender": "",
+          "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  \n<body>\n  <div class=\"container\">\n    <div class=\"channel\">{{{\"bi_av_content\"}}}</div>\n    <div class=\"separator\">|</div>\n    <div class=\"views\">{{{\"wiedergabe\"}}}</div>\n  </div>\n</body>\n\n</html>",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "html"
+          },
+          "editors": [
+            "styles"
+          ],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "everyRow",
+          "styles": ".container {\n  font-size: 30px;\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n\n.channel {\n  width: 90%;\n  text-align: left;\n  word-wrap: break-word;\n}\n\n.separator {\n  flex-shrink: 0;\n}\n\n.views {\n  width: 10%;\n  text-align: center;\n}",
+          "wrap": false
+        },
+        "pluginVersion": "5.2.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "  SELECT \n-- bi_av_content_id,\n  CASE\n    WHEN length(bi_av_content) > 90 THEN SUBSTR(bi_av_content, 0 , 90) || '...'\n    ELSE bi_av_content\n  END AS bi_av_content,\n-- bi_av_content,\nsum(m_av_playbacks) as wiedergabe,\nFROM\n(SELECT \n    bi_av_content_id,\n    m_av_playbacks,\n    FIRST_VALUE(bi_av_content) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) AS bi_av_content\n  FROM \n    Piano.av_joined_daily\n  WHERE \n    site_level2 = \"mdr.de\"\n    AND \"nachrichten\" IN UNNEST(bi_av_page_chapter1_tags)\n    AND \"Alle Kapitel 2\" IN UNNEST(bi_av_page_chapter2_tags)\n    AND \"Alle Sendungs-ID\" IN UNNEST(sendungs_id_tags)\n    AND (av_content_type = \"audio\" OR av_content_type = \"Audio\")\n    AND bi_av_content_id NOT LIKE '%index%'\n    AND bi_av_broadcasting_type = \"ondemand\"\n    AND date = \"2024-08-02\") GROUP BY bi_av_content,bi_av_content_id\n--,device_type \nORDER BY 2 DESC\nLimit 10",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      }
+    ],
+    "schemaVersion": 39,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "Nach Starkregen: Die Situation am Vormit...------#227 Was die jüngsten russischen Erfolge...------#227 Was die jüngsten russischen Erfolge...------Wie wird der August, Wetterbauer Uebel?------Betrug in der Wissenschaft------MDR THÜRINGEN-Sommernachtsball: Was Sie ...------Betrug in der Wissenschaft------Der Polizeibericht am Nachmittag------Simsontreffen mit rechten Symbolen: &quo...------#227 Was die jüngsten russischen Erfolge...Übergang393------324------259------234------196------156------141------133------113------105",
+            "value": "Nach Starkregen: Die Situation am Vormit...------#227 Was die jüngsten russischen Erfolge...------#227 Was die jüngsten russischen Erfolge...------Wie wird der August, Wetterbauer Uebel?------Betrug in der Wissenschaft------MDR THÜRINGEN-Sommernachtsball: Was Sie ...------Betrug in der Wissenschaft------Der Polizeibericht am Nachmittag------Simsontreffen mit rechten Symbolen: &quo...------#227 Was die jüngsten russischen Erfolge...Übergang393------324------259------234------196------156------141------133------113------105"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "string_data",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH RankedContent AS (\r\n  SELECT \r\n    bi_av_content_id,\r\n    m_av_playbacks,\r\n    FIRST_VALUE(bi_av_content) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) AS bi_av_content\r\n  FROM \r\n    Piano.av_joined_daily\r\n  WHERE \r\n    site_level2 = \"mdr.de\"\r\n    AND \"nachrichten\" IN UNNEST(bi_av_page_chapter1_tags)\r\n    AND \"Alle Kapitel 2\" IN UNNEST(bi_av_page_chapter2_tags)\r\n    AND \"Alle Sendungs-ID\" IN UNNEST(sendungs_id_tags)\r\n    AND (av_content_type = \"audio\" OR av_content_type = \"Audio\")\r\n    AND bi_av_content_id NOT LIKE '%index%'\r\n    AND bi_av_broadcasting_type = \"ondemand\"\r\n    AND date = \"2024-08-02\"\r\n)\r\n, TopContent AS (\r\n  SELECT\r\n    bi_av_content,\r\n    m_av_playbacks\r\n  FROM RankedContent\r\n  GROUP BY bi_av_content, m_av_playbacks\r\n  ORDER BY m_av_playbacks DESC\r\n  LIMIT 10\r\n), data_as_string AS (\r\nSELECT \r\n  CONCAT(STRING_AGG(\r\n    CASE\r\n      WHEN length(bi_av_content) > 45 THEN SUBSTR(bi_av_content, 0 , 40) || '...'\r\n      ELSE bi_av_content\r\n    END, \r\n    '------'\r\n  ),\"Übergang\",\r\n  STRING_AGG(CAST(m_av_playbacks AS STRING), '------')) as string_data\r\nFROM TopContent)\r\nSELECT string_data  FROM data_as_string",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "2024-08-02T11:41:48.938Z",
+      "to": "2024-08-02T17:41:48.939Z"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "TV Dashboard Test 02.28.2024",
+    "uid": "cdtlz8861akn4b",
+    "version": 18,
+    "weekStart": ""
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "id": 560,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "OmjzyGX4z",
+  "name": "Instagram Top Reels/Videos Main Table",
+  "kind": 1,
+  "type": "marcusolsson-dynamictext-panel",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byType",
+            "options": "number"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 19,
+      "w": 24,
+      "x": 0,
+      "y": 6
+    },
+    "id": 158,
+    "options": {
+      "afterRender": "",
+      "content": "<table>\n  <thead>\n    <tr>\n      <th id=\"timestamp\">Datum</th>\n      <th id=\"post\">Post</th>\n      <th id=\"engagement\">▼ Interaktionen</th>\n      <th id=\"reach\">pot. Reichweite</th>\n      <th id=\"videoViews\">Videostarts</th>\n      <th id=\"type\">Typ</th>\n    </tr>\n  </thead>\n  <tbody>\n    {{#each data}}\n    <tr>\n      <td class=\"time\" data-time=\"{{this.time}}\">{{this.time}}</td>\n      <td>{{this.Post}}</td>\n      <td class=\"number\">{{this.engagement}}</td>\n      <td class=\"number\">{{this.reach}}</td>\n      <td class=\"number\">{{this.videoViews}}</td>\n      <td id='type'>\n        {{#if (eq this.Typ \"Video\")}}\n          🎥\n        {{else if (eq this.Typ \"Reel\")}}\n          🎞️\n        {{else}}\n          {{this.Typ}}\n        {{/if}}\n      </td>\n    </tr>\n    {{/each}}\n  </tbody>\n</table>\n\n\n\n",
+      "contentPartials": [],
+      "defaultContent": "The query didn't return any results.",
+      "editor": {
+        "format": "auto",
+        "language": "markdown"
+      },
+      "editors": [
+        "afterRender",
+        "styles",
+        "helpers"
+      ],
+      "externalStyles": [],
+      "helpers": "",
+      "renderMode": "allRows",
+      "styles": "<style>\n  table {\n    font-size: 25px;\n    max-width: 1950px;\n    border-collapse: collapse;\n  }\n\n  th {\n    font-size: 20px;\n    font-weight: bold;\n    text-align: left;\n  }\n\n  td {\n    font-size: 25px;\n    padding: 8px;\n    height: 90px;\n  }\n\n  td.time {\n    font-weight: bold;\n    font-size: 20px;\n    min-width: 200px;\n  }\n\n  th#engagement {\n    width: 175px;\n  }\n\n  td.reach {\n    width: 122px;\n  }\n\n  td.videoViews {\n    width: 124px;\n  }\n  td.number{\n    text-align: center;\n  }\n  td#type {\n    width: 60px;\n    text-align: center;\n  }\n\n  td#post {\n    width: auto;\n    word-wrap: break-word;\n    white-space: normal;\n}\n</style>\n\n\n",
+      "wrap": true
+    },
+    "pluginVersion": "5.6.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT \r\n  -- time,\r\n  FORMAT_TIMESTAMP('%d.%m | %H:%M Uhr', TIMESTAMP(time)) AS time,\r\n  videoViews,\r\n  reach,\r\n  type AS Typ,\r\n  -- REPLACE(message, '�', '') AS Post, \r\n  CASE \r\n    WHEN LENGTH(REPLACE(SPLIT(message, '\\n')[SAFE_OFFSET(0)], '�', '')) > 80 \r\n    THEN CONCAT(LEFT(REPLACE(SPLIT(message, '\\n')[SAFE_OFFSET(0)], '�', ''), 80), '...')\r\n    ELSE REPLACE(SPLIT(message, '\\n')[SAFE_OFFSET(0)], '�', '')\r\nEND AS Post,\r\n  CASE\r\n    WHEN type = 'Reel' THEN totalInteractions\r\n    ELSE engagement\r\n  END AS engagement,FROM `ndr-code-bi-dashboard.Quintly.instagramInsightsOwnPosts`\r\nWHERE profileId = $profileID\r\nAND (type = 'Video' OR type = 'Reel')\r\nAND $Zeitraum \r\nAND last_update = \r\n  (SELECT MAX(last_update) \r\n  FROM `ndr-code-bi-dashboard.Quintly.instagramInsightsOwnPosts` \r\n  WHERE profileId = $profileID)\r\nORDER BY engagement DESC LIMIT 7\r\n",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "includeByName": {},
+          "indexByName": {
+            "Post": 1,
+            "Typ": 5,
+            "engagement": 2,
+            "reach": 3,
+            "time": 0,
+            "videoViews": 4
+          },
+          "renameByName": {
+            "Interaktionen": "▼ Interaktionen",
+            "engagement": "",
+            "reach": "",
+            "time": "",
+            "type": "Typ",
+            "videoViews": ""
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "marcusolsson-dynamictext-panel"
+  },
+  "version": 17,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 25,
+    "created": "2024-06-20T11:45:50Z",
+    "updated": "2025-02-26T08:10:16Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

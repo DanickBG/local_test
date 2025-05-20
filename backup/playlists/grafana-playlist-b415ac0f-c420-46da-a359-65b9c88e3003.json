@@ -1,0 +1,11 @@
+{
+  "uid": "b415ac0f-c420-46da-a359-65b9c88e3003",
+  "name": "MDR Sachsen-Anhalt | Newsroom",
+  "interval": "1m",
+  "items": [
+    {
+      "type": "dashboard_by_tag",
+      "value": "MDR ST"
+    }
+  ]
+}

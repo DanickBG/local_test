@@ -1,0 +1,136 @@
+{
+  "id": 576,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "qldhL0rVk",
+  "name": "MDR Top Web Artikel Vergleichszeitraum ",
+  "kind": 1,
+  "type": "marcusolsson-dynamictext-panel",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        },
+        "unit": "locale"
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 20,
+      "w": 12,
+      "x": 12,
+      "y": 6
+    },
+    "id": 47,
+    "options": {
+      "afterRender": "",
+      "content": "<!-- ```json\n{{{json @root}}}\n``` -->\n<table>\n  <thead>\n    <tr>\n      <th id=\"content_titel\">Titel</th>\n      <th id=\"visits\"> Visits</th>\n    </tr>\n  </thead>\n  <tbody>\n    {{#each data}}\n    <tr>\n      <td>{{this.content_titel}}</td>\n      <td class=\"number\">{{this.visits}}</td>\n      </td>\n    </tr>\n    {{/each}}\n  </tbody>\n</table>",
+      "contentPartials": [],
+      "defaultContent": "The query didn't return any results.",
+      "editor": {
+        "format": "auto",
+        "language": "markdown"
+      },
+      "editors": [
+        "styles"
+      ],
+      "externalStyles": [],
+      "helpers": "",
+      "renderMode": "allRows",
+      "styles": "<style>\n  table {\n    font-size: 25px;\n    width: 1080px;\n    border-collapse: collapse;\n  }\n\n  th {\n    font-size: 20px;\n    font-weight: bold;\n    text-align: left;\n  }\n\n  td {\n    font-size: 25px;\n    padding: 8px;\n  }\n\n  td.time {\n    font-weight: bold;\n    font-size: 20px;\n    width: 200px;\n  }\n\n  td.engagement {\n    width: 120px;\n  }\n\n  td.reach {\n    width: 122px;\n  }\n\n  td.videoViews {\n    width: 124px;\n  }\n\n  td.type {\n    width: 100px;\n  }\n\n  td.post {\n    width: auto;\n    word-wrap: break-word;\n    white-space: normal;\n  }\n</style>\n\n\n",
+      "wrap": true
+    },
+    "pluginVersion": "5.6.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT CASE\r\n    WHEN length(content_titel) > 90 THEN SUBSTR(content_titel, 0 , 90) || '...'\r\n    ELSE content_titel\r\n  END AS content_titel,\r\nsum(m_visits) as visits FROM\r\n(\r\nSELECT\r\ncontent_id_sophora,\r\nFIRST_VALUE(content_titel) OVER (PARTITION BY uuid ORDER BY publishing_date DESC) as content_titel, \r\nm_visits,\r\nFROM `ndr-code-bi-dashboard.Piano.articles_joined_${dataset_vergleichszeitraum:raw}`\r\nWHERE site_level2 = ${LRA:doublequote} AND\r\n${Redaktionen:doublequote} IN UNNEST(page_chapter1_tags) AND\r\n${Unterkapitel:doublequote} IN UNNEST(page_chapter2_tags) AND \r\n${Sendung:doublequote} IN UNNEST(sendungs_id_tags)\r\nAND content_id_sophora NOT LIKE '%index%'\r\nAND content_id_sophora NOT LIKE '%N/A%'\r\nAND content_id_sophora NOT LIKE '%verteilseite%'\r\nAND content_id_sophora NOT LIKE '%nachrichtenfeed%'\r\nAND objekt_typ NOT LIKE 'indexPage'\r\nAND ${Vergleichszeitraum:raw}) \r\nGROUP BY content_id_sophora, \r\ncontent_titel\r\nORDER BY 2 DESC LIMIT 10",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "av_content_duration": true,
+            "av_content_type": true,
+            "bi_av_publication_date": false,
+            "device_type": true,
+            "f0_": false,
+            "wiedergaberate": true
+          },
+          "indexByName": {},
+          "renameByName": {
+            "bi_av_content": "Title",
+            "bi_av_publication_date": "Publiziert"
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "marcusolsson-dynamictext-panel"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 6,
+    "created": "2024-06-20T11:45:52Z",
+    "updated": "2025-04-04T08:01:21Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

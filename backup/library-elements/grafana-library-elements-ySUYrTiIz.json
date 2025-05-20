@@ -1,0 +1,226 @@
+{
+  "id": 637,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "ySUYrTiIz",
+  "name": "TV AKTUELL App Artikel MDR Top Artikel Vergleichszeitraum",
+  "kind": 1,
+  "type": "table",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "custom": {
+          "align": "auto",
+          "cellOptions": {
+            "type": "auto"
+          },
+          "inspect": false
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "content_id_sophora"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Sophora ID"
+            },
+            {
+              "id": "unit",
+              "value": "short"
+            },
+            {
+              "id": "decimals",
+              "value": 2
+            },
+            {
+              "id": "custom.align",
+              "value": "left"
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "content_titel"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Titel"
+            },
+            {
+              "id": "unit",
+              "value": "short"
+            },
+            {
+              "id": "decimals",
+              "value": 2
+            },
+            {
+              "id": "custom.align",
+              "value": null
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "visits"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Visits"
+            },
+            {
+              "id": "unit",
+              "value": "locale"
+            },
+            {
+              "id": "decimals",
+              "value": 2
+            },
+            {
+              "id": "custom.align",
+              "value": null
+            },
+            {
+              "id": "custom.width",
+              "value": 115
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "content_titel"
+          },
+          "properties": []
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 22,
+      "w": 12,
+      "x": 12,
+      "y": 6
+    },
+    "id": 39,
+    "options": {
+      "cellHeight": "sm",
+      "footer": {
+        "countRows": false,
+        "fields": "",
+        "reducer": [
+          "sum"
+        ],
+        "show": false
+      },
+      "showHeader": true,
+      "sortBy": []
+    },
+    "pluginVersion": "11.1.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT\r\n    CASE\r\n    WHEN length(content_titel) > 90 THEN SUBSTR(content_titel, 0 , 90) || '...'\r\n    ELSE content_titel\r\n  END AS content_titel, sum(m_visits) as visits \r\nFROM\r\n  (\r\n    SELECT\r\n      --publishing_date,\r\n      FIRST_VALUE(publishing_date) OVER (PARTITION BY uuid ORDER BY publishing_date DESC) as publishing_date, \r\n      FIRST_VALUE(content_id_sophora) OVER (PARTITION BY uuid ORDER BY publishing_date DESC) as content_id_sophora, \r\n      m_visits,\r\n      m_page_loads,\r\n      FIRST_VALUE(content_titel) OVER ( PARTITION BY uuid ORDER BY publishing_date DESC) as content_titel\r\n    FROM\r\n      `ndr-code-bi-dashboard.Piano.articles_joined_${dataset_vergleichszeitraum:raw}`\r\n    WHERE\r\n      site_level2 = '${app_name}'\r\n      AND content_id_sophora NOT LIKE '%index%'\r\n      AND content_id_sophora NOT LIKE '%N/A%'\r\n      AND (\r\n        CASE \r\n            WHEN \"$LRA\" = 'NDR' THEN\r\n                content_titel NOT LIKE '%Video Livestream%'\r\n            AND content_titel NOT LIKE '%Startteaser%'\r\n            AND content_titel NOT LIKE '%startteaser%'\r\n            AND content_titel NOT LIKE '%-Anmelden%'\r\n            AND content_titel NOT LIKE '%_Start'\r\n            AND content_titel != 'Anmelden'\r\n            AND content_titel != 'Jetzt läuft'\r\n        ELSE\r\n          TRUE\r\n        END)\r\n      AND date = ${bq_today:doublequote}\r\n  )\r\nGROUP BY\r\n  content_id_sophora,\r\n  content_titel,\r\n  publishing_date\r\nORDER BY\r\n  2 DESC\r\nLIMIT\r\n  10",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "av_content_duration": true,
+            "av_content_type": true,
+            "bi_av_publication_date": false,
+            "device_type": true,
+            "wiedergaberate": true
+          },
+          "indexByName": {},
+          "renameByName": {
+            "bi_av_content": "Title",
+            "bi_av_publication_date": "Publiziert"
+          }
+        }
+      },
+      {
+        "id": "merge",
+        "options": {
+          "reducers": []
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "table"
+  },
+  "version": 3,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 0,
+    "created": "2024-06-20T11:46:02Z",
+    "updated": "2024-08-02T10:56:34Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
+      "id": 1,
+      "name": "admin"
+    }
+  }
+}

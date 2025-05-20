@@ -1,0 +1,35 @@
+{
+  "uid": "becxv8btw61a8d",
+  "name": "NDR SH (HD)",
+  "interval": "1m",
+  "items": [
+    {
+      "type": "dashboard_by_uid",
+      "value": "fCa8lSFIz"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "aBI__SKSz"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "X8Ql_IKSz"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "_UE9cYpSk"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "ywjdJLtIk"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "b6Cu7LtSk"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "D7bSzqOIk"
+    }
+  ]
+}

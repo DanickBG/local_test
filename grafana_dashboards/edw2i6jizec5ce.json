@@ -1,0 +1,1214 @@
+{
+    "meta": {
+        "type": "db",
+        "canSave": true,
+        "canEdit": true,
+        "canAdmin": true,
+        "canStar": true,
+        "canDelete": true,
+        "slug": "mdr-theuringen-7c-tv-web-7c-audio-7c-heute",
+        "url": "/d/edw2i6jizec5ce/mdr-theuringen-7c-tv-web-7c-audio-7c-heute",
+        "expires": "0001-01-01T00:00:00Z",
+        "created": "2024-08-27T07:28:01Z",
+        "updated": "2024-08-28T12:05:04Z",
+        "updatedBy": "daniel.hristov",
+        "createdBy": "daniel.hristov",
+        "version": 6,
+        "hasAcl": false,
+        "isFolder": false,
+        "folderId": 657,
+        "folderUid": "folder-8_CGGx84k",
+        "folderTitle": "TV_MDR",
+        "folderUrl": "/dashboards/f/folder-8_CGGx84k/tv-mdr",
+        "provisioned": false,
+        "provisionedExternalId": "",
+        "annotationsPermissions": {
+            "dashboard": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            },
+            "organization": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            }
+        }
+    },
+    "dashboard": {
+        "annotations": {
+            "list": [
+                {
+                    "builtIn": 1,
+                    "datasource": {
+                        "type": "grafana",
+                        "uid": "-- Grafana --"
+                    },
+                    "enable": true,
+                    "hide": true,
+                    "iconColor": "rgba(0, 211, 255, 1)",
+                    "name": "Annotations & Alerts",
+                    "target": {
+                        "limit": 100,
+                        "matchAny": false,
+                        "tags": [],
+                        "type": "dashboard"
+                    },
+                    "type": "dashboard"
+                }
+            ]
+        },
+        "editable": true,
+        "fiscalYearStartMonth": 0,
+        "graphTooltip": 0,
+        "id": 1522,
+        "links": [],
+        "liveNow": false,
+        "panels": [
+            {
+                "gridPos": {
+                    "h": 3,
+                    "w": 2,
+                    "x": 0,
+                    "y": 0
+                },
+                "id": 21,
+                "libraryPanel": {
+                    "name": "Piano TV Logos",
+                    "uid": "R4SurAr4k"
+                },
+                "title": ""
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "transparent",
+                            "mode": "fixed"
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "noValue": "N/A",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "string"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 3,
+                    "w": 10,
+                    "x": 2,
+                    "y": 0
+                },
+                "id": 44,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {
+                        "titleSize": 20
+                    },
+                    "textMode": "value_and_name",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT  CONCAT(REPEAT(\" \", 48 - CHAR_LENGTH(CONCAT(\"MDR TH\u00dcRINGEN\",' | Web Audios'))), CONCAT(\"MDR TH\u00dcRINGEN\",' | Web Audios'))\nFROM(\nSELECT CONCAT(\"MDR TH\u00dcRINGEN\",' | Web Audios') as Interaktionen\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nLIMIT 1\n)",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {},
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": " "
+                            }
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "gridPos": {
+                    "h": 4,
+                    "w": 4,
+                    "x": 12,
+                    "y": 0
+                },
+                "id": 52,
+                "libraryPanel": {
+                    "name": "NDR TV Web Audio Heute KPI",
+                    "uid": "zmYi-1GIk"
+                },
+                "title": ""
+            },
+            {
+                "gridPos": {
+                    "h": 4,
+                    "w": 4,
+                    "x": 16,
+                    "y": 0
+                },
+                "id": 54,
+                "libraryPanel": {
+                    "name": "NDR TV Web Audio Gestern KPI",
+                    "uid": "qDEZa1MSz"
+                },
+                "title": ""
+            },
+            {
+                "gridPos": {
+                    "h": 4,
+                    "w": 4,
+                    "x": 20,
+                    "y": 0
+                },
+                "id": 56,
+                "libraryPanel": {
+                    "name": "NDR TV Web Audio Heute/Gestern KPI Difference",
+                    "uid": "jOZIaJGSk"
+                },
+                "title": ""
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "gridPos": {
+                    "h": 1,
+                    "w": 12,
+                    "x": 0,
+                    "y": 3
+                },
+                "id": 25,
+                "options": {
+                    "code": {
+                        "language": "plaintext",
+                        "showLineNumbers": false,
+                        "showMiniMap": false
+                    },
+                    "content": "",
+                    "mode": "markdown"
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {},
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": " "
+                            }
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "text"
+            },
+            {
+                "gridPos": {
+                    "h": 2,
+                    "w": 12,
+                    "x": 0,
+                    "y": 4
+                },
+                "id": 41,
+                "libraryPanel": {
+                    "name": "Piano Table $Zeitraum Title",
+                    "uid": "2OGRCA94k"
+                },
+                "title": ""
+            },
+            {
+                "gridPos": {
+                    "h": 2,
+                    "w": 12,
+                    "x": 12,
+                    "y": 4
+                },
+                "id": 46,
+                "libraryPanel": {
+                    "name": "Piano Table $Vergleichszeitraum Title",
+                    "uid": "Ih1gCA9Vk"
+                },
+                "title": ""
+            },
+            {
+                "columns": [],
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "",
+                "fontSize": "200%",
+                "gridPos": {
+                    "h": 22,
+                    "w": 12,
+                    "x": 0,
+                    "y": 6
+                },
+                "id": 48,
+                "options": {
+                    "footer": {
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true
+                },
+                "pluginVersion": "9.2.3",
+                "showHeader": true,
+                "sort": {
+                    "col": 2,
+                    "desc": true
+                },
+                "styles": [
+                    {
+                        "$$hashKey": "object:88",
+                        "alias": "Titel",
+                        "align": "left",
+                        "colors": [
+                            "rgba(245, 54, 54, 0.9)",
+                            "rgba(237, 129, 40, 0.89)",
+                            "rgba(50, 172, 45, 0.97)"
+                        ],
+                        "decimals": 2,
+                        "link": false,
+                        "pattern": "bi_av_content",
+                        "preserveFormat": false,
+                        "thresholds": [],
+                        "type": "string",
+                        "unit": "short"
+                    },
+                    {
+                        "$$hashKey": "object:132",
+                        "alias": "Sophora ID",
+                        "align": "left",
+                        "colors": [
+                            "rgba(245, 54, 54, 0.9)",
+                            "rgba(237, 129, 40, 0.89)",
+                            "rgba(50, 172, 45, 0.97)"
+                        ],
+                        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                        "decimals": 2,
+                        "mappingType": 1,
+                        "pattern": "bi_av_content_id",
+                        "thresholds": [],
+                        "type": "string",
+                        "unit": "short"
+                    },
+                    {
+                        "$$hashKey": "object:1706",
+                        "alias": "Wiedergaben",
+                        "align": "auto",
+                        "colors": [
+                            "rgba(245, 54, 54, 0.9)",
+                            "rgba(237, 129, 40, 0.89)",
+                            "rgba(50, 172, 45, 0.97)"
+                        ],
+                        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                        "decimals": 2,
+                        "mappingType": 1,
+                        "pattern": "wiedergabe",
+                        "thresholds": [],
+                        "type": "number",
+                        "unit": "locale"
+                    }
+                ],
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \r\n-- bi_av_content_id,\r\n-- bi_av_content,\r\n  CASE\r\n    WHEN length(bi_av_content) > 45 THEN SUBSTR(bi_av_content, 0 , 40) || '...'\r\n    ELSE bi_av_content\r\n  END AS bi_av_content,\r\nsum(m_av_playbacks) as wiedergabe,\r\nFROM\r\n(\r\nSELECT\r\nbi_av_content_id,\r\nm_av_playbacks,\r\nFIRST_VALUE(bi_av_content) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) as bi_av_content, \r\nFROM \r\nPiano.av_joined_today\r\nWHERE site_level2 = ${LRA:doublequote} AND\r\n${Redaktionen:doublequote} IN UNNEST(bi_av_page_chapter1_tags) AND\r\n${Unterkapitel:doublequote} IN UNNEST(bi_av_page_chapter2_tags) AND \r\n${Sendung:doublequote} IN UNNEST(sendungs_id_tags) AND\r\n(av_content_type = \"audio\" OR av_content_type = \"Audio\")\r\nAND bi_av_content_id NOT LIKE '%index%'\r\nAND bi_av_broadcasting_type = \"ondemand\"\r\nAND date = ${bq_today:doublequote})\r\n GROUP BY bi_av_content,bi_av_content_id\r\n--,device_type \r\nORDER BY 2 DESC\r\nLimit 10",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    }
+                ],
+                "transform": "table",
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "av_content_duration": true,
+                                "av_content_type": true,
+                                "bi_av_publication_date": false,
+                                "device_type": true,
+                                "wiedergaberate": true
+                            },
+                            "indexByName": {
+                                "bi_av_content": 0,
+                                "bi_av_content_id": 1,
+                                "wiedergabe": 2
+                            },
+                            "renameByName": {
+                                "bi_av_content": "Title",
+                                "bi_av_publication_date": "Publiziert"
+                            }
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "table-old"
+            },
+            {
+                "columns": [],
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "",
+                "fontSize": "200%",
+                "gridPos": {
+                    "h": 22,
+                    "w": 12,
+                    "x": 12,
+                    "y": 6
+                },
+                "id": 50,
+                "options": {
+                    "footer": {
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true
+                },
+                "pluginVersion": "9.2.3",
+                "showHeader": true,
+                "sort": {
+                    "col": 2,
+                    "desc": true
+                },
+                "styles": [
+                    {
+                        "$$hashKey": "object:132",
+                        "alias": "Sophora ID",
+                        "align": "left",
+                        "colors": [
+                            "rgba(245, 54, 54, 0.9)",
+                            "rgba(237, 129, 40, 0.89)",
+                            "rgba(50, 172, 45, 0.97)"
+                        ],
+                        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                        "decimals": 2,
+                        "mappingType": 1,
+                        "pattern": "bi_av_content_id",
+                        "thresholds": [],
+                        "type": "string",
+                        "unit": "short"
+                    },
+                    {
+                        "$$hashKey": "object:1695",
+                        "alias": "Titel",
+                        "align": "auto",
+                        "colors": [
+                            "rgba(245, 54, 54, 0.9)",
+                            "rgba(237, 129, 40, 0.89)",
+                            "rgba(50, 172, 45, 0.97)"
+                        ],
+                        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                        "decimals": 2,
+                        "mappingType": 1,
+                        "pattern": "bi_av_content",
+                        "thresholds": [],
+                        "type": "number",
+                        "unit": "short"
+                    },
+                    {
+                        "$$hashKey": "object:1706",
+                        "alias": "Wiedergaben",
+                        "align": "auto",
+                        "colors": [
+                            "rgba(245, 54, 54, 0.9)",
+                            "rgba(237, 129, 40, 0.89)",
+                            "rgba(50, 172, 45, 0.97)"
+                        ],
+                        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                        "decimals": 2,
+                        "mappingType": 1,
+                        "pattern": "wiedergabe",
+                        "thresholds": [],
+                        "type": "number",
+                        "unit": "locale"
+                    }
+                ],
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \r\n-- bi_av_content_id,\r\n-- bi_av_content,\r\n  CASE\r\n    WHEN length(bi_av_content) > 40 THEN SUBSTR(bi_av_content, 0 , 40) || '...'\r\n    ELSE bi_av_content\r\n  END AS bi_av_content,\r\nsum(m_av_playbacks) as wiedergabe,\r\nFROM\r\n(\r\nSELECT\r\nbi_av_content_id,\r\nm_av_playbacks,\r\nFIRST_VALUE(bi_av_content) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) as bi_av_content, \r\nFROM \r\nPiano.av_joined_daily\r\nWHERE site_level2 = ${LRA:doublequote} AND\r\n${Redaktionen:doublequote} IN UNNEST(bi_av_page_chapter1_tags) AND\r\n${Unterkapitel:doublequote} IN UNNEST(bi_av_page_chapter2_tags) AND \r\n${Sendung:doublequote} IN UNNEST(sendungs_id_tags) AND\r\n(av_content_type = \"audio\" OR av_content_type = \"Audio\")\r\nAND bi_av_content_id NOT LIKE '%index%'\r\nAND bi_av_broadcasting_type = \"ondemand\"\r\n AND date = ${bq_yesterday:doublequote})\r\n--AND CASE\r\n--    WHEN ${Zeitraum:doublequote} = \"Heute\" THEN date = ${bq_yesterday:doublequote}\r\n    -- Else date = ${bq_today:doublequote} \r\n--    END) \r\nGROUP BY bi_av_content,bi_av_content_id\r\nORDER BY 2 DESC\r\nLimit 10",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    }
+                ],
+                "transform": "table",
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "av_content_duration": true,
+                                "av_content_type": true,
+                                "bi_av_publication_date": false,
+                                "device_type": true,
+                                "wiedergaberate": true
+                            },
+                            "indexByName": {
+                                "bi_av_content": 0,
+                                "bi_av_content_id": 1,
+                                "wiedergabe": 2
+                            },
+                            "renameByName": {
+                                "bi_av_content": "Title",
+                                "bi_av_publication_date": "Publiziert"
+                            }
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "table-old"
+            }
+        ],
+        "schemaVersion": 39,
+        "tags": [
+            "TV Web Audio",
+            "MDR TH"
+        ],
+        "templating": {
+            "list": [
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "13",
+                        "value": "13"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "filled_size",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "13",
+                            "value": "13"
+                        }
+                    ],
+                    "query": "13",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "MDR TH",
+                        "value": "MDR TH"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Kunden",
+                    "options": [
+                        {
+                            "selected": false,
+                            "text": "NDR SportZone",
+                            "value": "NDR SportZone"
+                        },
+                        {
+                            "selected": false,
+                            "text": "NDR Kultur",
+                            "value": "NDR Kultur"
+                        },
+                        {
+                            "selected": false,
+                            "text": "MDR Aktuell",
+                            "value": "MDR Aktuell"
+                        },
+                        {
+                            "selected": true,
+                            "text": "MDR TH",
+                            "value": "MDR TH"
+                        }
+                    ],
+                    "query": "NDR SportZone, NDR Kultur, MDR Aktuell, MDR TH",
+                    "queryValue": "",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "Heute",
+                        "value": "date = CURRENT_DATE()"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Zeitraum",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "Heute",
+                            "value": "date = CURRENT_DATE()"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Gestern",
+                            "value": "date = DATE_SUB(CURRENT_DATE(), INTERVAL  1 DAY)"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Letztes Wochenende",
+                            "value": "date >= (SELECT\u00a0saturday\u00a0FROM(SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 2 DAY) as saturday)) AND date <= (SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 1 DAY) as sunday)"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Letzte 7 Tage",
+                            "value": "date >=\u00a0 DATE_SUB(CURRENT_DATE(), INTERVAL\u00a0 7 DAY) AND date < CURRENT_DATE()"
+                        }
+                    ],
+                    "query": "Heute : date = CURRENT_DATE(), Gestern : date = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Letztes Wochenende : \u00a0date >= (SELECT\u00a0saturday\u00a0FROM(SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\,WEEK(MONDAY)) - INTERVAL 2 DAY) as saturday)) AND date <= (SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\,WEEK(MONDAY)) - INTERVAL 1 DAY) as sunday), Letzte 7 Tage : date >=\u00a0 DATE_SUB(CURRENT_DATE()\\, INTERVAL\u00a0 7 DAY) AND date < CURRENT_DATE()",
+                    "queryValue": "",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "mdr.de",
+                        "value": "mdr.de"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "LRA",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"$Kunden\"\nWHEN \"MDR Aktuell\" THEN \"mdr.de\"\nWHEN \"MDR SPIO\" THEN \"mdr.de\"\nWHEN \"MDR ST\" THEN \"mdr.de\"\nWHEN \"MDR TH\" then \"mdr.de\"\nELSE \"ndr.de\" END",
+                        "refId": "tempvar",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "nachrichten",
+                        "value": "nachrichten"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Redaktionen",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"$Kunden\"\nWHEN \"MDR Aktuell\" THEN \"nachrichten\"\nWHEN \"MDR TH\" then \"nachrichten\"\nWHEN \"NDR SportZone\" THEN \"sport\"\nWHEN \"NDR Kultur\" THEN \"kultur\" END",
+                        "refId": "tempvar",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "thueringen",
+                        "value": "thueringen"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Unterkapitel",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"$Kunden\"\nWHEN \"MDR Aktuell\" THEN \"Alle Kapitel 2\"\nWHEN \"NDR SportZone\" THEN \"Alle Kapitel 2\"\nWHEN \"MDR TH\" then \"thueringen\"\nWHEN \"NDR Kultur\" THEN \"Alle Kapitel 2\" END",
+                        "refId": "tempvar",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "Alle Sendungs-ID",
+                        "value": "Alle Sendungs-ID"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Sendung",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"$Kunden\"\nWHEN \"MDR Aktuell\" THEN \"Alle Sendungs-ID\"\nWHEN \"NDR SportZone\" THEN \"Alle Sendungs-ID\"\nWHEN \"NDR Kultur\" THEN \"Alle Sendungs-ID\"\nELSE \"Alle Sendungs-ID\" END",
+                        "refId": "tempvar",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)",
+                        "value": "date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Vergleichszeitraum",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \n  CASE \"${Zeitraum:text}\"\n  WHEN \"Heute\" THEN \"date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)\"\n  WHEN \"Gestern\" THEN \"date = DATE_SUB(CURRENT_DATE(), INTERVAL 8 DAY)\"\n  WHEN \"Letztes Wochenende\" THEN \"date >= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY),INTERVAL 7 DAY) as saturday) AND date <= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY), INTERVAL 7 DAY) as sunday)\"\n  WHEN \"Letzte 7 Tage\" THEN \"date >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)\"\n  WHEN \"Letzte 30 Tage\" THEN \"date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  60 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY)\"\n  END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "Gestern",
+                        "value": "Gestern"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Vergleichszeitraumlabels",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \n  CASE \"${Zeitraum:text}\"\n  WHEN \"Heute\" THEN \"Gestern\"\n  WHEN \"Gestern\" THEN \"Gestern vor 7 Tagen\"\n  WHEN \"Letztes Wochenende\" THEN \"Vorletztes Wochenende\"\n  WHEN \"Letzte 7 Tage\" THEN \"Letzte 8-14 Tage\"\n  WHEN \"Letzte 30 Tage\" THEN \"Letzte 31-60 Tage\"\n  END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "data:image/jpeg;base64,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",
+                        "value": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gKgSUNDX1BST0ZJTEUAAQEAAAKQbGNtcwQwAABtbnRyUkdCIFhZWiAH4QABAAQADAAuABthY3NwQVBQTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWxjbXMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtkZXNjAAABCAAAADhjcHJ0AAABQAAAAE53dHB0AAABkAAAABRjaGFkAAABpAAAACxyWFlaAAAB0AAAABRiWFlaAAAB5AAAABRnWFlaAAAB+AAAABRyVFJDAAACDAAAACBnVFJDAAACLAAAACBiVFJDAAACTAAAACBjaHJtAAACbAAAACRtbHVjAAAAAAAAAAEAAAAMZW5VUwAAABwAAAAcAHMAUgBHAEIAIABiAHUAaQBsAHQALQBpAG4AAG1sdWMAAAAAAAAAAQAAAAxlblVTAAAAMgAAABwATgBvACAAYwBvAHAAeQByAGkAZwBoAHQALAAgAHUAcwBlACAAZgByAGUAZQBsAHkAAAAAWFlaIAAAAAAAAPbWAAEAAAAA0y1zZjMyAAAAAAABDEoAAAXj///zKgAAB5sAAP2H///7ov///aMAAAPYAADAlFhZWiAAAAAAAABvlAAAOO4AAAOQWFlaIAAAAAAAACSdAAAPgwAAtr5YWVogAAAAAAAAYqUAALeQAAAY3nBhcmEAAAAAAAMAAAACZmYAAPKnAAANWQAAE9AAAApbcGFyYQAAAAAAAwAAAAJmZgAA8qcAAA1ZAAAT0AAACltwYXJhAAAAAAADAAAAAmZmAADypwAADVkAABPQAAAKW2Nocm0AAAAAAAMAAAAAo9cAAFR7AABMzQAAmZoAACZmAAAPXP/bAEMABQMEBAQDBQQEBAUFBQYHDAgHBwcHDwsLCQwRDxISEQ8RERMWHBcTFBoVEREYIRgaHR0fHx8TFyIkIh4kHB4fHv/bAEMBBQUFBwYHDggIDh4UERQeHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHv/CABEIAWkBaQMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABgcDBAUIAgH/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAwQFAgEG/9oADAMBAAIQAxAAAAGLD6z5MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3M3HXNdIc19fPfIAAAAAAAAAAAAAAAAAAAFuzGoOzh7djOb0qF+B1bbtRbuEF6kAAAAAAAAAAAAAAAAAAABaM9gM++c+ih1RW7UWplhfogAAAADP4wLQU7lXrQw+q1Zfi3T+UzltS3T66I7z1XLLiu0iQTOvZqxdOtBNT6VRW7TDvgAkE0rWarXTjgnppYsGtVbEn0Bn2FuQ6ordqLUyyzvrvmr1ofJWLc07dQlUxq2akXBT/fAWIG7pfvnvo1562cjXvx8/WXqVHYHZ+7NU4leFvKftHz2Oa07Bhr3nuyFLTeaGZVPbHPjkoEfSfNrQ51n5OsfkDztGeqY2LVS39Xhyapcj8gOfYdUVu1Ft4norJ56yVrPoFz+hmadWyqSZLNcxQaKWY+fpLGtrFC7SAA9FZMeT5P6tEPyo9LN+sZs4yya2sOrbsvRUpk6uXim/gunzN3x6BHy31Xnn5++99P8vb2y1fmfpq2gn18/TfMhLGnsCRSejPqlbfwd6M1FbtRamWF+jena4va+X+ocbBTNupu8o28MOvAAAPRUU/Kkxdn8+TaxgE1hSOTscc65Drlt6jz2+FDs3R2JRD5DcqXbyet8fOfR+dGfB9T8qHoB0+Y59sSuyOQJor0xcmr8bZ/Nc2MYPQAAAAAAAAAAAD7+Bf+/wCfM+RrzGvN7R0M4J4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACV9OvYgKfOfYCkfZ65gba1Z4CbxiKXn21GOHBP088QlfXMSdvoSxRRPvmOSBuvzLEGNPoLx3jTzSj7iB35oeA7vCDryuOWvVhRQ5DuyEgKfanPsMdWU9cwF1+RLGTeHcdYRLGBK+7W/Sq2r8q+0POOdoyO5/Ovorvii+TZelbpz+prgp+ldtCuLHrj3yJXFTtxWq0bkkbklWzo83d5vXNlULdFKdeehPPXoXz1x16B19iBUb0AnOTHqZmPiduTR99it8sB75lmjzsdunOpPGJRmacB1t3QvUd+1aqldO7npy/qXmhuej7wo/jrSGtlAOlzelx3fnnH0d5xzNN6K86+inkE04lybNf0LT1s1NSuWhXExw+e1PcVd3DPBX0kgU94k+tyE8UkcFvqiJofQXnr0L56gm9A0JffnX3z0FC92TVbcBlcUwWauOD3rU1ivZ2vGpLTu8CWROQe8xbm6WO/Q7Uoi8oq2uR1Kyvrz3DR98UP60hrZIDa1XntoVeRSrOrEbukSxWNDeWhm2rCrM8tuKw5HKm8ITwSGPHvNlw3jIpbQrTE98s6sT115zV7nqTRklil8qqZXntiKRISaVVe68tDVrlx13OtDU0Sawp1zaFbYHHQTwgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf/xAAsEAABBAIBAgUFAAIDAAAAAAAEAgMFBgABNRAWERMgMzQSFBUwUCFAYICQ/9oACAEBAAEFAv8At00KS8n7A7PsDs+wOxSVJV/JqPFdbiOjYv8AJiJr8eLq0ZHGNHDZbuK/l0z4uW7iv5dM+Nlu4r+XTPjZbuK/cOjzSO2WM7ZYztljHqyn6HUKacTralA14p7TNej0aVAxm9HVvwS6hbTmR8QYZoetDJ1qCi9aer0evUpCEhp9MfEGGaHrQyc1BRetOQEarC6zvWihnxXKZ8bLdxWIrTG09ssZ2yxiqw19Jo7ghOR8EYVjNcCRhULGtiegD53oPBeNn4uMGAT6LPH6JGhIJDWvTZ43QznWDg0o16Sh2SmYaP3H9LdxWNe31sY7pU5EQzAWuh/wfRr/ABvz38GOLHdTvxTiUpT0k5MYBJNhOcUPYJBtYBTZo3R51tls+yb8fzsp4wMz96vJFjRIPSqR2nFZvetakbG22pc9Jq2PYT0bjJoUzfW3cVnnv42WShUc9sgHNITpeOuIaQdZGkbInJF5Pra9vpPTCQ9OLW4vpS178MOKZDYlZF497pFL23J9CdeBDLanXhWUDj5aJLbr3ohJ1TWJUlact3FdYLiOkpIsANSJ5Bzn6Wvbyfl9BpVvaldaX7hxTQY8mc8eR1A+d0K+TWG/MmMMd8gRW9qV6YeWeAUIQyUzbuK6wXEZMybceyQ86Q9+pr27BLaDQre1K9FXKYEyVPdPI9AW9JM/JR+fko/CN62RUeVyZ19UV64458F6ckhjobrBcRMyTcewQ84+9+uXl2wxVqUtf76675UxjidLbIaUw/8ArZkWgIAl90l7/dQraFx5KSw8twPgv+WySSyn787FmFuI/wCfRMWA9G1kZgo+0CDiP/wIyFdOF7Zfztl/O2X8lopyObTWn9pLZ2OTg1deeHkBthmBwDpIskM6ATre9ZHQz0gLLRy45yMhXThe2X8VWSfA+OLBxtP1udsv44n6HE1p/aZCCfEFyIjFyOS8auOVgEaWbjdYc3pdYcySj3wFxEauRV2y/nbL+GQDowsWEo8ntl/JUByPfwauvPDvI8p70Rk06CKJYnni87mfyWlXJFtr25nlci+Ms3NwXEWzl8qnEXP5NU4ixSZQJUbYX1EkNIfZZT9B2FfJa9tpbZgZ46hDKVl09yvR33xJDzAQpVkJWpFgkU7l5FUjul+5YjHggu4ZHCZo4hio8q88lpVnE+5jsi+MP+d6Yvk+rXtnV94gztl/BG9siWbm4LiLZy+VTiLn8mqcRZo4wwqLgCfuZWQZAYH3vZeFfJa9unl+LdwE8UUrLp7lZa01D3J/eyc+0Kxwd9tNL9ywBPHB9uSGHw5YQ9R5W3KUiPAISYFLi/ZnxfGH/O9MXyfVr2zbCscvudeCO+cLZubguItnL5VOIufyapxEzMfjn4iTakUWiMbaQL8nCvkte3HkqEMfbbMDqLamXrp7ldXpcPcW96PyNlxS3LXxFL9ydOcjxO5iskZp84ao8rceMp5fg5bhPMEi+MP+d6Yvk+rXtzPK5F8ZZubqhKXY6yxbpe2YiRdcjxkhh2QpJUlVOIuXzq+T9tKGMpJFZSpBuFfJa9vKmX5wTQ6Wy7p7lUPSy5LgIkBSImQZXWQi2pG18RS/ctA7xIH4mRxyMPQio8rceMGeUOQnbRggrfkin/O9IjmmS+5mOqLKxpJz2iDMEsTLIkqTow8Uh0Z4WzI+lVkB1qTn3yUZDzTQIU4eiQIxmyt6aOKaek+5mMdV9bqLKxpORJuwDe5mMnZJEirI6eKGS3ZAt6XZQtZLzSz2IKSRHK7mYzuZjC7Ey8JCmpAMnJhuQEyGm9BCdzMYQvzSP/Fj/8QAMREAAgICAAQEBAUEAwAAAAAAAQIAAwQRBRASIRMxMjMUIkFRFSA0UmEwQEKBUGBw/9oACAEDAQE/Af8AtXQ32nht9v7ajLpWsAmKwYbE4gNXf22H7KziPvfnHefAXfafA3/blXhXP9I+Bco+/KvEts7gQ8Ot/iPW1Z0w514ltncCfhtv8S3Hsq9QmH7KziPvT4C77T4C/wC0IIOjK8O2zvqX47U66uQOjuDia/t5VYqoxf6y7Lrq7GU5Vd3ZYcWs2eIZbelXqMqzqrG6Zk0i1NcsHEBHiPLbkqG2MHEaorpavbuIiBB0icR96DiY/bAdjcTFUObD5y25KvUZmZC3EdP5BMzM6PkTz5YXviZWUKRoecZi52YnqHJE67OmdlEutNr9R5VXNUdrMfKW4fzOI+9yp9tZl5nhfKvnGYsdn8uXmdA6E8+dVhrbqEZix2eQOjPxN/tKG1ap/mOOpSIRrmrFTsS642t1Hldl+FUFXz1Cd/114mNdxL3Wx+pf+DXFtYbAnwd37YMa0np1CNdo9FiDqYSoGj53TYlZ8SvwlXvBRYW6Nd58Hd+2MhU6Mspev1CHFuA2REQuelY6FDpomNbZ3USzGtrG2ETGtcbUQ4lwGyImPZYNqIylTox6XQbYc6sm0ELuZ9z19PSZw92dmLR8S4sT0zPGqFmX+mX/AFOHe7Kv1jSw5Pj/AC71OIspdR9ZxPyWNZ0uqn6yqrwssLPCFuWdzMy3D9CdtRrbiumPaUdXwny+cb4oDvuYj+HjFpxCsHVq/WZ/tpzr9QnFP8f9zhf+UfMuDEbmed0LLlNuKOmcPqcP1EShg2WxEOW6ZHSfKZ1ISwMPrOJ+SziJI6CIoFxS4QWBMw7+szcdxYWA7GCx3xmLygsMTa+cazJI0dyn9G0xT49JqM4gNVpzB13lt72+qVXvV6YTs7lmRZYvS0qyLKvSY+ba41uVWtUdrHcu3UZZk2WDTS3Ie31S297ddUqyrKhpTHc2N1NEzbkGtyzMtcaJleXbWvSphzrj23Be4ToHlK7WqO1luQ9vq/8ADP/EADIRAAICAQIDBgQFBQEAAAAAAAECAAMEERIFECETFDEyM1EiQVJhFSA0QEIjMFBggXD/2gAIAQIBAT8B/wBq3r7ztF9/21+Jc1hIEZSp0M4edaf22Z6zTh3o/nPSd/p953+n35WZ1KfOJn0sfblZl1V9CYOI1feJYtg1U87MuqvoTPxKr7yrIrt8pmZ6zTh3ozv9PvO/0e8BBGolmZVX01lGQt2u3kRqIeGN9XK3KZ1CfKU4llvUS7Fsp6tBlWCvsxKqHt8oluDbWu6Y1xqfXlnZZB7NJVS9p0UQ8OtjK9TdehjuXO4zh3ow8MP1QjQ6R8pigrHhKqXt8omHjtSDu/IZh4e/438OWb6BmLim46nwiqEGgj+U8nfZXunVjKahUm0craVtGjTIxWpP2nDvR5W+oZiYfa/E3hFUKNB+XEw953v4c7axYu0xVCjQciNRPwxPeXr/AEWH2iHawMB15soYaGU0ipdo5U4na2Fm8NYBp/fbhh16GUI1abW/wbZVSnQmd8p+qHJqA3awHXrEvrc7VMtIv+BH0MsHZ2dqzdIb6wu/XpO+U/VFcMNRK7ks8pgyqSdAY7hBuaI4carHyaq+jGV5NVh0Ux8mpDoxgy6SdAY+RXWdGMVgw1ES5HOinnbi1HVtJgUpZu3CcQRUVQsry6QoG6YB1vaYn6lv+ziPpS39GsrGN2HxaazhysEY/KcM8Wi17kZh8pbb2uIWnamrEGkw8RCm9+usWqkNqo6y/b3v4vCL3XXppMtN+SFnD7CNam+UwPUfnZ5TOF/y/wCTin8YmHSVB0mANL2lLCrKO6cQtQptBl6lcRQYMRHx9w8Zg3F6yp+U4Z4tOHANvBjE0h6TDWXwxp8phZCGsKT1EKImSoSXhTl/F4Ra8YHUaS79Ysyh2FwtE4edbH5ka9JVQlXlltCW+aAaDSV49dbblluPXb5hEwqkOuktqW0aNEQIu0SvGrrOqyrHSryyqhKtdstxa7TqwiIK12rHwqXOukrw6kOoEsxKrG3MIMGkddIaEL7z4y2pbRtaVY6VeX/wz//EAEUQAAIBAgEFDAYIBQMFAAAAAAECAwARBBASITFxEyAiNEFRYXJzkbHBFCMyQlKCMDNQYoGSodFAQ5OisiRTYGOAkKPh/9oACAEBAAY/Av8Au6zosPLIvOqE1xLE/wBI1xLE/wBI1xLEf0jWawII5D9lHtD5byPE2GerZt+j7K3D0bdOFnXz7eVacF/7f/lbtFfmIPIcg7Qef2ZP18g7Qef2ZP1xkHaDz+zJ+uMg7Qef08cZNs5gK4zJ3VxmTurjMndR3LFHP5M4aKaNxZlNiKCqCSeQVnTsIF5tbVwxJLtb9q0QFdjmi2DlJ+4/70Y5FKsNYOQMqZkfxvXr5pJD93QK4uT87VwBJEehv3oyL66IayNY/DfZypmR/G9evmkkPRoFcXJ+dq0RumxzV8LPf7r/AL1uc8ZQ1P1xkHaDzyA+kyaRzVxmTurjMndXBxT36Vp4JfaXIGcbhHztr7q9Y0sh22qV1w/CVCQc873D9ovjvcRHAvKM5uQaK4AzpOVzr3vpMS+uj5veFCfGKGk5E5F3wxUC2ic6R8J3i4jGrnPrWM6ht3xinQOpqdM7ORmupyDtB55F2bxYoEzmMYoO9pZ/i5tmWfs28N7cV9dJ+ahIk8mjkLaDQPPkOaALm56cnrDnSciDXXqsyEdAv41eVlmXmK28KWeLUdY5jlMkrhEGsmiuCjFvjf8Aar+kfhmLW4TqFm5CNTZJoD7y6NuX02UcFT6sdPPkuTYCimETdT8baquJwvQEFeszJR0rbwoJ9VL8LcuzeDtB55PrpPzUGTESgj71QzN7TLc5C4UZx1nIXkcIo1k1m4SPdPvNoFMplVVYWICD6BdmUwQWbEH+yi8jFmOsnLiY+TgkZDNM1h+prOc2jHspzZcMw/3BlkH3jSRL7TmwpIE9lBbIcFC3q09v7x3ogxpLJySco20GUgg6iMg7Qee8w3Uy50hu59lBrNZ0zcH3UGofRLsyGCAg4g/2UWYkk6yd5idi+dGaY2A/Wt0k0D3V+HeYftF8csvXNR39wFsks3wIWosTcnfZpvJAdac2yhNA4ZTQ7Qee8w3UycjTN7K+dGWZy7nl+jXZW4QEHEH+yizEknWTvcVJPIFGaLDlOys99CD2F5t7CzGwEgJ7645D+auOQ/mqQjUWNHszkxI/6Z+g3SE9ZTqNLubWk3QXjOsbzDdSvimb2F86aWViztrP0ipCQ87Lo+700XclmOkk/wABATqY5vfkZG1MLGnhfWjWP0mGY8KQpwE56aaZs52/jgymxBuKjnX3hp6DkGOjGg8GT9/szNhxEsY5lciuO4n+qaKPip2U6wZD/wA/glkw4Z2XSbmnjxEeeoiJt+IqFcPGEBXT9g7usyIL2sRXGY+6uMx91cZj7qR3lV8420CgfSY9PRUkBNyjWvkjmGIQB1DWtz0+GZgxS2kbKjnGIRQ4va1ejmXOsL6K0G1DEDEKBe1jSI8ivnC+it3WZEF7WIrjMfdXBxERPTevXx8E6mGkUqfEbVxmPupk+E2oH0mPT0U2I3VZAusAZJcyVU3O2vpqMPIr599WS8MXB+I6BXrMWqnoS9cDFqdqWpVmzTnaipqQJIqZltdcZj7q4zH3VJOcQjBBe1q3BXCHNvc1xmPuoRSENcXDDJHMMQgDqGtbnp4yb5rEb3cFhRxe9yahhOHQB3C3vznJxaPvpEeJUzTfQaXZWJ7Q5ML2KeFYj5f8RWG6lHqDIvXNQdQ0vXNRxwFbMl9IpIsUiFGNs4aCKeGQXVhY0ic0lv1yS9c0uyg+uOVNVSYdvcP6Vi/k86w2xvKi0v1MftdPRWe9o40GoeFH0eNI16dJrS0b7UqJmjzCgtoNYnYvnSSwWzjJm6R0Gvaj/JTwyFM1hY8Gj2Z8qiDfzHzBtsf2oyKOHDwhs5cmF7FPCsR2jeO+wvbJ47xdlSzjEIA7E2tXGY+6oYSblEC32CsR8v8AiKw3Uo9QZF65qDqGl65qN8PDnqEseEBy0kuKzY0U3zb3JoszAyW4Cc9Rk6y48ckvXNLsp8Gx0rwk2ctR4xRq4D+VYv5POsNsbyqLne7GocPfgqud+OTi035DWdJDIg5ytqxOxfOlihzc4SZ3CPQa1w/mrd5jHm3toNHsz5VC6mzLOCO41HOPfGkdPLUkPu3uuysL2KeFYjtG8d9he2Tx3i7Klg9FDZjWvn1xNfz1FNa26IGttrEfL/iKw3Uo9QZF65qDqGl65pIvR90zlzr59qbNUo661NemwC2n1g86i64yS9c0uyo8QvunTspoybxyrrrHRP7SFQf7qw2xvKoLcgt+tRScjR27si4eISZ+byim64rE7F86WaNVYl83hbDX1EP61uEkUai99FHsz5VH2w8DT4NjobhJt5aXFKOFFoOysL2KeFYjtG8d9he2Tx3i7KxPaHJhexTwrEfL/iK3C/DiOropcRhxeRRYrzisz0Z16W0Co8OpvmjXzmjuZukYzAeel65qHs/OoiTwX4DfjUkDanW1IjCzLIAe/JL1zS7Mhw7HhQ6tlTYhf5oW/wCF6w2xvKjg5TZZDdD01uROa40o3NWacM79KDOoTS4eSNM06WFqbrisTsXzpEgjLsJQbDYa4pJTO+FcKouTR7M+VR9sPA0kye0hvV9ccqfoaihvfMQL3ViO0bx30MxFwjhrbDXFpO/KB6NJoHPUs4Fg7E2yQwnDyEogW9+YVJiVUqHtoOyhNC+a4r/U4dgeeOtCTn5RRihXcYzr06TkEDQuxuTcGkkSMpmrbTkUSYdy9uEQeWvS44yqlgxU1xaTvp3+I3oD0aTQOfIs9rrazDnFcWk76iKRsmYDryCOUbug5zp764ccynYK4MU7fgK3AQCNL313NSl42fPA1VxaTvri0nfU0Iw8gLoVvfnFbu6Fxm2sKWFIWQh865PQcno8sTSAHg2OquLSd9SSAWzmJ/8ACz//xAAtEAEAAQIEBAcAAwEAAwAAAAABEQAhEDFBUWFxofAggZGxwdHxMFDhQGCAkP/aAAgBAQABPyH/ANur18iET5V3j8V3j8V2r8UyzbBCf1Xe9vAChFe5D8nv/VSuZfFo0ltQTdDhQejE6ttYd72/rGV4PbDve39Y75th3vb+sd82w73t/ONMDqaSxX5evy9fl65OpfemVS3+2yUuFoAlaLOeo6GlFpTW38Kiy2/y2nR02b8qKJeBQmAZ24A8tWiDqgh8zUYeNfupttBn+VLGXQ4Dj4h4zcAeWrRA7Ij8zUYeNfuoeOO/Mmmk/oMdH1W335yeTrXfNsO97YMl8OWvy9fl6mI2mBKGIlzMk0TAIZNG7l9oo7jqYOn3TGJMZoPHw962eG38GTJhdoSz5b3ctjwqJJXhfZ8s6Q87vfmbvis4CPL6XEuwUfVewUvDxb8EsziOjUCx52cRk4d72wdH9vA8zL+Rdu8KDPcC3K+ce/bvCkERMkr9vUpopUPAStKYTgo1JkM27hmTCc+57FLOFgvzfpRjUQXoYU9TkJnqDiT6ZRauTqOfL7VoWOS9qyLacqGfJwNCVfcOsY3D4Sa6vJ3lgzMCVWxQZwtkT4Gb0qCj4P1Gh89deeykyr61lxa+Dve2D9rWR0ZHR/wPm64BcGEN0MjC5WtcBTCfP80zelIEZBkPOX+Do/tijAF3TiePCnePKJVxnVYouNx9jCEk2AzdirmUttvs8cWCiDeSw9MQGyCPWiRkPOWKB2AjjxwjkJDHyeR7+HRNOd8ooi7SiRMO97eMFrjX34HGsv09j6/xdH9sDjJdzBvz4U+FpRKvg79vTJuoDN7FOHhsbYd6+DvWzHvO9G0SdAg6phqFEG8FKCRKur4iMwXH1bK2TDZjs7Nd728QNKN/u4U4wbr+Po/tSoI31hu8eFPhaUSr4b8GUcmbDVp+zaaJ++PhHQtHQhX5OvydMuKQmt6YXs/fMFGmZ7cCf4Mh14B400myM0npx8ITiAv+rhSZ0lP5AXztZBGb6pRIyEq/8BMIQ/JB1jDNynIazDJ5X8jZkGDm+qYii6+3L/ugmMmyVBnpjzD1wTLng0dPh6f1iplZRE72rvH5q3DRYPlP/n88OLXH1o1BilLwac6YitArLPH+hEPDkFtX7ev29ft6MTuBCKyUyc9ATaY1jAHM1O0Jq/pQFmQ/NR5ok5KQvQyaF6fllwaaAlBVtTCFwiIoQ8OQW1ft6FyMApwblC5fP7pyGEZc6/b07DKsuVZKZOerNkzQxvhv4WKzd9VBFaIxER94XJXwv1dfKuTGN8yjF/43yabuKswMVBFaYzMz9V+3r9vU+aIOWmg4ok5R91+3oKLHlnAHM1O0JpxxMprDHhEHDkBvTIZ4doDD9vRidwozXR/au374d82+JAC575vhk4WZv3loJG4txrR844pUGU/Rg7zvXR/aikZwtkuVmiQjvofTCe/b0Mk2ni6UTPFAI5Aoq0mn/Op4ZsXxFGSdRIMufCu/b0TIgVy0nxgpQu2Itdz3omcXjmKXwPqj0v5Yd8213rd4u+bfB0f2oRW1O01+3o0CeNYDxIAXPfN8M3D1lgy3aKKDYMDS1qe1cxdfXGmelJcHed66P7V89xMnr71nDek1fHmYT37eiCELxUtugUUcxm6U9jrgKSd9wriQ1iu/b0Z8iVgiD5r9P9UgRIu1v5V3PeiokYaJSXAnJsg9aWP6m8vryrvm2u9bvF3zb4Oj+1AQT5SY8q/c/VI3Pd0xCY8KAF7zvXfN8M+gGjdNnatTVdNnUdatA2Mtr5Dbb0rvO+Hed66P7VwnNvkT0oIFpGyWT3o/453FO/b0V9U/JVGltnNM+5gXDcthbzwz37ehG/slESacq7f7U1ZRKc2867nvgx/FcTJ6X8ms2a5r+n3a75trvW7xd82+Do/tXb98O+bcEDTE4dSmR+PKhXXnRrEcaMZrc4KiOL24uvrS+AAMoZvq4Z73iq1o3lZOsVmmCWzo1C2FbJg7zvXR/bDOWo4nl8npVgxOeOd6J6V37ehmZQZG3zt20hlGwzfVPg2jg+lHgJOaPBwz37eiXMOxmda/HpOmHGQZtdz3wY2nsTx4UZJp3AyrfoveEV3rd4nQJ41ga/L45L4MtILLVpODYR4N4CrflCXIB8U3rWmvBpINYoI+Tl61NXdoPmoPdhEi56YGHUQBejWVm51XAXmIDDC7TJWAamfrX5ejMIFhzayXwZcCgph3M/2Hyr8vUV1jMZmPrAUVsWj23r1c4PeiLxyD3pwqhLMj0qK6wmERP3X5evy9FhHo2kKSIjmRnH1QSJxDofOE6EVgQdPWfWvy9GmA0dJZ/wDiz//aAAwDAQACAAMAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADDIAAAAAAAAAAAAAAAAAAAA3/LAAAAAAAAAAAAAAAAAAAAAfrAAAAAAHPMHPDDEHAAAIAA/rEIMDDAQ08f/wB7+PPALNP7H60/XPIAAAF54wPwF/A+wwMV6wFPIwAAAG4AEIAEM0KCwAE4gFAwAAAAAAAAAAAAAOCgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABDzwQ1wyzwCChyiCDCzyAwAEeIJywQK5xK09FyJxUxLFgAAqAyAw06ITK0wE7yBxwg3AAAIAAII0EE48wEAA80M0AMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/xAAsEQEAAgEBBgcAAgIDAAAAAAABABEhMRBBUWFxsYGRocHR4fAgQDDxUGBw/9oACAEDAQE/EP8AtQhYvKc15RK/q1v0OD8QA9jASt4f1v26s7B/MKon5JEi+4iI1vgt4HPH3LUB0PzURGmE4RxcQZYrxfiYrnaTgHFxES78z8TcEcd0/bqzsEF+xPwSOgpIdShzx9xcIb4f62VHBFOVXXYnMpXpbui9tvAjLgeDKGW8N18Yffhb4CFi6X/tjtGTJ1+9gAL4Hv8AEwBRbSJ4fcuDE/ZgccE7BA0K8/qGQ0Zk5TZy+4NdXfyjcHF6/wANBMpeZ4ffbrFVtjSnn2Zroeh7sevaxoxxNlBxNes6EDtEm99Dhsu999Zi2N4+J2DZ6A7QN57fuJntf4lYczw++202WT4qP3tdlA8JyPrCU4O85oiRFTtAPSTeZqtgJ8x4Y7xFbr/mGoUj3vj0qvXr/wAGMuj0n7V8xSMzXTfEStSA6AwfODF1vzzlhZ13i6/c4hGDdOe9PmUXph41XHWKdIHC1iUqSEWU8u8wAn7hAd0ekdYJ0+ZnvPCPzpISoDptFWODdNLV3fpHWtx7wyYK8PmMB4nZn7OU1+j7T0XxLA1nhXaBDRr6VO89oegi+ZX3H3JmulMSekp9CIEpwRExXGecqrqy5cW/pFB3L7TdE1ez5T9uht9Ud5+XhNXh94VMRdx8RkPE7MoXdB6FMdqCqzNFin0ojF9dbsXAZo7p3ntHdYX7TcC3fiPZhrooehFSOTEJqmndWKnMYqurFeE64+p3HtC1eae3kxgO74NqIG6V97rTxl/erjMtWCGsOXhMbi4bpdlDliWXpjbVYJawzoQsHdcpn260mC46R4mWVJY55+4vxHgQBQDkQJWrkR22UuvTDwd1y/8ADP/EACwRAQACAQEGBwACAgMAAAAAAAEAESExEEFRYXGxgZGhwdHh8CDxMEBQYHD/2gAIAQIBAT8Q/wC1INI85yXnBv8A1b34vE+YgOkiBe5f9b9uhO4/zQLZ+QwVrsYIl7ojWTyz9SlK9R8XBEsjOQ8DMW0g8D5me42t5DwMwtqvIfM3hPDfP26E7jEfow/oMNJYx61nln6g6CVx/vZcHGCMC+mwOYAHWjfA6aOLCTIcSWMo4764R+vG3REqQ1r+iGw4cPT62IEri+3zMgUGWI+P1KwUInXLO4xNoPL7jstSYeQU8/qLVd284XIzw/hqZhDyHH679IAFEI28u5NNh1fYh06CESeDssOAv0nUq94E3Pq8dlXvk6TNs7j8zuOz1r3ibj3/AFAx0H8WoOQ4/XeabHbYfm4fOg2WBxnM+kZBxdpyRRgCzagOxibRu9iaPrxz2gCjT/MlxLTrdDrXWnT/AINbVTrP2v4glYumu6AAaMR2Ei+MOavdjlKCjprNXX7dAKyb5y3r8Sy9kfS6oazXrE6UECtYxiiPn2mQF/cYjqp1hrJevxMdr4w+9jG1hNdobZ5d819VVesNajPtFJkBx+ISDg9yfs5zT6nvPVfMoHSeN94kNWnrc7b3j6iZ5N/U46YvrZBnrbPVgALcUBEBwnlK76EuJm3dYLO8Peb4mj3POft1dvomfl4zR4/aNTNDe/MIBwe5LF1a+rZDZlu8TVYs9bYZPTermojNvZO294ZpGvebwWq8E7kddVn1bgpDBmO1ZZvvNyg8C76EF5Rpn7nYe8bR7r7+ZCQfsu0ArfL+tXr4SvrdQiGhFBUvPxmdzcd8qyzzzKL2QtokUlS41Y2pq+cx7V6zUu6w4GCXJR5Y+oPzDixBYXmxIGjmw+WEorZH1NXz/wDDP//EAC0QAQABAgUEAgICAgIDAAAAAAERACEQMUFRYXGBkaEg8DCxUMHR8UBggJDh/9oACAEBAAE/EP8Ay6cmicVsyQk3Lc4gACRLSEW5DKNkbn8daJc0iF5DvAROU7v4r1LEQj2E60smqGRO0ajG7JggKos2REzE6fx1pN8wOH/bdr217aOofUoNJ5+HffcqihQZNlU9UPSnoIhmqE8lHCQoQ5AF1q+uQlh0odzJtQgVzMV6WDvTHeLX2nqr6RiI8AgnYTq1dlX0eTB4R2RNuI7gRyVZX1BK2vJ5KIKNmfRKMlWZEeS4d6B+kn3K9ByKGsfK5tcRPxjuBHND1+Y/UclEFGzPolMVjqyedAMheXJ4J7DmmF/bMjuFhyL8fbSMFQCzJOPfbRi9845BH3QtxBWVEo2RH93oFQBVsBV4oo+Ley+h0aKuzz2wSeVDzO9o0MWsIafiHF1LdrrpuswF2/NCxhBOQ/SO6/FyISZ5d4GbkcSalErQL3QnLhyOW4AAAAZB8G5DQwo37iWxpA2yESwhiEAVWANaBhoBOyjLIusay5AAAAGQfHTHwLvcchTg9pobCO46lnO2Rja+p2fB4tCCBvpkC13jioTnlv8A2bLqu8TH4DywGFEImSNfcf7qMOoSRzTCNQ8WMNpJwi6uAMASasAdAwjazQjtOjmew0+X3KjwEXoKlA6+ccCDyj0obSfId5R7EdcbdwRh/l2C7VpVUmLyBI6p6FBXGUy7TX7pUJHMAkiGYC8TCTlGAMSsyYJL2CxZnjNkP05DmXA+7g4AzVcipD/pHoiB5nhOdOFbUB5nulST2BFwwHcasf1BcDJ6GF2+VoAAELAf5aTqE/5Dc4aLpBwgthBoKLgMQbZokdiW3LgfyoCTlabzbXpPCdaSKJfBQkkLLrP4PqdmOhmSJJYNdZ3NoFns58Wq4rWNEghnc8OG7/7aE9V9ZsBT5DWVe7w5+EFsVESYZxQ7pMQTg84HUAIfuAe2skU7hgXXKyvLgkTTzGb5bRqHY+AoyWayHm6Q7aubM5MjFuKJZIlk+Vr1/wC3GFK1BLu+xdpbVIUKUoHBq7q76/F9TswsVx8IGbdmWjN0Fbx2CTKq5q/HA2/VM3ItVjtdbFXE7lm1N1tOrgAPkO+u31LMfORp2R2wsyLdgqHdApIR3pUZV7/K7mC8SzRzcZPW5ZQpPUgzDZ/Xxtev/bhCiR38tLORe62NUlVSb4AyA0Cx+P6nZVzltkUsWU9F1bQK3jsEmVVzV+JJeIMinmLhY3vanXGjcz7Vp1dAD4KdxKAEVdgr7f8A3X2/+6dimkgWiUAIEALmy/04W5TcoRej8BXJwpdsN9kueay1MIGdjW4stcybfD1/7aJSQEbftD5Wxqk684+ANALAWD8iheQTlkFl21Zts2whWJMqrm/8DqmCioeeA1JGtwR9NFJFtolST0c/yZ9fyBUl2Lm9s6nL4ywaA0GQH/OUMMOaJHyUgxAXTDbthOkOuE8QILJs3UhO5u/jHItbuASEEwF+MABSvgX7Kg/9/J3oqZG8EKKhAoCZuHJeaglu7CA3P8Dffm2FEyfDvvtywkhBMs0ShBA25JoNGMoJRIOCZtwUiB5Jq/CIhBMDxDtRVjMoTkp0osaKIBMQtImwhWGO1ABTi0r3pq4kwBiGavvzbCiZMO2LogK9wf1URm4MNoZOdgLFAeI1kKCfeHYHmMZKkn1RKEEDbkmnROwgbDdnEk8S6YegUUsRtPzSqhQtyLzgTlDYY3u0bBaIsUyZ5f003YVYF8lRqpCyIHMEzMylVChbkWjF321YxKE5C9alZA0IQiDB2Om6IGUS+omXJvgmbcFIgeSaOIZUCZJ4+N9+bYUxBSZtQUoJyTj25YSQkiGa+p2V9Nv+Akf1/wC2vr9nD7Pcwt+z3KiE9Rdln0Cm4LVpUCJRBSSBil5nQTZ1Nkbjog0CJLTVEn1h9dvr6nZRy5a4mMvJKPSphVK9a/eQ98fwWYLAovku1pU0taRoBhhY4LVyA/VTRek6cssOkPVobMkxA8Xr3SvZUvBgJOSIvlnhgVn+RZqtvJr/AET/ADUdOySHDNsPVqkdEIM9ZHVKvPFgLsf1PD+USOE/U7KVDlKhTCmHYp1QgaCcMYD+v/bX1+zh9nuYW/Z7lbnIrkiCckpWRgDQmYCS7M7b0oE0MtOoXC5ra14KdMz2qhXD67fX1Oysz9TdyA6Ie/ao57ChqVTorLE/AIVQ7lFUTMRM2CJ6WerAQgJIkbRmUoMqORKRhgV8HJFRcG8nAWogQTjJZGHrMGo8qE6JV8xfJAyLoBOSjogyXk+GblfkEjhP1OyjXS2lNExOMBIMmAQMbmsTE4D+v/bQRkbx+HAIiN4fCmR61fs9yv6sYgi9ymjOE4vORYQsjYjuVOOYdIbJG6EZXgZ19dtw+u319TsqYxgT1/aT3io5A77Nc4sOhUMWXpIGNy1nbDAxwo80SfqHvVro0crUO3nwA8L0JJNxfqvs93DBZChkKRcMyfNf6etxL/PlIXRj6uw+gpuwAdQQqvUWaXXE+Dsn5BI4T9Tsr6bf8BI8tkkbm6OV/wDoVOr9wgVE2grZbiRlCJgsIK7q5nSWrIK4okMLSUwaEFOdeyUSluSA6gNfZ7mE/bUokBPAX2qMMlYzD0MPanVJHoonkcPrt9fU7MLvBZG8t8HoFI/Ay1ieQ8GA9aXIggt4EOSKFCzCuN3RZOjoUCvMBnuRU7g8U4MWLgALC+K+z3cMBs+hFCb0SDvX+gf5oWFwIMqXyAXH1dj+SzlBuuEkeGjsX9awFbN0dmlZDcOxl3j5jlTqhCUA5Y+HaMVQS7BFJgykUKYYwBMqCNBOGKswqoyfKcy71kYsuAcwbI7NDNpHKJOPRKkmgZ8hctBkYnHZlgB1AnnC23esKYhqUt+VLeW60KIiiXEoZb5IgAOQssUOPXC2pCcJ6rh2wYnWYIx7pGKoJdgjC0FyZJlPAwHZsgJdFWjAdGrsfYgydC8hQlhlw7UhfRTcjdp81N9UoTKDsl4AdnrRsgJdFXnF32iZUEYC8E1GpDpSlN6KkxCEIFtbfGCfNDWExep3YdvUPqUOB8/+ln//2Q=="
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Image",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"$Kunden\"\r\nWHEN \"MDR TH\" THEN \"data:image/jpeg;base64,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\"WHEN \"MDR ST\" THEN \"$Image2\"\r\nELSE \"$Image1\" END",
+                        "refId": "tempvar",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "2024-08-28",
+                        "value": "2024-08-28"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "bq_today",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT today FROM `ndr-code-bi-dashboard.grafana.current_date`",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "2024-08-27",
+                        "value": "2024-08-27"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "bq_yesterday",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT yesterday FROM `ndr-code-bi-dashboard.grafana.current_date`",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                }
+            ]
+        },
+        "time": {
+            "from": "now-6h",
+            "to": "now"
+        },
+        "timepicker": {
+            "hidden": false
+        },
+        "timezone": "",
+        "title": "MDR Theuringen | TV Web | Audio | Heute",
+        "uid": "edw2i6jizec5ce",
+        "version": 6,
+        "weekStart": ""
+    }
+}

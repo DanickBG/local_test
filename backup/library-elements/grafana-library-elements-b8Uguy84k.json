@@ -1,0 +1,189 @@
+{
+  "id": 456,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "b8Uguy84k",
+  "name": "TV YT Kommentare Gesamtprofil",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "#ff0000",
+          "mode": "fixed"
+        },
+        "decimals": 0,
+        "mappings": [],
+        "noValue": "N/A",
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            }
+          ]
+        },
+        "unit": "string"
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 17,
+      "y": 0
+    },
+    "id": 141,
+    "libraryPanel": {
+      "description": "",
+      "meta": {
+        "connectedDashboards": 1,
+        "created": "2023-05-17T14:45:22Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/17b3d3f5138ef3bddd3d297884743e12",
+          "id": 5,
+          "name": "jaime.avalos@ida.me"
+        },
+        "folderName": "Panels Library",
+        "folderUid": "folder-PjWklf8Vz",
+        "updated": "2023-05-17T14:45:22Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/17b3d3f5138ef3bddd3d297884743e12",
+          "id": 5,
+          "name": "jaime.avalos@ida.me"
+        }
+      },
+      "name": "TV YT Kommentare Gesamtprofil",
+      "type": "stat",
+      "uid": "b8Uguy84k",
+      "version": 1
+    },
+    "options": {
+      "colorMode": "background",
+      "graphMode": "none",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "reduceOptions": {
+        "calcs": [
+          "last"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "text": {},
+      "textMode": "auto"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "dataset": "Quintly",
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size_big - CHAR_LENGTH(CAST(Interaktionen as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(Interaktionen) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\nSELECT IFNULL(SUM(comments),0) as Interaktionen FROM `ndr-code-bi-dashboard.Quintly.youtubeAnalytics` as Interaktionen\n  WHERE profileId = $profileID \n  AND $Zeitraum \n  AND last_update = \n    (SELECT MAX(last_update) \n    FROM `ndr-code-bi-dashboard.Quintly.youtubeAnalytics`  \n    WHERE profileId = $profileID)\n)\n\n",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [
+                {
+                  "name": "page_engaged_users",
+                  "type": "functionParameter"
+                }
+              ],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50,
+          "whereJsonTree": {
+            "children1": {
+              "baa899a9-cdef-4012-b456-718364767b70": {
+                "properties": {
+                  "field": "profileId",
+                  "operator": "equal",
+                  "value": [
+                    null
+                  ],
+                  "valueSrc": [
+                    "value"
+                  ],
+                  "valueType": [
+                    "number"
+                  ]
+                },
+                "type": "rule"
+              }
+            },
+            "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+            "type": "group"
+          }
+        },
+        "table": "facebookInsights"
+      }
+    ],
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "f0_": false
+          },
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "Kommentare-Gesamtprofil",
+            "page_impressions_unique": "Potentielle Reichweite"
+          }
+        }
+      },
+      {
+        "id": "labelsToFields",
+        "options": {
+          "mode": "columns"
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "stat"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 4,
+    "created": "2024-06-20T11:45:34Z",
+    "updated": "2024-06-20T11:45:34Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

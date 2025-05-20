@@ -1,0 +1,11 @@
+{
+  "uid": "ffeecb00-3350-4c57-a9f0-16508d02f6a7",
+  "name": "MDR SPIO Newsroom",
+  "interval": "1m",
+  "items": [
+    {
+      "type": "dashboard_by_tag",
+      "value": "MDR SPIO"
+    }
+  ]
+}

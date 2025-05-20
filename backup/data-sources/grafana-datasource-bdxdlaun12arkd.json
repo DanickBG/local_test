@@ -1,0 +1,25 @@
+{
+  "id": 18,
+  "uid": "bdxdlaun12arkd",
+  "orgId": 1,
+  "name": "AKTUELL App Statistic",
+  "type": "marcusolsson-json-datasource",
+  "typeLogoUrl": "public/img/icn-datasource.svg",
+  "access": "proxy",
+  "url": "https://www.mdr.de/api/v1/appcontent/mdraktuellapp/statistics",
+  "user": "",
+  "database": "",
+  "basicAuth": true,
+  "basicAuthUser": "appUser",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {
+    "oauthPassThru": false
+  },
+  "secureJsonFields": {
+    "basicAuthPassword": true
+  },
+  "version": 2,
+  "readOnly": false,
+  "apiVersion": ""
+}

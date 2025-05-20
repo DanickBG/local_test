@@ -1,0 +1,182 @@
+{
+  "id": 427,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "2OGRCA94k",
+  "name": "Piano Table $Zeitraum Title",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "#f5f5f5",
+          "mode": "fixed"
+        },
+        "decimals": 0,
+        "mappings": [],
+        "noValue": "N/A",
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            }
+          ]
+        },
+        "unit": "string"
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 2,
+      "w": 12,
+      "x": 0,
+      "y": 4
+    },
+    "id": 53,
+    "libraryPanel": {
+      "description": "",
+      "meta": {
+        "connectedDashboards": 72,
+        "created": "2023-07-03T15:08:05Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/9372895bd2354d1612a45afc8704053a",
+          "id": 6,
+          "name": "b.kuch@ndr.de"
+        },
+        "folderName": "Panels Library",
+        "folderUid": "folder-PjWklf8Vz",
+        "updated": "2023-07-04T12:00:12Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/4a92c2b6018592d02496e79aad6725b0",
+          "id": 10,
+          "name": "david.josiger@ida.me"
+        }
+      },
+      "name": "Piano Table $Zeitraum Title",
+      "type": "stat",
+      "uid": "2OGRCA94k",
+      "version": 2
+    },
+    "options": {
+      "colorMode": "background",
+      "graphMode": "none",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "reduceOptions": {
+        "calcs": [
+          "last"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "text": {
+        "titleSize": 20
+      },
+      "textMode": "value_and_name"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "dataset": "Quintly",
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT  CONCAT(REPEAT(\" \", 30 - CHAR_LENGTH(\"${Zeitraum:text}\")), \"${Zeitraum:text}\")\nFROM(\nSELECT \"${Zeitraum:text}\" as Interaktionen\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nLIMIT 1\n)",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [
+                {
+                  "name": "page_engaged_users",
+                  "type": "functionParameter"
+                }
+              ],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50,
+          "whereJsonTree": {
+            "children1": {
+              "baa899a9-cdef-4012-b456-718364767b70": {
+                "properties": {
+                  "field": "profileId",
+                  "operator": "equal",
+                  "value": [
+                    null
+                  ],
+                  "valueSrc": [
+                    "value"
+                  ],
+                  "valueType": [
+                    "number"
+                  ]
+                },
+                "type": "rule"
+              }
+            },
+            "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+            "type": "group"
+          }
+        },
+        "table": "facebookInsights"
+      }
+    ],
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "f0_": " "
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "stat"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 185,
+    "created": "2024-06-20T11:45:29Z",
+    "updated": "2024-06-20T11:45:29Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

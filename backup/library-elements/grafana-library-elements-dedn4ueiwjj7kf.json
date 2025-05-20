@@ -1,0 +1,55 @@
+{
+  "id": 1769,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "dedn4ueiwjj7kf",
+  "name": "App Laendervergleich Title 4K",
+  "kind": 1,
+  "type": "text",
+  "description": "",
+  "model": {
+    "description": "",
+    "gridPos": {
+      "h": 8,
+      "w": 13,
+      "x": 0,
+      "y": 0
+    },
+    "id": 150,
+    "libraryPanel": {
+      "name": "App Laendervergleich Title 4K",
+      "uid": "dedn4ueiwjj7kf"
+    },
+    "options": {
+      "code": {
+        "language": "html",
+        "showLineNumbers": false,
+        "showMiniMap": false
+      },
+      "content": "<span style=\"font-size: 160px;\">NDR App Ländervergleich</span>\n",
+      "mode": "html"
+    },
+    "pluginVersion": "11.3.1",
+    "transparent": true,
+    "type": "text"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 3,
+    "created": "2025-02-20T14:33:53Z",
+    "updated": "2025-02-20T14:33:53Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

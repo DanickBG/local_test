@@ -1,0 +1,11 @@
+{
+  "uid": "afdbdfcf-5efc-471b-b3e4-657ef337bfab",
+  "name": "MDR AKTUELL Newsroom",
+  "interval": "1m",
+  "items": [
+    {
+      "type": "dashboard_by_tag",
+      "value": "MDR AKTUELL"
+    }
+  ]
+}

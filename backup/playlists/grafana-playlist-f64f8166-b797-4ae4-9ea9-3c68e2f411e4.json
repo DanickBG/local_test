@@ -1,0 +1,11 @@
+{
+  "uid": "f64f8166-b797-4ae4-9ea9-3c68e2f411e4",
+  "name": "NDR Kultur",
+  "interval": "1m",
+  "items": [
+    {
+      "type": "dashboard_by_tag",
+      "value": "NDR Kultur"
+    }
+  ]
+}

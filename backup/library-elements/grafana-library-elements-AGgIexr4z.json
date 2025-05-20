@@ -1,0 +1,156 @@
+{
+  "id": 450,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "AGgIexr4z",
+  "name": "NDR TV Web Audio Total Visits Zeitraum",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "summe"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Wiedergaben ${Zeitraum:text}"
+            },
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 12,
+      "y": 0
+    },
+    "id": 31,
+    "libraryPanel": {
+      "description": "",
+      "meta": {
+        "connectedDashboards": 5,
+        "created": "2023-07-04T10:25:16Z",
+        "createdBy": {
+          "avatarUrl": "",
+          "id": 4,
+          "name": ""
+        },
+        "folderName": "Template Dashboards",
+        "folderUid": "folder-o5ETCxr4z",
+        "updated": "2024-01-24T20:17:40Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        }
+      },
+      "name": "NDR TV Web Audio Total Visits Zeitraum",
+      "type": "stat",
+      "uid": "AGgIexr4z",
+      "version": 9
+    },
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+      },
+      "textMode": "value_and_name"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "-- SELECT \r\n--   IFNULL(SUM(COALESCE(m_av_playbacks,0)),0) as summe\r\n-- FROM \r\n--   Piano.av_joined_today\r\n-- WHERE \r\n-- site_level2 = ${LRA:doublequote}  AND\r\n-- ${Redaktionen:doublequote} IN UNNEST(bi_av_page_chapter1_tags) AND\r\n-- ${Unterkapitel:doublequote} IN UNNEST(bi_av_page_chapter2_tags)\r\n-- AND ${Sendung:doublequote} IN UNNEST(sendungs_id_tags)\r\n-- AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\r\n-- AND (av_content_type = \"Audio\" or av_content_type = \"audio\")\r\n\r\n\r\nIF ${Zeitraum:doublequote} = \"date = CURRENT_DATE()\"\r\nTHEN\r\nSELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as summe\r\nFROM \r\n  Piano.av_joined_today\r\nWHERE \r\nsite_level2 = \"$LRA\" AND\r\n\"$Redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n\"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags) AND\r\n(\"$Sendung\" = sendungs_id OR \"$Sendung\" IN UNNEST(sendungs_id_tags))\r\nAND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\r\nAND (av_content_type = \"Audio\" or av_content_type = \"audio\")\r\n; \r\nELSE\r\nSELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as summe\r\nFROM \r\n  Piano.av_joined_daily\r\nWHERE \r\nsite_level2 = \"$LRA\" AND\r\n\"$Redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n\"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags) AND\r\n(\"$Sendung\" = sendungs_id OR \"$Sendung\" IN UNNEST(sendungs_id_tags))\r\nAND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\r\n\r\nAND (av_content_type = \"Audio\" or av_content_type = \"audio\")\r\n;\r\nEND IF\r\n;",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "transformations": [],
+    "type": "stat"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 10,
+    "created": "2024-06-20T11:45:33Z",
+    "updated": "2025-05-09T13:13:45Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/9774780e31622dad09ce78835d06ec07",
+      "id": 39,
+      "name": "sa-1-fortestdaniel"
+    }
+  }
+}

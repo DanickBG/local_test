@@ -1,0 +1,31 @@
+{
+  "uid": "decc5h8ac5ibkc",
+  "name": "MDR SACHSEN Google & SM",
+  "interval": "5m",
+  "items": [
+    {
+      "type": "dashboard_by_uid",
+      "value": "NfrMYY94z"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "febhgas3rr6dcf"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "bebhgy7c4ac5ce"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "cebhh4o81zgn4d"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "bebhh2877aozkb"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "cecmj5w82hq0wd"
+    }
+  ]
+}

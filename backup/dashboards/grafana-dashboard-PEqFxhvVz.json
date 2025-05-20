@@ -1,0 +1,913 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "release-notes",
+    "url": "/d/PEqFxhvVz/release-notes",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:42:21Z",
+    "updated": "2024-08-12T14:57:59Z",
+    "updatedBy": "bernd kuch dev",
+    "createdBy": "Anonymous",
+    "version": 3,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1288,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 13,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "# Release Notes\n\nHier sind sind die aktuellen Release-Notes:\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 3
+        },
+        "id": 15,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## Minerva v2.0.1\nStand: 12.08.2024\n\n- Neue Dashboards: \n  - Social Media Benchmarks: https://daten.ndr.mobi/d/DSb4OZoIk/social-media-benchmarks\n- Profile:\n  - TikTok MDR: wahrscheinlich peinlich, Schloss Einstein, MDR SPUTNIK, Aufgeflogen, handy?crush, fakecheck_offiziell, mdrspasszone",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 10
+        },
+        "id": 6,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## Minerva v2.0\nStand: 01.08.2024\n\n- Features: \n  - Facebook Monatsbericht: ab April auf Post-Ebene\n  - Piano Web Dashboard: ARD Kultur Artikel sind verfügbar\n  - NDR-Podcast Dashboard: neues Panel für die Zugriffe basierend auf Plattformen\n  - Grafana v9.3 auf 11.1\n    - Die Freitextsuche in Filtern ist nun auch mit mehreren Wörtern und Leerzeichen möglich.\n    - Erweiterte Tabellenfilter\n    - Dark- oder Light-Mode in Abhängigkeit der Browser-/Systemeinstellungen\n    - Schnellsuche am oberen Bildschirmrand\n    - Hinterlegte Hinweise und weitere Funktionen: Sind nun in den Panels oben links.\n- Profile\n  - YouTube: NDR Ratgeber heißt jetzt NDR Info\n  - MDR Telemedienampel: Brisant und Ratgeber (TDI) hinzugefügt\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 21
+        },
+        "id": 16,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## Minerva v1.9.0\nStand: 24.04.2024\n\n- Neue Dashboards: \n  - Crowdtangle: https://daten.ndr.mobi/d/HNYcs0nSk/crowdtangle\n- Profile\n  - Instagram & TikTok: Player of Ibizia (NDR)\n  - TikTok: Chai Society (RB)",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 28
+        },
+        "id": 14,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## Minerva v1.8.0\nStand: 18.03.2024\n\n- Neue Dashboards: \n  - NDR Podcast (Open Beta): https://daten.ndr.mobi/d/IatCu30Iz/\n- Features\n  - Ergänzungen für das YouTube Redaktionsdashboard (Insights): https://daten.ndr.mobi/d/4uKAyszIz\n    - Videostarts nach Abo-Status\n    - Videostarts nach Zugriffs- und Gerätequelle",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 35
+        },
+        "id": 13,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## Minerva v1.7.0\nStand: 20.02.2024\n\n- Neue Dashboards: Individuelle Zeiträume / Date Picker\n  - Piano Web Kalender https://daten.ndr.mobi/d/sRryC564z\n  - Piano App Kalender https://daten.ndr.mobi/d/Zjt4pnpSk\n- Features\n  - Presseampel: Monatsübersicht\n  - Piano App: “Letzte Stunde” als Zeitraum\n  - Piano App: AV-Daten für MDR hinzugefügt\n  - Piano Web: Neue Tabelle “Top Referrer (nach Artikel)”\n- Profile\n  - Piano Web: “NDR fragt” und “eurovision.de”\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 44
+        },
+        "id": 12,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## Minerva v1.6.0\nStand: 25.01.2024\n\n- Neue Dashboards: Individuelle Zeiträume / Date Picker\n  - Facebook https://daten.ndr.mobi/d/9lJ5cgkSk\n  - Instagram https://daten.ndr.mobi/d/nrkYCizIk\n  - Youtube Insights https://daten.ndr.mobi/d/4uKAyszIz\n  - Youtube Public https://daten.ndr.mobi/d/AKBMQszSk\n  - TikTok https://daten.ndr.mobi/d/0UEpEykIk\n\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 24,
+          "x": 0,
+          "y": 51
+        },
+        "id": 11,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## Minerva v1.5.1\nStand: 23.01.2024\n\n- Neue Dashboards:\n  - Social Media Report Instagram https://daten.ndr.mobi/d/93b_UvnSk/social-media-report-instagram\n- Profil:\n  - Instagram: carenmiosgatalk\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 57
+        },
+        "id": 10,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## Minerva v1.5.0\nStand: 18.01.2024\n\n- Neue Dashboards:\n  - Social Media Report Youtube https://daten.ndr.mobi/d/TdqxRmgSz/social-media-report-youtube\n- Features:\n  - SEO: Grenze der Ergebnisse in Tabellen von 25 auf unendlich erhöht\n  - Piano Web: Verlaufskurve Visits \n  - Piano App: Verlaufskurve Visits \n  - Montatsberichte: Neuer Zeitraum “Jahr”\n- Sonstiges:\n  - Neue Icons und genereller Aufbau der Startseite",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 66
+        },
+        "id": 9,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## Minerva v1.4.0\nStand: 20.12.2023\n\n- Neue Dashboards:\n  - SEO https://daten.ndr.mobi/d/yCo2K4dIk/seo\n- Features:\n  - Caching für “Piano App Dashboard” und “Piano Web Dashboard” implementiert.\n- Neue Profile/LRA:\n  - Social Media Dashboards:\n    - Inas Nacht (Instagram)",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 24,
+          "x": 0,
+          "y": 74
+        },
+        "id": 8,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## Minerva v1.3.0\nStand: 18.10.2023\n\n- Neue Dashboards:\n  - Social Media Dashboard zu Soziodemografischen Daten: https://daten.ndr.mobi/d/h5Xb2AyVk/soziodemographische-daten\n  - Google Trends (Echtzeit und gestern): https://daten.ndr.mobi/d/RiJ-DwCVz/google-trends-all-sections\n- Features:\n  - Zeitraumfilter \"Letzte Stunde\" sowie \"Letztes Wochenende\" in Piano Web Desktop Dashboard\n- Neue Profile/LRA:\n  - Social Media Dashboards:\n    - deep und deutlich als erstes funk Profil auf Minerva\n    - Der neue Dachmarken-Account ndr.de und NDR Schleswig-Holstein sind im Instagram-Dashboard auswertbar\n  - Piano Web Desktop Dashboard:\n    - Neue Markenansichten für ndr.de (Sendung):\nHamburg | Mecklenburg-Vorpommern | Niedersachsen | Schleswig-Holstein | ndr2 | Panorama - Das erste | Panorama 3\n    - Neue Markenansichten für mdr.de (Redaktionen):\nmdr-garten | tv | religion | elefanttigerundco | selbstbestimmt | tierisch | klassik | sachsenradio\n<!-- Hier ist das Archiv zu finden: [Link](https://daten.ndr.mobi/d/PEqFxhvVz/release-notes?orgId=1)\n-->\n- Sonstiges:\n  - Piano Web Desktop: Google Trends Sektion entfernt",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 86
+        },
+        "id": 7,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## Minerva v1.2.0\nStand: 31.05.2023\n\n- Neue Dashboards\n  - TikTok: https://daten.ndr.mobi/d/dPC8SpEVk/tiktok\n  - Newsroom Playlists für NDR und MDR: https://daten.ndr.mobi/playlists\n  - Newsroom Dashboards: https://daten.ndr.mobi/d/T8nVnhwVz/ubersicht-aller-newsroom-dashboards\n  - Redaktions-Dashboard mit Piano und Google Trends Daten: https://daten.ndr.mobi/d/TsZ-01EVk/piano-web-desktop\n  - Telemedienampel (MDR Only): https://daten.ndr.mobi/d/tLDM8thVk/tdi-presseampel\n  - Facebook Monatsbericht: https://daten.ndr.mobi/d/B7ezUkh4z/social-media-report-facebook\n- Neue LRA\n  - Radio Bremen (alle Social Media Plattformen)\n<!-- Hier ist das Archiv zu finden: [Link](https://daten.ndr.mobi/d/PEqFxhvVz/release-notes?orgId=1)\n-->",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 95
+        },
+        "id": 4,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## Minerva v1.1.0\nStand: 20.02.2023\n\n- Profile\n  - tagesschau (facebook, instagram, youtube)\n  - reschkefernsehen (instagram)\n- Features\n  - Tabellenfilter\n  - Instagram-Stories\n- Design\n  - Instagram-Stories Vorschaubilder\n\n<!-- Hier ist das Archiv zu finden: [Link](https://daten.ndr.mobi/d/PEqFxhvVz/release-notes?orgId=1)\n-->",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 24,
+          "x": 0,
+          "y": 103
+        },
+        "id": 3,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## Minerva v1.0.0\nStand 06.12.2022\n\n- Dashboards\n  - Facebook\n  - Instagram\n  - YouTube (Insights-Daten)\n  - YouTube (öffentliche Daten)\n- Zeiträume\n  - gestern\n  - 7 Tage\n  - 30 Tage  \n- Features\n  - Filter: LRA, Profil, Zeitraum\n  - Share: Link, Snapshot\n  - Export: Dashboard (JSON), Tabelle (JSON, csv)\n- Design\n  - Auto-Sizing Panels\n  - Light Theme\n  - Dark Theme\n\n<!-- Hier ist das Archiv zu finden: [Link](https://daten.ndr.mobi/d/PEqFxhvVz/release-notes?orgId=1)\n-->",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      }
+    ],
+    "schemaVersion": 39,
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "hidden": true
+    },
+    "timezone": "",
+    "title": "Release Notes",
+    "uid": "PEqFxhvVz",
+    "version": 3,
+    "weekStart": ""
+  }
+}

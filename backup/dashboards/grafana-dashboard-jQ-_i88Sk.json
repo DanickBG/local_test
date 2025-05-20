@@ -1,0 +1,1495 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "tdi-telemedienampel",
+    "url": "/d/jQ-_i88Sk/tdi-telemedienampel",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:44:39Z",
+    "updated": "2025-05-08T11:43:24Z",
+    "updatedBy": "bernd kuch dev",
+    "createdBy": "Anonymous",
+    "version": 4,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 1175,
+    "folderUid": "folder-7BNpiayVz",
+    "folderTitle": "MDR",
+    "folderUrl": "/dashboards/f/folder-7BNpiayVz/mdr",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "description": "V3 with brisant and ratgeber",
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1380,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 15,
+        "panels": [
+          {
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 5,
+              "x": 0,
+              "y": 1
+            },
+            "id": 17,
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "- Kurzer News-Artikel, mit Audio/Video ohne Sendebezug\n- Kurzer News-Artikel, mit Sendebezug und Audio/Video\n- Langer Newsartikel mit Sendebezug und Audio/Video\n- Langer Newsartikel mit aktuellen Video/Audio\n- Langer Nachrichtenartikel mit Sendebezug und ausgelaufen Videos/Audio\n- Artikel ohne Sendebezug mit aktuellen Audios/Video\n- Artikel ohne Sendebezug mit Animation, Datenvisualisierung",
+              "mode": "markdown"
+            },
+            "pluginVersion": "9.2.3",
+            "title": "A Grün",
+            "type": "text"
+          },
+          {
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 5,
+              "x": 5,
+              "y": 1
+            },
+            "id": 18,
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "- Kurzer News-Artikel ohne Sendebezug, ohne Audios/Video\n- Kurzer News-Artikel mit Sendebezug, ohne Audio und Video\n- Langer Newsartikel ohne Sendebezug\n- Langer Newsartikel nur mit Sendebezug\n- Langer Newsartikel mit älteren Video/Audio nur",
+              "mode": "markdown"
+            },
+            "pluginVersion": "9.2.3",
+            "title": "B Gelb",
+            "type": "text"
+          },
+          {
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 5,
+              "x": 10,
+              "y": 1
+            },
+            "id": 19,
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "- Andere Kombinationen Typ A\n- Andere Kombinationen Typ B",
+              "mode": "markdown"
+            },
+            "pluginVersion": "9.2.3",
+            "title": "C Rot ",
+            "type": "text"
+          },
+          {
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 5,
+              "x": 15,
+              "y": 1
+            },
+            "id": 20,
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "Die Daten werden stündlich zwischen 06:00 Uhr und 21:00 Uhr aktualisiert. ",
+              "mode": "markdown"
+            },
+            "pluginVersion": "9.2.3",
+            "title": "Aktualität",
+            "type": "text"
+          }
+        ],
+        "title": "Beschreibung",
+        "type": "row"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 1
+        },
+        "id": 13,
+        "panels": [],
+        "title": "Dashboard",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#1F60C4",
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": []
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "semi-dark-green",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "B"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "semi-dark-yellow",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "C"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "semi-dark-red",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 11,
+          "x": 0,
+          "y": 2
+        },
+        "id": 6,
+        "options": {
+          "displayLabels": [
+            "name",
+            "value"
+          ],
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false,
+            "values": [
+              "value"
+            ]
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "dataset": "MDR",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH max_timestamp AS (\n  SELECT MAX(last_update) AS latest_timestamp\n  FROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_${Redaktion:raw}`\n  WHERE date = ${bq_date:doublequote}\n)\n\nSELECT A, B, C\nFROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_${Redaktion:raw}`\nWHERE last_update = (SELECT latest_timestamp FROM max_timestamp)\n  AND structureNodePath = \"main_${Redaktion:raw}\";\n\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "name": "COUNT",
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "TDI_Telemedienampel"
+          }
+        ],
+        "title": "Artikelklassifikation Insgesamt | $Zeitraum",
+        "transformations": [
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "json",
+              "source": "nachrichten_classification"
+            }
+          },
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "json",
+              "source": "sport_classification"
+            }
+          },
+          {
+            "id": "extractFields",
+            "options": {
+              "source": "wissen_classification"
+            }
+          },
+          {
+            "id": "extractFields",
+            "options": {
+              "source": "kultur_classification"
+            }
+          },
+          {
+            "id": "extractFields",
+            "options": {
+              "source": "medienkompetenz_classification"
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "piechart"
+      },
+      {
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 1,
+          "x": 11,
+          "y": 2
+        },
+        "id": 29,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<img \n  src=\"${src_url}\" \n  alt=\"Tracking Pixel\" \n  width=\"1\" \n  height=\"1\" \n  style=\"display:none;\"\n/>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.3.1",
+        "title": "",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 80,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "B"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "semi-dark-yellow",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "C"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "semi-dark-red",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "semi-dark-green",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 2
+        },
+        "id": 7,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 0.97,
+          "fullHighlight": false,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "orientation": "auto",
+          "showValue": "always",
+          "stacking": "none",
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          },
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 0
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "dataset": "MDR",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH max_timestamp AS (\n  SELECT MAX(last_update) AS latest_timestamp\n  FROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_$dataset`\n  WHERE date = ${bq_date:doublequote}\n), \nmax_timestamp_ratgeber AS(\n  SELECT MAX(last_update) AS latest_timestamp\n  FROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_Ratgeber`\n  WHERE date = ${bq_date:doublequote}\n\n)\nSELECT structureNodePath, A, B, C\nFROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_$dataset`\nWHERE $last_update_condition\nAND structureNodePath != \"main_${Redaktion:raw}\"\n",
+            "refId": "Welt",
+            "sql": {
+              "columns": [
+                {
+                  "name": "COUNT",
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "TDI_Telemedienampel"
+          }
+        ],
+        "title": "Artikelklassifikationen pro Kategorie | $Zeitraum",
+        "transformations": [
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "auto",
+              "replace": false,
+              "source": "value"
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "barchart"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 80,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "C"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "semi-dark-red",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "semi-dark-green",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "B"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "semi-dark-yellow",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 10
+        },
+        "id": 28,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 0.97,
+          "fullHighlight": false,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "orientation": "auto",
+          "showValue": "auto",
+          "stacking": "none",
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          },
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 0
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  FORMAT_DATE('%Y/%m', PARSE_DATE('%Y-%m-%d', date)) AS YearMonth, -- Combines year and month into a single string 'YYYY-MM'\n  SUM(A) AS A,\n  SUM(B) AS B,\n  SUM(C) AS C\nFROM\n  `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_${Redaktion:raw}_daily`\nWHERE\n  date >= ${bq_six_months:doublequote}\n  AND structureNodePath = \"main_${Redaktion:raw}\"\nGROUP BY\n  YearMonth\nORDER BY\n  YearMonth;",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Statistik | Letzte 6 Monate",
+        "transparent": true,
+        "type": "barchart"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": true,
+              "inspect": false,
+              "minWidth": 50
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "SophoraID"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "",
+                      "url": "${__data.fields[URL]}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 24,
+          "x": 0,
+          "y": 18
+        },
+        "id": 26,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH max_timestamp AS (\n  SELECT MAX(last_update) AS latest_timestamp\n  FROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_$dataset`\n  WHERE date = ${bq_date:doublequote}\n), \nmax_timestamp_ratgeber AS(\n  SELECT MAX(last_update) AS latest_timestamp\n  FROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_Ratgeber`\n  WHERE date = ${bq_date:doublequote}\n\n)\n\nSELECT \n       article.item.classificationDescription AS Klassifikationsbeschreibung,\n       article.item.sophoraId AS SophoraID,\n       structureNodePath AS Unterknoten,\n       article.item.url AS URL\nFROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_${Redaktion:raw}`,\n      UNNEST(articlesC.list) as article\nWHERE $last_update_condition \n  AND structureNodePath != \"main_${Redaktion:raw}\";\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Artikel der Kategorie C",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": true,
+              "inspect": false,
+              "minWidth": 50
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "SophoraID"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "",
+                      "url": "${__data.fields[URL]}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 24,
+          "x": 0,
+          "y": 22
+        },
+        "id": 25,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH max_timestamp AS (\n  SELECT MAX(last_update) AS latest_timestamp\n  FROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_$dataset`\n  WHERE date = ${bq_date:doublequote}\n), \nmax_timestamp_ratgeber AS(\n  SELECT MAX(last_update) AS latest_timestamp\n  FROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_Ratgeber`\n  WHERE date = ${bq_date:doublequote}\n\n)\n\nSELECT \n       article.item.classificationDescription AS Klassifikationsbeschreibung,\n       article.item.sophoraId AS SophoraID,\n       structureNodePath AS Unterknoten,\n       article.item.url as URL,\n\nFROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_${Redaktion:raw}`,\n      UNNEST(articlesB.list) as article\nWHERE $last_update_condition \n  AND structureNodePath != \"main_${Redaktion:raw}\";\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Artikel der Kategorie B",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": true,
+              "inspect": false,
+              "minWidth": 50
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "SophoraID"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "",
+                      "url": "${__data.fields[URL]}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 24,
+          "x": 0,
+          "y": 28
+        },
+        "id": 24,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH max_timestamp AS (\n  SELECT MAX(last_update) AS latest_timestamp\n  FROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_$dataset`\n  WHERE date = ${bq_date:doublequote}\n), \nmax_timestamp_ratgeber AS(\n  SELECT MAX(last_update) AS latest_timestamp\n  FROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_Ratgeber`\n  WHERE date = ${bq_date:doublequote}\n\n)\n\nSELECT \n       article.item.classificationDescription AS Klassifikationsbeschreibung,\n       article.item.sophoraId AS SophoraID,\n       structureNodePath as Unterknoten,\n       article.item.url AS URL\nFROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_$dataset`,\n      UNNEST(articlesA.list) as article\nWHERE $last_update_condition\n  AND structureNodePath != \"main_${Redaktion:raw}\";\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Artikel der Kategorie A ",
+        "type": "table"
+      }
+    ],
+    "preload": false,
+    "schemaVersion": 40,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "Heute",
+            "value": "CAST(date AS DATE) = CURRENT_DATE()"
+          },
+          "includeAll": false,
+          "name": "Zeitraum",
+          "options": [
+            {
+              "selected": true,
+              "text": "Heute",
+              "value": "CAST(date AS DATE) = CURRENT_DATE()"
+            },
+            {
+              "selected": false,
+              "text": "Gestern",
+              "value": "CAST(date AS DATE) = DATE_SUB(CURRENT_DATE(), INTERVAL  1 DAY)"
+            },
+            {
+              "selected": false,
+              "text": "Vorgestern",
+              "value": "CAST(date AS DATE) = DATE_SUB(CURRENT_DATE(), INTERVAL  2 DAY)"
+            }
+          ],
+          "query": "Heute : CAST(date AS DATE) = CURRENT_DATE(), Gestern : CAST(date AS DATE) = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Vorgestern : CAST(date AS DATE) = DATE_SUB(CURRENT_DATE()\\, INTERVAL  2 DAY)",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "TDI",
+            "value": "Nachrichten"
+          },
+          "includeAll": false,
+          "name": "Redaktion",
+          "options": [
+            {
+              "selected": true,
+              "text": "TDI",
+              "value": "Nachrichten"
+            },
+            {
+              "selected": false,
+              "text": "Sport",
+              "value": "Sport"
+            },
+            {
+              "selected": false,
+              "text": "Wissen",
+              "value": "Wissen"
+            },
+            {
+              "selected": false,
+              "text": "Kultur",
+              "value": "Kultur"
+            },
+            {
+              "selected": false,
+              "text": "Medienkompetenz",
+              "value": "Medienkompetenz"
+            },
+            {
+              "selected": false,
+              "text": "Brisant",
+              "value": "Brisant"
+            }
+          ],
+          "query": "TDI : Nachrichten, Sport, Wissen, Kultur, Medienkompetenz, Brisant",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "isNone": true,
+            "text": "None",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "HauptknotenKlassifikation",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT column_name\nFROM ndr-code-bi-dashboard.MDR.INFORMATION_SCHEMA.COLUMNS\nWHERE table_name = ${Redaktion:doublequote}\nLIMIT 1 OFFSET 2",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "isNone": true,
+            "text": "None",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "HauptknotenArtikel",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT column_name\nFROM ndr-code-bi-dashboard.MDR.INFORMATION_SCHEMA.COLUMNS\nWHERE table_name = ${Redaktion:doublequote}\nLIMIT 1 OFFSET 3",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Gefahrenmeldungen",
+            "value": "Gefahrenmeldungen"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Unterknoten",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT DISTINCT structureNodePath\nFROM `ndr-code-bi-dashboard.MDR.gcs_telemedienampel_${Redaktion:raw}`\nLIMIT 100 OFFSET 1\n",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2023-12-18",
+            "value": "2023-12-18"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "bq_six_months",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT FORMAT_DATE('%Y-%m-%d', DATE_SUB(today, INTERVAL 6 MONTH)) from `ndr-code-bi-dashboard.grafana.current_date`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2024-06-18",
+            "value": "2024-06-18"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "bq_date",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  CASE \n    WHEN \"${Zeitraum:text}\" = \"Heute\" THEN FORMAT_DATE('%Y-%m-%d', today)\n    WHEN \"${Zeitraum:text}\" = \"Gestern\" THEN FORMAT_DATE('%Y-%m-%d', yesterday)\n    WHEN \"${Zeitraum:text}\" = \"Vorgestern\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(today, INTERVAL 2 DAY))\n    ELSE FORMAT_DATE('%Y-%m-%d', today)\n  END AS relevant_value\nFROM `grafana.current_date`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Nachrichten_Ratgeber",
+            "value": "Nachrichten_Ratgeber"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "dataset",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"${Redaktion:raw}\"\nWHEN \"Nachrichten\" THEN \"Nachrichten_Ratgeber\"\nELSE \"${Redaktion:raw}\"\nEND ",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "last_update IN (\n    SELECT latest_timestamp FROM max_timestamp\n    UNION DISTINCT\n    SELECT latest_timestamp FROM max_timestamp_ratgeber\n)",
+            "value": "last_update IN (\n    SELECT latest_timestamp FROM max_timestamp\n    UNION DISTINCT\n    SELECT latest_timestamp FROM max_timestamp_ratgeber\n)"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "last_update_condition",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"${Redaktion:raw}\"\nWHEN \"Nachrichten\" THEN \"\"\"last_update IN (\n    SELECT latest_timestamp FROM max_timestamp\n    UNION DISTINCT\n    SELECT latest_timestamp FROM max_timestamp_ratgeber\n)\"\"\"\nELSE \"\"\"last_update IN (\n    SELECT latest_timestamp FROM max_timestamp\n)\"\"\"\nEND ",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "https://vqggwrz.pa-cd.com/event?s=645199&idclient=minerva&events=%5B%7B%22name%22%3A%22page.display%22%2C%22data%22%3A%7B%22page%22%3A%22TDI Telemedienampel%22%2C%22m_visits%22%3A1%2C%22minerva_dashboard_id%22%3A%22jQ-_i88Sk%22%2C%22minerva_lra%22%3A%22dev%22%2C%22minerva_filter%22%3A%22\nZeitraum=Heute|::|Redaktion=Nachrichten\n%22%7D%7D%5D",
+            "value": "https://vqggwrz.pa-cd.com/event?s=645199&idclient=minerva&events=%5B%7B%22name%22%3A%22page.display%22%2C%22data%22%3A%7B%22page%22%3A%22TDI Telemedienampel%22%2C%22m_visits%22%3A1%2C%22minerva_dashboard_id%22%3A%22jQ-_i88Sk%22%2C%22minerva_lra%22%3A%22dev%22%2C%22minerva_filter%22%3A%22\nZeitraum=Heute|::|Redaktion=Nachrichten\n%22%7D%7D%5D"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "src_url",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH nutzer AS (\n  SELECT\nCASE\n    WHEN CONTAINS_SUBSTR(\"${__user.login}\", \"dev\") THEN \"dev\"\n    WHEN CONTAINS_SUBSTR(\"${__user.login}\", \"mefo\") THEN \"mefo\"\n    WHEN CONTAINS_SUBSTR(\"${__user.email}\", \"@\") THEN\n      REGEXP_EXTRACT(\"${__user.email}\", r'@([^\\.]+)')  -- Extracts part after '@' and before the first '.' Example: ad.westphal@ndr.de => ndr\n    WHEN NOT CONTAINS_SUBSTR(\"${__user.email}\", \"@\")\n         AND (CONTAINS_SUBSTR(\"${__user.email}\", \"viewer\") \n         OR CONTAINS_SUBSTR(\"${__user.email}\", \"podcast\")) THEN\n            REGEXP_EXTRACT(\"${__user.email}\", r'^([^-\\s]+)')  -- Extracts part before the first '-'. Example: ndr-viewer => ndr\n    ELSE\n      \"Anonym\"\n  END AS nutzer_lra\n),\nfilter_string AS (\n  SELECT \"\"\"\nZeitraum=${Zeitraum:text}|::|Redaktion=${Redaktion}\n\"\"\" AS filter\n)\n\nSELECT CONCAT(\n  \"https://vqggwrz.pa-cd.com/event?s=645199&idclient=minerva&events=%5B%7B%22name%22%3A%22page.display%22%2C%22data%22%3A%7B%22page%22%3A%22\",\n  \"${__dashboard.name}\",\n  \"%22%2C%22m_visits%22%3A1%2C%22minerva_dashboard_id%22%3A%22\",\n  \"${__dashboard.uid}\",\n  \"%22%2C%22minerva_lra%22%3A%22\",\n  nutzer.nutzer_lra,\n  \"%22%2C%22minerva_filter%22%3A%22\",\n  filter_string.filter,\n  \"%22%7D%7D%5D\"\n) AS event_url\nFROM nutzer, filter_string",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "hidden": true
+    },
+    "timezone": "",
+    "title": "TDI Telemedienampel",
+    "uid": "jQ-_i88Sk",
+    "version": 4,
+    "weekStart": ""
+  }
+}

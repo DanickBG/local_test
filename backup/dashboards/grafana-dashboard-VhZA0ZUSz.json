@@ -1,0 +1,1440 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "overview-dashhboard-prototype",
+    "url": "/d/VhZA0ZUSz/overview-dashhboard-prototype",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:43:24Z",
+    "updated": "2024-07-30T05:40:08Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 2,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 660,
+    "folderUid": "folder-F9a5Uxn4k",
+    "folderTitle": "Prototypes",
+    "folderUrl": "/dashboards/f/folder-F9a5Uxn4k/prototypes",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1316,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlYlRd"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 2,
+          "x": 0,
+          "y": 0
+        },
+        "id": 6,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Piano",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT SUM(m_visits) FROM `ndr-code-bi-dashboard.Piano.total_visits` WHERE site_level2 = 'app_mdrsachsen' AND page_chapter1 = \"Alle Kapitel 1\" AND page_chapter2 = \"Alle Kapitel 2\" AND sendungs_id = \"Alle Sendungs-ID\" AND DATE(date) = CURRENT_DATE()\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "name": "SUM",
+                  "parameters": [
+                    {
+                      "name": "m_visits",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "total_visits"
+          }
+        ],
+        "title": "Visits",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlPu"
+            },
+            "displayName": "Vergleich zu gestern",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 1,
+          "x": 2,
+          "y": 0
+        },
+        "id": 22,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH past_value as(\nWITH adjusted_lagged_data AS (\n  SELECT\n    SUM(COALESCE(m_visits,0)) AS summe FROM\n     `Piano.total_visits_today_append`\n  WHERE\n  site_level2 = 'app_mdrsachsen'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= \"2024-06-10\" AND date <= \"2024-06-10\"\n  AND tmstp <= \"2024-06-10 14:14:47.592076\"\n    GROUP BY site_level2, tmstp,date\n  ORDER BY summe DESC\n  LIMIT 1\n\n),\ndaily_data AS (SELECT\n  SUM(COALESCE(m_visits,0)) AS summe\nFROM\n  Piano.total_visits\nWHERE site_level2 = 'app_mdrsachsen'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= \"2024-06-10\" AND date <= \"2024-06-10\"\n  )\nSELECT summe as past_sum FROM adjusted_lagged_data\n), current_value AS (\n  WITH adjusted_lagged_data AS (\n  SELECT\n     SUM(m_visits) as summe FROM\n     `Piano.total_visits_today_append`\n  WHERE\n  site_level2 = 'app_mdrsachsen'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= \"2024-06-11\" AND date <= \"2024-06-11\"\n    GROUP BY site_level2, tmstp\n  ORDER BY summe DESC\n  LIMIT 1\n),\ndaily_data AS (SELECT\n  sum(m_visits) as summe\nFROM\n  Piano.total_visits\nWHERE site_level2 = 'app_mdrsachsen'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= \"2024-06-11\" AND date <= \"2024-06-11\"\n  )\nSELECT summe as current_sum FROM adjusted_lagged_data\n)\n\nSELECT ((current_sum-past_sum)/past_sum)*100 FROM current_value,past_value as relative_difference",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Vergleich",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlYlRd"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 2,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "visits_past_5_minutes"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 7,
+          "x": 4,
+          "y": 0
+        },
+        "id": 24,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH sumdata AS (\n  SELECT\n    TIMESTAMP(tmstp) as tmstp,\n    CASE \"MDR\"\n    WHEN \"NDR\" THEN MAX(m_visits)\n    ELSE SUM(DISTINCT m_visits)\n    END\n     as m_visits FROM\n     `Piano.total_visits_today_append`\n  WHERE\n  site_level2 = 'app_mdrsachsen'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date = CURRENT_DATE()\n  GROUP by tmstp\n  ORDER BY tmstp DESC\n  \n),\nlagged_data AS (\n  SELECT\n    TIMESTAMP(tmstp) as time,\n    m_visits - LAG(m_visits) OVER (\n      ORDER BY\n        tmstp\n    ) as visits_past_5_minutes,\n    LAG(m_visits) OVER (ORDER BY tmstp) as prev_m_visits,\n    LAG(TIMESTAMP(tmstp)) OVER (ORDER BY tmstp) as pre_timestamp,\n    m_visits\n  FROM\n    sumdata\n    \n),\nmin_time_from_base AS (\n  -- This with statement will used in order to find out which is the last valid upload(e.g. the one with valid successor)\n  SELECT MIN(pre_timestamp) min_time FROM lagged_data\n  WHERE TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) > 10\n), \nmax_time_from_base AS (\n    -- THis with statement will be used if no gap exists\n    SELECT MAX(time) as max_time FROM lagged_data\n    WHERE TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) = 10\n),\ncleaned_lagged_data AS (\n  SELECT * from lagged_data \n  WHERE\n  time <= (SELECT COALESCE(max_time_from_base.max_time, min_time_from_base.min_time )\n  FROM max_time_from_base, min_time_from_base)\n),\nadjusted_lagged_data AS (\n    SELECT\n        time,\n        pre_timestamp,\n        -- Calculate time difference in minutes\n        TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) as time_diff,\n        -- Adjust visits count based on time difference\n           CASE\n      WHEN FALSE AND TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) > 10 OR TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) < 10 AND \"Glätten\" = \"Glätten\" THEN\n        (m_visits - prev_m_visits) / TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) * 10\n      ELSE\n        m_visits - prev_m_visits\n        END as visits_past_5_minutes\n    FROM\n        cleaned_lagged_data\n        WHERE TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) >= 10\n      ORDER BY time DESC\n      \n),\n\ndaily_data AS (\n  SELECT\n     TIMESTAMP(date) as time,\n    SUM(m_visits) as visits_past_5_minutes\n  FROM\n    `Piano.total_visits_today_append`\n  WHERE\n  site_level2 = 'app_mdrsachsen'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date = CURRENT_DATE()\n  GROUP BY date\n)\n\nSELECT\n    DATE_SUB(TIMESTAMP_ADD(time, INTERVAL 1 SECOND), INTERVAL 2 hour) as time,\n  visits_past_5_minutes, \"line\" as type, \"Heute\" as refId,\n     \"Glätten\" as glaettung,\n   \"Zeitraum\" as zeitraum\nFROM\n  adjusted_lagged_data\nWHERE\n  visits_past_5_minutes IS NOT NULL\n  AND  EXTRACT(date from time) = DATE_SUB(CURRENT_DATE(), INTERVAL 0 DAY) \nORDER BY\n  time ASC\n\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "hide": false,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH min_time AS (\n      SELECT\n        DATE_ADD(MIN(tmstp), INTERVAL 10 MINUTE) as min_tmstp,\n        MAX(tmstp) as max_tmstp\n        FROM\n      (SELECT tmstp\n      from\n        `Piano.total_visits_today_append`\n      WHERE\n       site_level2 = 'app_mdrsachsen'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date = CURRENT_DATE()\n  GROUP by tmstp\n  ORDER BY tmstp DESC\n  )\n    ),\nsumdata AS (\n  SELECT\n    TIMESTAMP(tmstp) as tmstp,\n      CASE \"MDR\"\n    WHEN \"NDR\" THEN MAX(m_visits)\n    ELSE SUM(DISTINCT m_visits)\n    END\n     as m_visits FROM\n     `Piano.total_visits_today_append`, min_time\n  WHERE\n  site_level2 = 'app_mdrsachsen'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY) \n    AND tmstp <= min_time.min_tmstp\n    AND  CASE \"Heute\" WHEN \"Gestern\" THEN TRUE ELSE EXTRACT(HOUR from tmstp) <= (SELECT EXTRACT(HOUR FROM MAX(tmstp)) from  `Piano.total_visits_today_append` WHERE date = CURRENT_DATE() ) END\n    AND    EXTRACT(date from tmstp) >= \"2024-06-10\" AND EXTRACT(date from tmstp) <= \"2024-06-10\"\n\n  GROUP by tmstp\n  ORDER BY tmstp DESC\n),\nlagged_data AS (\n  SELECT\n    TIMESTAMP(tmstp) as time,\n    m_visits - LAG(m_visits) OVER (\n      ORDER BY\n        tmstp\n    ) as visits_past_5_minutes,\n    m_visits,\n    LAG(m_visits) OVER (ORDER BY tmstp) as prev_m_visits,\n    LAG(TIMESTAMP(tmstp)) OVER (ORDER BY tmstp) as pre_timestamp\n\n  FROM\n    sumdata\n),\nmin_time_from_base AS (\n  -- This with statement will used in order to find out which is the last valid upload(e.g. the one with valid successor)\n  SELECT MIN(pre_timestamp) min_time FROM lagged_data\n  WHERE TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) > 10\n), \nmax_time_from_base AS (\n    -- THis with statement will be used if no gap exists\n    SELECT MAX(time) as max_time FROM lagged_data\n    WHERE TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) = 10\n),\ncleaned_lagged_data AS (\n  SELECT * from lagged_data \n  WHERE\n  time <= (SELECT COALESCE(min_time_from_base.min_time,max_time_from_base.max_time )\n  FROM max_time_from_base, min_time_from_base)\n),\nadjusted_lagged_data AS (\n    SELECT\n        time,\n        pre_timestamp,\n        -- Calculate time difference in minutes\n        TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) as time_diff,\n        -- Adjust visits count based on time difference\n           CASE\n      WHEN FALSE AND TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) > 10 OR TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) < 10 AND \"Glätten\" = \"Glätten\" THEN\n        (m_visits - prev_m_visits) / TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) * 10\n      ELSE\n        m_visits - prev_m_visits\n        END as visits_past_5_minutes\n    FROM\n        cleaned_lagged_data\n        WHERE TIMESTAMP_DIFF(time, pre_timestamp, MINUTE) >= 10\n),\ndaily_data AS (\n  SELECT\n     TIMESTAMP(date) as time,\n    SUM(m_visits) as visits_past_5_minutes, \n  FROM\n    `Piano.total_visits_today_append`\n  WHERE\n    site_level2 = 'app_mdrsachsen'\n    AND page_chapter1 = \"Alle Kapitel 1\"\n    AND page_chapter2 = \"Alle Kapitel 2\"\n    AND sendungs_id = \"Alle Sendungs-ID\"\n    AND date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)\n    GROUP BY date\n)\n\nSELECT\n  DATE_SUB(DATE_ADD(TIMESTAMP_ADD(time, INTERVAL 1 SECOND), INTERVAL 1 DAY), INTERVAL 2 HOUR) as time , \n  visits_past_5_minutes, \"line\" as type, \n   \"Gestern\" as refId,\n      \"Glätten\" as glaettung,\n   \"Vergleichszeitraum\" as zeitraum\nFROM\n  adjusted_lagged_data\nWHERE\n  visits_past_5_minutes IS NOT NULL\n  AND  EXTRACT(date from time) = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY) \nORDER BY\n  time ASC\n\n",
+            "refId": "B",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Verlaufsdiagramm Visits",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlYlRd"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 2,
+          "x": 0,
+          "y": 6
+        },
+        "id": 9,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Piano",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT  SUM(COALESCE(m_page_loads,0))/SUM(COALESCE(m_visits,1)) FROM `ndr-code-bi-dashboard.Piano.total_visits` WHERE site_level2 = 'app_mdrsachsen' AND page_chapter1 = \"Alle Kapitel 1\" AND page_chapter2 = \"Alle Kapitel 2\" AND sendungs_id = \"Alle Sendungs-ID\" AND DATE(date) = CURRENT_DATE()\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "name": "SUM",
+                  "parameters": [
+                    {
+                      "name": "m_visits",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "total_visits"
+          }
+        ],
+        "title": "Page Views per Visit",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlPu"
+            },
+            "displayName": "Vergleich zu gestern",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 1,
+          "x": 2,
+          "y": 6
+        },
+        "id": 25,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH past_value as(\nWITH adjusted_lagged_data AS (\n  SELECT\n  MAX(COALESCE(m_page_loads,0))/MAX(COALESCE(m_visits,1)) as summe,\nFROM\n  `Piano.total_visits_today_append`\nWHERE site_level2 = 'app_mdrsachsen'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= \"2024-06-10\" AND date <= \"2024-06-10\"\n  AND tmstp <= \"2024-06-10 15:14:27.770309\"\n),\ndaily_data AS (SELECT\n  SUM(COALESCE(m_page_loads,0))/SUM(COALESCE(m_visits,1)) as summe,\nFROM\n    `Piano.total_visits`\nWHERE site_level2 = 'app_mdrsachsen'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= \"2024-06-10\" AND date <= \"2024-06-10\"\n  )\nSELECT summe as past_sum FROM adjusted_lagged_data), current_value AS (\nSELECT\n  SUM(COALESCE(m_page_loads,0))/SUM(COALESCE(m_visits,1)) as current_sum,\nFROM\n    `Piano.total_visits`\nWHERE site_level2 = 'app_mdrsachsen'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= \"2024-06-11\" AND date <= \"2024-06-11\"\n  )\nSELECT ((current_sum-past_sum)/past_sum)*100 FROM current_value,past_value as relative_difference",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Vergleich",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlYlRd"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 2,
+          "x": 0,
+          "y": 12
+        },
+        "id": 10,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Piano",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT SUM(m_visits * m_time_spent_per_visits/1000) / SUM(m_visits) FROM `ndr-code-bi-dashboard.Piano.total_visits` WHERE site_level2 = 'app_mdrsachsen' AND page_chapter1 = \"Alle Kapitel 1\" AND page_chapter2 = \"Alle Kapitel 2\" AND sendungs_id = \"Alle Sendungs-ID\" AND DATE(date) = CURRENT_DATE()\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "name": "SUM",
+                  "parameters": [
+                    {
+                      "name": "m_visits",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "total_visits"
+          }
+        ],
+        "title": "Time spent per Visit in s",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlPu"
+            },
+            "displayName": "Vergleich zu gestern",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 1,
+          "x": 2,
+          "y": 12
+        },
+        "id": 26,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH past_value as(\nWITH adjusted_lagged_data AS (\n SELECT\n    MAX(m_visits * m_time_spent_per_visits/1000) / MAX(m_visits) AS summe\nFROM\n    `Piano.total_visits_today_append`\nWHERE site_level2 = 'app_mdrsachsen'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= \"2024-06-10\" AND date <= \"2024-06-10\"\n  AND tmstp <= \"2024-06-10 15:28:09.183826\"\n),\ndaily_data AS (SELECT\n    SUM(m_visits * m_time_spent_per_visits/1000) / SUM(m_visits) AS summe\nFROM\n      `Piano.total_visits`\nWHERE site_level2 = 'app_mdrsachsen'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= \"2024-06-10\" AND date <= \"2024-06-10\"\n  )\nSELECT summe as past_sum FROM adjusted_lagged_data), current_value AS (\nSELECT \n   SUM(m_visits * m_time_spent_per_visits/1000) / SUM(m_visits) AS current_sum,\nFROM \n    `Piano.total_visits`\nWHERE site_level2 = \"app_mdrsachsen\"\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\nAND date >= \"2024-06-11\" AND date <= \"2024-06-11\"\n)\nSELECT ((current_sum-past_sum)/past_sum)*100 FROM current_value,past_value as relative_difference",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Vergleich",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Datum"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 192
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 7,
+          "x": 4,
+          "y": 12
+        },
+        "id": 16,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "-- cache version\nSELECT\n  publishing_date as Datum,\n  content_titel as Artikel,\n  sum(m_visits) as Visits,\nFROM\n  (\n    SELECT\n      --publishing_date,\n      FIRST_VALUE(publishing_date) OVER (PARTITION BY uuid ORDER BY publishing_date DESC) as publishing_date, \n      FIRST_VALUE(content_id_sophora) OVER (PARTITION BY uuid ORDER BY publishing_date DESC) as content_id_sophora, \n      m_visits,\n      m_page_loads,\n      FIRST_VALUE(content_titel) OVER ( PARTITION BY uuid ORDER BY publishing_date DESC) as content_titel\n    FROM\n      ndr-code-bi-dashboard.Piano.articles_joined_today\n    WHERE\n      site_level2 = 'app_mdrsachsen'\n      AND content_id_sophora NOT LIKE '%index%'\n      AND content_id_sophora NOT LIKE '%N/A%'\n      AND (\n        CASE \n            WHEN \"MDR\" = 'NDR' THEN\n                content_titel NOT LIKE '%Video Livestream%'\n            AND content_titel NOT LIKE '%Startteaser%'\n            AND content_titel NOT LIKE '%startteaser%'\n            AND content_titel NOT LIKE '%-Anmelden%'\n            AND content_titel NOT LIKE '%_Start'\n            AND content_titel != 'Anmelden'\n            AND content_titel != 'Jetzt läuft'\n        ELSE\n          TRUE\n        END)\n      AND DATE(date) = CURRENT_DATE()\n  )\nGROUP BY\n  content_id_sophora,\n  content_titel,\n  publishing_date\nORDER BY\n  Visits DESC\nLIMIT\n  3",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Top 3 App Artikel",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlYlRd"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 2,
+          "x": 0,
+          "y": 18
+        },
+        "id": 11,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Piano",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \n  SUM(COALESCE(m_av_playbacks,0)) as summe\nFROM  \n  `Piano.av_joined_today`\n  WHERE \nbi_av_page_chapter1 = \"nachrichten\" AND CONTAINS_SUBSTR(bi_av_url, \"app\") AND bi_av_page_chapter2 = \"sachsen\"  \n  AND DATE(date) = CURRENT_DATE()\nAND (av_content_type = \"video\" OR av_content_type = \"Video\") ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "name": "SUM",
+                  "parameters": [
+                    {
+                      "name": "m_visits",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "total_visits"
+          }
+        ],
+        "title": "Wiedergaben Video",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlPu"
+            },
+            "displayName": "Vergleich zu gestern",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 1,
+          "x": 2,
+          "y": 18
+        },
+        "id": 27,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH current_value AS (\n  SELECT \n  SUM(COALESCE(m_av_playbacks,0)) as current_sum\nFROM  \n `Piano.av_joined_today`\nWHERE \nbi_av_page_chapter1 = \"nachrichten\" AND CONTAINS_SUBSTR(bi_av_url, \"app\") AND bi_av_page_chapter2 = \"sachsen\" \nAND date >= \"2024-06-11\" AND date <= \"2024-06-11\"\nAND (av_content_type = \"video\" OR av_content_type = \"Video\")\n), past_value AS (\n  SELECT \n  SUM(COALESCE(m_av_playbacks,0)) as past_sum\nFROM \n`Piano.av_joined_daily`WHERE \nbi_av_page_chapter1 = \"nachrichten\" AND CONTAINS_SUBSTR(bi_av_url, \"app\") AND bi_av_page_chapter2 = \"sachsen\" \nAND date >= \"2024-06-10\" AND date <= \"2024-06-10\" \nAND (av_content_type = \"video\" OR av_content_type = \"Video\")\n)\nSELECT ((current_sum-past_sum)/past_sum)*100 FROM current_value,past_value as relative_difference",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Vergleich",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Titel"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 389
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Wiedergaben"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 127
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Dauer"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 103
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Datum"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 195
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 7,
+          "x": 4,
+          "y": 18
+        },
+        "id": 18,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "-- cache version \n\nSELECT \nbi_av_publication_date as Datum,\nbi_av_content as Titel, \nsum(m_av_playbacks) as Wiedergaben,\nCONCAT(CONCAT(\n\n  CASE WHEN LENGTH(CAST(DIV(av_content_duration,60) AS String))<2 THEN CONCAT(\"0\",CAST(DIV(av_content_duration,60) AS String)) ELSE CAST(DIV(av_content_duration,60) AS String)  END ,\n\n  \":\",CASE WHEN LENGTH(CAST(MOD(av_content_duration,60) AS String))<2 THEN CONCAT(\"0\",CAST(MOD(av_content_duration,60) AS String)) ELSE CAST(MOD(av_content_duration,60) AS String)  END),\" Min\") as Dauer,\nSUM(m_av_playbacks * m_av_average_playback_completion_rate) / SUM(m_av_playbacks) Wiedergaberate,\n--device_type,\nFROM\n(\nSELECT\nFIRST_VALUE(bi_av_publication_date) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) as bi_av_publication_date, \nm_av_playbacks,\nCAST(av_content_duration/1000 AS INT) as av_content_duration,\nm_av_average_playback_completion_rate,\nav_content_type, bi_av_content_id,\nbi_av_broadcasting_type, \nFIRST_VALUE(bi_av_url) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) as bi_av_url, \n\n--device_type,\nFIRST_VALUE(bi_av_content) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) as bi_av_content, \nFROM \n`Piano.av_joined_today`--`Piano.av`\nWHERE bi_av_page_chapter1 = \"nachrichten\" AND CONTAINS_SUBSTR(bi_av_url, \"app\") AND bi_av_page_chapter2 = \"sachsen\" \nAND bi_av_content_id NOT LIKE '%index%'\nAND bi_av_broadcasting_type = \"ondemand\"\nAND date >= \"2024-06-11\" AND date <= \"2024-06-11\")\nWHERE m_av_playbacks > 0\nGROUP BY bi_av_publication_date,bi_av_content,av_content_duration,av_content_type,bi_av_content_id, bi_av_broadcasting_type, bi_av_url\n--,device_type \nORDER BY Wiedergaben DESC\nLimit 3",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Top 3 Audios und Videos on Demand",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlYlRd"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 2,
+          "x": 0,
+          "y": 24
+        },
+        "id": 12,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Piano",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \n  SUM(COALESCE(m_av_playbacks,0)) as summe\nFROM \n   `Piano.av_joined_today`\nWHERE \nbi_av_page_chapter1 = \"nachrichten\" AND CONTAINS_SUBSTR(bi_av_url, \"app\") AND bi_av_page_chapter2 = \"sachsen\" \nAND DATE(date) = CURRENT_DATE()\nAND (av_content_type = \"audio\" OR av_content_type = \"Audio\")",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "name": "SUM",
+                  "parameters": [
+                    {
+                      "name": "m_visits",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "total_visits"
+          }
+        ],
+        "title": "Wiedergaben Audio",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlPu"
+            },
+            "displayName": "Vergleich zu gestern",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 1,
+          "x": 2,
+          "y": 24
+        },
+        "id": 28,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH current_value AS (\n  SELECT \n  SUM(COALESCE(m_av_playbacks,0)) as current_sum\nFROM \n   `Piano.av_joined_today`\nWHERE \nbi_av_page_chapter1 = \"nachrichten\" AND CONTAINS_SUBSTR(bi_av_url, \"app\") AND bi_av_page_chapter2 = \"sachsen\"\nAND date >= \"2024-06-11\" AND date <= \"2024-06-11\"\nAND (av_content_type = \"audio\" OR av_content_type = \"Audio\")\n), past_value AS (\n  SELECT \n  SUM(COALESCE(m_av_playbacks,0)) as past_sum\nFROM \n   `Piano.av_joined_daily`\nWHERE \nbi_av_page_chapter1 = \"nachrichten\" AND CONTAINS_SUBSTR(bi_av_url, \"app\") AND bi_av_page_chapter2 = \"sachsen\" \nAND date >= \"2024-06-10\" AND date <= \"2024-06-10\" \nAND (av_content_type = \"audio\" OR av_content_type = \"Audio\")\n)\nSELECT ((current_sum-past_sum)/past_sum)*100 FROM current_value,past_value as relative_difference",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Vergleich",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Datum"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 196
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Titel"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 389
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 7,
+          "x": 4,
+          "y": 24
+        },
+        "id": 20,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \nbi_av_publication_date as Datum,\nbi_av_content as Titel, \nsum(m_av_playbacks) as Wiedergaben,\n/*av_content_type as Typ,*/\nFROM\n(\nSELECT\nFIRST_VALUE(bi_av_publication_date) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) as bi_av_publication_date, \nm_av_playbacks,\nav_content_type, bi_av_content_id,\nbi_av_broadcasting_type, \nFIRST_VALUE(bi_av_url) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) as bi_av_url, \n\n--device_type,\nFIRST_VALUE(bi_av_content) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) as bi_av_content, \nFROM \n`Piano.av_joined_today`--`Piano.av`\nWHERE bi_av_page_chapter1 = \"nachrichten\" AND CONTAINS_SUBSTR(bi_av_url, \"app\") AND bi_av_page_chapter2 = \"sachsen\" \nAND bi_av_content_id NOT LIKE '%index%'\nAND bi_av_broadcasting_type = \"live\"\nAND DATE(date) = CURRENT_DATE())\nWHERE m_av_playbacks > 0\nGROUP BY bi_av_publication_date,bi_av_content,\nav_content_type,bi_av_content_id, bi_av_broadcasting_type, bi_av_url\n--,device_type \nORDER BY Wiedergaben DESC\nLimit 3",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Top 3 Audios und Videos Livestream",
+        "type": "table"
+      }
+    ],
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Overview Dashhboard Prototype",
+    "uid": "VhZA0ZUSz",
+    "version": 2,
+    "weekStart": ""
+  }
+}

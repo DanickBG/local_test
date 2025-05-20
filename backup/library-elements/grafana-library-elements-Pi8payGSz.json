@@ -1,0 +1,159 @@
+{
+  "id": 565,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "Pi8payGSz",
+  "name": "NDR TV Web Quellen Heute",
+  "kind": 1,
+  "type": "marcusolsson-dynamictext-panel",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "summe"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "summe_percent"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "percent"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 22,
+      "w": 12,
+      "x": 0,
+      "y": 6
+    },
+    "id": 51,
+    "options": {
+      "afterRender": "",
+      "content": "<!-- ```json\n{{{json @root}}}\n``` -->\n<table>\n  <thead>\n    <tr>\n      <th id=\"content_titel\">Quelle</th>\n      <th id=\"content_id_sophora\">Visit</th>\n      <th id=\"visits\"> Prozent</th>\n    </tr>\n  </thead>\n  <tbody>\n    {{#each data}}\n    <tr>\n      <td>{{this.src}}</td>\n      <td>{{this.summe}}</td>\n      <td class=\"number\">{{this.summe_percent}}</td>\n      </td>\n    </tr>\n    {{/each}}\n  </tbody>\n</table>",
+      "contentPartials": [],
+      "defaultContent": "The query didn't return any results.",
+      "editor": {
+        "format": "auto",
+        "language": "markdown"
+      },
+      "editors": [
+        "styles"
+      ],
+      "externalStyles": [],
+      "helpers": "",
+      "renderMode": "allRows",
+      "styles": "table {\n  font-size: 25px;\n  width: 900px; /* 3 columns * 200px each */\n  border-collapse: collapse;\n}\n\nth {\n  font-size: 20px;\n  font-weight: bold;\n  text-align: left;\n}\n\ntd, th {\n  padding: 8px;\n}\n\nth#content_titel,\ntd:first-child {\n  width: 200px;\n}\n\nth#content_id_sophora,\ntd:nth-child(2) {\n  width: 200px;\n  text-align: center; /* Center the second column */\n}\n\nth#visits,\ntd:nth-child(3) {\n  width: 200px;\n  text-align: center; /* Center the third column */\n}\n",
+      "wrap": true
+    },
+    "pluginVersion": "5.6.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH total_sum AS (\r\n  SELECT\r\n    SUM(m_visits) AS total_sum\r\nFROM Piano.distro_joined_today \r\n  WHERE\r\n    site_level2 = ${LRA:doublequote}\r\n    AND page_chapter1 = ${Redaktionen:doublequote}\r\n    AND page_chapter2 = ${Unterkapitel:doublequote}\r\n    AND sendungs_id = ${Sendung:doublequote}\r\n AND date = ${bq_today:doublequote}\r\n    AND src NOT LIKE '%N/A%'\r\n)\r\nSELECT\r\n  distro_joined_today.src,\r\n  SUM(m_visits) AS summe,\r\n  CONCAT(REPLACE(CAST(ROUND((( (SUM(m_visits)) )/total_sum.total_sum)*100,6) as string), \".\", \",\"), \"%\") as summe_percent\r\nFROM\r\n  Piano.distro_joined_today,\r\n  total_sum\r\nWHERE\r\n    site_level2 = ${LRA:doublequote}\r\n    AND page_chapter1 = ${Redaktionen:doublequote}\r\n    AND page_chapter2 = ${Unterkapitel:doublequote}\r\n    AND sendungs_id = ${Sendung:doublequote}\r\n    AND date = ${bq_today:doublequote}\r\n  AND src NOT LIKE '%N/A%'\r\nGROUP BY\r\n  src, total_sum.total_sum ORDER BY summe DESC",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "av_content_duration": true,
+            "av_content_type": true,
+            "bi_av_publication_date": false,
+            "device_type": true,
+            "wiedergaberate": true
+          },
+          "indexByName": {},
+          "renameByName": {
+            "bi_av_content": "Title",
+            "bi_av_publication_date": "Publiziert"
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "marcusolsson-dynamictext-panel"
+  },
+  "version": 5,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 13,
+    "created": "2024-06-20T11:45:51Z",
+    "updated": "2025-03-28T07:57:40Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

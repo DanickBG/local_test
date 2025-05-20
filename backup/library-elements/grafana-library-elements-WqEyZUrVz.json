@@ -1,0 +1,182 @@
+{
+  "id": 624,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "WqEyZUrVz",
+  "name": "TV App Artikel Titel",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "transparent",
+          "mode": "fixed"
+        },
+        "decimals": 0,
+        "mappings": [],
+        "noValue": "N/A",
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            }
+          ]
+        },
+        "unit": "string"
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 3,
+      "w": 10,
+      "x": 2,
+      "y": 0
+    },
+    "id": 23,
+    "libraryPanel": {
+      "description": "",
+      "meta": {
+        "connectedDashboards": 22,
+        "created": "2023-07-06T10:20:30Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/e1c561446783a225c1df9c8ecbfc3fcf",
+          "id": 4,
+          "name": "natalie.widmann@ida.me"
+        },
+        "folderName": "Template Dashboards",
+        "folderUid": "folder-o5ETCxr4z",
+        "updated": "2023-08-07T14:17:14Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        }
+      },
+      "name": "TV App Artikel Titel",
+      "type": "stat",
+      "uid": "WqEyZUrVz",
+      "version": 3
+    },
+    "options": {
+      "colorMode": "background",
+      "graphMode": "none",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "reduceOptions": {
+        "calcs": [
+          "last"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "text": {
+        "titleSize": 20
+      },
+      "textMode": "value_and_name"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "dataset": "Quintly",
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT  CONCAT(REPEAT(\" \", 48 - CHAR_LENGTH(CONCAT(${AppShort:doublequote},' | App Artikel'))), CONCAT(${AppShort:doublequote},' | App Artikel'))\nFROM(\nSELECT CONCAT(${AppShort:doublequote},' | App Artikel') as Interaktionen\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nLIMIT 1\n)",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [
+                {
+                  "name": "page_engaged_users",
+                  "type": "functionParameter"
+                }
+              ],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50,
+          "whereJsonTree": {
+            "children1": {
+              "baa899a9-cdef-4012-b456-718364767b70": {
+                "properties": {
+                  "field": "profileId",
+                  "operator": "equal",
+                  "value": [
+                    null
+                  ],
+                  "valueSrc": [
+                    "value"
+                  ],
+                  "valueType": [
+                    "number"
+                  ]
+                },
+                "type": "rule"
+              }
+            },
+            "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+            "type": "group"
+          }
+        },
+        "table": "facebookInsights"
+      }
+    ],
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "f0_": " "
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "stat"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 54,
+    "created": "2024-06-20T11:46:00Z",
+    "updated": "2025-05-09T13:13:47Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/9774780e31622dad09ce78835d06ec07",
+      "id": 39,
+      "name": "sa-1-fortestdaniel"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "uid": "e6093c50-1d76-44a1-8aaa-7d650e777d7c",
+  "name": "NDR.de KIOSK",
+  "interval": "1m",
+  "items": [
+    {
+      "type": "dashboard_by_tag",
+      "value": "ndr.de"
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "id": 586,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "rwQ9Ty84z",
+  "name": "Facebook KPI Aktive Nutzere",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "#0165e1",
+          "mode": "fixed"
+        },
+        "decimals": 0,
+        "mappings": [],
+        "noValue": "N/A",
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            }
+          ]
+        },
+        "unit": "string"
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 13,
+      "y": 0
+    },
+    "id": 78,
+    "options": {
+      "colorMode": "background",
+      "graphMode": "none",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "percentChangeColorMode": "standard",
+      "reduceOptions": {
+        "calcs": [
+          "last"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "showPercentChange": false,
+      "text": {},
+      "textMode": "value_and_name",
+      "wideLayout": true
+    },
+    "pluginVersion": "11.3.1",
+    "targets": [
+      {
+        "dataset": "Quintly",
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size - CHAR_LENGTH(CAST(page_engaged_users as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(page_engaged_users) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\n  SELECT ROUND(SUM(IFNULL(A.summe,0)) / MAX(B.days),0) as page_engaged_users\nFROM\n-- Get engaged users in time range\n(SELECT \nsum(IFNULL(post_reactions_by_type_total_like\t+ post_reactions_by_type_total_love\t+ \n  post_reactions_by_type_total_wow + post_reactions_by_type_total_haha + \n  post_reactions_by_type_total_sorry\t+ post_reactions_by_type_total_anger + \n  post_activity_by_action_type_share + post_activity_by_action_type_comment,0)) as summe\nFROM `ndr-code-bi-dashboard.Quintly.facebookInsightsOwnPosts`\nWHERE profileId = $profileID \nAND $Zeitraum\n) AS A,\n  \n-- Get days for calculation\n  (SELECT\n  CASE\n    WHEN CONTAINS_SUBSTR(\"${Zeitraum:text}\", \"7\") THEN 7\n    WHEN CONTAINS_SUBSTR(\"${Zeitraum:text}\", \"30\") THEN 30\n    ELSE 1\n  END AS Days)\n  AS B\n)",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [
+                {
+                  "name": "page_engaged_users",
+                  "type": "functionParameter"
+                }
+              ],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50,
+          "whereJsonTree": {
+            "children1": {
+              "baa899a9-cdef-4012-b456-718364767b70": {
+                "properties": {
+                  "field": "profileId",
+                  "operator": "equal",
+                  "value": [
+                    null
+                  ],
+                  "valueSrc": [
+                    "value"
+                  ],
+                  "valueType": [
+                    "number"
+                  ]
+                },
+                "type": "rule"
+              }
+            },
+            "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+            "type": "group"
+          }
+        },
+        "table": "facebookInsights"
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "includeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "Interaktionen - Summe der Posts",
+            "page_engaged_users": "⌀ pro Tag"
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "stat"
+  },
+  "version": 10,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 25,
+    "created": "2024-06-20T11:45:54Z",
+    "updated": "2025-04-24T08:40:56Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/1d023dd0c27d88e623f989677b219756",
+      "id": 6,
+      "name": "adrian westphal dev"
+    }
+  }
+}

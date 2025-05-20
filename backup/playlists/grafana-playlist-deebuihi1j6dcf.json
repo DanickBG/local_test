@@ -1,0 +1,59 @@
+{
+  "uid": "deebuihi1j6dcf",
+  "name": "NDR SH (4K)",
+  "interval": "30s",
+  "items": [
+    {
+      "type": "dashboard_by_uid",
+      "value": "cee83hjhfr400f"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "dee837gzspog0c"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "cee83x2b7h6v4f"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "bedk7n2ssptz4e"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "bedjricpl8wlce"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "bedg98c4rl0cgb"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "aednondtsjxfkb"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "eednmt058kav4c"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "dednnoeccnmyof"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "bee21q3sqd79cf"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "aee21sd14zoqoc"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "dedtpdu7dvgu8e"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "bee0geqk3pm9sa"
+    }
+  ]
+}

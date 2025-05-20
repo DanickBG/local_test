@@ -1,0 +1,55 @@
+{
+  "id": 1776,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "aee7hgdowrqpsd",
+  "name": "Instagram Title 4K",
+  "kind": 1,
+  "type": "text",
+  "description": "",
+  "model": {
+    "description": "",
+    "gridPos": {
+      "h": 12,
+      "w": 11,
+      "x": 2,
+      "y": 0
+    },
+    "id": 154,
+    "libraryPanel": {
+      "name": "Instagram Title 4K",
+      "uid": "aee7hgdowrqpsd"
+    },
+    "options": {
+      "code": {
+        "language": "plaintext",
+        "showLineNumbers": false,
+        "showMiniMap": false
+      },
+      "content": "<span style=\"font-size: 120px; color:rgb(214,41,118);\">Instagram </span>\n<span style=\"font-size: 120px;\"> ${Profil} </span>\n",
+      "mode": "markdown"
+    },
+    "pluginVersion": "11.3.1",
+    "transparent": true,
+    "type": "text"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 2,
+    "created": "2025-02-26T07:26:31Z",
+    "updated": "2025-02-26T07:26:31Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

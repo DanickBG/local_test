@@ -1,0 +1,147 @@
+{
+    "meta": {
+        "type": "db",
+        "canSave": true,
+        "canEdit": true,
+        "canAdmin": true,
+        "canStar": true,
+        "canDelete": true,
+        "slug": "faq",
+        "url": "/d/sk3zg0OVk/faq",
+        "expires": "0001-01-01T00:00:00Z",
+        "created": "2024-07-29T12:45:13Z",
+        "updated": "2024-07-30T05:43:50Z",
+        "updatedBy": "Anonymous",
+        "createdBy": "Anonymous",
+        "version": 2,
+        "hasAcl": false,
+        "isFolder": false,
+        "folderId": 0,
+        "folderUid": "",
+        "folderTitle": "General",
+        "folderUrl": "",
+        "provisioned": false,
+        "provisionedExternalId": "",
+        "annotationsPermissions": {
+            "dashboard": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            },
+            "organization": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            }
+        }
+    },
+    "dashboard": {
+        "annotations": {
+            "list": [
+                {
+                    "builtIn": 1,
+                    "datasource": {
+                        "type": "grafana",
+                        "uid": "-- Grafana --"
+                    },
+                    "enable": true,
+                    "hide": true,
+                    "iconColor": "rgba(0, 211, 255, 1)",
+                    "name": "Annotations & Alerts",
+                    "target": {
+                        "limit": 100,
+                        "matchAny": false,
+                        "tags": [],
+                        "type": "dashboard"
+                    },
+                    "type": "dashboard"
+                }
+            ]
+        },
+        "editable": true,
+        "fiscalYearStartMonth": 0,
+        "graphTooltip": 0,
+        "id": 1412,
+        "links": [],
+        "liveNow": false,
+        "panels": [
+            {
+                "datasource": {
+                    "type": "postgres",
+                    "uid": "5RzC0pR4k"
+                },
+                "gridPos": {
+                    "h": 21,
+                    "w": 24,
+                    "x": 0,
+                    "y": 0
+                },
+                "id": 2,
+                "options": {
+                    "code": {
+                        "language": "plaintext",
+                        "showLineNumbers": false,
+                        "showMiniMap": false
+                    },
+                    "content": "# Die h\u00e4ufigsten Fragen und Antworten\n<br> </br>\n**Wof\u00fcr steht Minerva?**  \n\nAkronym f\u00fcr *Mastery of Integrating and Exhibiting Relevant Values* (Beherrschung der Integration und des Aufzeigens relevanter Werte)\n\n\n---\n**Wo finde ich Bedingungshinweise?**  \n\nDie wichtigsten Funktionen sind in diesem Handout beschrieben.  \n[Link zum Dokument in der ARD-ZDF-Box](https://share.ard-zdf-box.de/s/kiTKbAqQE86Et4e)\n\nDie Funktionsweisen der einzelnen Dashboards sind in diesem Handout beschrieben.  \n[Link zum Dokument in der ARD-ZDF-Box](https://share.ard-zdf-box.de/s/yKf4JBynAx9DqSa)\n---\n**Wo finde ich Erl\u00e4uterungen zu den Kennzahlen?**  \n\nDie Kennzahlen werden in diesem Glossar genau erkl\u00e4rt.  \n[Link zum Dokument in der ARD-ZDF-Box](https://share.ard-zdf-box.de/s/89WYWp3SxtW9tQL)\n---\n**An wen wende ich mich, wenn ich noch weitere Fragen zur Bedienung oder zu den Metriken habe?** \n\nDie Medienforschung ist direkt per Mail erreichbar, siehe [Startseite](https://daten.ndr.mobi/d/gF6Eg9H4z/startseite?orgId=1).  \nZus\u00e4tzlich kann f\u00fcr NDR Kolleg:innen der NDR [Teams-Channel](https://teams.microsoft.com/l/channel/19%3aWCVDhN08fHQXkgK2b-40xPacRHzuK71jQxMM9ji4gys1%40thread.tacv2/Allgemein?groupId=a945561b-cd1e-439f-b851-455a19aaedff&tenantId=14231bc8-8718-48a7-88e2-0ac25c6234b4) genutzt werden. \n---\n**Warum sehe ich keine Daten in den Tabellen? Was bedeutet N/A in den KPI-Boxen?**  \n\nDie Auswertungszeitr\u00e4ume ber\u00fccksichtigen die Ver\u00f6ffentlichungen im entsprechenden Zeitfenster. Wenn es keine neuen Inhalte gibt, werden auch keine Nutzungsdaten ausgewiesen.  \nN/A bedeutet in diesem Zusammenhang \"Not Available\"\n\n---\n\n**Warum ist Profil xyz nicht dabei?**  \n\nZum Start sind alle Profile des MDR und des NDR von Facebook, Instagram und YouTube integriert.  \nDie funk-Profile werden nicht ber\u00fccksichtigt. Neue Profile werden mit aufgenommen, sobald sie in Quintly eingebunden sind.\n\n---\n\n**Welche Browser werden unterst\u00fctzt?**  \n- Google Chrome\n- Chromium \n- Safari \n- Microsoft Edge\n- Mozilla Firefox\n\n--- \n\n\n\n Daten\n====\n\n**Hinweise zur Datenverf\u00fcgbarkeit**  \n\nYouTube Insights-Daten werden von YouTube mit einer Verz\u00f6gerung von bis zu 72 Stunden zur Verf\u00fcgung gestellt. Die \u00f6ffentlichen YouTube-Daten werden alle 6 Stunden aktualisiert, enthalten aber nur Basiswerte, die f\u00fcr einen schnellen \u00dcberblick gedacht sind.\nViele Facebook Insights-Daten werden von Meta nur einmal alle 24 Stunden aktualisiert.\nF\u00fcr alle anderen Plattformen werden alle 6 Stunden Daten aktualisiert.\n--- \n\n\n**Auswertungszeitr\u00e4ume** \n\nDie Daten basieren auf eigenen Abfragen und einer eigenen Aggregierung aus den unterschiedlichen Datenquellen. Alle Daten sind auf ihre Relevanz und Zuverl\u00e4ssigkeit gepr\u00fcft und werden innerhalb der Grafana-Umgebung einheitlich berechnet. M\u00f6glicherweise unterscheiden sich die Daten von den Werten in anderen Tools (Piano Analytics, Analyseplattformen der Social Media Accounts). Das kann an unterschiedlichen Parametern der Abfragen liegen, aber auch daran, dass hier die Daten in unterschiedlichen Zeitintervallen aktualisiert werden.\n\nFolgende Zeitr\u00e4ume werden ausgewertet:\n- Piano und Social Media Dashboards:\n  - Letzte Stunde (die letzten 60 Minuten seit der letzten Aktualisierung der Daten; nur f\u00fcr Piano Dashboards) \n  - Heute (der bisherige Tag seit der letzten Aktualisierung der Daten; nur f\u00fcr Piano Dashboards)\n  - Gestern (bis 00:00 Uhr des aktuellen Kalendertags)\n  - Letztes Wochenende (der letzte Samstag & Sonntag)\n  - Letzte 3 Tage (die letzten 3 abgeschlossenen Tage; nur f\u00fcr \u00f6ffentliche YouTube-Daten)\n  - Letzte 7 Tage (die letzten 7 abgeschlossenen Tage)\n  - Letzte 30 Tage (die letzten 30 abgeschlossenen Tage)\n- Social Media Monatsberichte:\n  - Monatlich (ab Mai 2022)\n- Social Media Dashboard zu Soziodemografischen Daten:\n  - Monatlich (ab Januar 2022)\n  - Quartal\n  - Halbjahr\n  - Jahre\n--- \n\n**Importzeiten Social Media** \n\nAufgrund unterschiedlicher Daten-Importzeiten der Plattformen werden in Minerva zu folgenden Uhrzeiten Updates der Daten durchgef\u00fchrt:\n\n|  Importzeiten nach UTC  | Importzeiten nach CET Winterzeit  | Importzeiten nach CET Sommerzeit  |\n|---|---|---|\n| 2 Uhr | 3 Uhr | 4 Uhr |\n| 5 Uhr | 6 Uhr | 7 Uhr |\n| 8 Uhr | 9 Uhr | 10 Uhr |\n| 9 Uhr | 10 Uhr | 11 Uhr |\n| 11 Uhr | 12 Uhr | 13 Uhr |\n| 14 Uhr | 15 Uhr | 16 Uhr |\n| 17 Uhr | 18 Uhr | 19 Uhr |\n| 20 Uhr | 21 Uhr | 22 Uhr |\n| 23 Uhr | 24 Uhr | 1 Uhr |",
+                    "mode": "markdown"
+                },
+                "pluginVersion": "9.2.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "postgres",
+                            "uid": "5RzC0pR4k"
+                        },
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+                        "refId": "A",
+                        "select": [
+                            [
+                                {
+                                    "params": [
+                                        "post_video_view_time"
+                                    ],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "table": "facebookinsightsownposts",
+                        "timeColumn": "\"time\"",
+                        "timeColumnType": "timestamp",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "transparent": true,
+                "type": "text"
+            }
+        ],
+        "schemaVersion": 37,
+        "style": "dark",
+        "tags": [],
+        "templating": {
+            "list": []
+        },
+        "time": {
+            "from": "now-6h",
+            "to": "now"
+        },
+        "timepicker": {
+            "hidden": true
+        },
+        "timezone": "",
+        "title": "FAQ",
+        "uid": "sk3zg0OVk",
+        "version": 2,
+        "weekStart": ""
+    }
+}

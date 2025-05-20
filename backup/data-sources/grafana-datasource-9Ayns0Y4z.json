@@ -1,0 +1,27 @@
+{
+  "id": 2,
+  "uid": "9Ayns0Y4z",
+  "orgId": 1,
+  "name": "BigQueryDEV",
+  "type": "grafana-bigquery-datasource",
+  "typeLogoUrl": "public/plugins/grafana-bigquery-datasource/img/logo.png",
+  "access": "proxy",
+  "url": "",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {
+    "authenticationType": "jwt",
+    "clientEmail": "bigqueryminervadev@ndr-code-bi-dashboard-dev.iam.gserviceaccount.com",
+    "defaultProject": "ndr-code-bi-dashboard-dev",
+    "processingLocation": "europe-west3",
+    "tokenUri": "https://oauth2.googleapis.com/token"
+  },
+  "secureJsonFields": {},
+  "version": 1,
+  "readOnly": false,
+  "apiVersion": ""
+}

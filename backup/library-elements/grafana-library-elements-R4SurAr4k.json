@@ -1,0 +1,111 @@
+{
+  "id": 581,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "R4SurAr4k",
+  "name": "Piano TV Logos",
+  "kind": 1,
+  "type": "text",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "postgres",
+      "uid": "5RzC0pR4k"
+    },
+    "description": "",
+    "gridPos": {
+      "h": 3,
+      "w": 2,
+      "x": 0,
+      "y": 0
+    },
+    "id": 21,
+    "libraryPanel": {
+      "meta": {
+        "connectedDashboards": 33,
+        "created": "2023-07-03T15:05:24Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/9372895bd2354d1612a45afc8704053a",
+          "id": 6,
+          "name": "b.kuch@ndr.de"
+        },
+        "folderName": "Panels Library",
+        "folderUid": "folder-PjWklf8Vz",
+        "updated": "2023-07-03T15:05:24Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/9372895bd2354d1612a45afc8704053a",
+          "id": 6,
+          "name": "b.kuch@ndr.de"
+        }
+      },
+      "name": "Piano TV Logos",
+      "uid": "R4SurAr4k",
+      "version": 1
+    },
+    "options": {
+      "code": {
+        "language": "plaintext",
+        "showLineNumbers": false,
+        "showMiniMap": false
+      },
+      "content": "<img width=\"85\" height=\"85\" src=${Image} />",
+      "mode": "html"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "format": "time_series",
+        "group": [],
+        "metricColumn": "none",
+        "rawQuery": false,
+        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+        "refId": "A",
+        "select": [
+          [
+            {
+              "params": [
+                "post_video_view_time"
+              ],
+              "type": "column"
+            }
+          ]
+        ],
+        "table": "facebookinsightsownposts",
+        "timeColumn": "\"time\"",
+        "timeColumnType": "timestamp",
+        "where": [
+          {
+            "name": "$__timeFilter",
+            "params": [],
+            "type": "macro"
+          }
+        ]
+      }
+    ],
+    "transparent": true,
+    "type": "text"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 125,
+    "created": "2024-06-20T11:45:53Z",
+    "updated": "2024-06-20T11:45:53Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

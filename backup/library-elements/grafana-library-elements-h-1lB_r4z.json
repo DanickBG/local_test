@@ -1,0 +1,206 @@
+{
+  "id": 509,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "h-1lB_r4z",
+  "name": "TikTok Top Video Main Table",
+  "kind": 1,
+  "type": "table-old",
+  "description": "",
+  "model": {
+    "columns": [],
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fontSize": "150%",
+    "gridPos": {
+      "h": 12,
+      "w": 24,
+      "x": 0,
+      "y": 6
+    },
+    "id": 145,
+    "libraryPanel": {
+      "name": "TikTok Top Video Main Table"
+    },
+    "links": [],
+    "options": {
+      "footer": {
+        "enablePagination": true,
+        "fields": [
+          "post_engaged_users"
+        ],
+        "reducer": [
+          "sum"
+        ],
+        "show": false
+      },
+      "showHeader": true,
+      "sortBy": []
+    },
+    "pageSize": null,
+    "pluginVersion": "9.2.3",
+    "showHeader": true,
+    "sort": {
+      "desc": false
+    },
+    "styles": [
+      {
+        "$$hashKey": "object:50",
+        "alias": "Datum",
+        "align": "auto",
+        "dateFormat": " DD.MM | HH:mm \\U\\h\\r",
+        "pattern": "time",
+        "type": "date"
+      },
+      {
+        "$$hashKey": "object:51",
+        "alias": "Post",
+        "align": "",
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "decimals": 2,
+        "pattern": "description",
+        "thresholds": [],
+        "type": "number",
+        "unit": "short"
+      },
+      {
+        "$$hashKey": "object:301",
+        "alias": "▼Videostarts",
+        "align": "center",
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "decimals": 2,
+        "mappingType": 1,
+        "pattern": "views",
+        "thresholds": [],
+        "type": "number",
+        "unit": "locale"
+      },
+      {
+        "$$hashKey": "object:312",
+        "alias": "Likes",
+        "align": "auto",
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "decimals": 2,
+        "mappingType": 1,
+        "pattern": "likes",
+        "thresholds": [],
+        "type": "number",
+        "unit": "locale"
+      }
+    ],
+    "targets": [
+      {
+        "dataset": "Quintly",
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT\ntime,\n  CASE\n    WHEN length(description) > 120 THEN SUBSTR(description, 0 , 120) || '...'\n    ELSE description\n  END AS Post,\n-- description,\nviews,\nlikes,\nFROM `ndr-code-bi-dashboard.Quintly.tiktokAnalyticsOwnPosts`\nWHERE profileId = $profileID \nAND $Zeitraum \nORDER BY views DESC",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50,
+          "whereJsonTree": {
+            "children1": {
+              "a8a9bbab-cdef-4012-b456-718379cf62c5": {
+                "properties": {
+                  "field": "profileId",
+                  "operator": "equal",
+                  "value": [
+                    null
+                  ],
+                  "valueSrc": [
+                    "value"
+                  ],
+                  "valueType": [
+                    "number"
+                  ]
+                },
+                "type": "rule"
+              }
+            },
+            "id": "baa89b8b-0123-4456-b89a-b18379cf62c5",
+            "type": "group"
+          }
+        },
+        "table": "facebookInsightsOwnPosts"
+      }
+    ],
+    "transform": "table",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "Post": false,
+            "comments": true,
+            "hashtags": true,
+            "interactionRateSelf": true,
+            "link": true,
+            "shares": true,
+            "videoCoverUrl": true,
+            "videoLength": true
+          },
+          "indexByName": {},
+          "renameByName": {}
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "table-old"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 2,
+    "created": "2024-06-20T11:45:42Z",
+    "updated": "2024-06-20T11:45:42Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

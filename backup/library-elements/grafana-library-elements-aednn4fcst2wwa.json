@@ -1,0 +1,155 @@
+{
+  "id": 1772,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "aednn4fcst2wwa",
+  "name": "MDR/NDR TV App Artikel Heute KPI new 4K",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "summe"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "locale"
+            },
+            {
+              "id": "displayName",
+              "value": "Visits ${Zeitraum:text} ${Uhrzeit:text}"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 12,
+      "y": 0
+    },
+    "id": 43,
+    "libraryPanel": {
+      "name": "MDR/NDR TV App Artikel Heute KPI new 4K",
+      "uid": "aednn4fcst2wwa"
+    },
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "percentChangeColorMode": "standard",
+      "reduceOptions": {
+        "calcs": [
+          "last"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "showPercentChange": false,
+      "textMode": "value_and_name",
+      "wideLayout": true
+    },
+    "pluginVersion": "11.3.1",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "hide": false,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH adjusted_lagged_data AS (\n  SELECT\n     SUM(m_visits) as summe FROM\n     `Piano.total_visits${feverCurveDataset:raw}`\n  WHERE\n  site_level2 = '${app_name}'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\n    GROUP BY site_level2, tmstp\n  ORDER BY summe DESC\n  LIMIT 1\n),\ndaily_data AS (SELECT\n  sum(m_visits) as summe\nFROM\n  `Piano.total_visits${dataset_zeitraum_kpi:raw}`\nWHERE site_level2 = '${app_name}'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\n  )\nSELECT * FROM ${dataset_not_fevercurve} ",
+        "refId": "B",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "f0_": false
+          },
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "${Zeitraum:text}",
+            "summe": "",
+            "visits": "${Zeitraum:text}"
+          }
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 3,
+    "created": "2025-02-20T17:58:48Z",
+    "updated": "2025-02-20T17:58:48Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

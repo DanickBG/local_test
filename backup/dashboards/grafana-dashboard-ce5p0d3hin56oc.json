@@ -1,0 +1,1515 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "social-media-langzeittrends",
+    "url": "/d/ce5p0d3hin56oc/social-media-langzeittrends",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-12-02T10:04:38Z",
+    "updated": "2025-05-06T15:02:23Z",
+    "updatedBy": "bernd kuch dev",
+    "createdBy": "daniel hristov dev",
+    "version": 81,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 1174,
+    "folderUid": "folder-0pcZhivIk",
+    "folderTitle": "Trends",
+    "folderUrl": "/dashboards/f/folder-0pcZhivIk/trends",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1578,
+    "links": [],
+    "panels": [
+      {
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 13,
+          "x": 0,
+          "y": 0
+        },
+        "id": 4,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "# 📊 Hinweise\n\n- Die Daten werden monatsweise gesichert (immer am 7. eines Monats für den Vormonat) und ändern sich nachträglich nicht. \n- Teilweise unterscheiden sich die vorliegenden Daten je nach Kennwert, Profil und Plattform. Liegen keine Daten vor, wird 0 ausgewiesen.",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.3.1",
+        "title": "",
+        "type": "text"
+      },
+      {
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 1,
+          "x": 13,
+          "y": 0
+        },
+        "id": 14,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<img \n  src=\"${src_url}\" \n  alt=\"Tracking Pixel\" \n  width=\"1\" \n  height=\"1\" \n  style=\"display:none;\"\n/>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.3.1",
+        "title": "",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 14,
+          "w": 24,
+          "x": 0,
+          "y": 3
+        },
+        "id": 1,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto",
+            "height": 600
+          },
+          "editorMode": "code",
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "// Hash function to generate a numeric hash from a string\nfunction hashString(str) {\n  let hash = 0;\n  for (let i = 0; i < str.length; i++) {\n    hash = (hash << 5) - hash + str.charCodeAt(i);\n    hash |= 0; // Convert to 32bit integer\n  }\n  return hash;\n}\n\n// Function to generate deterministic HSL color based on headline\nfunction getColorForHeadline(headline) {\n  const hash = hashString(headline + \"unique_salt\");\n  const hue = Math.abs(hash) % 360; // Keep hue between 0 and 360\n  return `hsl(${hue}, 70%, 50%)`;\n}\n\n// Step 1: Initialize variables\nconst all_data = {};\nconst timeValues = context.panel.data.series[0].fields.find(f => f.name === 'datum').values;\nconst metricValues = context.panel.data.series[0].fields.find(f => f.name === 'metric').values;\nconst socialMedia = context.panel.data.series[0].fields.find(f => f.name === 'socialmedia').values;\nconst profiles = context.panel.data.series[0].fields.find(f => f.name === 'profile').values;\nconst typ = context.panel.data.series[0].fields.find(f => f.name === 'typ').values[0];\n\n// Step 2: Group data by socialMedia and profiles\nfor (let i = 0; i < timeValues.length; i++) {\n  const socialMediaKey = socialMedia.get(i);\n  const profileKey = profiles.get(i);\n\n  if (!all_data[socialMediaKey]) {\n    all_data[socialMediaKey] = {};\n  }\n\n  if (!all_data[socialMediaKey][profileKey]) {\n    all_data[socialMediaKey][profileKey] = {\n      timeValues: [],\n      metricValues: []\n    };\n  }\n\n  all_data[socialMediaKey][profileKey].timeValues.push(timeValues.get(i));\n  all_data[socialMediaKey][profileKey].metricValues.push(metricValues.get(i));\n}\n\n// Step 3: Prepare data for visualization\nconst series = [];\nconst colorPalette = [\n  \"rgb(24, 116, 255)\", \"rgb(255, 99, 71)\", \"rgb(60, 179, 113)\",\n  \"rgb(255, 215, 0)\", \"rgb(138, 43, 226)\", \"rgb(255, 165, 0)\",\n  \"rgb(75, 0, 130)\", \"rgb(173, 255, 47)\", \"rgb(47, 79, 79)\"\n];\n\nObject.keys(all_data).forEach((socialMediaKey, smIdx) => {\n  Object.keys(all_data[socialMediaKey]).forEach((profileKey, pIdx) => {\n    series.push({\n      name: `${profileKey}`,\n      type: 'line',\n      smooth: false,\n      showSymbol: false,\n      itemStyle: {\n        color: getColorForHeadline(`${profileKey} - (${socialMediaKey})`)\n      },\n      data: all_data[socialMediaKey][profileKey].timeValues.map((time, index) => [time, all_data[socialMediaKey][profileKey].metricValues[index]]),\n      yAxisIndex: 0,\n    });\n  });\n});\n\nconst xAxis = {\n  type: 'category',\n  data: Array.from(new Set(timeValues.toArray())),\n  axisLabel: {\n    hideOverlap: true,\n  },\n};\n\nconst yAxis = [\n  {\n    type: 'value',\n    name: 'Metric',\n    min: 0,\n    axisLabel: {\n      formatter: function (value) {\n        return value.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n      }\n    },\n    position: 'left',\n  }\n];\n\nconst legend = {\n  orient: 'horizontal',\n  left: 'center',\n  bottom: '0%',\n  itemGap: 5,\n  textStyle: {\n    fontSize: 15\n  },\n};\n\nconst tooltip = {\n  trigger: 'axis',\n  axisPointer: {\n    type: 'none'\n  },\n  formatter: function (params) {\n    const formatter = new Intl.NumberFormat('de-DE');\n    const xValue = `<span style=\"font-weight: bold;\">${params[0].axisValueLabel}</span>`; // This is the x-axis value\n\n    const formattedData = params.map(item => {\n      const boldSeriesName = `<span style=\"font-weight: bold;\">${item.seriesName}</span>`;\n      const boldFormattedValue = `<span style=\"font-weight: bold;\">${formatter.format(item.value[1])}</span>`;\n      return `${item.marker}${boldSeriesName}: ${boldFormattedValue}`;\n    });\n\n    return `<div style=\"margin-bottom: 4px;\"><strong>${xValue}</strong></div>${formattedData.join('<br/>')}`;\n  }\n};\n\nconst grid = {\n  left: '2%',\n  right: '2%',\n  top: '2%',\n  bottom: '37%',\n  containLabel: true,\n};\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip,\n  legend,\n  xAxis,\n  yAxis,\n  grid,\n  series,\n};\n",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "canvas",
+          "themeEditor": {
+            "config": "{}",
+            "height": 400,
+            "name": "default"
+          },
+          "visualEditor": {
+            "code": "return {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+            "dataset": [],
+            "series": []
+          }
+        },
+        "pluginVersion": "6.1.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH metric1_expanded_dates AS (\r\n  SELECT \r\n  p.profile,\r\n  DATE_SUB(\"$StartMonth\", INTERVAL n MONTH) AS sort_date,\r\n  FROM UNNEST(GENERATE_ARRAY(0, $Monate - 1)) AS n\r\n  CROSS JOIN (SELECT DISTINCT profile FROM Quintly_frozen.${Table} WHERE LRA = \"$LRA\"\r\n  AND REPLACE(profile,\",\",\"\") IN UNNEST(SPLIT(\"${Profil:raw}\", \",\"))) AS p\r\n),\r\nmetric1_data AS (\r\n  SELECT \r\n    profile,\r\n    DATE(jahr, monat, 1) AS sort_date,\r\n    CASE\r\n  WHEN DATE(jahr,monat,1) < DATE(2023,5,1) AND '$SocialMedia' = 'Instagram' AND '$Metriken' = 'Ges. Wiedergabed. in Std.' THEN 0\r\n  ELSE IFNULL($metrik_feld,0) END AS metric,\r\n  FROM Quintly_frozen.${Table}\r\n  WHERE LRA = \"$LRA\"\r\n  AND monat <= 12\r\n  AND REPLACE(profile,\",\",\"\") IN UNNEST(SPLIT(\"${Profil:raw}\", \",\"))\r\n  AND DATE(jahr, monat, 1) BETWEEN DATE_SUB(DATE(EXTRACT(YEAR FROM DATE(\"$todayDate\")), EXTRACT(MONTH FROM DATE(\"$todayDate\")), 1), INTERVAL $Monate - 0 MONTH) AND DATE(\"$langzeittrends_toDate\")\r\n)\r\n  SELECT \r\n    ed.profile,\r\n    ed.sort_date,\r\n    IFNULL(d.metric,0) as metric,\r\n    CASE EXTRACT(MONTH FROM ed.sort_date)\r\n      WHEN 1 THEN CONCAT(\"Jan. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 2 THEN CONCAT(\"Feb. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 3 THEN CONCAT(\"März \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 4 THEN CONCAT(\"Apr. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 5 THEN CONCAT(\"Mai \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 6 THEN CONCAT(\"Juni \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 7 THEN CONCAT(\"Juli \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 8 THEN CONCAT(\"Aug. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 9 THEN CONCAT(\"Sep. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 10 THEN CONCAT(\"Okt. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 11 THEN CONCAT(\"Nov. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 12 THEN CONCAT(\"Dez. \", EXTRACT(YEAR FROM ed.sort_date))\r\n    END AS datum,\r\n    \"line\" AS typ,\r\n    \"$SocialMedia\" AS socialmedia,\r\n  FROM metric1_expanded_dates ed\r\n  LEFT JOIN metric1_data d \r\n  ON ed.profile = d.profile AND ed.sort_date = d.sort_date\r\n  ORDER BY sort_date",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$SocialMedia | $Metriken | Letzte $Monate Monate",
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 17
+        },
+        "id": 5,
+        "panels": [],
+        "title": "Vergleich",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "thresholdsStyle": {
+                "mode": "color",
+                "thresholds": []
+              }
+            },
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 3,
+          "x": 0,
+          "y": 18
+        },
+        "id": 8,
+        "options": {
+          "alwaysVisibleFilter": false,
+          "autoScroll": false,
+          "collapsedByDefault": false,
+          "customValue": false,
+          "displayMode": "minimize",
+          "emptyValue": false,
+          "favorites": {
+            "addQuery": {},
+            "datasource": "",
+            "deleteQuery": {},
+            "enabled": false,
+            "getQuery": {},
+            "storage": "browser"
+          },
+          "filter": false,
+          "groupSelection": false,
+          "header": true,
+          "isUseLocalTime": false,
+          "minimizeOutputFormat": "text",
+          "padding": 5,
+          "persistent": false,
+          "saveSelectedGroup": false,
+          "saveSelectedGroupKey": "",
+          "showGroupTotal": false,
+          "showLabel": false,
+          "showName": false,
+          "showResetButton": false,
+          "showTotal": false,
+          "statusSort": false,
+          "sticky": false,
+          "tabsInOrder": true,
+          "variable": "SocialMedia2"
+        },
+        "pluginVersion": "3.6.0",
+        "targets": [
+          {
+            "refId": "A"
+          }
+        ],
+        "title": "",
+        "transparent": true,
+        "type": "volkovlabs-variable-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "thresholdsStyle": {
+                "mode": "color",
+                "thresholds": []
+              }
+            },
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 6,
+          "x": 3,
+          "y": 18
+        },
+        "id": 9,
+        "options": {
+          "alwaysVisibleFilter": false,
+          "autoScroll": false,
+          "collapsedByDefault": false,
+          "customValue": true,
+          "displayMode": "minimize",
+          "emptyValue": false,
+          "favorites": {
+            "addQuery": {},
+            "datasource": "",
+            "deleteQuery": {},
+            "enabled": false,
+            "getQuery": {},
+            "storage": "browser"
+          },
+          "filter": false,
+          "groupSelection": false,
+          "header": true,
+          "isUseLocalTime": false,
+          "minimizeOutputFormat": "text",
+          "padding": 5,
+          "persistent": false,
+          "saveSelectedGroup": false,
+          "saveSelectedGroupKey": "",
+          "showGroupTotal": false,
+          "showLabel": false,
+          "showName": false,
+          "showResetButton": false,
+          "showTotal": false,
+          "statusSort": false,
+          "sticky": false,
+          "tabsInOrder": true,
+          "variable": "Profil2"
+        },
+        "pluginVersion": "3.6.0",
+        "targets": [
+          {
+            "refId": "A"
+          }
+        ],
+        "title": "",
+        "transparent": true,
+        "type": "volkovlabs-variable-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "thresholdsStyle": {
+                "mode": "color",
+                "thresholds": []
+              }
+            },
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 9,
+          "y": 18
+        },
+        "id": 10,
+        "options": {
+          "alwaysVisibleFilter": false,
+          "autoScroll": false,
+          "collapsedByDefault": false,
+          "customValue": false,
+          "displayMode": "minimize",
+          "emptyValue": false,
+          "favorites": {
+            "addQuery": {},
+            "datasource": "",
+            "deleteQuery": {},
+            "enabled": false,
+            "getQuery": {},
+            "storage": "browser"
+          },
+          "filter": false,
+          "groupSelection": false,
+          "header": true,
+          "isUseLocalTime": false,
+          "minimizeOutputFormat": "text",
+          "padding": 5,
+          "persistent": false,
+          "saveSelectedGroup": false,
+          "saveSelectedGroupKey": "",
+          "showGroupTotal": false,
+          "showLabel": false,
+          "showName": false,
+          "showResetButton": false,
+          "showTotal": false,
+          "statusSort": false,
+          "sticky": false,
+          "tabsInOrder": true,
+          "variable": "Metriken2"
+        },
+        "pluginVersion": "3.6.0",
+        "targets": [
+          {
+            "refId": "A"
+          }
+        ],
+        "title": "",
+        "transparent": true,
+        "type": "volkovlabs-variable-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 24,
+          "x": 0,
+          "y": 20
+        },
+        "id": 13,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto",
+            "height": 600
+          },
+          "editorMode": "code",
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "// Hash function to generate a numeric hash from a string\nfunction hashString(str) {\n  let hash = 0;\n  for (let i = 0; i < str.length; i++) {\n    hash = (hash << 5) - hash + str.charCodeAt(i);\n    hash |= 0; // Convert to 32bit integer\n  }\n  return hash;\n}\n\n// Function to generate deterministic HSL color based on headline\nfunction getColorForHeadline(headline) {\n  const hash = hashString(headline + \"unique_salt\");\n  const hue = Math.abs(hash) % 360; // Keep hue between 0 and 360\n  return `hsl(${hue}, 70%, 50%)`;\n}\n\n// Step 1: Initialize variables\nconst all_data = {};\nconst timeValues = context.panel.data.series[0].fields.find(f => f.name === 'datum').values;\nconst timeValuesSort = context.panel.data.series[0].fields.find(f => f.name === 'sort_date').values;\nconst metricValues = context.panel.data.series[0].fields.find(f => f.name === 'metric').values;\nconst socialMedia = context.panel.data.series[0].fields.find(f => f.name === 'socialmedia').values;\nconst profiles = context.panel.data.series[0].fields.find(f => f.name === 'profile').values;\nconst metrics = context.panel.data.series[0].fields.find(f => f.name === 'metric_name').values;\nconst typ = context.panel.data.series[0].fields.find(f => f.name === 'typ').values[0];\n\n// Step 2: Group data by socialMedia, profiles, and metrics\nfor (let i = 0; i < timeValues.length; i++) {\n  const socialMediaKey = socialMedia.get(i);\n  const profileKey = profiles.get(i);\n  const metricName = metrics.get(i);\n\n  if (!all_data[socialMediaKey]) {\n    all_data[socialMediaKey] = {};\n  }\n\n  if (!all_data[socialMediaKey][profileKey]) {\n    all_data[socialMediaKey][profileKey] = {};\n  }\n\n  if (!all_data[socialMediaKey][profileKey][metricName]) {\n    all_data[socialMediaKey][profileKey][metricName] = {\n      timeValues: [],\n      metricValues: []\n    };\n  }\n\n  all_data[socialMediaKey][profileKey][metricName].timeValues.push(timeValues.get(i));\n  all_data[socialMediaKey][profileKey][metricName].metricValues.push(metricValues.get(i));\n\n  //console.info(\"all_data:\", all_data)\n}\n\nconst socialMediaToYAxis = {\n  'Facebook': 0,   // Assign to the first Y-axis\n  'Instagram': 1,  // Assign to the second Y-axis\n  'YouTube': 1,    // Assign to the second Y-axis\n  'TikTok': 0,     // Assign to the first Y-axis\n  // Add more platforms as needed\n};\n\nconst yAxis = [\n  {\n    type: 'value',\n    name: 'Metric 1',\n    min: 0,\n    axisLabel: {\n      formatter: function (value) {\n        return value.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n      }\n    },\n    position: 'left',\n  },\n  {\n    type: 'value',\n    name: 'Metric 2',\n    min: 0,\n    axisLabel: {\n      formatter: function (value) {\n        return value.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n      }\n    },\n    position: 'right',\n    offset: 0,\n  }\n];\n\n// Step 3: Prepare data for visualization\nconst series = [];\nObject.keys(all_data).forEach(socialMediaKey => {\n  Object.keys(all_data[socialMediaKey]).forEach(profileKey => {\n    Object.keys(all_data[socialMediaKey][profileKey]).forEach(metricName => {\n      const yAxisIndex = socialMediaToYAxis[socialMediaKey] ?? 0; // Default to the first Y-axis if not found\n      const seriesName = `${profileKey} (${socialMediaKey} - ${metricName})`;\n\n      series.push({\n        name: seriesName,\n        type: 'line',\n        smooth: false,\n        showSymbol: false,\n        itemStyle: {\n          color: getColorForHeadline(seriesName) // Unique color per profile + social media + metric\n        },\n        data: all_data[socialMediaKey][profileKey][metricName].timeValues.map((time, index) =>\n          [time, all_data[socialMediaKey][profileKey][metricName].metricValues[index]]\n        ),\n        yAxisIndex: yAxisIndex,\n      });\n    });\n  });\n});\n\nconst xAxis = {\n  type: 'category',\n  data: Array.from(new Set(timeValues.toArray())),\n  axisLabel: {\n    hideOverlap: true,\n  },\n};\n\nconst legend = {\n  orient: 'horizontal',\n  left: 'center',\n  bottom: '0%',\n  itemGap: 10,\n  textStyle: {\n    fontSize: 13\n  },\n};\n\nconst tooltip = {\n  trigger: 'axis',\n  axisPointer: {\n    type: 'none'\n  },\n  formatter: function (params) {\n    const formatter = new Intl.NumberFormat('de-DE');\n    const xValue = `<span style=\"font-weight: bold;\">${params[0].axisValueLabel}</span>`; // This is the x-axis value\n\n    const formattedData = params.map(item => {\n      const boldSeriesName = `<span style=\"font-weight: bold;\">${item.seriesName}</span>`;\n      const boldFormattedValue = `<span style=\"font-weight: bold;\">${formatter.format(item.value[1])}</span>`;\n      return `${item.marker}${boldSeriesName}: ${boldFormattedValue}`;\n    });\n\n    return `<div style=\"margin-bottom: 4px;\"><strong>${xValue}</strong></div>${formattedData.join('<br/>')}`;\n  }\n};\n\nconst grid = {\n  left: '2%',\n  right: '2%',\n  top: '2%',\n  bottom: '37%',\n  containLabel: true,\n};\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip,\n  legend,\n  xAxis,\n  yAxis,\n  grid,\n  series,\n};\n",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "canvas",
+          "themeEditor": {
+            "config": "{}",
+            "height": 400,
+            "name": "default"
+          },
+          "visualEditor": {
+            "code": "return {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+            "dataset": [],
+            "series": []
+          }
+        },
+        "pluginVersion": "6.1.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH metric1_expanded_dates AS (\r\n  SELECT \r\n  p.profile,\r\n  DATE_SUB(\"$StartMonth\", INTERVAL n MONTH) AS sort_date,\r\n  FROM UNNEST(GENERATE_ARRAY(0, $Monate - 1)) AS n\r\n  CROSS JOIN (SELECT DISTINCT profile FROM Quintly_frozen.${Table} WHERE LRA = \"$LRA\"\r\n  AND REPLACE(profile,\",\",\"\") IN UNNEST(SPLIT(\"${Profil:raw}\", \",\"))) AS p\r\n),\r\nmetric1_data AS (\r\n  SELECT \r\n    profile,\r\n    DATE(jahr, monat, 1) AS sort_date,\r\n    CASE\r\n  WHEN DATE(jahr,monat,1) < DATE(2023,5,1) AND '$SocialMedia' = 'Instagram' AND '$Metriken' = 'Ges. Wiedergabed. in Std.' THEN 0\r\n  ELSE IFNULL($metrik_feld,0) END AS metric,\r\n  FROM Quintly_frozen.${Table}\r\n  WHERE LRA = \"$LRA\"\r\n  AND monat <= 12\r\n  AND REPLACE(profile,\",\",\"\") IN UNNEST(SPLIT(\"${Profil:raw}\", \",\"))\r\n  AND DATE(jahr, monat, 1) BETWEEN DATE_SUB(DATE(EXTRACT(YEAR FROM DATE(\"$todayDate\")), EXTRACT(MONTH FROM DATE(\"$todayDate\")), 1), INTERVAL $Monate - 0 MONTH) AND DATE(\"$langzeittrends_toDate\")\r\n),\r\nmetric1_data_final AS (\r\n  SELECT \r\n    ed.profile,\r\n    ed.sort_date,\r\n    IFNULL(d.metric,0) as metric,\r\n    CASE EXTRACT(MONTH FROM ed.sort_date)\r\n      WHEN 1 THEN CONCAT(\"Jan. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 2 THEN CONCAT(\"Feb. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 3 THEN CONCAT(\"März \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 4 THEN CONCAT(\"Apr. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 5 THEN CONCAT(\"Mai \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 6 THEN CONCAT(\"Juni \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 7 THEN CONCAT(\"Juli \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 8 THEN CONCAT(\"Aug. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 9 THEN CONCAT(\"Sep. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 10 THEN CONCAT(\"Okt. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 11 THEN CONCAT(\"Nov. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 12 THEN CONCAT(\"Dez. \", EXTRACT(YEAR FROM ed.sort_date))\r\n    END AS datum,\r\n    \"line\" AS typ,\r\n    \"$SocialMedia\" AS socialmedia,\r\n    \"$Metriken\" as metric_name\r\n  FROM metric1_expanded_dates ed\r\n  LEFT JOIN metric1_data d \r\n  ON ed.profile = d.profile AND ed.sort_date = d.sort_date\r\n),\r\n\r\nmetric2_expanded_dates AS (\r\n  SELECT \r\n  p.profile,\r\n  DATE_SUB(\"$StartMonth\", INTERVAL n MONTH) AS sort_date,\r\n  FROM UNNEST(GENERATE_ARRAY(0, $Monate - 1)) AS n\r\n  CROSS JOIN (SELECT DISTINCT profile FROM Quintly_frozen.${Table2} WHERE LRA = \"$LRA\"\r\n  AND CASE\r\n    WHEN CONTAINS_SUBSTR(\"${Profil2:raw}\",\"All\") THEN TRUE\r\n    ELSE REPLACE(profile,\",\",\"\") IN UNNEST(SPLIT(\"${Profil2:raw}\", \",\")) END) AS p\r\n),\r\nmetric2_data AS (\r\n  SELECT \r\n    profile,\r\n    DATE(jahr, monat, 1) AS sort_date,\r\n    CASE\r\n    WHEN DATE(jahr,monat,1) < DATE(2023,5,1) AND '$SocialMedia2' = 'Instagram' AND '$Metriken2' = 'Ges. Wiedergabed. in Std.' THEN 0\r\n    ELSE IFNULL($metrik_feld2,0) END AS metric,\r\n  FROM Quintly_frozen.${Table2}\r\n  WHERE LRA = \"$LRA\"\r\n  AND monat <= 12\r\n  AND CASE\r\n  WHEN CONTAINS_SUBSTR(\"${Profil2:raw}\",\"All\") THEN TRUE\r\n  ELSE REPLACE(profile,\",\",\"\") IN UNNEST(SPLIT(\"${Profil2:raw}\", \",\")) END\r\n  AND DATE(jahr, monat, 1) BETWEEN DATE_SUB(DATE(EXTRACT(YEAR FROM DATE(\"$todayDate\")), EXTRACT(MONTH FROM DATE(\"$todayDate\")), 1), INTERVAL $Monate - 0 MONTH)\r\n  AND DATE(\"$langzeittrends_toDate\")\r\n),\r\nmetric2_data_final AS (\r\n  SELECT \r\n    ed.profile,\r\n    ed.sort_date,\r\n    IFNULL(d.metric,0) as metric,\r\n    CASE EXTRACT(MONTH FROM ed.sort_date)\r\n      WHEN 1 THEN CONCAT(\"Jan. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 2 THEN CONCAT(\"Feb. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 3 THEN CONCAT(\"März \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 4 THEN CONCAT(\"Apr. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 5 THEN CONCAT(\"Mai \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 6 THEN CONCAT(\"Juni \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 7 THEN CONCAT(\"Juli \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 8 THEN CONCAT(\"Aug. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 9 THEN CONCAT(\"Sep. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 10 THEN CONCAT(\"Okt. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 11 THEN CONCAT(\"Nov. \", EXTRACT(YEAR FROM ed.sort_date))\r\n      WHEN 12 THEN CONCAT(\"Dez. \", EXTRACT(YEAR FROM ed.sort_date))\r\n    END AS datum,\r\n    \"line\" AS typ,\r\n    \"$SocialMedia2\" as socialmedia,\r\n    \"$Metriken2\" as metric_name\r\n  FROM metric2_expanded_dates ed\r\n  LEFT JOIN metric2_data d \r\n  ON ed.profile = d.profile AND ed.sort_date = d.sort_date\r\n)\r\nSELECT * FROM metric1_data_final\r\nUNION DISTINCT\r\nSELECT * FROM metric2_data_final\r\nORDER BY profile, sort_date",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$SocialMedia - $Metriken | $SocialMedia2 - $Metriken2 | Letzte $Monate Monate",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "SocialMediaComp": false,
+                "SocialMediaMain": false
+              },
+              "includeByName": {},
+              "indexByName": {},
+              "renameByName": {}
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 33
+        },
+        "id": 12,
+        "panels": [],
+        "title": "Tabelle",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byType",
+                "options": "number"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Profil"
+              },
+              "properties": []
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 34
+        },
+        "id": 3,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "DECLARE monat STRING;\nSET monat = \"\"\"$table_months\"\"\";\n\nEXECUTE IMMEDIATE format(\"\"\"\nSELECT * FROM (\n  SELECT \n  profile,\n  CASE\n  WHEN DATE(jahr,monat,1) < DATE(2023,5,1) AND '$SocialMedia' = 'Instagram' AND '$metrik_feld' = 'Sehvolumen' THEN 0 \n  ELSE IFNULL(($metrik_feld),0) END AS metric,\n  CASE monat\n  WHEN 1 THEN CONCAT(\"Januar\", jahr)\n  WHEN 2 THEN CONCAT(\"Februar\", jahr)\n  WHEN 3 THEN CONCAT(\"März\", jahr)\n  WHEN 4 THEN CONCAT(\"April\", jahr)\n  WHEN 5 THEN CONCAT(\"Mai\", jahr)\n  WHEN 6 THEN CONCAT(\"Juni\", jahr)\n  WHEN 7 THEN CONCAT(\"Juli\", jahr)\n  WHEN 8 THEN CONCAT(\"August\", jahr)\n  WHEN 9 THEN CONCAT(\"September\", jahr)\n  WHEN 10 THEN CONCAT(\"Oktober\", jahr)\n  WHEN 11 THEN CONCAT(\"November\", jahr)\n  WHEN 12 THEN CONCAT(\"Dezember\", jahr) END AS year_month\n  FROM Quintly_frozen.${Table:raw}\n  WHERE monat <= 12\n  AND REPLACE(profile,\",\",\"\") IN UNNEST(SPLIT(\"${Profil:raw}\", \",\"))\n  AND DATE(jahr, monat, 1) BETWEEN DATE_SUB(DATE(EXTRACT(YEAR FROM DATE(\"$todayDate\")), EXTRACT(MONTH FROM DATE(\"$todayDate\")),1), INTERVAL $Monate - 0 MONTH) AND DATE(\"$langzeittrends_toDate\")\n)\nPIVOT (MAX(metric) FOR year_month IN (%s))\nORDER BY profile;\n\"\"\", monat);",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "$SocialMedia | $Metriken | Letzte $Monate Monate",
+        "transformations": [
+          {
+            "id": "renameByRegex",
+            "options": {
+              "regex": "(Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)(\\d{4})",
+              "renamePattern": "$1 $2"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "profile": false
+              },
+              "includeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "profile": "Profil"
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      }
+    ],
+    "preload": false,
+    "schemaVersion": 40,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "NDR",
+            "value": "NDR"
+          },
+          "name": "LRA",
+          "options": [
+            {
+              "selected": true,
+              "text": "NDR",
+              "value": "NDR"
+            },
+            {
+              "selected": false,
+              "text": "MDR",
+              "value": "MDR"
+            },
+            {
+              "selected": false,
+              "text": "Tagesschau",
+              "value": "Tagesschau"
+            }
+          ],
+          "query": "NDR, MDR, Tagesschau",
+          "skipUrlSync": true,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "Instagram",
+            "value": "Instagram"
+          },
+          "label": "Social Media",
+          "name": "SocialMedia",
+          "options": [
+            {
+              "selected": false,
+              "text": "Facebook",
+              "value": "Facebook"
+            },
+            {
+              "selected": true,
+              "text": "Instagram",
+              "value": "Instagram"
+            },
+            {
+              "selected": false,
+              "text": "YouTube",
+              "value": "YouTube"
+            },
+            {
+              "selected": false,
+              "text": "TikTok",
+              "value": "TikTok"
+            }
+          ],
+          "query": "Facebook, Instagram, YouTube, TikTok",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "YouTube",
+            "value": "YouTube"
+          },
+          "hide": 2,
+          "label": "Media",
+          "name": "SocialMedia2",
+          "options": [
+            {
+              "selected": false,
+              "text": "Facebook",
+              "value": "Facebook"
+            },
+            {
+              "selected": false,
+              "text": "Instagram",
+              "value": "Instagram"
+            },
+            {
+              "selected": true,
+              "text": "YouTube",
+              "value": "YouTube"
+            },
+            {
+              "selected": false,
+              "text": "TikTok",
+              "value": "TikTok"
+            }
+          ],
+          "query": "Facebook, Instagram, YouTube, TikTok",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "instagramID",
+            "value": "instagramID"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "profileIdField",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$SocialMedia\"\r\nWHEN \"Facebook\" THEN \"facebookID\"\r\nWHEN \"Instagram\" THEN \"instagramID\"\r\nWHEN \"YouTube\" THEN \"youtubeID\"\r\nWHEN \"TikTok\" THEN \"tiktokID\" END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "youtubeID",
+            "value": "youtubeID"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "profileIdField2",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \"$SocialMedia2\"\r\nWHEN \"Facebook\" THEN \"facebookID\"\r\nWHEN \"Instagram\" THEN \"instagramID\"\r\nWHEN \"YouTube\" THEN \"youtubeID\"\r\nWHEN \"TikTok\" THEN \"tiktokID\" END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Videostarts",
+            "value": "Videostarts"
+          },
+          "definition": "",
+          "name": "Metriken",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  *\r\nFROM UNNEST(\r\n  CASE '$SocialMedia'\r\n    WHEN 'Facebook' THEN [\r\n      'Follower',\r\n      'Ø Potenzielle Reichweite/Tag',\r\n      'Videostarts 10 Sek.',\r\n      'Videostarts 3 Sek.',\r\n      'Ges. Wiedergabed. in Std.',\r\n      'Interaktionen',\r\n      'Reaktionen',\r\n      'Kommentare',\r\n      'Shares',\r\n      'Ø Interaktionsrate/Post in %',\r\n      'Ø Potenzielle Reichweite/Post',\r\n      '10s Views/Video',\r\n      '3s Views/Video',\r\n      'Ø Wiedergabedauer in %/Video',\r\n      'Ø Wiedergabedauer in Sek/Video',\r\n      'Anzahl Posts',\r\n      'Anzahl Videos',\r\n      'Durchschnittsalter (berechnet)'\r\n    ]\r\n    WHEN 'Instagram' THEN [\r\n      'Follower',\r\n      'Ø Potenzielle Reichweite/Tag',\r\n      'Ø Potenzielle Reichweite/Post',\r\n      'Interaktionen',\r\n      'Ø Interaktionsrate/Post in %',\r\n      'Videostarts',\r\n      'Ges. Wiedergabed. in Std.',\r\n      'Ø Wiedergabedauer in Sek/Reel',\r\n      'Ø Potenzielle Reichweite/Story',\r\n      'Anzahl Beiträge',\r\n      'Anzahl Reels',\r\n      'Anzahl Storys',\r\n      'Durchschnittsalter (berechnet)'\r\n    ]\r\n    WHEN 'YouTube' THEN [\r\n      'Abonnenten',\r\n      'Videostarts',\r\n      'Interaktionen',\r\n      'Ges. Wiedergabed. in Std.',\r\n      'Ges. Wiedergabed. in Sek.',\r\n      'Ges. Wiedergabed. in %',\r\n      'Videostarts (Videos im Zeitraum veröffentlicht)',\r\n      'Interaktionen (Videos im Zeitraum veröffentlicht)',\r\n      'Ø Interaktionsrate/Video in % (Videos im Zeitraum veröffentlicht)',\r\n      'Ges. Wiedergabed. in Std. (Videos im Zeitraum veröffentlicht)',\r\n      'Ø Wiedergabedauer in Sek/Video (Videos im Zeitraum veröffentlicht)',\r\n      'Veröffentlichte Videos',\r\n      'Durchschnittsalter (berechnet)'\r\n    ]\r\n    WHEN 'TikTok' THEN [\r\n      'Follower',\r\n      'Videostarts',\r\n      'Interaktionen',\r\n      'Ges. Wiedergabed. in Std.',\r\n      'Ø Potenzielle Reichweite/Video',\r\n      'Ø Videostarts/Video',\r\n      'Ø Interaktionen/Video',\r\n      'Ø Interaktionsrate in %/Video',\r\n      'Ø Wiedergabedauer in Sek/Video',\r\n      'Ø Wiedergabedauer in %/Video',\r\n      'Anzahl Videos'\r\n    ]\r\n  END\r\n)\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Videostarts",
+            "value": "Videostarts"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "Metriken2",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  *\r\nFROM UNNEST(\r\n  CASE '$SocialMedia2'\r\n    WHEN 'Facebook' THEN [\r\n      'Follower',\r\n      'Ø Potenzielle Reichweite/Tag',\r\n      'Videostarts 10 Sek.',\r\n      'Videostarts 3 Sek.',\r\n      'Ges. Wiedergabed. in Std.',\r\n      'Interaktionen',\r\n      'Reaktionen',\r\n      'Kommentare',\r\n      'Shares',\r\n      'Ø Interaktionsrate/Post in %',\r\n      'Ø Potenzielle Reichweite/Post',\r\n      '10s Views/Video',\r\n      '3s Views/Video',\r\n      'Ø Wiedergabedauer in %/Video',\r\n      'Ø Wiedergabedauer in Sek/Video',\r\n      'Anzahl Posts',\r\n      'Anzahl Videos',\r\n      'Durchschnittsalter (berechnet)'\r\n    ]\r\n    WHEN 'Instagram' THEN [\r\n      'Follower',\r\n      'Ø Potenzielle Reichweite/Tag',\r\n      'Ø Potenzielle Reichweite/Post',\r\n      'Interaktionen',\r\n      'Ø Interaktionsrate/Post in %',\r\n      'Videostarts',\r\n      'Ges. Wiedergabed. in Std.',\r\n      'Ø Wiedergabedauer in Sek/Reel',\r\n      'Ø Potenzielle Reichweite/Story',\r\n      'Anzahl Beiträge',\r\n      'Anzahl Reels',\r\n      'Anzahl Storys',\r\n      'Durchschnittsalter (berechnet)'\r\n    ]\r\n    WHEN 'YouTube' THEN [\r\n      'Abonnenten',\r\n      'Videostarts',\r\n      'Interaktionen',\r\n      'Ges. Wiedergabed. in Std.',\r\n      'Ges. Wiedergabed. in Sek.',\r\n      'Ges. Wiedergabed. in %',\r\n      'Videostarts (Videos im Zeitraum veröffentlicht)',\r\n      'Interaktionen (Videos im Zeitraum veröffentlicht)',\r\n      'Ø Interaktionsrate/Video in % (Videos im Zeitraum veröffentlicht)',\r\n      'Ges. Wiedergabed. in Std. (Videos im Zeitraum veröffentlicht)',\r\n      'Ø Wiedergabedauer in Sek/Video (Videos im Zeitraum veröffentlicht)',\r\n      'Veröffentlichte Videos',\r\n      'Durchschnittsalter (berechnet)'\r\n    ]\r\n    WHEN 'TikTok' THEN [\r\n      'Follower',\r\n      'Videostarts',\r\n      'Interaktionen',\r\n      'Ges. Wiedergabed. in Std.',\r\n      'Ø Potenzielle Reichweite/Video',\r\n      'Ø Videostarts/Video',\r\n      'Ø Interaktionen/Video',\r\n      'Ø Interaktionsrate in %/Video',\r\n      'Ø Wiedergabedauer in Sek/Video',\r\n      'Ø Wiedergabedauer in %/Video',\r\n      'Anzahl Videos'\r\n    ]\r\n  END\r\n)\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": [
+              "extra 3"
+            ],
+            "value": [
+              "extra 3"
+            ]
+          },
+          "definition": "",
+          "description": "Profil-Auswahl wird durch Klick innerhalb oder außerhalb des Kastens bestätigt.",
+          "includeAll": true,
+          "multi": true,
+          "name": "Profil",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "-- we use replace to solve the problem with SPLIT \",\" in the queries \r\nSELECT DISTINCT REPLACE(profile,\",\",\"\") as profile\r\nFROM Quintly_frozen.profiles \r\nWHERE $profileIdField != 0\r\nAND LRA = \"$LRA\"\r\nORDER BY LOWER(profile) ASC",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": [
+              "extra 3"
+            ],
+            "value": [
+              "extra 3"
+            ]
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": true,
+          "label": "Profil",
+          "multi": true,
+          "name": "Profil2",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT DISTINCT REPLACE(profile,\",\",\"\") as profile\r\nFROM Quintly_frozen.profiles \r\nWHERE $profileIdField2 != 0\r\nAND LRA = \"$LRA\"\r\nORDER BY LOWER(profile) ASC\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "25",
+            "value": "25"
+          },
+          "description": "Mit Klick in das Feld kann die Anzahl der ausgewiesenen Monate frei eingegeben werden.",
+          "label": "Monate Auswählen oder Eingeben",
+          "name": "Monate",
+          "options": [
+            {
+              "selected": false,
+              "text": "13",
+              "value": "13"
+            },
+            {
+              "selected": true,
+              "text": "25",
+              "value": "25"
+            }
+          ],
+          "query": "13, 25",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "2025-02-01",
+            "value": "2025-02-01"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "langzeittrends_toDate",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE\nWHEN CURRENT_DATE > DATE(EXTRACT(YEAR from CURRENT_DATE), EXTRACT(MONTH from CURRENT_DATE), 7) THEN DATE(EXTRACT(YEAR from DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH)), EXTRACT(MONTH from DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH)), 1)\nELSE DATE(EXTRACT(YEAR from DATE_SUB(CURRENT_DATE, INTERVAL 2 MONTH)), EXTRACT(MONTH from DATE_SUB(CURRENT_DATE, INTERVAL 2 MONTH)), 1) END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2025-03-13",
+            "value": "2025-03-13"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "todayDate",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CURRENT_DATE()\r\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2025-02-01",
+            "value": "2025-02-01"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "latest_frozen_month",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \r\nWHEN EXTRACT(DAY from CURRENT_DATE) >= 8 THEN DATE(EXTRACT(YEAR FROM DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH)), EXTRACT(MONTH FROM DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH)), 1)\r\nELSE DATE(EXTRACT(YEAR FROM DATE_SUB(CURRENT_DATE, INTERVAL 2 MONTH)), EXTRACT(MONTH FROM DATE_SUB(CURRENT_DATE, INTERVAL 2 MONTH)), 1) END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "'Februar2023','März2023','April2023','Mai2023','Juni2023','Juli2023','August2023','September2023','Oktober2023','November2023','Dezember2023','Januar2024','Februar2024','März2024','April2024','Mai2024','Juni2024','Juli2024','August2024','September2024','Oktober2024','November2024','Dezember2024','Januar2025','Februar2025'",
+            "value": "'Februar2023','März2023','April2023','Mai2023','Juni2023','Juli2023','August2023','September2023','Oktober2023','November2023','Dezember2023','Januar2024','Februar2024','März2024','April2024','Mai2024','Juni2024','Juli2024','August2024','September2024','Oktober2024','November2024','Dezember2024','Januar2025','Februar2025'"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "table_months",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH all_month_year AS(\n  SELECT month_year \n  FROM UNNEST(GENERATE_DATE_ARRAY( \n    DATE_SUB(\"$latest_frozen_month\", INTERVAL $Monate - 1 MONTH),\n    \"$latest_frozen_month\"\n  )) AS month_year\n  WHERE EXTRACT(DAY from month_year) = 1\n)\n\nSELECT CONCAT(\"'\",STRING_AGG(datum, \"','\" ORDER BY jahr ASC, monat ASC), \"'\") FROM (\nSELECT DISTINCT CASE EXTRACT(MONTH from month_year)\nWHEN 1 THEN CONCAT(\"Januar\", EXTRACT(YEAR from month_year))\nWHEN 2 THEN CONCAT(\"Februar\", EXTRACT(YEAR from month_year))\nWHEN 3 THEN CONCAT(\"März\", EXTRACT(YEAR from month_year))\nWHEN 4 THEN CONCAT(\"April\", EXTRACT(YEAR from month_year))\nWHEN 5 THEN CONCAT(\"Mai\", EXTRACT(YEAR from month_year))\nWHEN 6 THEN CONCAT(\"Juni\", EXTRACT(YEAR from month_year))\nWHEN 7 THEN CONCAT(\"Juli\", EXTRACT(YEAR from month_year))\nWHEN 8 THEN CONCAT(\"August\", EXTRACT(YEAR from month_year))\nWHEN 9 THEN CONCAT(\"September\", EXTRACT(YEAR from month_year))\nWHEN 10 THEN CONCAT(\"Oktober\", EXTRACT(YEAR from month_year))\nWHEN 11 THEN CONCAT(\"November\", EXTRACT(YEAR from month_year))\nWHEN 12 THEN CONCAT(\"Dezember\", EXTRACT(YEAR from month_year))\nEND AS datum,\nEXTRACT(MONTH from month_year) as monat,\nEXTRACT(YEAR from month_year) as jahr\nFROM all_month_year \n)\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2023",
+            "value": "2023"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "langzeittrends_year",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CAST(jahr AS STRING) AS string_value FROM `ndr-code-bi-dashboard.Quintly_frozen.facebook_metrics` where jahr is not null ",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "instagram_metrics",
+            "value": "instagram_metrics"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "Table",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "Select CASE \nWHEN \"$SocialMedia\" = \"Facebook\" THEN \"facebook_metrics\"\nWHEN \"$SocialMedia\" = \"YouTube\" THEN \"youtube_metrics\"\nWHEN \"$SocialMedia\" = \"Instagram\" THEN \"instagram_metrics\"\nWHEN \"${SocialMedia:raw}\" = \"TikTok\" THEN \"tiktok_metrics\"\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "youtube_metrics",
+            "value": "youtube_metrics"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "Table2",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "Select CASE \nWHEN \"${SocialMedia2:raw}\" = \"Facebook\" THEN \"facebook_metrics\"\nWHEN \"${SocialMedia2:raw}\" = \"YouTube\" THEN \"youtube_metrics\"\nWHEN \"${SocialMedia2:raw}\" = \"Instagram\" THEN \"instagram_metrics\"\nWHEN \"${SocialMedia2:raw}\" = \"TikTok\" THEN \"tiktok_metrics\"\nEND As table",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "videostarts",
+            "value": "videostarts"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "metrik_feld",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"$SocialMedia\"\r\nWHEN \"Facebook\" THEN\r\n    CASE \"$Metriken\"\r\n    WHEN \"Follower\" THEN \"page_follows\"\r\n    WHEN \"Ø Potenzielle Reichweite/Tag\" THEN \"pot_reichweite_pro_tag\"\r\n    WHEN \"Videostarts 10 Sek.\" THEN \"views_10s\"\r\n    WHEN \"Videostarts 3 Sek.\" THEN \"views_3s\"\r\n    WHEN \"Ges. Wiedergabed. in Std.\" THEN \"Sehvolumen\"\r\n    WHEN \"Interaktionen\" THEN \"interactions\"\r\n    WHEN \"Reaktionen\" THEN \"reactions\"\r\n    WHEN \"Kommentare\" THEN \"comments\"\r\n    WHEN \"Shares\" THEN \"shares\"\r\n    WHEN \"Ø Interaktionsrate/Post in %\" THEN \"interaction_rate_per_post\"\r\n    WHEN \"Ø Potenzielle Reichweite/Post\" THEN \"pot_reichweite_pro_post\"\r\n    WHEN \"10s Views/Video\" THEN \"views_10s_per_video\"\r\n    WHEN \"3s Views/Video\" THEN \"views_3s_per_video\"\r\n    WHEN \"Ø Wiedergabedauer in %/Video\" THEN \"avg_wiedergabedauer_in_video\"\r\n    WHEN \"Ø Wiedergabedauer in Sek/Video\" THEN \"avg_wiedergabedauer_in_sec_pro_video\"\r\n    WHEN \"Anzahl Posts\" THEN \"anzahlPosts\"\r\n    WHEN \"Anzahl Videos\" THEN \"anzahlVideos\"\r\n    WHEN \"Durchschnittsalter (berechnet)\" THEN \"average_age\" END\r\nWHEN \"Instagram\" THEN\r\n    CASE \"$Metriken\"\r\n    WHEN \"Follower\" THEN \"followers\"\r\n    WHEN \"Ø Potenzielle Reichweite/Tag\" THEN \"pot_reichweite_pro_tag\"\r\n    WHEN \"Ø Potenzielle Reichweite/Post\" THEN \"pot_reichweite_pro_post\"\r\n    WHEN \"Interaktionen\" THEN \"interactions\"\r\n    WHEN \"Ø Interaktionsrate/Post in %\" THEN \"interaction_rate_per_post\"\r\n    WHEN \"Videostarts\" THEN \"videostarts\"\r\n    WHEN \"Ges. Wiedergabed. in Std.\" THEN \"Sehvolumen\"\r\n    WHEN \"Ø Wiedergabedauer in Sek/Reel\" THEN \"avg_wiedergabedauer_in_sec_pro_reel\"\r\n    WHEN \"Ø Potenzielle Reichweite/Story\" THEN \"pot_reichweite_pro_story\"\r\n    WHEN \"Anzahl Beiträge\" THEN \"anzahlPosts\"\r\n    WHEN \"Anzahl Reels\" THEN \"post_reels\"\r\n    WHEN \"Anzahl Storys\" THEN \"anzahlStory\"\r\n    WHEN \"Durchschnittsalter (berechnet)\" THEN \"average_age\" END\r\nWHEN \"YouTube\" THEN\r\n    CASE \"$Metriken\"\r\n    WHEN \"Abonnenten\" THEN \"abonnements\"\r\n    WHEN \"Videostarts\" THEN \"videostarts_zeitraum_genutzt\"\r\n    WHEN \"Interaktionen\" THEN \"interactions_zeitraum_genutzt\"\r\n    WHEN \"Ges. Wiedergabed. in Std.\" THEN \"sehVolumen_in_std_zeitraum_genutzt\"\r\n    WHEN \"Ges. Wiedergabed. in Sek.\" THEN \"avg_wiedergabedauer_in_sec_pro_video\"\r\n    WHEN \"Ges. Wiedergabed. in %\" THEN \"percentage_avg_wiedergabendauer_zeitraum_genutzt\"\r\n    WHEN \"Videostarts (Videos im Zeitraum veröffentlicht)\" THEN \"videostarts_zeitraum_veroeffentlicht\"\r\n    WHEN \"Interaktionen (Videos im Zeitraum veröffentlicht)\" THEN \"interactions_zeitraum_veroeffentlicht\"\r\n    WHEN \"Ø Interaktionsrate/Video in % (Videos im Zeitraum veröffentlicht)\" THEN \"interaction_rate_per_video\"\r\n    WHEN \"Ges. Wiedergabed. in Std. (Videos im Zeitraum veröffentlicht)\" THEN \"sehVolumen_in_std_zeitraum_veroeffentlicht\"\r\n    WHEN \"Ø Wiedergabedauer in Sek/Video (Videos im Zeitraum veröffentlicht)\" THEN \"avg_wiedergabedauer_in_sec_pro_video_zeitraum_veroeffentlicht\"\r\n    WHEN \"Veröffentlichte Videos\" THEN \"anzahlVideos_zeitraum_veroffentlicht\"\r\n    WHEN \"Durchschnittsalter (berechnet)\" THEN \"average_age\" END\r\nWHEN \"TikTok\" THEN\r\n    CASE \"${Metriken:raw}\"\r\n    WHEN \"Follower\" THEN \"followers\"\r\n    WHEN \"Videostarts\" THEN \"videostarts\"\r\n    WHEN \"Interaktionen\" THEN \"interactions\"\r\n    WHEN \"Ges. Wiedergabed. in Std.\" THEN \"sehVolumen\"\r\n    WHEN \"Ø Potenzielle Reichweite/Video\" THEN \"pot_reichweite_pro_video\"\r\n    WHEN \"Ø Videostarts/Video\" THEN \"videostarts_pro_video\"\r\n    WHEN \"Ø Interaktionen/Video\" THEN \"interactions_pro_video\"\r\n    WHEN \"Ø Interaktionsrate in %/Video\" THEN \"percentage_interaction_rate_per_video\"\r\n    WHEN \"Ø Wiedergabedauer in Sek/Video\" THEN \"wiedergabedauer_in_sek_pro_video\"\r\n    WHEN \"Ø Wiedergabedauer in %/Video\" THEN \"percentage_wiedergabedauer_pro_video\"\r\n    WHEN \"Anzahl Videos\" THEN \"anzahlVideos\" END\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "videostarts_zeitraum_genutzt",
+            "value": "videostarts_zeitraum_genutzt"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "metrik_feld2",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE \"$SocialMedia2\"\r\nWHEN \"Facebook\" THEN\r\n    CASE \"$Metriken2\"\r\n    WHEN \"Follower\" THEN \"page_follows\"\r\n    WHEN \"Ø Potenzielle Reichweite/Tag\" THEN \"pot_reichweite_pro_tag\"\r\n    WHEN \"Videostarts 10 Sek.\" THEN \"views_10s\"\r\n    WHEN \"Videostarts 3 Sek.\" THEN \"views_3s\"\r\n    WHEN \"Ges. Wiedergabed. in Std.\" THEN \"Sehvolumen\"\r\n    WHEN \"Interaktionen\" THEN \"interactions\"\r\n    WHEN \"Reaktionen\" THEN \"reactions\"\r\n    WHEN \"Kommentare\" THEN \"comments\"\r\n    WHEN \"Shares\" THEN \"shares\"\r\n    WHEN \"Ø Interaktionsrate/Post in %\" THEN \"interaction_rate_per_post\"\r\n    WHEN \"Ø Potenzielle Reichweite/Post\" THEN \"pot_reichweite_pro_post\"\r\n    WHEN \"10s Views/Video\" THEN \"views_10s_per_video\"\r\n    WHEN \"3s Views/Video\" THEN \"views_3s_per_video\"\r\n    WHEN \"Ø Wiedergabedauer in %/Video\" THEN \"avg_wiedergabedauer_in_video\"\r\n    WHEN \"Ø Wiedergabedauer in Sek/Video\" THEN \"avg_wiedergabedauer_in_sec_pro_video\"\r\n    WHEN \"Anzahl Posts\" THEN \"anzahlPosts\"\r\n    WHEN \"Anzahl Videos\" THEN \"anzahlVideos\"\r\n    WHEN \"Durchschnittsalter (berechnet)\" THEN \"average_age\" END \r\nWHEN \"Instagram\" THEN\r\n    CASE \"$Metriken2\"\r\n    WHEN \"Follower\" THEN \"followers\"\r\n    WHEN \"Ø Potenzielle Reichweite/Tag\" THEN \"pot_reichweite_pro_tag\"\r\n    WHEN \"Ø Potenzielle Reichweite/Post\" THEN \"pot_reichweite_pro_post\"\r\n    WHEN \"Interaktionen\" THEN \"interactions\"\r\n    WHEN \"Ø Interaktionsrate/Post in %\" THEN \"interaction_rate_per_post\"\r\n    WHEN \"Videostarts\" THEN \"videostarts\"\r\n    WHEN \"Ges. Wiedergabed. in Std.\" THEN \"Sehvolumen\"\r\n    WHEN \"Ø Wiedergabedauer in Sek/Reel\" THEN \"avg_wiedergabedauer_in_sec_pro_reel\"\r\n    WHEN \"Ø Potenzielle Reichweite/Story\" THEN \"pot_reichweite_pro_story\"\r\n    WHEN \"Anzahl Beiträge\" THEN \"anzahlPosts\"\r\n    WHEN \"Anzahl Reels\" THEN \"post_reels\"\r\n    WHEN \"Anzahl Storys\" THEN \"anzahlStory\"\r\n    WHEN \"Durchschnittsalter (berechnet)\" THEN \"average_age\" END\r\nWHEN \"YouTube\" THEN\r\n    CASE \"$Metriken2\"\r\n    WHEN \"Abonnenten\" THEN \"abonnements\"\r\n    WHEN \"Videostarts\" THEN \"videostarts_zeitraum_genutzt\"\r\n    WHEN \"Interaktionen\" THEN \"interactions_zeitraum_genutzt\"\r\n    WHEN \"Ges. Wiedergabed. in Std.\" THEN \"sehVolumen_in_std_zeitraum_genutzt\"\r\n    WHEN \"Ges. Wiedergabed. in Sek.\" THEN \"avg_wiedergabedauer_in_sec_pro_video\"\r\n    WHEN \"Ges. Wiedergabed. in %\" THEN \"percentage_avg_wiedergabendauer_zeitraum_genutzt\"\r\n    WHEN \"Videostarts (Videos im Zeitraum veröffentlicht)\" THEN \"videostarts_zeitraum_veroeffentlicht\"\r\n    WHEN \"Interaktionen (Videos im Zeitraum veröffentlicht)\" THEN \"interactions_zeitraum_veroeffentlicht\"\r\n    WHEN \"Ø Interaktionsrate/Video in % (Videos im Zeitraum veröffentlicht)\" THEN \"interaction_rate_per_video\"\r\n    WHEN \"Ges. Wiedergabed. in Std. (Videos im Zeitraum veröffentlicht)\" THEN \"sehVolumen_in_std_zeitraum_veroeffentlicht\"\r\n    WHEN \"Ø Wiedergabedauer in Sek/Video (Videos im Zeitraum veröffentlicht)\" THEN \"avg_wiedergabedauer_in_sec_pro_video_zeitraum_veroeffentlicht\"\r\n    WHEN \"Veröffentlichte Videos\" THEN \"anzahlVideos_zeitraum_veroffentlicht\"\r\n    WHEN \"Durchschnittsalter (berechnet)\" THEN \"average_age\" END\r\nWHEN \"TikTok\" THEN\r\n    CASE \"${Metriken:raw}\"\r\n    WHEN \"Follower\" THEN \"followers\"\r\n    WHEN \"Videostarts\" THEN \"videostarts\"\r\n    WHEN \"Interaktionen\" THEN \"interactions\"\r\n    WHEN \"Ges. Wiedergabed. in Std.\" THEN \"sehVolumen\"\r\n    WHEN \"Ø Potenzielle Reichweite/Video\" THEN \"pot_reichweite_pro_video\"\r\n    WHEN \"Ø Videostarts/Video\" THEN \"videostarts_pro_video\"\r\n    WHEN \"Ø Interaktionen/Video\" THEN \"interactions_pro_video\"\r\n    WHEN \"Ø Interaktionsrate in %/Video\" THEN \"percentage_interaction_rate_per_video\"\r\n    WHEN \"Ø Wiedergabedauer in Sek/Video\" THEN \"wiedergabedauer_in_sek_pro_video\"\r\n    WHEN \"Ø Wiedergabedauer in %/Video\" THEN \"percentage_wiedergabedauer_pro_video\"\r\n    WHEN \"Anzahl Videos\" THEN \"anzahlVideos\" END\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": true,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2025-02-01",
+            "value": "2025-02-01"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "StartMonth",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE\r\nWHEN EXTRACT(DAY FROM CURRENT_DATE) >= 8 THEN DATE(EXTRACT(YEAR FROM DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH)),EXTRACT(MONTH FROM DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH)),1)\r\nELSE DATE(EXTRACT(YEAR FROM DATE_SUB(CURRENT_DATE, INTERVAL 2 MONTH)),EXTRACT(MONTH FROM DATE_SUB(CURRENT_DATE, INTERVAL 2 MONTH)),1) END",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "https://vqggwrz.pa-cd.com/event?s=645199&idclient=minerva&events=%5B%7B%22name%22%3A%22page.display%22%2C%22data%22%3A%7B%22page%22%3A%22Social Media Langzeittrends%22%2C%22m_visits%22%3A1%2C%22minerva_dashboard_id%22%3A%22ce5p0d3hin56oc%22%2C%22minerva_lra%22%3A%22dev%22%2C%22minerva_filter%22%3A%22${filter}%22%7D%7D%5D",
+            "value": "https://vqggwrz.pa-cd.com/event?s=645199&idclient=minerva&events=%5B%7B%22name%22%3A%22page.display%22%2C%22data%22%3A%7B%22page%22%3A%22Social Media Langzeittrends%22%2C%22m_visits%22%3A1%2C%22minerva_dashboard_id%22%3A%22ce5p0d3hin56oc%22%2C%22minerva_lra%22%3A%22dev%22%2C%22minerva_filter%22%3A%22${filter}%22%7D%7D%5D"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "src_url",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH nutzer AS (\n  SELECT\nCASE\n    WHEN CONTAINS_SUBSTR(\"${__user.login}\", \"dev\") THEN \"dev\"\n    WHEN CONTAINS_SUBSTR(\"${__user.login}\", \"mefo\") THEN \"mefo\"\n    WHEN CONTAINS_SUBSTR(\"${__user.email}\", \"@\") THEN\n      REGEXP_EXTRACT(\"${__user.email}\", r'@([^\\.]+)')  -- Extracts part after '@' and before the first '.' Example: ad.westphal@ndr.de => ndr\n    WHEN NOT CONTAINS_SUBSTR(\"${__user.email}\", \"@\")\n         AND (CONTAINS_SUBSTR(\"${__user.email}\", \"viewer\") \n         OR CONTAINS_SUBSTR(\"${__user.email}\", \"podcast\")) THEN\n            REGEXP_EXTRACT(\"${__user.email}\", r'^([^-\\s]+)')  -- Extracts part before the first '-'. Example: ndr-viewer => ndr\n    ELSE\n      \"Anonym\"\n  END AS nutzer_lra\n),\nfilter_string AS (\n  SELECT \"\"\"\nLRA=${LRA}|::|Social_media=${SocialMedia}|::|Metrik=${Metriken}|::|Profil=${Profil}|::|Monate=${Monate}|::|Social_media_vgl=${SocialMedia2}|::|Metrik_vgl=${Metriken2}|::|Profil_vgl=${Profil2}\n\"\"\" AS filter\n)\n\nSELECT CONCAT(\n  \"https://vqggwrz.pa-cd.com/event?s=645199&idclient=minerva&events=%5B%7B%22name%22%3A%22page.display%22%2C%22data%22%3A%7B%22page%22%3A%22\",\n  \"${__dashboard.name}\",\n  \"%22%2C%22m_visits%22%3A1%2C%22minerva_dashboard_id%22%3A%22\",\n  \"${__dashboard.uid}\",\n  \"%22%2C%22minerva_lra%22%3A%22\",\n  nutzer.nutzer_lra,\n  \"%22%2C%22minerva_filter%22%3A%22\",\n  filter_string.filter,\n  \"%22%7D%7D%5D\"\n) AS event_url\nFROM nutzer, filter_string\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "hidden": true
+    },
+    "timezone": "Europe/Berlin",
+    "title": "Social Media Langzeittrends",
+    "uid": "ce5p0d3hin56oc",
+    "version": 81,
+    "weekStart": ""
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "uid": "adpciiue9jnr4f",
+  "name": "NDR Niedersachsen App",
+  "interval": "30s",
+  "items": [
+    {
+      "type": "dashboard_by_uid",
+      "value": "daiV0re4k"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "2JX7pISSk"
+    }
+  ]
+}

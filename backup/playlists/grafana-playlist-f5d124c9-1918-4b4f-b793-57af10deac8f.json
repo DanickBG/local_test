@@ -1,0 +1,19 @@
+{
+  "uid": "f5d124c9-1918-4b4f-b793-57af10deac8f",
+  "name": "MV Test",
+  "interval": "15s",
+  "items": [
+    {
+      "type": "dashboard_by_uid",
+      "value": "dvlYQde4z"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "jIW6COeVk"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "NfrMYY94z"
+    }
+  ]
+}

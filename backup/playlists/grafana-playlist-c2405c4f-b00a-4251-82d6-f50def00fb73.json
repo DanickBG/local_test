@@ -1,0 +1,11 @@
+{
+  "uid": "c2405c4f-b00a-4251-82d6-f50def00fb73",
+  "name": "NDR SportZone",
+  "interval": "1m",
+  "items": [
+    {
+      "type": "dashboard_by_tag",
+      "value": "NDR SportZone"
+    }
+  ]
+}

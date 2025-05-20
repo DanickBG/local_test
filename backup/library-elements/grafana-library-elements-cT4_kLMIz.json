@@ -1,0 +1,155 @@
+{
+  "id": 468,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "cT4_kLMIz",
+  "name": "MDR TV Web Video Gestern KPI (Vergleichzeitraum)",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "summe"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Wiedergaben ${Vergleichszeitraumlabels:text}"
+            },
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 16,
+      "y": 0
+    },
+    "id": 33,
+    "libraryPanel": {
+      "description": "",
+      "meta": {
+        "connectedDashboards": 8,
+        "created": "2023-10-12T15:54:46Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        },
+        "folderName": "Panels Library",
+        "folderUid": "folder-PjWklf8Vz",
+        "updated": "2023-11-02T14:01:36Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/9372895bd2354d1612a45afc8704053a",
+          "id": 6,
+          "name": "b.kuch@ndr.de"
+        }
+      },
+      "name": "MDR TV Web Video Gestern KPI (Vergleichzeitraum)",
+      "type": "stat",
+      "uid": "cT4_kLMIz",
+      "version": 4
+    },
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+      },
+      "textMode": "value_and_name"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "\r\nSELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as summe\r\nFROM \r\n  ndr-code-bi-dashboard.Piano.av_joined_daily\r\nWHERE \r\nsite_level2 = \"$LRA\" AND\r\n\"$Redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n\"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags)\r\nAND (\"$Sendung\" = sendungs_id OR \"$Sendung\" IN UNNEST(sendungs_id_tags))\r\nAND date = ${bq_yesterday:doublequote}\r\nAND (av_content_type = \"video\" OR av_content_type = \"Video\")",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 17,
+    "created": "2024-06-20T11:45:36Z",
+    "updated": "2024-06-20T11:45:36Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

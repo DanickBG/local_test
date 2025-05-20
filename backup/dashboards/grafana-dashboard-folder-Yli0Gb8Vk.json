@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "tv-ndr-qa",
+    "url": "/dashboards/f/folder-Yli0Gb8Vk/tv-ndr-qa",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-06-20T11:45:28Z",
+    "updated": "2024-06-20T11:45:28Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 1,
+    "hasAcl": false,
+    "isFolder": true,
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "id": 670,
+    "schemaVersion": 17,
+    "title": "TV_NDR_QA",
+    "uid": "folder-Yli0Gb8Vk",
+    "version": 1
+  }
+}

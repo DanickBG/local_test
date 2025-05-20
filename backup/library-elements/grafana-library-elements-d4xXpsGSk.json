@@ -1,0 +1,140 @@
+{
+  "id": 472,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "d4xXpsGSk",
+  "name": "NDR TV Web Video Last 7 Days",
+  "kind": 1,
+  "type": "marcusolsson-dynamictext-panel",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        },
+        "unit": "locale"
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 22,
+      "w": 12,
+      "x": 0,
+      "y": 6
+    },
+    "id": 45,
+    "options": {
+      "afterRender": "",
+      "content": "<!-- ```json\n{{{json @root}}}\n``` -->\n<table>\n  <thead>\n    <tr>\n      <th id=\"content_titel\">Titel</th>\n      <th id=\"content_id_sophora\">Sophora ID</th>\n      <th id=\"visits\"> Wiedergaben</th>\n    </tr>\n  </thead>\n  <tbody>\n    {{#each data}}\n    <tr>\n      <td>{{this.bi_av_content}}</td>\n      <td>{{this.bi_av_content_id}}</td>\n      <td class=\"number\">{{this.wiedergabe}}</td>\n      </td>\n    </tr>\n    {{/each}}\n  </tbody>\n</table>",
+      "contentPartials": [],
+      "defaultContent": "The query didn't return any results.",
+      "editor": {
+        "format": "auto",
+        "language": "markdown"
+      },
+      "editors": [
+        "styles"
+      ],
+      "externalStyles": [],
+      "helpers": "",
+      "renderMode": "allRows",
+      "styles": "<style>\n  table {\n    font-size: 25px;\n    width: 1080px;\n    border-collapse: collapse;\n  }\n\n  th {\n    font-size: 20px;\n    font-weight: bold;\n    text-align: left;\n  }\n\n  td {\n    font-size: 25px;\n    padding: 8px;\n  }\n\n  td.time {\n    font-weight: bold;\n    font-size: 20px;\n    width: 200px;\n  }\n\n  td.engagement {\n    width: 120px;\n  }\n\n  td.reach {\n    width: 122px;\n  }\n\n  td.videoViews {\n    width: 124px;\n  }\n\n  td.type {\n    width: 100px;\n  }\n\n  td.post {\n    width: auto;\n    word-wrap: break-word;\n    white-space: normal;\n  }\n</style>\n\n\n",
+      "wrap": true
+    },
+    "pluginVersion": "5.6.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "-- SELECT \r\n-- bi_av_content_id,\r\n-- bi_av_content,\r\n-- sum(m_av_playbacks) as wiedergabe,\r\n-- FROM\r\n-- (\r\n-- SELECT\r\n-- bi_av_content_id,\r\n-- m_av_playbacks,\r\n-- FIRST_VALUE(bi_av_content) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) as bi_av_content, \r\n-- FROM \r\n-- Piano.av${dataset_visits_zeitraum:raw}\r\n-- WHERE site_level2 = \"$LRA\" AND\r\n-- \"$Redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n-- \"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags) AND \r\n-- (\"$Sendung\" = sendungs_id OR \"$Sendung\" IN UNNEST(sendungs_id_tags)) AND\r\n-- av_content_type = \"Video\"\r\n-- AND bi_av_content_id NOT LIKE '%index%'\r\n-- AND date >= ${bq_interval_7_day:doublequote} AND date < ${bq_today:doublequote}) GROUP BY bi_av_content,bi_av_content_id\r\n-- --,device_type \r\n-- ORDER BY 3 DESC\r\n-- Limit 10\r\n\r\n\r\n\r\nIF ${Zeitraum:doublequote} = \"date = CURRENT_DATE()\"\r\nTHEN\r\nSELECT \r\nbi_av_content_id,\r\nbi_av_content,\r\nsum(m_av_playbacks) as wiedergabe,\r\nFROM\r\n(\r\nSELECT\r\nbi_av_content_id,\r\nm_av_playbacks,\r\nFIRST_VALUE(bi_av_content) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) as bi_av_content, \r\nFROM \r\nPiano.av_joined_today\r\nWHERE site_level2 = \"$LRA\" AND\r\n\"$Redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n\"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags) AND \r\n(\"$Sendung\" = sendungs_id OR \"$Sendung\" IN UNNEST(sendungs_id_tags)) AND\r\nav_content_type = \"Video\"\r\nAND bi_av_content_id NOT LIKE '%index%'\r\nAND date >= ${bq_interval_7_day:doublequote} AND date < ${bq_today:doublequote}) GROUP BY bi_av_content,bi_av_content_id\r\n--,device_type \r\nORDER BY 3 DESC\r\nLimit 10\r\n; \r\nELSE\r\nSELECT \r\nbi_av_content_id,\r\nbi_av_content,\r\nsum(m_av_playbacks) as wiedergabe,\r\nFROM\r\n(\r\nSELECT\r\nbi_av_content_id,\r\nm_av_playbacks,\r\nFIRST_VALUE(bi_av_content) OVER (PARTITION BY bi_av_content_id ORDER BY m_av_playbacks DESC) as bi_av_content, \r\nFROM \r\nPiano.av_joined_daily\r\nWHERE site_level2 = \"$LRA\" AND\r\n\"$Redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n\"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags) AND \r\n(\"$Sendung\" = sendungs_id OR \"$Sendung\" IN UNNEST(sendungs_id_tags)) AND\r\nav_content_type = \"Video\"\r\nAND bi_av_content_id NOT LIKE '%index%'\r\nAND date >= ${bq_interval_7_day:doublequote} AND date < ${bq_today:doublequote}) GROUP BY bi_av_content,bi_av_content_id\r\n--,device_type \r\nORDER BY 3 DESC\r\nLimit 10\r\n;\r\nEND IF\r\n;\r\n",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "av_content_duration": true,
+            "av_content_type": true,
+            "bi_av_publication_date": false,
+            "device_type": true,
+            "wiedergaberate": true
+          },
+          "includeByName": {},
+          "indexByName": {
+            "bi_av_content": 0,
+            "bi_av_content_id": 1,
+            "wiedergabe": 2
+          },
+          "renameByName": {
+            "bi_av_content": "",
+            "bi_av_publication_date": "Publiziert"
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "marcusolsson-dynamictext-panel"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 12,
+    "created": "2024-06-20T11:45:36Z",
+    "updated": "2025-02-13T12:18:09Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

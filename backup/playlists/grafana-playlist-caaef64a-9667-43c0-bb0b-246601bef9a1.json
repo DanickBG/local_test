@@ -1,0 +1,11 @@
+{
+  "uid": "caaef64a-9667-43c0-bb0b-246601bef9a1",
+  "name": "NDR Hamburg",
+  "interval": "1m",
+  "items": [
+    {
+      "type": "dashboard_by_tag",
+      "value": "NDR HH"
+    }
+  ]
+}

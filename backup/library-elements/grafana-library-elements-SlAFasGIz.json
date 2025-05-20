@@ -1,0 +1,155 @@
+{
+  "id": 592,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "SlAFasGIz",
+  "name": "NDR TV Web Quellen Gestern KPI (Vergleichzeitraum)",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "summe"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Visits ${copy_of_Vergleichszeitraumlabels:text} ${Uhrzeit:text}"
+            },
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 16,
+      "y": 0
+    },
+    "id": 47,
+    "libraryPanel": {
+      "description": "",
+      "meta": {
+        "connectedDashboards": 4,
+        "created": "2023-10-13T15:39:48Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        },
+        "folderName": "Panels Library",
+        "folderUid": "folder-PjWklf8Vz",
+        "updated": "2024-01-29T18:14:50Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        }
+      },
+      "name": "NDR TV Web Quellen Gestern KPI (Vergleichzeitraum)",
+      "type": "stat",
+      "uid": "SlAFasGIz",
+      "version": 5
+    },
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+      },
+      "textMode": "value_and_name"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH adjusted_lagged_data AS (\r\nSELECT\r\n        TIMESTAMP(tmstp) as time,\r\n        FIRST_VALUE(m_visits) OVER(ORDER by tmstp DESC) as summe\r\n  FROM\r\n    `Piano.total_visits${feverCurveDataset:raw}`  \r\n  WHERE TRUE\r\n     AND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\r\n    AND tmstp  <= DATETIME_SUB(\"${comp_fever}\", INTERVAL $time_shift DAY)\r\n    AND site_level2 = \"$LRA\"\r\n        AND page_chapter1 = \"$Redaktionen\"\r\n        AND page_chapter2 = \"$Unterkapitel\"\r\n        AND sendungs_id = \"$Sendung\"\r\n        AND CASE\r\n          \"$LRA\"\r\n          WHEN \"ndr.de\" THEN True\r\n          ELSE (\r\n            CASE\r\n              \"$Redaktionen\"\r\n              WHEN \"Brisant\" THEN origin = \"sendung\"\r\n              WHEN \"Jump\" THEN origin = \"sendung\"\r\n              WHEN \"Sputnik\" THEN origin = \"sendung\"\r\n              WHEN \"Alle Kapitel 1\" THEN origin = \"sendung\"\r\n              ELSE True\r\n            END\r\n          )\r\n        END\r\n        ORDER BY tmstp DESC\r\n        LIMIT 1\r\n),\r\ndaily_data AS (\r\n  SELECT \r\n  SUM(COALESCE(m_visits,0)) as summe\r\nFROM \r\n  `Piano.total_visits${dataset_vergleichs_zeitraum:raw}`\r\nWHERE \r\nsite_level2 = \"$LRA\"\r\nAND page_chapter1 = \"$Redaktionen\"\r\nAND page_chapter2 = \"$Unterkapitel\"\r\nAND sendungs_id = \"$Sendung\"\r\nAND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote} )\r\nSELECT * FROM ${dataset_kpi}\r\n     \r\n\r\n-- SELECT \r\n--   SUM(m_visits) as summe\r\n-- FROM Piano.distro_joined_daily\r\n-- WHERE  \r\n-- site_level2 = ${LRA:doublequote}\r\n-- AND page_chapter1 = ${Redaktionen:doublequote}\r\n-- AND page_chapter2 = ${Unterkapitel:doublequote}\r\n-- AND sendungs_id = ${Sendung:doublequote}\r\n-- AND date = ${bq_yesterday:doublequote}\r\n-- AND src NOT LIKE '%N/A%'",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 13,
+    "created": "2024-06-20T11:45:55Z",
+    "updated": "2024-06-20T11:45:55Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

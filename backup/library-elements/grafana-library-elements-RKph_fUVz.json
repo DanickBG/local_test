@@ -1,0 +1,113 @@
+{
+  "id": 584,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "RKph_fUVz",
+  "name": "TV Instagram Titel ",
+  "kind": 1,
+  "type": "text",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "postgres",
+      "uid": "5RzC0pR4k"
+    },
+    "description": "",
+    "gridPos": {
+      "h": 4,
+      "w": 10,
+      "x": 2,
+      "y": 0
+    },
+    "id": 154,
+    "libraryPanel": {
+      "description": "",
+      "meta": {
+        "connectedDashboards": 7,
+        "created": "2023-05-16T10:37:38Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/17b3d3f5138ef3bddd3d297884743e12",
+          "id": 5,
+          "name": "jaime.avalos@ida.me"
+        },
+        "folderName": "Panels Library",
+        "folderUid": "folder-PjWklf8Vz",
+        "updated": "2023-06-12T13:24:27Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        }
+      },
+      "name": "TV Instagram Titel ",
+      "type": "text",
+      "uid": "RKph_fUVz",
+      "version": 3
+    },
+    "options": {
+      "code": {
+        "language": "plaintext",
+        "showLineNumbers": false,
+        "showMiniMap": false
+      },
+      "content": "<font size=\"8\" style=\"color:rgb(214,41,118);\">Instagram</font><font size=\"8\">  ${Profil} </font>",
+      "mode": "markdown"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "format": "time_series",
+        "group": [],
+        "metricColumn": "none",
+        "rawQuery": false,
+        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+        "refId": "A",
+        "select": [
+          [
+            {
+              "params": [
+                "post_video_view_time"
+              ],
+              "type": "column"
+            }
+          ]
+        ],
+        "table": "facebookinsightsownposts",
+        "timeColumn": "\"time\"",
+        "timeColumnType": "timestamp",
+        "where": [
+          {
+            "name": "$__timeFilter",
+            "params": [],
+            "type": "macro"
+          }
+        ]
+      }
+    ],
+    "transparent": true,
+    "type": "text"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 48,
+    "created": "2024-06-20T11:45:54Z",
+    "updated": "2024-06-20T11:45:54Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

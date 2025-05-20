@@ -1,0 +1,21 @@
+{
+  "id": 7,
+  "uid": "Tk5BO3iIz",
+  "orgId": 1,
+  "name": "MySQL",
+  "type": "mysql",
+  "typeLogoUrl": "public/app/plugins/datasource/mysql/img/mysql_logo.svg",
+  "access": "proxy",
+  "url": "",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 1,
+  "readOnly": false,
+  "apiVersion": ""
+}

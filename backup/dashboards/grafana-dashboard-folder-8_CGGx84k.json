@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "tv-mdr",
+    "url": "/dashboards/f/folder-8_CGGx84k/tv-mdr",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-06-20T11:45:25Z",
+    "updated": "2024-06-20T11:45:25Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 1,
+    "hasAcl": false,
+    "isFolder": true,
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "id": 657,
+    "schemaVersion": 17,
+    "title": "TV_MDR",
+    "uid": "folder-8_CGGx84k",
+    "version": 1
+  }
+}

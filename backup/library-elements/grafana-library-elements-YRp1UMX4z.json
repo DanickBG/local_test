@@ -1,0 +1,228 @@
+{
+  "id": 636,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "YRp1UMX4z",
+  "name": "YouTube Top Video Main Table",
+  "kind": 1,
+  "type": "marcusolsson-dynamictext-panel",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byType",
+            "options": "number"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 19,
+      "w": 24,
+      "x": 0,
+      "y": 6
+    },
+    "id": 143,
+    "options": {
+      "afterRender": "",
+      "content": "<!-- <table>\n  <thead>\n    <tr>\n      <th id=\"timestamp\">Datum</th>\n      <th id=\"post\">Post</th>\n      <th id=\"engagement\">Engagement</th>\n      <th id=\"reach\">Reach</th>\n      <th id=\"videoViews\">Video Views</th>\n      <th id=\"type\">Typ</th>\n    </tr>\n  </thead>\n  <tbody>\n    {{#each data}}\n    <tr>\n      <td class=\"time\" data-time=\"{{this.time}}\">{{this.time}}</td>\n      <td>{{this.Post}}</td>\n      <td class=\"number\">{{this.engagement}}</td>\n      <td class=\"number\">{{this.reach}}</td>\n      <td class=\"number\">{{this.videoViews}}</td>\n      <td>{{this.Typ}}</td>\n    </tr>\n    {{/each}}\n  </tbody>\n</table>\n -->\n<table>\n  <thead>\n    <tr>\n      <th id=\"Datum\">Datum</th>\n      <th id=\"title\">Titel</th>\n      <th id=\"views\">Videostarts</th>\n      <th id=\"likes\">Likes</th>\n      <th id=\"comments\">Kommentare</th>\n      <th id=\"Dauer\">Videolänge</th>\n    </tr>\n  </thead>\n  <tbody>\n    {{#each data}}\n    <tr>\n      <td class=\"time\" data-time=\"{{this.Datum}}\">{{this.Datum}}</td>\n      <td>{{this.title}}</td>\n      <td class=\"number\">{{this.views}}</td>\n      <td class=\"number\">{{this.likes}}</td>\n      <td class=\"number\">{{this.comments}}</td>\n      <td class=\"number\">{{this.Dauer}}</td>\n    </tr>\n    {{/each}}\n  </tbody>\n</table>\n\n\n\n",
+      "contentPartials": [],
+      "defaultContent": "The query didn't return any results.",
+      "editor": {
+        "format": "auto",
+        "language": "markdown"
+      },
+      "editors": [
+        "styles"
+      ],
+      "externalStyles": [],
+      "helpers": "",
+      "renderMode": "allRows",
+      "styles": "<style>\n  table {\n    font-size: 25px;\n    width: 1080px;\n    border-collapse: collapse;\n  }\n\n  th {\n    font-size: 20px;\n    font-weight: bold;\n    text-align: left;\n  }\n\n  td {\n    font-size: 25px;\n    padding: 8px;\n  }\n\n  td.time {\n    white-space: nowrap;\n    font-weight: bold;\n    font-size: 25px;\n    width: 100px;\n  }\n\n  td.engagement {\n    width: 120px;\n  }\n\n  td.reach {\n    width: 122px;\n  }\n\n  td.videoViews {\n    width: 124px;\n  }\n\n  td.type {\n    width: 100px;\n  }\n\n  td.post {\n    width: auto;\n    word-wrap: break-word;\n    white-space: normal;\n  }\n  #Dauer{\n    width: 150px;\n    text-align: center;\n  }\n  .number{\n    text-align: center;\n  }\n  #likes{\n    text-align: center;\n  }\n</style>\n\n\n",
+      "wrap": true
+    },
+    "pluginVersion": "5.6.0",
+    "targets": [
+      {
+        "dataset": "Quintly",
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT\n-- time as Datum,\nFORMAT_TIMESTAMP('%d.%m | %H:%M Uhr', TIMESTAMP(time)) AS Datum,\nCONCAT(\n  CASE WHEN LENGTH(CAST(DIV(duration,60) AS String))<2 THEN CONCAT(\"0\",CAST(DIV(duration,60) AS String)) ELSE CAST(DIV(duration,60) AS String)  END ,\n  \":\",CASE WHEN LENGTH(CAST(MOD(duration,60) AS String))<2 THEN CONCAT(\"0\",CAST(MOD(duration,60) AS String)) ELSE CAST(MOD(duration,60) AS String)  END) || ' min' as Dauer,\n  CONCAT(\n  CASE WHEN LENGTH(CAST(DIV(averageViewDuration,60) AS String))<2 THEN CONCAT(\"0\",CAST(DIV(averageViewDuration,60) AS String)) ELSE CAST(DIV(averageViewDuration,60) AS String)  END ,\n  \":\",CASE WHEN LENGTH(CAST(MOD(averageViewDuration,60) AS String))<2 THEN CONCAT(\"0\",CAST(MOD(averageViewDuration,60) AS String)) ELSE CAST(MOD(averageViewDuration,60) AS String)  END) as averageViewTime,\n  estimatedMinutesWatched/60 as sehVolumen,\n  \n-- title,\n  CASE\n    WHEN length(title) > 80 THEN SUBSTR(title, 0 , 105) || '...'\n    ELSE title\n  END AS title,\nviews,\nlink,\nlikes,\ndislikes,\ncomments,\nshares,\naverageViewPercentage,\nabo_change, FROM `ndr-code-bi-dashboard.Quintly.youtubeAnalyticsVideos` \nWHERE profileId = $profileID\n  AND $Zeitraum\n  AND last_update = \n    (SELECT MAX(last_update) \n    FROM `ndr-code-bi-dashboard.Quintly.youtubeAnalyticsVideos` \n    WHERE profileId = $profileID)\nORDER BY views DESC LIMIT 8",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [
+                {
+                  "name": "*",
+                  "type": "functionParameter"
+                }
+              ],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        },
+        "table": "youtubeAnalyticsVideos"
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "Datum": false,
+            "Dauer": false,
+            "Veroeffentlichungsdatum": false,
+            "abo_change": true,
+            "averageViewDuration": true,
+            "averageViewPercentage": true,
+            "averageViewTime": true,
+            "dislikes": true,
+            "duration": true,
+            "estimatedMinutesWatched": true,
+            "externalId": true,
+            "importTime": true,
+            "last_update": true,
+            "link": true,
+            "profileId": true,
+            "publishTime": true,
+            "sehVolumen": true,
+            "shares": true,
+            "subscribersGained": true,
+            "subscribersLost": true,
+            "time": true
+          },
+          "includeByName": {},
+          "indexByName": {
+            "Datum": 0,
+            "Dauer": 17,
+            "abo_change": 20,
+            "averageViewDuration": 14,
+            "averageViewPercentage": 13,
+            "averageViewTime": 18,
+            "comments": 11,
+            "dislikes": 10,
+            "duration": 16,
+            "estimatedMinutesWatched": 15,
+            "externalId": 7,
+            "importTime": 4,
+            "last_update": 3,
+            "likes": 9,
+            "link": 8,
+            "profileId": 2,
+            "sehVolumen": 19,
+            "shares": 12,
+            "time": 1,
+            "title": 5,
+            "views": 6
+          },
+          "renameByName": {
+            "Datum": "",
+            "Dauer": "",
+            "Veroeffentlichungsdatum": "Datum",
+            "abo_change": "Veränderung Abonnenten",
+            "averageViewDuration": " Ø Wiedergabedauer in Min.",
+            "averageViewPercentage": "% Wiedergabe",
+            "averageViewTime": "⌀ Wiedergabedauer",
+            "comments": "",
+            "dislikes": "Dislikes",
+            "duration": "Dauer",
+            "estimatedMinutesWatched": "Sehvolumen",
+            "interactions": "Interaktionen",
+            "likes": "",
+            "link": "Link",
+            "publishTime": "Datum",
+            "sehVolumen": " Sehvolumen in Stunden",
+            "shares": "Shares",
+            "subscribersGained": "",
+            "time": "Datum",
+            "title": "",
+            "views": ""
+          }
+        }
+      },
+      {
+        "id": "filterByValue",
+        "options": {
+          "filters": [
+            {
+              "config": {
+                "id": "isNull",
+                "options": {}
+              },
+              "fieldName": "Videostarts"
+            }
+          ],
+          "match": "any",
+          "type": "exclude"
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "marcusolsson-dynamictext-panel"
+  },
+  "version": 9,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 4,
+    "created": "2024-06-20T11:46:02Z",
+    "updated": "2025-02-27T10:28:55Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

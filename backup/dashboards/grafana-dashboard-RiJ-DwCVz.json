@@ -1,0 +1,1861 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "google-trends-all-sections",
+    "url": "/d/RiJ-DwCVz/google-trends-all-sections",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:42:32Z",
+    "updated": "2025-05-08T11:49:00Z",
+    "updatedBy": "bernd kuch dev",
+    "createdBy": "Anonymous",
+    "version": 7,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 1181,
+    "folderUid": "folder-LfjQIrw4z",
+    "folderTitle": "Google Trends",
+    "folderUrl": "/dashboards/f/folder-LfjQIrw4z/google-trends",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1299,
+    "links": [],
+    "panels": [
+      {
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 0,
+          "y": 0
+        },
+        "id": 18,
+        "libraryPanel": {
+          "name": "Google Trends Logo",
+          "uid": "2VimoXQ4z"
+        },
+        "title": ""
+      },
+      {
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 22,
+          "x": 2,
+          "y": 0
+        },
+        "id": 10,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<font size=\"8\" style=\"color:rgb(255, 0, 0);\">Google Trends</font><font size=\"8\"></font>\n\n<img \n  src=\"${src_url}\" \n  alt=\"Tracking Pixel\" \n  width=\"1\" \n  height=\"1\" \n  style=\"display:none;\"\n/>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.3.1",
+        "title": "",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Artikel"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "${__data.fields.url}",
+                      "url": "${__data.fields.url}"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 629
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "url"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Vorschau"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 285
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Kategorie"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 88
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Platz"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 47
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Veröffentlicht"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 118
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Rang"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 38
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Schlagwörter"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 1253
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Quelle"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 156
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 19,
+          "x": 0,
+          "y": 3
+        },
+        "id": 2,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "dataset": "GoogleTrends",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT * \nFROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean` \nWHERE \n--  category ='Business'\n  category = 'Headlines'\n--  category = 'Science_Tech'\n--  category = 'Sport'\n--  category = 'Entertainment'\n--  category = 'Health'\nAND tmstp = \n  (SELECT MAX(tmstp) \n  FROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean`)\nORDER BY rank",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "*",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "realtime_trends_clean"
+          }
+        ],
+        "title": "Google Trends | Echtzeit | Schlagzeilen",
+        "transformations": [
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "json",
+              "replace": false,
+              "source": "article"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "article": true,
+                "category": true,
+                "snippet": true,
+                "tmstp": true,
+                "url": false
+              },
+              "indexByName": {
+                "article": 5,
+                "articleTitle": 4,
+                "category": 0,
+                "entityNames": 3,
+                "rank": 1,
+                "snippet": 7,
+                "source": 8,
+                "time": 2,
+                "tmstp": 6,
+                "url": 9
+              },
+              "renameByName": {
+                "article": "",
+                "articleTitle": "Artikel",
+                "category": "Kategorie",
+                "entityNames": "Schlagwörter",
+                "rank": "Rang",
+                "snippet": "Vorschau",
+                "source": "Quelle",
+                "time": "Veröffentlicht"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Rang"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 54
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 30,
+          "w": 5,
+          "x": 19,
+          "y": 3
+        },
+        "id": 16,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  keyword as trend, rank\nFROM\n  `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_r`\n--timestamp = DATE_SUB(CURRENT_DATE(), INTERVAL 0 DAY) \nWHERE  EXTRACT(DATE FROM DATETIME(timestamp, \"Europe/Berlin\")) = EXTRACT(DATE FROM DATETIME_SUB(CURRENT_DATE(\"Europe/Berlin\"), INTERVAL 1 DAY))  \nAND category = \"Headlines\"\n--DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY),\nLIMIT\n  50",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Suchtrends des Tages | gestern",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "timestamp": true
+              },
+              "indexByName": {
+                "rank": 0,
+                "timestamp": 2,
+                "trend": 1
+              },
+              "renameByName": {
+                "rank": "Rang",
+                "trend": "Trend"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Artikel"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "${__data.fields.url}",
+                      "url": "${__data.fields.url}"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 630
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "url"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Vorschau"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 285
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Kategorie"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 88
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Platz"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 47
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Veröffentlicht"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 118
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Rang"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 38
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Schlagwörter"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 401
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Quelle"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 165
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 19,
+          "x": 0,
+          "y": 14
+        },
+        "id": 4,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "dataset": "GoogleTrends",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT * \nFROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean` \nWHERE \n  category ='Business'\n--  category = 'Headlines'\n--  category = 'Science_Tech'\n--  category = 'Sport'\n--  category = 'Entertainment'\n--  category = 'Health'\nAND tmstp = \n  (SELECT MAX(tmstp) \n  FROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean`)\nORDER BY rank",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "*",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "realtime_trends_clean"
+          }
+        ],
+        "title": "Google Trends | Echtzeit | Business",
+        "transformations": [
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "json",
+              "replace": false,
+              "source": "article"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "article": true,
+                "category": true,
+                "snippet": true,
+                "tmstp": true,
+                "url": false
+              },
+              "indexByName": {
+                "article": 5,
+                "articleTitle": 4,
+                "category": 0,
+                "entityNames": 3,
+                "rank": 1,
+                "snippet": 7,
+                "source": 8,
+                "time": 2,
+                "tmstp": 6,
+                "url": 9
+              },
+              "renameByName": {
+                "article": "",
+                "articleTitle": "Artikel",
+                "category": "Kategorie",
+                "entityNames": "Schlagwörter",
+                "rank": "Rang",
+                "snippet": "Vorschau",
+                "source": "Quelle",
+                "time": "Veröffentlicht"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Artikel"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "${__data.fields.url}",
+                      "url": "${__data.fields.url}"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 628
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "url"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Vorschau"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 285
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Kategorie"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 88
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Platz"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 47
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Veröffentlicht"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 118
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Rang"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 38
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Schlagwörter"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 1248
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Quelle"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 161
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 19,
+          "x": 0,
+          "y": 25
+        },
+        "id": 6,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "dataset": "GoogleTrends",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT * \nFROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean` \nWHERE \n--  category ='Business'\n--  category = 'Headlines'\n--  category = 'Science_Tech'\n  category = 'Sport'\n--  category = 'Entertainment'\n--  category = 'Health'\nAND tmstp = \n  (SELECT MAX(tmstp) \n  FROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean`)\nORDER BY rank",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "*",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "realtime_trends_clean"
+          }
+        ],
+        "title": "Google Trends | Echtzeit | Sport",
+        "transformations": [
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "json",
+              "replace": false,
+              "source": "article"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "article": true,
+                "category": true,
+                "snippet": true,
+                "tmstp": true,
+                "url": false
+              },
+              "indexByName": {
+                "article": 5,
+                "articleTitle": 4,
+                "category": 0,
+                "entityNames": 3,
+                "rank": 1,
+                "snippet": 7,
+                "source": 8,
+                "time": 2,
+                "tmstp": 6,
+                "url": 9
+              },
+              "renameByName": {
+                "article": "",
+                "articleTitle": "Artikel",
+                "category": "Kategorie",
+                "entityNames": "Schlagwörter",
+                "rank": "Rang",
+                "snippet": "Vorschau",
+                "source": "Quelle",
+                "time": "Veröffentlicht"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Artikel"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "${__data.fields.url}",
+                      "url": "${__data.fields.url}"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 632
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "url"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Vorschau"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 285
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Kategorie"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 88
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Platz"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 47
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Veröffentlicht"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 118
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Rang"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 38
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Schlagwörter"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 1241
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Quelle"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 157
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 19,
+          "x": 0,
+          "y": 36
+        },
+        "id": 8,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "dataset": "GoogleTrends",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT * \nFROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean` \nWHERE \n--  category ='Business'\n--  category = 'Headlines'\n--  category = 'Science_Tech'\n--  category = 'Sport'\n  category = 'Entertainment'\n--  category = 'Health'\nAND tmstp = \n  (SELECT MAX(tmstp) \n  FROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean`)\nORDER BY rank",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "*",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "realtime_trends_clean"
+          }
+        ],
+        "title": "Google Trends | Echtzeit | Unterhaltung",
+        "transformations": [
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "json",
+              "replace": false,
+              "source": "article"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "article": true,
+                "category": true,
+                "snippet": true,
+                "tmstp": true,
+                "url": false
+              },
+              "indexByName": {
+                "article": 5,
+                "articleTitle": 4,
+                "category": 0,
+                "entityNames": 3,
+                "rank": 1,
+                "snippet": 7,
+                "source": 8,
+                "time": 2,
+                "tmstp": 6,
+                "url": 9
+              },
+              "renameByName": {
+                "article": "",
+                "articleTitle": "Artikel",
+                "category": "Kategorie",
+                "entityNames": "Schlagwörter",
+                "rank": "Rang",
+                "snippet": "Vorschau",
+                "source": "Quelle",
+                "time": "Veröffentlicht"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Artikel"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "${__data.fields.url}",
+                      "url": "${__data.fields.url}"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 630
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "url"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Vorschau"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 285
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Kategorie"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 88
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Platz"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 47
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Veröffentlicht"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 118
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Rang"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 38
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Schlagwörter"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 1183
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Quelle"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 158
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 19,
+          "x": 0,
+          "y": 47
+        },
+        "id": 12,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "dataset": "GoogleTrends",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT * \nFROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean` \nWHERE \n--  category ='Business'\n--  category = 'Headlines'\n  category = 'Science_Tech'\n--  category = 'Sport'\n--  category = 'Entertainment'\n--  category = 'Health'\nAND tmstp = \n  (SELECT MAX(tmstp) \n  FROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean`)\nORDER BY rank",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "*",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "realtime_trends_clean"
+          }
+        ],
+        "title": "Google Trend | Echtzeit | Wissen & Technik",
+        "transformations": [
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "json",
+              "replace": false,
+              "source": "article"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "article": true,
+                "category": true,
+                "snippet": true,
+                "tmstp": true,
+                "url": false
+              },
+              "indexByName": {
+                "article": 5,
+                "articleTitle": 4,
+                "category": 0,
+                "entityNames": 3,
+                "rank": 1,
+                "snippet": 7,
+                "source": 8,
+                "time": 2,
+                "tmstp": 6,
+                "url": 9
+              },
+              "renameByName": {
+                "article": "",
+                "articleTitle": "Artikel",
+                "category": "Kategorie",
+                "entityNames": "Schlagwörter",
+                "rank": "Rang",
+                "snippet": "Vorschau",
+                "source": "Quelle",
+                "time": "Veröffentlicht"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Artikel"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "${__data.fields.url}",
+                      "url": "${__data.fields.url}"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 633
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "url"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Vorschau"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 285
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Kategorie"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 88
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Platz"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 47
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Veröffentlicht"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 118
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Rang"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 38
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Schlagwörter"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 1251
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Quelle"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 155
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 19,
+          "x": 0,
+          "y": 58
+        },
+        "id": 14,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "dataset": "GoogleTrends",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT * \nFROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean` \nWHERE \n--  category ='Business'\n--  category = 'Headlines'\n--  category = 'Science_Tech'\n--  category = 'Sport'\n--  category = 'Entertainment'\n  category = 'Health'\nAND tmstp = \n  (SELECT MAX(tmstp) \n  FROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean`)\nORDER BY rank",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "*",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "realtime_trends_clean"
+          }
+        ],
+        "title": "Google Trends | Echtzeit | Gesundheit",
+        "transformations": [
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "json",
+              "replace": false,
+              "source": "article"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "article": true,
+                "category": true,
+                "snippet": true,
+                "tmstp": true,
+                "url": false
+              },
+              "indexByName": {
+                "article": 5,
+                "articleTitle": 4,
+                "category": 0,
+                "entityNames": 3,
+                "rank": 1,
+                "snippet": 7,
+                "source": 8,
+                "time": 2,
+                "tmstp": 6,
+                "url": 9
+              },
+              "renameByName": {
+                "article": "",
+                "articleTitle": "Artikel",
+                "category": "Kategorie",
+                "entityNames": "Schlagwörter",
+                "rank": "Rang",
+                "snippet": "Vorschau",
+                "source": "Quelle",
+                "time": "Veröffentlicht"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "preload": false,
+    "schemaVersion": 40,
+    "tags": [
+      "Google Trends"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "https://vqggwrz.pa-cd.com/event?s=645199&idclient=minerva&events=%5B%7B%22name%22%3A%22page.display%22%2C%22data%22%3A%7B%22page%22%3A%22Google Trends All Sections%22%2C%22m_visits%22%3A1%2C%22minerva_dashboard_id%22%3A%22RiJ-DwCVz%22%2C%22minerva_lra%22%3A%22dev%22%2C%22minerva_filter%22%3A%22\n1=1\n%22%7D%7D%5D",
+            "value": "https://vqggwrz.pa-cd.com/event?s=645199&idclient=minerva&events=%5B%7B%22name%22%3A%22page.display%22%2C%22data%22%3A%7B%22page%22%3A%22Google Trends All Sections%22%2C%22m_visits%22%3A1%2C%22minerva_dashboard_id%22%3A%22RiJ-DwCVz%22%2C%22minerva_lra%22%3A%22dev%22%2C%22minerva_filter%22%3A%22\n1=1\n%22%7D%7D%5D"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "src_url",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH nutzer AS (\n  SELECT\nCASE\n    WHEN CONTAINS_SUBSTR(\"${__user.login}\", \"dev\") THEN \"dev\"\n    WHEN CONTAINS_SUBSTR(\"${__user.login}\", \"mefo\") THEN \"mefo\"\n    WHEN CONTAINS_SUBSTR(\"${__user.email}\", \"@\") THEN\n      REGEXP_EXTRACT(\"${__user.email}\", r'@([^\\.]+)')  -- Extracts part after '@' and before the first '.' Example: ad.westphal@ndr.de => ndr\n    WHEN NOT CONTAINS_SUBSTR(\"${__user.email}\", \"@\")\n         AND (CONTAINS_SUBSTR(\"${__user.email}\", \"viewer\") \n         OR CONTAINS_SUBSTR(\"${__user.email}\", \"podcast\")) THEN\n            REGEXP_EXTRACT(\"${__user.email}\", r'^([^-\\s]+)')  -- Extracts part before the first '-'. Example: ndr-viewer => ndr\n    ELSE\n      \"Anonym\"\n  END AS nutzer_lra\n),\nfilter_string AS (\n  SELECT \"\"\"\nnofilter\n\"\"\" AS filter\n)\n\nSELECT CONCAT(\n  \"https://vqggwrz.pa-cd.com/event?s=645199&idclient=minerva&events=%5B%7B%22name%22%3A%22page.display%22%2C%22data%22%3A%7B%22page%22%3A%22\",\n  \"${__dashboard.name}\",\n  \"%22%2C%22m_visits%22%3A1%2C%22minerva_dashboard_id%22%3A%22\",\n  \"${__dashboard.uid}\",\n  \"%22%2C%22minerva_lra%22%3A%22\",\n  nutzer.nutzer_lra,\n  \"%22%2C%22minerva_filter%22%3A%22\",\n  filter_string.filter,\n  \"%22%7D%7D%5D\"\n) AS event_url\nFROM nutzer, filter_string",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "hidden": true
+    },
+    "timezone": "",
+    "title": "Google Trends All Sections",
+    "uid": "RiJ-DwCVz",
+    "version": 7,
+    "weekStart": ""
+  }
+}

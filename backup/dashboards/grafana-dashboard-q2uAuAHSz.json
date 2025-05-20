@@ -1,0 +1,479 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "visits-of-subchapter-7c-mdr-7c-letzte-stunde",
+    "url": "/d/q2uAuAHSz/visits-of-subchapter-7c-mdr-7c-letzte-stunde",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-06-20T11:48:08Z",
+    "updated": "2024-07-30T05:43:07Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 5,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 657,
+    "folderUid": "folder-8_CGGx84k",
+    "folderTitle": "TV_MDR",
+    "folderUrl": "/dashboards/f/folder-8_CGGx84k/tv-mdr",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 867,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "mappings": [],
+            "min": 1,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 27,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 4,
+        "options": {
+          "displayMode": "gradient",
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [],
+            "fields": "",
+            "values": true
+          },
+          "showUnfilled": false,
+          "text": {}
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "hide": false,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "WITH nachrichten AS (\n  SELECT\n    CASE\n      page_chapter2\n      WHEN \"thueringen\" THEN \"Thüringen\"\n      WHEN \"sachsen\" THEN \"Sachsen\"\n      WHEN \"sachsen-anhalt\" THEN \"Sachsen-Anhalt\"\n      WHEN \"deutschland\" THEN \"Deutschland\"\n      WHEN \"welt\" THEN \"Welt\"\n    END as Chapter,\n    SUM(COALESCE(m_visits, 0)) as summe\n  FROM\n    `Piano.total_visits${dataset_zeitraum:raw}`\n  WHERE\n    page_chapter1 = \"nachrichten\"\n    AND page_chapter2 IN (\n      \"sachsen\",\n      \"sachsen-anhalt\",\n      \"thueringen\",\n      \"deutschland\",\n      \"welt\"\n    )\n    AND site_level2 = \"$LRA\"\n    AND sendungs_id = \"$Sendung\"\n    AND $Zeitraum\n  GROUP BY\n    Chapter\n),\nratgeber AS(\n  SELECT\n    \"Ratgeber\" as Chapter,\n    SUM(COALESCE(m_visits, 0)) as summe\n  FROM\n    `Piano.total_visits${dataset_zeitraum:raw}`\n  WHERE\n    page_chapter1 = \"ratgeber\"\n    AND site_level2 = \"$LRA\"\n    AND page_chapter2 = \"$Unterkapitel\"\n    AND sendungs_id = \"$Sendung\"\n    AND $Zeitraum\n  GROUP BY\n    Chapter --), app_aktuell AS (\n    --  SELECT\n    --  \"App Aktuell\" as Chapter,\n    --  SUM(COALESCE(m_visits,0)) as summe\n    --  FROM Piano.total_visits\n    --  WHERE page_chapter1 = \"nachrichten\" AND page_chapter2 IN (\"app_aktuell\",\"app-aktuell\") AND site_level2 = \"$LRA\" AND sendungs_id = \"$Sendung\" AND $Zeitraum\n),\nndr_kapitel as (\n  SELECT\n    CASE\n      page_chapter1\n      WHEN \"nachrichten\" THEN \"Nachrichten\"\n      WHEN \"kultur\" THEN \"Kultur\"\n      WHEN \"sport\" THEN \"Sport\"\n    END as Chapter,\n    SUM(COALESCE(m_visits, 0)) as summe\n  FROM\n    `Piano.total_visits${dataset_zeitraum:raw}`\n  WHERE\n    site_level2 = \"$LRA\"\n    AND page_chapter1 IN (\"nachrichten\", \"kultur\", \"sport\")\n    AND page_chapter2 = \"$Unterkapitel\"\n    AND sendungs_id = \"$Sendung\"\n    AND $Zeitraum\n  GROUP BY\n    Chapter\n),\nmdr as(\n  SELECT\n    *\n  FROM\n(\n      SELECT\n        Chapter,\n        summe\n      FROM\n        nachrichten\n      UNION\n      ALL\n      SELECT\n        Chapter,\n        summe\n      FROM\n        ratgeber --UNION ALL \n        --SELECT\n        --Chapter,\n        --summe FROM app_aktuell\n    )\n)\nSELECT\n  DISTINCT CASE\n    WHEN \"$LRA\" = \"ndr.de\" THEN ndr_kapitel.Chapter\n    WHEN \"$LRA\" = \"mdr.de\" THEN mdr.Chapter\n  END as Chapter,\n  CASE\n    WHEN \"$LRA\" = \"ndr.de\" THEN ndr_kapitel.summe\n    WHEN \"$LRA\" = \"mdr.de\" THEN mdr.summe\n  END as summe\nFROM\n  mdr,\n  ndr_kapitel\nORDER BY\n  summe desc\n\n",
+            "refId": "N-Joy Zeitraum",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Kapitel Visits $Redaktionen | $Zeitraum",
+        "transformations": [
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "Chapter",
+                  "summe"
+                ]
+              }
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Chapter": false,
+                "summe": false
+              },
+              "indexByName": {},
+              "renameByName": {}
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "bargauge"
+      }
+    ],
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [
+      "Visits_Chapter",
+      "MDR TH"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": true,
+            "text": "Letzte Stunde",
+            "value": "CAST(tmstp AS DATE) = CURRENT_DATE()"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "Zeitraum",
+          "options": [
+            {
+              "selected": true,
+              "text": "Letzte Stunde",
+              "value": "CAST(tmstp AS DATE) = CURRENT_DATE()"
+            },
+            {
+              "selected": false,
+              "text": "Heute",
+              "value": "date = CURRENT_DATE()"
+            },
+            {
+              "selected": false,
+              "text": "Gestern",
+              "value": "date = DATE_SUB(CURRENT_DATE(), INTERVAL  1 DAY)"
+            },
+            {
+              "selected": false,
+              "text": "Letztes Wochenende",
+              "value": "date >= (SELECT saturday FROM(SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 2 DAY) as saturday)) AND date <= (SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 1 DAY) as sunday)"
+            },
+            {
+              "selected": false,
+              "text": "Letzte 7 Tage",
+              "value": "date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND date < CURRENT_DATE()"
+            }
+          ],
+          "query": "Letzte Stunde : CAST(tmstp AS DATE) = CURRENT_DATE(),    Heute : date = CURRENT_DATE(),  Gestern : date = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Letztes Wochenende :  date >= (SELECT saturday FROM(SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\,WEEK(MONDAY)) - INTERVAL 2 DAY) as saturday)) AND date <= (SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\,WEEK(MONDAY)) - INTERVAL 1 DAY) as sunday), Letzte 7 Tage : date >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  7 DAY) AND date < CURRENT_DATE()",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "_last_hour",
+            "value": "_last_hour"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "dataset_zeitraum",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \nCASE \"${Zeitraum:text}\"\n  WHEN \"Heute\" THEN  \"\"\n  WHEN \"Letzte Stunde\" THEN \"_last_hour\"\n  ELSE \"\"\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "mdr.de",
+            "value": "mdr.de"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "LRA",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT distinct LRA FROM `ndr-code-bi-dashboard.Piano.Profiles`\nORDER BY LRA ASC",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "nachrichten",
+            "value": "nachrichten"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "Redaktionen",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT distinct page_chapter1 FROM `ndr-code-bi-dashboard.Piano.Profiles`\nWHERE LRA = \"$LRA\"\nORDER BY page_chapter1 ASC",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "Alle Kapitel 2",
+            "value": "Alle Kapitel 2"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "Unterkapitel",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT distinct page_chapter2 FROM `ndr-code-bi-dashboard.Piano.Profiles`\nWHERE LRA = \"$LRA\" AND page_chapter1 = \"$Redaktionen\"\nAND page_chapter2  NOT IN (\"app-aktuell\", \"app_aktuell\")\nORDER BY page_chapter2 ASC",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "Alle Sendungs-ID",
+            "value": "Alle Sendungs-ID"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "Sendung",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT distinct sendungs_id FROM `ndr-code-bi-dashboard.Piano.Profiles`\nWHERE LRA = \"$LRA\" AND page_chapter1 = \"$Redaktionen\" AND page_chapter2=\"$Unterkapitel\"\nORDER BY sendungs_id ASC",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-1w/w",
+      "to": "now-1w/w"
+    },
+    "timepicker": {},
+    "timezone": "utc",
+    "title": "Visits of Subchapter | MDR | Letzte Stunde",
+    "uid": "q2uAuAHSz",
+    "version": 5,
+    "weekStart": ""
+  }
+}

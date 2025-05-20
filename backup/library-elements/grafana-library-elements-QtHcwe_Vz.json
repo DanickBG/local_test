@@ -1,0 +1,157 @@
+{
+  "id": 580,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "QtHcwe_Vz",
+  "name": "Instagram Top Fotos/Karuselle Main Table",
+  "kind": 1,
+  "type": "marcusolsson-dynamictext-panel",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "time"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "time: DD.MM | HH:mm \\U\\h\\r"
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byType",
+            "options": "number"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 22,
+      "w": 24,
+      "x": 0,
+      "y": 6
+    },
+    "id": 162,
+    "options": {
+      "afterRender": "",
+      "content": "<table>\n  <thead>\n    <tr>\n      <th id=\"timestamp\">Datum</th>\n      <th id=\"post\">Post</th>\n      <th id=\"engagement\">▼ Interaktionen</th>\n      <th id=\"reach\">pot. Reichweite</th>\n      <th id=\"type\">Typ</th>\n    </tr>\n  </thead>\n  \n  <tbody>\n    {{#each data}}\n    <tr>\n      <td class=\"time\" data-time=\"{{this.time}}\">{{this.time}}</td>\n      <td id=\"post\">{{this.Post}}</td>\n      <td class=\"number\">{{this.engagement}}</td>\n      <td class=\"number\">{{this.PotReichweite}}</td>\n      <td>\n        {{#if (eq this.Typ \"Image\")}}\n          🖼️\n        {{else if (eq this.Typ \"Carousel\")}}\n           🎠\n        {{else}}\n          {{this.Typ}}\n        {{/if}}\n      </td>\n    </tr>\n    {{/each}}\n  </tbody>\n</table>",
+      "contentPartials": [],
+      "defaultContent": "The query didn't return any results.",
+      "editor": {
+        "format": "auto",
+        "language": "markdown"
+      },
+      "editors": [
+        "styles"
+      ],
+      "externalStyles": [],
+      "helpers": "",
+      "renderMode": "allRows",
+      "styles": "<style>\n  table {\n    font-size: 25px;\n    max-width: 1900px;\n    border-collapse: collapse;\n  }\n\n  th {\n    font-size: 20px;\n    font-weight: bold;\n    text-align: left;\n  }\n\n  td {\n    font-size: 25px;\n    padding: 8px;\n    height: 90px;\n  }\n\n  td.time {\n    font-weight: bold;\n    font-size: 20px;\n    min-width: 200px;\n  }\n\n  th#engagement {\n    width: 175px;\n  }\n\n  #reach {\n    width: 165.8px;\n  }\n\n  td.videoViews {\n    width: 124px;\n  }\n  td.number{\n    text-align: center;\n  }\n  td.type {\n    width: 100px;\n  }\n\n  td#post {\n    width: auto;\n    word-wrap: break-word;\n    white-space: normal;\n}\n</style>\n\n\n",
+      "wrap": true
+    },
+    "pluginVersion": "5.6.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT\r\n  time, \r\n  CASE \r\n    WHEN LENGTH(REPLACE(SPLIT(message, '\\n')[SAFE_OFFSET(0)], '�', '')) > 95 \r\n    THEN CONCAT(LEFT(REPLACE(SPLIT(message, '\\n')[SAFE_OFFSET(0)], '�', ''), 95), '...')\r\n    ELSE REPLACE(SPLIT(message, '\\n')[SAFE_OFFSET(0)], '�', '')\r\nEND AS Post,\r\n  -- REPLACE(message, '�', '') AS Post, \r\n  CASE\r\n    WHEN type = 'Reel' THEN totalInteractions\r\n    ELSE engagement\r\n  END AS engagement,  reach AS PotReichweite,\r\n  type AS Typ\r\nFROM `ndr-code-bi-dashboard.Quintly.instagramInsightsOwnPosts`\r\nWHERE profileId = $profileID\r\nAND (type = 'Image' OR type = 'Carousel')\r\nAND $Zeitraum\r\nORDER BY engagement DESC LIMIT 7",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "includeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "PotReichweite": "",
+            "engagement": "",
+            "reach": "Pot. Reichweite",
+            "time": "",
+            "type": "Typ"
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "marcusolsson-dynamictext-panel"
+  },
+  "version": 27,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 23,
+    "created": "2024-06-20T11:45:53Z",
+    "updated": "2025-04-24T08:42:23Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/1d023dd0c27d88e623f989677b219756",
+      "id": 6,
+      "name": "adrian westphal dev"
+    }
+  }
+}

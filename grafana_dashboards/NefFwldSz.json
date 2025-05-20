@@ -1,0 +1,2250 @@
+{
+    "meta": {
+        "type": "db",
+        "canSave": true,
+        "canEdit": true,
+        "canAdmin": true,
+        "canStar": true,
+        "canDelete": true,
+        "slug": "ml-dashboard",
+        "url": "/d/NefFwldSz/ml-dashboard",
+        "expires": "0001-01-01T00:00:00Z",
+        "created": "2024-07-29T12:42:17Z",
+        "updated": "2024-07-30T05:39:19Z",
+        "updatedBy": "Anonymous",
+        "createdBy": "Anonymous",
+        "version": 2,
+        "hasAcl": false,
+        "isFolder": false,
+        "folderId": 660,
+        "folderUid": "folder-F9a5Uxn4k",
+        "folderTitle": "Prototypes",
+        "folderUrl": "/dashboards/f/folder-F9a5Uxn4k/prototypes",
+        "provisioned": false,
+        "provisionedExternalId": "",
+        "annotationsPermissions": {
+            "dashboard": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            },
+            "organization": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            }
+        }
+    },
+    "dashboard": {
+        "annotations": {
+            "list": [
+                {
+                    "builtIn": 1,
+                    "datasource": {
+                        "type": "grafana",
+                        "uid": "-- Grafana --"
+                    },
+                    "enable": true,
+                    "hide": true,
+                    "iconColor": "rgba(0, 211, 255, 1)",
+                    "name": "Annotations & Alerts",
+                    "target": {
+                        "limit": 100,
+                        "matchAny": false,
+                        "tags": [],
+                        "type": "dashboard"
+                    },
+                    "type": "dashboard"
+                }
+            ]
+        },
+        "description": "",
+        "editable": true,
+        "fiscalYearStartMonth": 0,
+        "graphTooltip": 0,
+        "id": 1281,
+        "links": [],
+        "liveNow": false,
+        "panels": [
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "drawStyle": "line",
+                            "fillOpacity": 0,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "lineInterpolation": "linear",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "auto",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                },
+                                {
+                                    "color": "red",
+                                    "value": 80
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 13,
+                    "w": 24,
+                    "x": 0,
+                    "y": 0
+                },
+                "id": 23,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "DECLARE system_time ARRAY<TIMESTAMP>;\nDECLARE i INT64 DEFAULT 0;\n\nSET system_time = ARRAY(\n  SELECT TIMESTAMP_ADD(TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL x DAY), INTERVAL 23 HOUR) \n  FROM UNNEST(GENERATE_ARRAY(0, 5)) as x\n);\n\nLOOP\n  IF i >= ARRAY_LENGTH(system_time) THEN \n    LEAVE;\n  END IF;\n\n  -- Replace this SELECT statement with your actual query, using system_time[OFFSET(i)]\n  SELECT system_time[OFFSET(i)];\n\n  SET i = i + 1;\nEND LOOP;",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    }
+                ],
+                "title": "Panel Title",
+                "type": "timeseries"
+            },
+            {
+                "collapsed": false,
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 13
+                },
+                "id": 21,
+                "panels": [],
+                "title": "Interaktion",
+                "type": "row"
+            },
+            {
+                "collapsed": true,
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 14
+                },
+                "id": 7,
+                "panels": [
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "gridPos": {
+                            "h": 9,
+                            "w": 24,
+                            "x": 0,
+                            "y": 10
+                        },
+                        "id": 11,
+                        "options": {
+                            "baidu": {
+                                "callback": "bmapReady",
+                                "key": ""
+                            },
+                            "editor": {
+                                "format": "auto",
+                                "height": 600
+                            },
+                            "gaode": {
+                                "key": "",
+                                "plugin": "AMap.Scale,AMap.ToolBar"
+                            },
+                            "getOption": "const platform = data.series.flatMap((s) => {\n  return s.fields.find((f) => f.name === 'platform').values.buffer[0];\n})[0];\nconst vergleichsplatform = data.series.flatMap((s) => {\n  return s.fields.find((f) => f.name === 'Vergleichsplatform').values.buffer[0];\n})[0];\nlet platform_color;\nswitch (platform) {\n  case 'Facebook': platform_color = \"rgb(1, 101, 225)\";\n    break\n  case 'Youtube': platform_color = \"rgb(255, 0, 0)\";\n    break\n  case 'TikTok': platform_color = \"rgb(37, 244, 238)\";\n    break\n  case 'Instagram': platform_color = \"rgb(214, 41, 118)\";\n    break\n}\nlet comparison_platform_color;\nswitch (vergleichsplatform) {\n  case 'Facebook': comparison_platform_color = \"rgb(1, 101, 225)\";\n    break\n  case 'Youtube': comparison_platform_color = \"rgb(255, 0, 0)\";\n    break\n  case 'TikTok': comparison_platform_color = \"rgb(37, 244, 238)\";\n    break\n  case 'Instagram': comparison_platform_color = \"rgb(214, 41, 118)\";\n    break\n}\nconsole.log('platform', platform)\nconsole.log('vergleichsplatform', vergleichsplatform)\nconst option = {\n  tooltip: {\n    trigger: 'axis',\n    axisPointer: {\n      type: 'shadow'\n    }\n  },\n  legend: {\n    orient: 'horizontal',\n    bottom: 'bottom',\n  },\n  grid: {\n    bottom: '14%',\n    top: '5%',\n    containLabel: true\n  },\n  yAxis: {\n    type: 'value'\n  },\n  xAxis: {\n    type: 'category',\n    data: [...new Set(data.series.flatMap((s) => {\n      const profile = s.fields.find((f) => f.name === 'stunde').values.buffer;\n      return profile;\n    }))]\n  },\n  series: [\n    {\n      name: platform,\n      type: 'bar',\n      stack: 'total',\n      label: {\n        show: true,\n        position: 'inside',\n        formatter: function (params) {\n          // Check if the value is 0\n          return params.value === 0 ? '' : params.value;\n        },\n      },\n      emphasis: {\n        focus: 'series'\n      },\n      color: platform_color,\n      data: data.series.flatMap((s) => {\n        const anzahlPosts = s.fields.find((f) => f.name === 'anzahlPosts').values.buffer;\n        return anzahlPosts;\n      })\n    },\n    {\n      name: vergleichsplatform,\n      type: 'bar',\n      stack: 'total',\n      label: {\n        show: true,\n        position: 'inside',\n        formatter: function (params) {\n          // Check if the value is 0\n          return params.value === 0 ? '' : params.value;\n        },\n      },\n      emphasis: {\n        focus: 'series'\n      },\n      color: comparison_platform_color,\n      data: data.series.flatMap((s) => {\n        const vergleichsAnzahlPosts = s.fields.find((f) => f.name === 'VergleichsAnzahlPosts').values.buffer;\n        return vergleichsAnzahlPosts;\n      })\n    }\n  ]\n};\n\nreturn option;\n",
+                            "google": {
+                                "callback": "gmapReady",
+                                "key": ""
+                            },
+                            "map": "none",
+                            "renderer": "canvas",
+                            "themeEditor": {
+                                "config": "{}",
+                                "height": 400,
+                                "name": "default"
+                            }
+                        },
+                        "pluginVersion": "9.2.3",
+                        "targets": [
+                            {
+                                "datasource": {
+                                    "type": "grafana-bigquery-datasource",
+                                    "uid": "qUaUqEk4k"
+                                },
+                                "editorMode": "code",
+                                "format": 1,
+                                "location": "europe-west3",
+                                "project": "ndr-code-bi-dashboard",
+                                "rawQuery": true,
+                                "rawSql": "WITH selected_platform AS(\r\nWITH all_hours AS(\r\n  SELECT CAST(stunde AS STRING) as stunde FROM UNNEST(GENERATE_ARRAY(0,23)) AS stunde\r\n),\r\nexisting_hours AS(\r\nSELECT CAST(EXTRACT(HOUR from time) AS STRING) as stunde, COUNT(DISTINCT externalId) as anzahlPosts FROM ${PlattformAnzahlPosts}\r\nWHERE EXTRACT(date from time) > \"$Zeitraum\" AND  profileId = $profileID\r\nGROUP BY stunde\r\nORDER BY stunde ASC),\r\nnot_exisiting_hours AS(\r\n   SELECT all_hours.stunde as stunde, 0 as anzahlPosts\r\n  FROM all_hours\r\n  LEFT JOIN existing_hours ON all_hours.stunde = existing_hours.stunde\r\n  WHERE existing_hours.stunde IS NULL\r\n)\r\nSELECT * FROM existing_hours UNION ALL SELECT * FROM not_exisiting_hours\r\nORDER by CAST(stunde AS INT)),\r\n\r\nselected_comparison_platform AS(\r\nWITH all_hours AS(\r\n  SELECT CAST(stunde AS STRING) as stunde, 0 as anzahlPosts FROM UNNEST(GENERATE_ARRAY(0,23)) AS stunde\r\n),\r\nexisting_hours AS(\r\nSELECT CAST(EXTRACT(HOUR from time) AS STRING) as stunde, COUNT(DISTINCT externalId) as anzahlPosts FROM ${VergleichsPlattformAnzahlPosts}\r\nWHERE EXTRACT(date from time) > \"$Zeitraum\" AND profileId = $VergleichsprofileID\r\nGROUP BY stunde\r\nORDER BY stunde ASC),\r\nnot_exisiting_hours AS(\r\n   SELECT all_hours.stunde as stunde, 0 as anzahlPosts\r\n  FROM all_hours\r\n  LEFT JOIN existing_hours ON all_hours.stunde = existing_hours.stunde\r\n  WHERE existing_hours.stunde IS NULL\r\n)\r\nSELECT * FROM existing_hours UNION ALL SELECT * FROM not_exisiting_hours\r\nORDER by CAST(stunde AS INT))\r\n\r\nSELECT selected_platform.stunde, anzahlPosts,COALESCE(VergleichsAnzahlposts,0)  as VergleichsAnzahlPosts,\r\n\"${Vergleichsplattform}\" as Vergleichsplatform, \"${Plattform}\" as platform FROM selected_platform\r\nLEFT JOIN (SELECT stunde, anzahlPosts as VergleichsAnzahlPosts FROM selected_comparison_platform) AS selected_comparison_platform\r\nON selected_platform.stunde = selected_comparison_platform.stunde\r\nORDER BY CAST(stunde AS INT)",
+                                "refId": "A",
+                                "sql": {
+                                    "columns": [
+                                        {
+                                            "parameters": [],
+                                            "type": "function"
+                                        }
+                                    ],
+                                    "groupBy": [
+                                        {
+                                            "property": {
+                                                "type": "string"
+                                            },
+                                            "type": "groupBy"
+                                        }
+                                    ],
+                                    "limit": 50
+                                }
+                            }
+                        ],
+                        "title": "Anzahl der Posts pro Stunde",
+                        "transparent": true,
+                        "type": "volkovlabs-echarts-panel"
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "gridPos": {
+                            "h": 8,
+                            "w": 24,
+                            "x": 0,
+                            "y": 19
+                        },
+                        "id": 13,
+                        "options": {
+                            "baidu": {
+                                "callback": "bmapReady",
+                                "key": ""
+                            },
+                            "editor": {
+                                "format": "auto",
+                                "height": 600
+                            },
+                            "gaode": {
+                                "key": "",
+                                "plugin": "AMap.Scale,AMap.ToolBar"
+                            },
+                            "getOption": "const platform = data.series.flatMap((s) => {\n  return s.fields.find((f) => f.name === 'platform').values.buffer[0];\n})[0];\nconst vergleichsplatform = data.series.flatMap((s) => {\n  return s.fields.find((f) => f.name === 'Vergleichsplatform').values.buffer[0];\n})[0];\nlet platform_color;\nswitch (platform) {\n  case 'Facebook': platform_color = \"rgb(1, 101, 225)\";\n    break\n  case 'Youtube': platform_color = \"rgb(255, 0, 0)\";\n    break\n  case 'TikTok': platform_color = \"rgb(37, 244, 238)\";\n    break\n  case 'Instagram': platform_color = \"rgb(214, 41, 118)\";\n    break\n}\nlet comparison_platform_color;\nswitch (vergleichsplatform) {\n  case 'Facebook': comparison_platform_color = \"rgb(1, 101, 225)\";\n    break\n  case 'Youtube': comparison_platform_color = \"rgb(255, 0, 0)\";\n    break\n  case 'TikTok': comparison_platform_color = \"rgb(37, 244, 238)\";\n    break\n  case 'Instagram': comparison_platform_color = \"rgb(214, 41, 118)\";\n    break\n}\nconsole.log('platform', platform)\nconsole.log('vergleichsplatform', vergleichsplatform)\nconst option = {\n  tooltip: {\n    trigger: 'axis',\n    axisPointer: {\n      type: 'shadow'\n    }\n  },\n  legend: {\n    orient: 'horizontal',\n    bottom: 'bottom',\n  },\n  grid: {\n    bottom: '14%',\n    top: '5%',\n    containLabel: true\n  },\n  yAxis: {\n    type: 'value'\n  },\n  xAxis: {\n    type: 'category',\n    data: [...new Set(data.series.flatMap((s) => {\n      const profile = s.fields.find((f) => f.name === 'tag').values.buffer;\n      return profile;\n    }))]\n  },\n  series: [\n    {\n      name: platform,\n      type: 'bar',\n      stack: 'total',\n      label: {\n        show: true,\n        position: 'inside',\n        formatter: function (params) {\n          // Check if the value is 0\n          return params.value === 0 ? '' : params.value;\n        },\n      },\n      emphasis: {\n        focus: 'series'\n      },\n      color: platform_color,\n      data: data.series.flatMap((s) => {\n        const anzahlPosts = s.fields.find((f) => f.name === 'anzahlPosts').values.buffer;\n        return anzahlPosts;\n      })\n    },\n    {\n      name: vergleichsplatform,\n      type: 'bar',\n      stack: 'total',\n      label: {\n        show: true,\n        position: 'inside',\n        formatter: function (params) {\n          // Check if the value is 0\n          return params.value === 0 ? '' : params.value;\n        },\n      },\n      emphasis: {\n        focus: 'series'\n      },\n      color: comparison_platform_color,\n      data: data.series.flatMap((s) => {\n        const vergleichsAnzahlPosts = s.fields.find((f) => f.name === 'VergleichsAnzahlPosts').values.buffer;\n        return vergleichsAnzahlPosts;\n      })\n    }\n  ]\n};\n\nreturn option;\n",
+                            "google": {
+                                "callback": "gmapReady",
+                                "key": ""
+                            },
+                            "map": "none",
+                            "renderer": "canvas",
+                            "themeEditor": {
+                                "config": "{}",
+                                "height": 400,
+                                "name": "default"
+                            }
+                        },
+                        "targets": [
+                            {
+                                "datasource": {
+                                    "type": "grafana-bigquery-datasource",
+                                    "uid": "qUaUqEk4k"
+                                },
+                                "editorMode": "code",
+                                "format": 1,
+                                "location": "europe-west3",
+                                "project": "ndr-code-bi-dashboard",
+                                "rawQuery": true,
+                                "rawSql": "CREATE TEMP FUNCTION getDayByDate(datum DATE)\r\nRETURNS STRING\r\nDETERMINISTIC \r\nLANGUAGE js\r\nAS r\"\"\"\r\nvar jsDatum = new Date(datum);\r\nvar day = jsDatum.getUTCDay();\r\nvar days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];\r\nreturn days[day];\r\n\"\"\";\r\n\r\nCREATE TEMP FUNCTION getDayAsNumber(tag STRING)\r\nRETURNS INT64\r\nDETERMINISTIC \r\nLANGUAGE js\r\nAS r\"\"\"\r\nvar days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];\r\nreturn days.indexOf(tag)\r\n\"\"\";\r\n\r\nCREATE TEMP FUNCTION getDayInGerman(tag STRING)\r\nRETURNS STRING\r\nDETERMINISTIC \r\nLANGUAGE js\r\nAS r\"\"\"\r\nconst dayMap = {\r\n        'Sunday': 'Sonntag',\r\n        'Monday': 'Montag',\r\n        'Tuesday': 'Dienstag',\r\n        'Wednesday': 'Mittwoch',\r\n        'Thursday': 'Donnerstag',\r\n        'Friday': 'Freitag',\r\n        'Saturday': 'Samstag'};\r\nreturn dayMap[tag]\r\n\"\"\";\r\n\r\nWITH selected_platform AS(\r\nWITH all_days AS(\r\n  SELECT tag FROM UNNEST(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']) AS tag\r\n),\r\nexisting_days AS(\r\nSELECT getDayByDate(EXTRACT(DATE from time)) as tag, COUNT(DISTINCT externalId) as anzahlPosts FROM ${PlattformAnzahlPosts}\r\nWHERE EXTRACT(date from time) > \"$Zeitraum\" AND  profileId = $profileID\r\nGROUP BY tag\r\nORDER BY tag ASC),\r\nnot_exisiting_days AS(\r\n   SELECT all_days.tag as tag, 0 as anzahlPosts\r\n  FROM all_days\r\n  LEFT JOIN existing_days ON all_days.tag = existing_days.tag\r\n  WHERE existing_days.tag IS NULL\r\n)\r\nSELECT * FROM existing_days UNION ALL SELECT * FROM not_exisiting_days\r\nORDER by tag),\r\n\r\nselected_comparison_platform AS(\r\nWITH all_days AS(\r\n  SELECT tag FROM UNNEST(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']) AS tag\r\n),\r\nexisting_days AS(\r\nSELECT getDayByDate(EXTRACT(DATE from time)) as tag, COUNT(DISTINCT externalId) as anzahlPosts FROM ${VergleichsPlattformAnzahlPosts}\r\nWHERE EXTRACT(date from time) > \"$Zeitraum\" AND profileId = $VergleichsprofileID\r\nGROUP BY tag\r\nORDER BY tag ASC),\r\nnot_exisiting_days AS(\r\n   SELECT all_days.tag as tag, 0 as anzahlPosts\r\n  FROM all_days\r\n  LEFT JOIN existing_days ON all_days.tag = existing_days.tag\r\n  WHERE existing_days.tag IS NULL\r\n)\r\nSELECT * FROM existing_days UNION ALL SELECT * FROM not_exisiting_days\r\nORDER by tag)\r\n\r\nSELECT getDayInGerman(selected_platform.tag) as tag, anzahlPosts,COALESCE(VergleichsAnzahlposts,0)  as VergleichsAnzahlPosts,\r\n\"${Vergleichsplattform}\" as Vergleichsplatform, \"${Plattform}\" as platform FROM selected_platform\r\nLEFT JOIN (SELECT tag, anzahlPosts as VergleichsAnzahlPosts FROM selected_comparison_platform) AS selected_comparison_platform\r\nON selected_platform.tag = selected_comparison_platform.tag\r\nORDER BY getDayAsNumber(selected_comparison_platform.tag)",
+                                "refId": "A",
+                                "sql": {
+                                    "columns": [
+                                        {
+                                            "parameters": [],
+                                            "type": "function"
+                                        }
+                                    ],
+                                    "groupBy": [
+                                        {
+                                            "property": {
+                                                "type": "string"
+                                            },
+                                            "type": "groupBy"
+                                        }
+                                    ],
+                                    "limit": 50
+                                }
+                            }
+                        ],
+                        "title": "Anzahl der Posts pro Wochentag",
+                        "transparent": true,
+                        "type": "volkovlabs-echarts-panel"
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "gridPos": {
+                            "h": 9,
+                            "w": 24,
+                            "x": 0,
+                            "y": 27
+                        },
+                        "id": 15,
+                        "options": {
+                            "baidu": {
+                                "callback": "bmapReady",
+                                "key": ""
+                            },
+                            "editor": {
+                                "format": "auto",
+                                "height": 600
+                            },
+                            "gaode": {
+                                "key": "",
+                                "plugin": "AMap.Scale,AMap.ToolBar"
+                            },
+                            "getOption": "const platform = data.series.flatMap((s) => {\n  return s.fields.find((f) => f.name === 'platform').values.buffer[0];\n})[0];\nconst vergleichsplatform = data.series.flatMap((s) => {\n  return s.fields.find((f) => f.name === 'Vergleichsplatform').values.buffer[0];\n})[0];\nlet platform_color;\nswitch (platform) {\n  case 'Facebook': platform_color = \"rgb(1, 101, 225)\";\n    break\n  case 'Youtube': platform_color = \"rgb(255, 0, 0)\";\n    break\n  case 'TikTok': platform_color = \"rgb(37, 244, 238)\";\n    break\n  case 'Instagram': platform_color = \"rgb(214, 41, 118)\";\n    break\n}\nlet comparison_platform_color;\nswitch (vergleichsplatform) {\n  case 'Facebook': comparison_platform_color = \"rgb(1, 101, 225)\";\n    break\n  case 'Youtube': comparison_platform_color = \"rgb(255, 0, 0)\";\n    break\n  case 'TikTok': comparison_platform_color = \"rgb(37, 244, 238)\";\n    break\n  case 'Instagram': comparison_platform_color = \"rgb(214, 41, 118)\";\n    break\n}\nconsole.log('platform', platform)\nconsole.log('vergleichsplatform', vergleichsplatform)\nconst option = {\n  tooltip: {\n    trigger: 'axis',\n    axisPointer: {\n      type: 'cross'\n    },\n    formatter: function (params) {\n      let tooltipContent = '';\n      params.forEach(function (item) {\n        let number = Math.floor(item.value);\n        let formattedValue = new Intl.NumberFormat('de-DE').format(number);\n        tooltipContent += item.marker + item.seriesName + ': ' + formattedValue + '<br/>';\n      });\n      return tooltipContent;\n    }\n  },\n  legend: {\n    orient: 'horizontal',\n    bottom: 'bottom',\n  },\n  grid: {\n    bottom: '14%',\n    top: '5%',\n    containLabel: true\n  },\n  yAxis: {\n    type: 'value',\n    axisLabel: {\n      formatter: function (value) {\n        // Umwandeln des Werts in einen String und Ersetzen von Kommas durch Punkte\n        return value.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n      }\n    }\n  },\n  xAxis: {\n    type: 'category',\n    data: [...new Set(data.series.flatMap((s) => {\n      const profile = s.fields.find((f) => f.name === 'tag').values.buffer;\n      return profile;\n    }))]\n  },\n  series: [\n    {\n      name: platform,\n      type: 'bar',\n      stack: 'total',\n      label: {\n        show: true,\n        position: 'inside',\n        formatter: function (params) {\n          const value = params.value;\n          const formattedValue = value.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n          // Check if the value is 0\n          return params.value === 0 ? '' : formattedValue;\n        },\n      },\n      emphasis: {\n        focus: 'series'\n      },\n      color: platform_color,\n      data: data.series.flatMap((s) => {\n        const anzahlPosts = s.fields.find((f) => f.name === 'Interaktionen').values.buffer;\n        return anzahlPosts;\n      })\n    },\n    {\n      name: vergleichsplatform,\n      type: 'bar',\n      stack: 'total',\n      label: {\n        show: true,\n        position: 'inside',\n        formatter: function (params) {\n          const value = params.value;\n          const formattedValue = value.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n          // Check if the value is 0\n          return params.value === 0 ? '' : formattedValue;\n        },\n      },\n      emphasis: {\n        focus: 'series'\n      },\n      color: comparison_platform_color,\n      data: data.series.flatMap((s) => {\n        const vergleichsAnzahlPosts = s.fields.find((f) => f.name === 'VergleichsInteraktionen').values.buffer;\n        return vergleichsAnzahlPosts;\n      })\n    }\n  ]\n};\n\nreturn option;\n",
+                            "google": {
+                                "callback": "gmapReady",
+                                "key": ""
+                            },
+                            "map": "none",
+                            "renderer": "canvas",
+                            "themeEditor": {
+                                "config": "{}",
+                                "height": 400,
+                                "name": "default"
+                            }
+                        },
+                        "targets": [
+                            {
+                                "datasource": {
+                                    "type": "grafana-bigquery-datasource",
+                                    "uid": "qUaUqEk4k"
+                                },
+                                "editorMode": "code",
+                                "format": 1,
+                                "location": "europe-west3",
+                                "project": "ndr-code-bi-dashboard",
+                                "rawQuery": true,
+                                "rawSql": "CREATE TEMP FUNCTION getDayByDate(datum DATE)\r\nRETURNS STRING\r\nDETERMINISTIC \r\nLANGUAGE js\r\nAS r\"\"\"\r\nvar jsDatum = new Date(datum);\r\nvar day = jsDatum.getUTCDay();\r\nvar days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];\r\nreturn days[day];\r\n\"\"\";\r\n\r\nCREATE TEMP FUNCTION getDayAsNumber(tag STRING)\r\nRETURNS INT64\r\nDETERMINISTIC \r\nLANGUAGE js\r\nAS r\"\"\"\r\nvar days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];\r\nreturn days.indexOf(tag)\r\n\"\"\";\r\n\r\nCREATE TEMP FUNCTION getDayInGerman(tag STRING)\r\nRETURNS STRING\r\nDETERMINISTIC \r\nLANGUAGE js\r\nAS r\"\"\"\r\nconst dayMap = {\r\n        'Sunday': 'Sonntag',\r\n        'Monday': 'Montag',\r\n        'Tuesday': 'Dienstag',\r\n        'Wednesday': 'Mittwoch',\r\n        'Thursday': 'Donnerstag',\r\n        'Friday': 'Freitag',\r\n        'Saturday': 'Samstag'};\r\nreturn dayMap[tag]\r\n\"\"\";\r\n\r\nWITH selected_platform AS(\r\nWITH all_days AS(\r\n  SELECT tag FROM UNNEST(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']) AS tag\r\n),\r\nexisting_days AS(\r\nSELECT getDayByDate(EXTRACT(DATE from time)) as tag, $PlattformInteraktionen as Interaktionen FROM Quintly.${Vorhersagemodel}\r\nWHERE EXTRACT(date from time) > \"$Zeitraum\" AND  profileId = $profileID\r\nGROUP BY tag\r\nORDER BY tag ASC),\r\nnot_exisiting_days AS(\r\n   SELECT all_days.tag as tag, 0 as Interaktionen\r\n  FROM all_days\r\n  LEFT JOIN existing_days ON all_days.tag = existing_days.tag\r\n  WHERE existing_days.tag IS NULL\r\n)\r\nSELECT * FROM existing_days UNION ALL SELECT * FROM not_exisiting_days\r\nORDER by tag),\r\n\r\nselected_comparison_platform AS(\r\nWITH all_days AS(\r\n  SELECT tag FROM UNNEST(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']) AS tag\r\n),\r\nexisting_days AS(\r\nSELECT getDayByDate(EXTRACT(DATE from time)) as tag, $VergleicsplattformInteraktionen as Interaktionen FROM Quintly.${Vorhersagevergleichsplattform}\r\nWHERE EXTRACT(date from time) > \"$Zeitraum\" AND profileId = $VergleichsprofileID\r\nGROUP BY tag\r\nORDER BY tag ASC),\r\nnot_exisiting_days AS(\r\n   SELECT all_days.tag as tag, 0 as Interaktionen\r\n  FROM all_days\r\n  LEFT JOIN existing_days ON all_days.tag = existing_days.tag\r\n  WHERE existing_days.tag IS NULL\r\n)\r\nSELECT * FROM existing_days UNION ALL SELECT * FROM not_exisiting_days\r\nORDER by tag)\r\n\r\n\r\nSELECT getDayInGerman(selected_platform.tag) as tag, Interaktionen,COALESCE(VergleichsInteraktionen,0)  as VergleichsInteraktionen,\r\n\"${Vergleichsplattform}\" as Vergleichsplatform, \"${Plattform}\" as platform FROM selected_platform\r\nLEFT JOIN (SELECT tag, Interaktionen as VergleichsInteraktionen FROM selected_comparison_platform) AS selected_comparison_platform\r\nON selected_platform.tag = selected_comparison_platform.tag\r\nORDER BY getDayAsNumber(selected_comparison_platform.tag)",
+                                "refId": "A",
+                                "sql": {
+                                    "columns": [
+                                        {
+                                            "parameters": [],
+                                            "type": "function"
+                                        }
+                                    ],
+                                    "groupBy": [
+                                        {
+                                            "property": {
+                                                "type": "string"
+                                            },
+                                            "type": "groupBy"
+                                        }
+                                    ],
+                                    "limit": 50
+                                }
+                            }
+                        ],
+                        "title": "Interaktionen pro Wochentag",
+                        "transparent": true,
+                        "type": "volkovlabs-echarts-panel"
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "gridPos": {
+                            "h": 9,
+                            "w": 10,
+                            "x": 2,
+                            "y": 36
+                        },
+                        "id": 18,
+                        "options": {
+                            "baidu": {
+                                "callback": "bmapReady",
+                                "key": ""
+                            },
+                            "editor": {
+                                "format": "auto",
+                                "height": 600
+                            },
+                            "gaode": {
+                                "key": "",
+                                "plugin": "AMap.Scale,AMap.ToolBar"
+                            },
+                            "getOption": "\nconst colorMapping = {\n  'montag': '#3498db', // \n  'dienstag': '#2ecc71',\n  'mittwoch': '#e67e22', // \n  'donnerstag': '#9b59b6', // \n  'freitag': '#e74c3c', // \n  'samstag': '#8e44ad',\n  'sonntag': '#f39c12', // \n};\n\nconst seriesData = data.series.map((s) => {\n  const platformName = s.fields.find((f) => f.name === 'tag').values.buffer;\n  const summeValue = s.fields.find((f) => f.name === 'Interaktionen').values.buffer;\n\n  const res = platformName.map((name, index) => {\n    const value = summeValue[index];\n    let color = colorMapping[name.toLowerCase()] || '#000000'; // Fallback to black if no color is assigned\n    return { value, name, itemStyle: { color } };\n  });\n\n  return res;\n}).flat();\n\nconst result = {\n  //backgroundColor: '#2c343c',\n  tooltip: {\n    trigger: 'item',\n    formatter: function (params) {\n      const name = params.name;\n      const value = params.value;\n      const formattedValue = new Intl.NumberFormat('de-DE').format(value);\n      const percentage = params.percent.toLocaleString('de-DE', { maximumFractionDigits: 2 }) + '%';\n      return `${name}: ${formattedValue} (${percentage})`;\n    },\n  },\n  visualMap: {\n    show: false,\n    min: 80,\n    max: 600,\n    inRange: {\n      colorLightness: [0, 1],\n    },\n  },\n  series: [\n    {\n      name: 'Platform Distribution',\n      type: 'pie',\n      radius: '60%',\n      data: seriesData,\n      emphasis: {\n        itemStyle: {\n          shadowBlur: 10,\n          shadowOffsetX: 0,\n          shadowColor: 'rgba(0, 0, 0, 0.5)',\n        },\n      },\n      label: {\n        formatter: '{b} : {d}%',\n        textStyle: {\n          fontSize: 10, // Adjust this value to change the font size\n          color: '#fff' // Optional: adjust the color if needed\n        }\n      },\n    },\n  ],\n};\n\nreturn result;\n",
+                            "google": {
+                                "callback": "gmapReady",
+                                "key": ""
+                            },
+                            "map": "none",
+                            "renderer": "canvas",
+                            "themeEditor": {
+                                "config": "{}",
+                                "height": 400,
+                                "name": "default"
+                            }
+                        },
+                        "targets": [
+                            {
+                                "datasource": {
+                                    "type": "grafana-bigquery-datasource",
+                                    "uid": "qUaUqEk4k"
+                                },
+                                "editorMode": "code",
+                                "format": 1,
+                                "location": "europe-west3",
+                                "project": "ndr-code-bi-dashboard",
+                                "rawQuery": true,
+                                "rawSql": "CREATE TEMP FUNCTION getDayByDate(datum DATE)\r\nRETURNS STRING\r\nDETERMINISTIC\r\nLANGUAGE js\r\nAS r\"\"\"\r\nvar jsDatum = new Date(datum);\r\nvar day = jsDatum.getUTCDay();\r\nvar days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];\r\nreturn days[day];\r\n\"\"\";\r\n\r\nCREATE TEMP FUNCTION getDayAsNumber(tag STRING)\r\nRETURNS INT64\r\nDETERMINISTIC \r\nLANGUAGE js\r\nAS r\"\"\"\r\nvar days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];\r\nreturn days.indexOf(tag)\r\n\"\"\";\r\n\r\nCREATE TEMP FUNCTION getDayInGerman(tag STRING)\r\nRETURNS STRING\r\nDETERMINISTIC \r\nLANGUAGE js\r\nAS r\"\"\"\r\nconst dayMap = {\r\n        'Sunday': 'Sonntag',\r\n        'Monday': 'Montag',\r\n        'Tuesday': 'Dienstag',\r\n        'Wednesday': 'Mittwoch',\r\n        'Thursday': 'Donnerstag',\r\n        'Friday': 'Freitag',\r\n        'Saturday': 'Samstag'};\r\nreturn dayMap[tag]\r\n\"\"\";\r\n\r\nWITH selected_platform AS(\r\nWITH all_days AS(\r\n  SELECT tag FROM UNNEST(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']) AS tag\r\n),\r\nexisting_days AS(\r\nSELECT getDayByDate(EXTRACT(DATE from time)) as tag, ROUND($PlattformInteraktionen/$NumberOfWeeks) as Interaktionen FROM Quintly.${Vorhersagemodel}\r\nWHERE EXTRACT(date from time) > \"$Zeitraum\" AND  profileId = $profileID\r\nGROUP BY tag\r\nORDER BY tag ASC),\r\nnot_exisiting_days AS(\r\n   SELECT all_days.tag as tag, 0 as Interaktionen\r\n  FROM all_days\r\n  LEFT JOIN existing_days ON all_days.tag = existing_days.tag\r\n  WHERE existing_days.tag IS NULL\r\n)\r\nSELECT * FROM existing_days UNION ALL SELECT * FROM not_exisiting_days\r\nORDER by tag)\r\nSELECT getDayInGerman(selected_platform.tag) as tag, Interaktionen FROM selected_platform\r\nORDER BY getDayAsNumber(selected_platform.tag) ASC",
+                                "refId": "A",
+                                "sql": {
+                                    "columns": [
+                                        {
+                                            "parameters": [],
+                                            "type": "function"
+                                        }
+                                    ],
+                                    "groupBy": [
+                                        {
+                                            "property": {
+                                                "type": "string"
+                                            },
+                                            "type": "groupBy"
+                                        }
+                                    ],
+                                    "limit": 50
+                                }
+                            }
+                        ],
+                        "title": "Durchschnettliche Interaktionen pro Wochentag | ${Plattform}",
+                        "transparent": true,
+                        "type": "volkovlabs-echarts-panel"
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "gridPos": {
+                            "h": 9,
+                            "w": 10,
+                            "x": 12,
+                            "y": 36
+                        },
+                        "id": 19,
+                        "options": {
+                            "baidu": {
+                                "callback": "bmapReady",
+                                "key": ""
+                            },
+                            "editor": {
+                                "format": "auto",
+                                "height": 600
+                            },
+                            "gaode": {
+                                "key": "",
+                                "plugin": "AMap.Scale,AMap.ToolBar"
+                            },
+                            "getOption": "\nconst colorMapping = {\n  'montag': '#3498db', // \n  'dienstag': '#2ecc71',\n  'mittwoch': '#e67e22', // \n  'donnerstag': '#9b59b6', // \n  'freitag': '#e74c3c', // \n  'samstag': '#8e44ad',\n  'sonntag': '#f39c12', // \n};\n\nconst seriesData = data.series.map((s) => {\n  const platformName = s.fields.find((f) => f.name === 'tag').values.buffer;\n  const summeValue = s.fields.find((f) => f.name === 'Interaktionen').values.buffer;\n\n  const res = platformName.map((name, index) => {\n    const value = summeValue[index];\n    let color = colorMapping[name.toLowerCase()] || '#000000'; // Fallback to black if no color is assigned\n    return { value, name, itemStyle: { color } };\n  });\n\n  return res;\n}).flat();\n\nconst result = {\n  //backgroundColor: '#2c343c',\n  tooltip: {\n    trigger: 'item',\n    formatter: function (params) {\n      const name = params.name;\n      const value = params.value;\n      const formattedValue = new Intl.NumberFormat('de-DE').format(value);\n      const percentage = params.percent.toLocaleString('de-DE', { maximumFractionDigits: 2 }) + '%';\n      return `${name}: ${formattedValue} (${percentage})`;\n    },\n  },\n  visualMap: {\n    show: false,\n    min: 80,\n    max: 600,\n    inRange: {\n      colorLightness: [0, 1],\n    },\n  },\n  series: [\n    {\n      name: 'Platform Distribution',\n      type: 'pie',\n      radius: '60%',\n      data: seriesData,\n      emphasis: {\n        itemStyle: {\n          shadowBlur: 10,\n          shadowOffsetX: 0,\n          shadowColor: 'rgba(0, 0, 0, 0.5)',\n        },\n      },\n      label: {\n        formatter: '{b} : {d}%',\n        textStyle: {\n          fontSize: 10, // Adjust this value to change the font size\n          color: '#fff' // Optional: adjust the color if needed\n        }\n      },\n    },\n  ],\n};\n\nreturn result;\n",
+                            "google": {
+                                "callback": "gmapReady",
+                                "key": ""
+                            },
+                            "map": "none",
+                            "renderer": "canvas",
+                            "themeEditor": {
+                                "config": "{}",
+                                "height": 400,
+                                "name": "default"
+                            }
+                        },
+                        "targets": [
+                            {
+                                "datasource": {
+                                    "type": "grafana-bigquery-datasource",
+                                    "uid": "qUaUqEk4k"
+                                },
+                                "editorMode": "code",
+                                "format": 1,
+                                "location": "europe-west3",
+                                "project": "ndr-code-bi-dashboard",
+                                "rawQuery": true,
+                                "rawSql": "CREATE TEMP FUNCTION getDayByDate(datum DATE)\r\nRETURNS STRING\r\nDETERMINISTIC\r\nLANGUAGE js\r\nAS r\"\"\"\r\nvar jsDatum = new Date(datum);\r\nvar day = jsDatum.getUTCDay();\r\nvar days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];\r\nreturn days[day];\r\n\"\"\";\r\n\r\nCREATE TEMP FUNCTION getDayAsNumber(tag STRING)\r\nRETURNS INT64\r\nDETERMINISTIC \r\nLANGUAGE js\r\nAS r\"\"\"\r\nvar days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];\r\nreturn days.indexOf(tag)\r\n\"\"\";\r\n\r\nCREATE TEMP FUNCTION getDayInGerman(tag STRING)\r\nRETURNS STRING\r\nDETERMINISTIC \r\nLANGUAGE js\r\nAS r\"\"\"\r\nconst dayMap = {\r\n        'Sunday': 'Sonntag',\r\n        'Monday': 'Montag',\r\n        'Tuesday': 'Dienstag',\r\n        'Wednesday': 'Mittwoch',\r\n        'Thursday': 'Donnerstag',\r\n        'Friday': 'Freitag',\r\n        'Saturday': 'Samstag'};\r\nreturn dayMap[tag]\r\n\"\"\";\r\n\r\nWITH selected_platform AS(\r\nWITH all_days AS(\r\n  SELECT tag FROM UNNEST(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']) AS tag\r\n),\r\nexisting_days AS(\r\nSELECT getDayByDate(EXTRACT(DATE from time)) as tag, ROUND($VergleicsplattformInteraktionen/$NumberOfWeeks) as Interaktionen FROM Quintly.${Vorhersagevergleichsplattform}\r\nWHERE EXTRACT(date from time) > \"$Zeitraum\" AND  profileId = $VergleichsprofileID\r\nGROUP BY tag\r\nORDER BY tag ASC),\r\nnot_exisiting_days AS(\r\n   SELECT all_days.tag as tag, \r\n   CASE \"${Vergleichsplattform}\"\r\n   WHEN \"\" THEN CAST(NULL as INT64)\r\n   ELSE 0 END as Interaktionen\r\n  FROM all_days\r\n  LEFT JOIN existing_days ON all_days.tag = existing_days.tag\r\n  WHERE existing_days.tag IS NULL\r\n)\r\nSELECT * FROM existing_days UNION ALL SELECT * FROM not_exisiting_days\r\nORDER by tag)\r\nSELECT getDayInGerman(selected_platform.tag) as tag, Interaktionen FROM selected_platform\r\nORDER BY getDayAsNumber(selected_platform.tag) ASC",
+                                "refId": "A",
+                                "sql": {
+                                    "columns": [
+                                        {
+                                            "parameters": [],
+                                            "type": "function"
+                                        }
+                                    ],
+                                    "groupBy": [
+                                        {
+                                            "property": {
+                                                "type": "string"
+                                            },
+                                            "type": "groupBy"
+                                        }
+                                    ],
+                                    "limit": 50
+                                }
+                            }
+                        ],
+                        "title": "Durchschnettliche Interaktionen pro Wochentag | ${Vergleichsplattform}",
+                        "transparent": true,
+                        "type": "volkovlabs-echarts-panel"
+                    }
+                ],
+                "title": "Clustering",
+                "type": "row"
+            },
+            {
+                "collapsed": true,
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 15
+                },
+                "id": 4,
+                "panels": [
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "gridPos": {
+                            "h": 8,
+                            "w": 12,
+                            "x": 0,
+                            "y": 53
+                        },
+                        "id": 2,
+                        "options": {
+                            "baidu": {
+                                "callback": "bmapReady",
+                                "key": ""
+                            },
+                            "editor": {
+                                "format": "auto",
+                                "height": 600
+                            },
+                            "gaode": {
+                                "key": "",
+                                "plugin": "AMap.Scale,AMap.ToolBar"
+                            },
+                            "getOption": "function formatDate(timestamp) {\n  const date = new Date(timestamp);\n  let day = ('0' + date.getDate()).slice(-2);\n  let month = ('0' + (date.getMonth() + 1)).slice(-2);\n  let year = date.getFullYear();\n  return `${day}.${month}.${year}`;\n}\n\nconst series = data.series.map((s) => {\n  const timeValues = s.fields.find((f) => f.name === 'Datum').values.buffer;\n  const oldTimeValues = s.fields.find((f) => f.name === 'EchtesDatum').values.buffer;\n  const prediction = s.fields.find((f) => f.name === 'Vorhersage').values.buffer;\n  const lowerBound = s.fields.find((f) => f.name === 'Unterschranke').values.buffer;\n  const upperBound = s.fields.find((f) => f.name === 'Oberschranke').values.buffer;\n  const pastValues = s.fields.find((f) => f.name === 'page_follows').values.buffer;\n  console.log(\"Date\", timeValues);\n  console.log(\"Prediction\", prediction);\n  console.log(\"Lower Bound\", lowerBound);\n  console.log(\"Upper Bound\", upperBound);\n  return [{\n    name: 'Vorhersage',\n    type: 'line',\n    smooth: true,\n    showSymbol: false,\n    itemStyle: {\n      color: \"rgb(255,0, 0)\"\n    },\n    data: prediction.map((value, index) => [timeValues[index], value])\n  },\n  {\n    name: 'Unterschranke',\n    type: 'line',\n    smooth: true,\n    showSymbol: false,\n    itemStyle: {\n      color: \"rgb(0,255, 0)\"\n    },\n    data: lowerBound.map((value, index) => [timeValues[index], value])\n  },\n  {\n    name: 'Oberschranke',\n    type: 'line',\n    smooth: true,\n    showSymbol: false,\n    itemStyle: {\n      color: \"rgb(0,0, 255)\"\n    },\n    data: upperBound.map((value, index) => [timeValues[index], value])\n  },\n  {\n    name: 'Vergangenheit',\n    type: 'line',\n    smooth: true,\n    showSymbol: false,\n    itemStyle: {\n      color: \"rgb(0,255, 255)\"\n    },\n    data: pastValues.map((value, index) => [oldTimeValues[index], value])\n  }\n  ]\n}).flat();\n\n/**\n * Enable Data Zoom by default\n */\nsetTimeout(() => echartsInstance.dispatchAction({\n  type: 'takeGlobalCursor',\n  key: 'dataZoomSelect',\n  dataZoomSelectActive: true,\n}), 500);\n\n/**\n * Update Time Range on Zoom\n */\nechartsInstance.on('datazoom', function (params) {\n  const startValue = params.batch[0]?.startValue;\n  const endValue = params.batch[0]?.endValue;\n  locationService.partial({ from: startValue, to: endValue });\n});\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip: {\n    trigger: 'axis',\n    axisPointer: {\n      type: 'cross'\n    },\n    formatter: function (params) {\n      let tooltipContent = formatDate(params[0].axisValue) + '<br/>'; // Datumsformatierung\n      params.forEach(function (item) {\n        //let formattedValue = item.data[1].toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.'); // Tausendertrennzeichen einf\u00fcgen\n        let number = Math.floor(item.data[1]);\n        let formattedValue = new Intl.NumberFormat('de-DE').format(number);\n        tooltipContent += item.marker + item.seriesName + ': ' + formattedValue + '<br/>';\n      });\n      return tooltipContent;\n    }\n  },\n  legend: {\n    orient: 'horizontal',\n    left: 'left',\n    bottom: 'bottom',\n  },\n  toolbox: {\n    feature: {\n      dataZoom: {\n        yAxisIndex: 'none',\n        icon: {\n          zoom: 'path://',\n          back: 'path://',\n        },\n      },\n      saveAsImage: {},\n    }\n  },\n  xAxis: {\n    type: 'time',\n    axisLabel: {\n      hideOverlap: true,\n      formatter: function (value) {\n        const date = new Date(value);\n        let day = ('0' + date.getDate()).slice(-2);\n        let month = ('0' + (date.getMonth() + 1)).slice(-2);\n        let year = date.getFullYear();\n        return `${day}.${month}.${year}`;\n      },\n      //showMaxLabel: '20'\n    },\n  },\n  yAxis: {\n    type: 'value',\n    min: function (value) {\n      return Math.floor(value.min) - 200\n    },\n    max: function (value) {\n      return Math.floor(value.max) + 200\n    },\n    axisLabel: {\n      formatter: function (value) {\n        // Umwandeln des Werts in einen String und Ersetzen von Kommas durch Punkte\n        return value.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n      }\n    },\n  },\n  grid: {\n    left: '2%',\n    right: '2%',\n    top: '6%',\n    bottom: 24,\n    containLabel: true,\n  },\n  series,\n};",
+                            "google": {
+                                "callback": "gmapReady",
+                                "key": ""
+                            },
+                            "map": "none",
+                            "renderer": "canvas",
+                            "themeEditor": {
+                                "config": "{}",
+                                "height": 400,
+                                "name": "default"
+                            }
+                        },
+                        "targets": [
+                            {
+                                "datasource": {
+                                    "type": "grafana-bigquery-datasource",
+                                    "uid": "qUaUqEk4k"
+                                },
+                                "editorMode": "code",
+                                "format": 1,
+                                "location": "europe-west3",
+                                "project": "ndr-code-bi-dashboard",
+                                "rawQuery": true,
+                                "rawSql": "SELECT * FROM\r\n(SELECT DATE(forecast_timestamp) as Datum, forecast_value as Vorhersage, prediction_interval_lower_bound as Unterschranke\r\n, prediction_interval_upper_bound as Oberschranke  FROM ML.FORECAST(MODEL `ndr-code-bi-dashboard.Quintly.arimaModel_${Vorhersagemodel}_${profileID}`,STRUCT($Vorhersagezeitraum AS horizon),\r\n(  SELECT\r\n      EXTRACT(DATE from time) as datum, * EXCEPT(`time`)\r\n    FROM (\r\n    SELECT * EXCEPT($PlattformFollowersVorhersageExceptList) FROM `Quintly.${Vorhersagemodel}`\r\n     WHERE EXTRACT(date from time) < \"$heute\"\r\n    AND profileId = $profileID\r\n)))) AS predicted_data\r\nLEFT JOIN (SELECT DATE_ADD(EXTRACT(date from time), INTERVAL $Vorhersagezeitraum DAY) as Datum, $PlattformFollowersField as page_follows, EXTRACT(date from time) as EchtesDatum\r\nFROM `Quintly.${Vorhersagemodel}` \r\nWHERE EXTRACT(date from time) > \"$Zeitraum\" AND profileId = $profileID AND $PlattformFollowersField IS NOT NULL\r\nORDER BY datum DESC) AS real_data\r\nON real_data.datum = predicted_data.datum",
+                                "refId": "A",
+                                "sql": {
+                                    "columns": [
+                                        {
+                                            "parameters": [],
+                                            "type": "function"
+                                        }
+                                    ],
+                                    "groupBy": [
+                                        {
+                                            "property": {
+                                                "type": "string"
+                                            },
+                                            "type": "groupBy"
+                                        }
+                                    ],
+                                    "limit": 50
+                                }
+                            }
+                        ],
+                        "title": "Followers Vorhersage | $Plattform",
+                        "transparent": true,
+                        "type": "volkovlabs-echarts-panel"
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "gridPos": {
+                            "h": 8,
+                            "w": 12,
+                            "x": 12,
+                            "y": 53
+                        },
+                        "id": 5,
+                        "options": {
+                            "baidu": {
+                                "callback": "bmapReady",
+                                "key": ""
+                            },
+                            "editor": {
+                                "format": "auto",
+                                "height": 600
+                            },
+                            "gaode": {
+                                "key": "",
+                                "plugin": "AMap.Scale,AMap.ToolBar"
+                            },
+                            "getOption": "function formatDate(timestamp) {\n  const date = new Date(timestamp);\n  let day = ('0' + date.getDate()).slice(-2);\n  let month = ('0' + (date.getMonth() + 1)).slice(-2);\n  let year = date.getFullYear();\n  return `${day}.${month}.${year}`;\n}\n\nconst series = data.series.map((s) => {\n  const timeValues = s.fields.find((f) => f.name === 'Datum').values.buffer;\n  const oldTimeValues = s.fields.find((f) => f.name === 'EchtesDatum').values.buffer;\n  const prediction = s.fields.find((f) => f.name === 'Vorhersage').values.buffer;\n  const lowerBound = s.fields.find((f) => f.name === 'Unterschranke').values.buffer;\n  const upperBound = s.fields.find((f) => f.name === 'Oberschranke').values.buffer;\n  const pastValues = s.fields.find((f) => f.name === 'page_follows').values.buffer;\n  console.log(\"Date\", timeValues);\n  console.log(\"Prediction\", prediction);\n  console.log(\"Lower Bound\", lowerBound);\n  console.log(\"Upper Bound\", upperBound);\n  return [{\n    name: 'Vorhersage',\n    type: 'line',\n    smooth: true,\n    showSymbol: false,\n    itemStyle: {\n      color: \"rgb(255,0, 0)\"\n    },\n    data: prediction.map((value, index) => [timeValues[index], value])\n  },\n  {\n    name: 'Unterschranke',\n    type: 'line',\n    smooth: true,\n    showSymbol: false,\n    itemStyle: {\n      color: \"rgb(0,255, 0)\"\n    },\n    data: lowerBound.map((value, index) => [timeValues[index], value])\n  },\n  {\n    name: 'Oberschranke',\n    type: 'line',\n    smooth: true,\n    showSymbol: false,\n    itemStyle: {\n      color: \"rgb(0,0, 255)\"\n    },\n    data: upperBound.map((value, index) => [timeValues[index], value])\n  },\n  {\n    name: 'Vergangenheit',\n    type: 'line',\n    smooth: true,\n    showSymbol: false,\n    itemStyle: {\n      color: \"rgb(0,255, 255)\"\n    },\n    data: pastValues.map((value, index) => [oldTimeValues[index], value])\n  }\n  ]\n}).flat();\n\n/**\n * Enable Data Zoom by default\n */\nsetTimeout(() => echartsInstance.dispatchAction({\n  type: 'takeGlobalCursor',\n  key: 'dataZoomSelect',\n  dataZoomSelectActive: true,\n}), 500);\n\n/**\n * Update Time Range on Zoom\n */\nechartsInstance.on('datazoom', function (params) {\n  const startValue = params.batch[0]?.startValue;\n  const endValue = params.batch[0]?.endValue;\n  locationService.partial({ from: startValue, to: endValue });\n});\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip: {\n    trigger: 'axis',\n    axisPointer: {\n      type: 'cross'\n    },\n    formatter: function (params) {\n      let tooltipContent = formatDate(params[0].axisValue) + '<br/>'; // Datumsformatierung\n      params.forEach(function (item) {\n        //let formattedValue = item.data[1].toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.'); // Tausendertrennzeichen einf\u00fcgen\n        let number = Math.floor(item.data[1]);\n        let formattedValue = new Intl.NumberFormat('de-DE').format(number);\n        tooltipContent += item.marker + item.seriesName + ': ' + formattedValue + '<br/>';\n      });\n      return tooltipContent;\n    }\n  },\n  legend: {\n    orient: 'horizontal',\n    left: 'left',\n    bottom: 'bottom',\n  },\n  toolbox: {\n    feature: {\n      dataZoom: {\n        yAxisIndex: 'none',\n        icon: {\n          zoom: 'path://',\n          back: 'path://',\n        },\n      },\n      saveAsImage: {},\n    }\n  },\n  xAxis: {\n    type: 'time',\n    axisLabel: {\n      hideOverlap: true,\n      formatter: function (value) {\n        const date = new Date(value);\n        let day = ('0' + date.getDate()).slice(-2);\n        let month = ('0' + (date.getMonth() + 1)).slice(-2);\n        let year = date.getFullYear();\n        return `${day}.${month}.${year}`;\n      },\n      //showMaxLabel: '20'\n    },\n  },\n  yAxis: {\n    type: 'value',\n    splitLine: { show: false },\n    min: function (value) {\n      return Math.floor(value.min) - 200\n    },\n    max: function (value) {\n      return Math.floor(value.max) + 200\n    },\n    axisLabel: {\n      formatter: function (value) {\n        // Umwandeln des Werts in einen String und Ersetzen von Kommas durch Punkte\n        return value.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n      }\n    },\n  },\n  grid: {\n    left: '2%',\n    right: '2%',\n    top: '6%',\n    bottom: 24,\n    containLabel: true\n  },\n  series,\n};",
+                            "google": {
+                                "callback": "gmapReady",
+                                "key": ""
+                            },
+                            "map": "none",
+                            "renderer": "canvas",
+                            "themeEditor": {
+                                "config": "{}",
+                                "height": 400,
+                                "name": "default"
+                            }
+                        },
+                        "targets": [
+                            {
+                                "datasource": {
+                                    "type": "grafana-bigquery-datasource",
+                                    "uid": "qUaUqEk4k"
+                                },
+                                "editorMode": "code",
+                                "format": 1,
+                                "location": "europe-west3",
+                                "project": "ndr-code-bi-dashboard",
+                                "rawQuery": true,
+                                "rawSql": "WITH available_vergleichsplattform AS (\r\nSELECT predicted_data.Datum, Vorhersage, Unterschranke, Oberschranke, page_follows, EchtesDatum FROM\r\n(SELECT DATE(forecast_timestamp) as Datum, forecast_value as Vorhersage, prediction_interval_lower_bound as Unterschranke\r\n, prediction_interval_upper_bound as Oberschranke  FROM ML.FORECAST(MODEL `ndr-code-bi-dashboard.Quintly.arimaModel_${Vorhersagevergleichsplattform}_${VorhersageVergleichsprofileID}`,STRUCT($Vorhersagezeitraum AS horizon),\r\n(  SELECT\r\n      EXTRACT(DATE from time) as datum, * EXCEPT(`time`)\r\n    FROM (\r\n    SELECT * EXCEPT($VergleichsPlattformFollowersVorhersageExceptList) FROM `Quintly.${Vorhersagevergleichsplattform}`\r\n     WHERE EXTRACT(date from time) < \"$heute\"\r\n    AND profileId = $VorhersageVergleichsprofileID\r\n)))) AS predicted_data\r\nLEFT JOIN (SELECT DATE_ADD(EXTRACT(date from time), INTERVAL $Vorhersagezeitraum DAY) as Datum, $VergleichsPlattformFollowersField as page_follows, EXTRACT(date from time) as EchtesDatum\r\nFROM `Quintly.${Vorhersagevergleichsplattform}` \r\nWHERE EXTRACT(date from time) > \"$VorhersageVergleichsPlattformZeitraum\" AND profileId = $VorhersageVergleichsprofileID AND $VergleichsPlattformFollowersField IS NOT NULL\r\nORDER BY datum DESC) AS real_data\r\nON real_data.datum = predicted_data.datum),\r\nnone_data AS(\r\n   SELECT \r\n    CAST(NULL AS DATE) AS Datum,\r\n    CAST(NULL AS FLOAT64) AS Vorhersage,\r\n    CAST(NULL AS FLOAT64) AS Unterschranke,\r\n    CAST(NULL AS FLOAT64) AS Oberschranke,\r\n    CAST(NULL AS INT64) AS page_follows,\r\n    CAST(NULL AS DATE) AS EchtesDatum\r\n)\r\nSELECT\r\nCASE \r\n    WHEN \"${Vergleichsplattform}\" = \"\" THEN nd.Datum\r\n    ELSE av.Datum\r\nEND AS Datum,\r\nCASE \r\n    WHEN \"${Vergleichsplattform}\" = \"\" THEN nd.Vorhersage\r\n    ELSE av.Vorhersage\r\nEND AS Vorhersage,\r\nCASE \r\n    WHEN \"${Vergleichsplattform}\" = \"\" THEN nd.Unterschranke\r\n    ELSE av.Unterschranke\r\nEND AS Unterschranke,\r\nCASE \r\n    WHEN \"${Vergleichsplattform}\" = \"\" THEN nd.Oberschranke\r\n    ELSE av.Oberschranke\r\nEND AS Oberschranke,\r\nCASE \r\n    WHEN \"${Vergleichsplattform}\" = \"\" THEN nd.page_follows\r\n    ELSE av.page_follows\r\nEND AS page_follows,\r\nCASE \r\n    WHEN \"${Vergleichsplattform}\" = \"\" THEN nd.EchtesDatum\r\n    ELSE av.EchtesDatum\r\nEND AS EchtesDatum,\r\nFROM available_vergleichsplattform av, none_data nd\r\n",
+                                "refId": "A",
+                                "sql": {
+                                    "columns": [
+                                        {
+                                            "parameters": [],
+                                            "type": "function"
+                                        }
+                                    ],
+                                    "groupBy": [
+                                        {
+                                            "property": {
+                                                "type": "string"
+                                            },
+                                            "type": "groupBy"
+                                        }
+                                    ],
+                                    "limit": 50
+                                }
+                            }
+                        ],
+                        "title": "Followers Vorhersage | $Vergleichsplattform",
+                        "transparent": true,
+                        "type": "volkovlabs-echarts-panel"
+                    }
+                ],
+                "title": "Vorhersage",
+                "type": "row"
+            }
+        ],
+        "refresh": false,
+        "schemaVersion": 37,
+        "style": "dark",
+        "tags": [],
+        "templating": {
+            "list": [
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "NDR",
+                        "value": "NDR"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 0,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "LRA",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "Select a.LRA  FROM\r\n(\r\nSELECT DISTINCT LRA FROM `ndr-code-bi-dashboard.Quintly.profiles` \r\n) as a \r\nORDER BY(\r\nCASE WHEN a.LRA like  LEFT(\"${__user.login}\",3)\r\nTHEN 1\r\nELSE 0\r\nEND\r\n) DESC",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": true,
+                        "text": "extra 3",
+                        "value": "extra 3"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 0,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Profil",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT a.profile \r\nFROM \r\n(SELECT profile FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE LRA = '$LRA' AND facebookId != 0) as a,\r\n(SELECT  Profil_FB FROM `ndr-code-bi-dashboard.Quintly.default-settings` WHERE LRA = '$LRA') as b\r\nORDER BY( \r\nCASE WHEN a.profile = b.Profil_FB THEN 1\r\nELSE 2\r\nEND\r\n), UPPER(a.profile) ASC",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": true,
+                        "text": "TT: Es kann nur Eine/n geben! Welches Team seid ihr? #Weihnachtsmann #Christkind #Nikolaus #Knechtruprecht #Postbote #extra3 #Satire",
+                        "value": "TT: Es kann nur Eine/n geben! Welches Team seid ihr? #Weihnachtsmann #Christkind #Nikolaus #Knechtruprecht #Postbote #extra3 #Satire"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 0,
+                    "includeAll": false,
+                    "label": "",
+                    "multi": true,
+                    "name": "Posts",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "WITH plattform_prefix AS(\r\n  SELECT CASE \"${Plattform}\"\r\n  WHEN \"Facebook\" THEN \"FB\"\r\n  WHEN \"Instagram\" THEN \"IG\"\r\n  WHEN \"Youtube\" THEN \"YT\"\r\n  WHEN \"TikTok\" THEN \"TT\" END AS prefix\r\n), plattform_max_not_null_date AS(\r\nSELECT DATE_SUB(max(EXTRACT(DATE from time)), INTERVAL 7 DAY) as datum FROM `Quintly.${Vorhersagemodel}`\r\n  WHERE $PlattformFollowersField IS NOT NULL AND profileId = $profileID\r\n), plattform_posts AS(\r\n  SELECT CONCAT(prefix,\": \", $PlattformPostField) FROM ${PlattformAnzahlPosts}, plattform_prefix, plattform_max_not_null_date WHERE\r\n  EXTRACT(date from time) > plattform_max_not_null_date.datum AND  profileId = $profileID\r\n), vergleichsplattform_max_not_null_date AS(\r\n  SELECT DATE_SUB(max(EXTRACT(DATE from time)), INTERVAL 7 DAY) as datum FROM `Quintly.${Vorhersagevergleichsplattform}`\r\n  WHERE $VergleichsPlattformFollowersField IS NOT NULL AND profileId = $VorhersageVergleichsprofileID \r\n), vergleichsplattform_prefix AS(\r\n  SELECT CASE \"${Vergleichsplattform}\"\r\n  WHEN \"Facebook\" THEN \"FB\"\r\n  WHEN \"Instagram\" THEN \"IG\"\r\n  WHEN \"Youtube\" THEN \"YT\"\r\n  WHEN \"TikTok\" THEN \"TT\" END AS prefix\r\n), vergleichsplattform_posts AS(\r\n  SELECT CONCAT(prefix,\": \", $VergleichsplattformPostField) FROM ${VergleichsPlattformAnzahlPosts}, vergleichsplattform_prefix, vergleichsplattform_max_not_null_date WHERE\r\n  EXTRACT(date from time) > vergleichsplattform_max_not_null_date.datum AND  profileId = $VergleichsprofileID\r\n)\r\nSELECT * FROM plattform_posts UNION ALL SELECT * FROM vergleichsplattform_posts",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": true,
+                        "text": "Drei Wochen",
+                        "value": "21"
+                    },
+                    "hide": 0,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Vorhersagezeitraum",
+                    "options": [
+                        {
+                            "selected": false,
+                            "text": "Eine Woche",
+                            "value": "7"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Zwei Wochen",
+                            "value": "14"
+                        },
+                        {
+                            "selected": true,
+                            "text": "Drei Wochen",
+                            "value": "21"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Ein Monat",
+                            "value": "30"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Zwei Monate",
+                            "value": "60"
+                        }
+                    ],
+                    "query": "Eine Woche : 7, Zwei Wochen : 14, Drei Wochen : 21, Ein Monat : 30, Zwei Monate : 60",
+                    "queryValue": "",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "2023-12-29",
+                        "value": "2023-12-29"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "heute",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CURRENT_DATE(\"Europe/Berlin\")",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "Facebook",
+                        "value": "Facebook"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 0,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Plattform",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "WITH instagram AS(\r\n  SELECT \"Instagram\" as platform FROM Quintly.profiles\r\n  WHERE instagramId = $InprofileID AND instagramId > 0\r\n),\r\nfacebook AS (\r\nSELECT \"Facebook\" as platform FROM Quintly.profiles\r\n  WHERE facebookId = $FBprofileID AND facebookId > 0\r\n),\r\nyoutube AS (\r\nSELECT \"Youtube\" as platform FROM Quintly.profiles\r\n  WHERE youtubeId = $YTprofileID AND youtubeId > 0\r\n),\r\ntiktok AS (\r\nSELECT \"TikTok\" as platform FROM Quintly.profiles\r\n  WHERE tiktokId = $TTprofileID AND tiktokId > 0\r\n)\r\nSELECT platform FROM facebook UNION ALL SELECT platform FROM instagram\r\nUNION ALL SELECT platform FROM youtube UNION ALL SELECT platform FROM tiktok",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": true,
+                        "text": "Instagram",
+                        "value": "Instagram"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 0,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Vergleichsplattform",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "WITH instagram AS(\r\n  SELECT \"Instagram\" as platform FROM Quintly.profiles\r\n  WHERE instagramId = $InprofileID AND instagramId > 0\r\n),\r\nfacebook AS (\r\nSELECT \"Facebook\" as platform FROM Quintly.profiles\r\n  WHERE facebookId = $FBprofileID AND facebookId > 0\r\n),\r\nyoutube AS (\r\nSELECT \"Youtube\" as platform FROM Quintly.profiles\r\n  WHERE youtubeId = $YTprofileID AND youtubeId > 0\r\n),\r\ntiktok AS (\r\nSELECT \"TikTok\" as platform FROM Quintly.profiles\r\n  WHERE tiktokId = $TTprofileID AND tiktokId > 0\r\n),\r\nall_platforms AS(\r\nSELECT platform FROM facebook UNION ALL SELECT platform FROM instagram\r\nUNION ALL SELECT platform FROM youtube UNION ALL SELECT platform FROM tiktok)\r\nSELECT platform FROM all_platforms\r\nWHERE platform != \"$Plattform\"",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "142697",
+                        "value": "142697"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "FBprofileID",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT facebookID FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil'''",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "222944",
+                        "value": "222944"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "InprofileID",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT instagramID FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil'''",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "231281",
+                        "value": "231281"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "YTprofileID",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT youtubeID FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil'''",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "410253",
+                        "value": "410253"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "TTprofileID",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT tiktokID FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil'''",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "142697",
+                        "value": "142697"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "profileID",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"$Plattform\"\r\nWHEN \"Facebook\" THEN facebookID \r\nWHEN \"Instagram\" THEN instagramID\r\nWHEN \"Youtube\" THEN youtubeID\r\nWHEN \"TikTok\" THEN tiktokID END\r\nFROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil'''",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "222944",
+                        "value": "222944"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "VergleichsprofileID",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"$Vergleichsplattform\"\r\nWHEN \"Facebook\" THEN facebookID \r\nWHEN \"Instagram\" THEN instagramID\r\nWHEN \"Youtube\" THEN youtubeID\r\nWHEN \"TikTok\" THEN tiktokID \r\nELSE 0 END\r\nFROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil'''",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "facebookInsights",
+                        "value": "facebookInsights"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Vorhersagemodel",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"$Plattform\"\r\nWHEN \"Facebook\" THEN \"facebookInsights\"\r\nWHEN \"Instagram\" THEN \"instagram\"\r\nWHEN \"TikTok\" THEN \"tiktokAnalytics\" \r\nWHEN \"Youtube\" THEN \"youtubeAnalytics\" END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "instagram",
+                        "value": "instagram"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Vorhersagevergleichsplattform",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"$Vergleichsplattform\"\r\nWHEN \"Facebook\" THEN \"facebookInsights\"\r\nWHEN \"Instagram\" THEN \"instagram\"\r\nWHEN \"TikTok\" THEN \"tiktokAnalytics\" \r\nWHEN \"Youtube\" THEN \"youtubeAnalytics\"\r\nELSE \"${Vorhersagemodel}\" END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "last_update, uniqueId, lra, profileId, importTime",
+                        "value": "last_update, uniqueId, lra, profileId, importTime"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "PlattformFollowersVorhersageExceptList",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"${Plattform}\"\r\nWHEN \"Facebook\" THEN $FBExcept\r\nWHEN \"Instagram\" THEN $InExcept\r\nWHEN \"Youtube\" THEN $YTExcept\r\nWHEN \"TikTok\" THEN $TTExcept END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "\"last_update, uniqueId, lra, profileId, importTime\"",
+                        "value": "\"last_update, uniqueId, lra, profileId, importTime\""
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "FBExcept",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "\"last_update, uniqueId, lra, profileId, importTime\"",
+                            "value": "\"last_update, uniqueId, lra, profileId, importTime\""
+                        }
+                    ],
+                    "query": "\"last_update\\, uniqueId\\, lra\\, profileId\\, importTime\"",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "\"last_update, uniqueId, lra, profileId\"",
+                        "value": "\"last_update, uniqueId, lra, profileId\""
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "InExcept",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "\"last_update, uniqueId, lra, profileId\"",
+                            "value": "\"last_update, uniqueId, lra, profileId\""
+                        }
+                    ],
+                    "query": "\"last_update\\, uniqueId\\, lra\\, profileId\"",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "\"last_update, uniqueId, lra, profileId, importTime, viewsByAgeAndGender, viewsBySubscribedStatus\"",
+                        "value": "\"last_update, uniqueId, lra, profileId, importTime, viewsByAgeAndGender, viewsBySubscribedStatus\""
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "YTExcept",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "\"last_update, uniqueId, lra, profileId, importTime, viewsByAgeAndGender, viewsBySubscribedStatus\"",
+                            "value": "\"last_update, uniqueId, lra, profileId, importTime, viewsByAgeAndGender, viewsBySubscribedStatus\""
+                        }
+                    ],
+                    "query": "\"last_update\\, uniqueId\\, lra\\, profileId\\, importTime\\, viewsByAgeAndGender\\, viewsBySubscribedStatus\"",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "\"last_update, uniqueId, lra, profileId, followersChange, followersBefore\"",
+                        "value": "\"last_update, uniqueId, lra, profileId, followersChange, followersBefore\""
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "TTExcept",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "\"last_update, uniqueId, lra, profileId, followersChange, followersBefore\"",
+                            "value": "\"last_update, uniqueId, lra, profileId, followersChange, followersBefore\""
+                        }
+                    ],
+                    "query": "\"last_update\\, uniqueId\\, lra\\, profileId\\, followersChange\\, followersBefore\"",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "last_update, uniqueId, lra, profileId",
+                        "value": "last_update, uniqueId, lra, profileId"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "VergleichsPlattformFollowersVorhersageExceptList",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"${Vergleichsplattform}\"\r\nWHEN \"Facebook\" THEN $FBExcept\r\nWHEN \"Instagram\" THEN $InExcept\r\nWHEN \"Youtube\" THEN $YTExcept\r\nWHEN \"TikTok\" THEN $TTExcept\r\nELSE \"$PlattformFollowersVorhersageExceptList\" END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "page_follows",
+                        "value": "page_follows"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "PlattformFollowersField",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"${Plattform}\"\r\nWHEN \"Facebook\" THEN \"page_follows\"\r\nWHEN \"Instagram\" THEN \"followers\"\r\nWHEN \"Youtube\" THEN \"subscriberslifetime\"\r\nWHEN \"TikTok\" THEN \"followers\" END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "followers",
+                        "value": "followers"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "VergleichsPlattformFollowersField",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"${Vergleichsplattform}\"\r\nWHEN \"Facebook\" THEN \"page_follows\"\r\nWHEN \"Instagram\" THEN \"followers\"\r\nWHEN \"Youtube\" THEN \"subscriberslifetime\"\r\nWHEN \"TikTok\" THEN \"followers\" \r\nELSE \"$PlattformFollowersField\" END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "2023-12-07",
+                        "value": "2023-12-07"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Zeitraum",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "WITH max_not_null_date AS(\r\n  SELECT max(EXTRACT(DATE from time)) as datum FROM `Quintly.${Vorhersagemodel}`\r\n  WHERE $PlattformFollowersField IS NOT NULL AND profileId = $profileID \r\n)\r\n\r\nSELECT CASE $Vorhersagezeitraum\r\nWHEN 7 THEN DATE_SUB(datum, INTERVAL 7 DAY)\r\nWHEN 14 THEN DATE_SUB(datum, INTERVAL 14 DAY)\r\nWHEN 21 THEN DATE_SUB(datum, INTERVAL 21 DAY)\r\nWHEN 30 THEN DATE_SUB(datum, INTERVAL 30 DAY)\r\nWHEN 60 THEN DATE_SUB(datum, INTERVAL 60 DAY) END\r\nFROM max_not_null_date",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "2023-12-08",
+                        "value": "2023-12-08"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "VergleichsPlattformZeitraum",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "WITH max_not_null_date AS(\r\n  SELECT max(EXTRACT(DATE from time)) as datum FROM `Quintly.${Vorhersagevergleichsplattform}`\r\n  WHERE $VergleichsPlattformFollowersField IS NOT NULL AND profileId = $VergleichsprofileID \r\n)\r\n\r\nSELECT CASE $Vorhersagezeitraum\r\nWHEN 7 THEN DATE_SUB(datum, INTERVAL 7 DAY)\r\nWHEN 14 THEN DATE_SUB(datum, INTERVAL 14 DAY)\r\nWHEN 21 THEN DATE_SUB(datum, INTERVAL 21 DAY)\r\nWHEN 30 THEN DATE_SUB(datum, INTERVAL 30 DAY)\r\nWHEN 60 THEN DATE_SUB(datum, INTERVAL 60 DAY) END\r\nFROM max_not_null_date",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "Quintly.facebookInsightsOwnPosts",
+                        "value": "Quintly.facebookInsightsOwnPosts"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "PlattformAnzahlPosts",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\r\n   CASE \"${Plattform}\"\r\n   WHEN \"Facebook\" THEN \"Quintly.facebookInsightsOwnPosts\"\r\n   WHEN \"Instagram\" THEN \"Quintly.instagramInsightsOwnPosts\"\r\n   WHEN \"Youtube\" THEN \"Quintly.youtubeAnalyticsVideos\"\r\n   WHEN \"TikTok\" THEN \"Quintly.tiktokAnalyticsOwnPosts\" END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "Quintly.instagramInsightsOwnPosts",
+                        "value": "Quintly.instagramInsightsOwnPosts"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "VergleichsPlattformAnzahlPosts",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\r\n   CASE \"${Vergleichsplattform}\"\r\n   WHEN \"Facebook\" THEN \"Quintly.facebookInsightsOwnPosts\"\r\n   WHEN \"Instagram\" THEN \"Quintly.instagramInsightsOwnPosts\"\r\n   WHEN \"Youtube\" THEN \"Quintly.youtubeAnalyticsVideos\"\r\n   WHEN \"TikTok\" THEN \"Quintly.tiktokAnalyticsOwnPosts\"\r\n   ELSE \"$PlattformAnzahlPosts\" END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "222944",
+                        "value": "222944"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "VorhersageVergleichsprofileID",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"$Vergleichsplattform\"\r\nWHEN \"Facebook\" THEN facebookID \r\nWHEN \"Instagram\" THEN instagramID\r\nWHEN \"Youtube\" THEN youtubeID\r\nWHEN \"TikTok\" THEN tiktokID \r\nELSE $profileID END\r\nFROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil'''",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "2023-12-03",
+                        "value": "2023-12-03"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "VorhersageVergleichsPlattformZeitraum",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "WITH max_not_null_date AS(\r\n  SELECT max(EXTRACT(DATE from time)) as datum FROM `Quintly.${Vorhersagevergleichsplattform}`\r\n  WHERE $VergleichsPlattformFollowersField IS NOT NULL AND profileId = $VorhersageVergleichsprofileID \r\n)\r\n\r\nSELECT CASE $Vorhersagezeitraum\r\nWHEN 7 THEN DATE_SUB(datum, INTERVAL 7 DAY)\r\nWHEN 14 THEN DATE_SUB(datum, INTERVAL 14 DAY)\r\nWHEN 21 THEN DATE_SUB(datum, INTERVAL 21 DAY)\r\nWHEN 30 THEN DATE_SUB(datum, INTERVAL 30 DAY)\r\nWHEN 60 THEN DATE_SUB(datum, INTERVAL 60 DAY) END\r\nFROM max_not_null_date",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "SUM(IFNULL(page_actions_post_reactions_total_like + page_actions_post_reactions_total_love + page_actions_post_reactions_total_wow + page_actions_post_reactions_total_haha + page_actions_post_reactions_total_sorry + page_actions_post_reactions_total_anger + page_positive_feedback_by_type_comment + page_positive_feedback_by_type_link,0))",
+                        "value": "SUM(IFNULL(page_actions_post_reactions_total_like + page_actions_post_reactions_total_love + page_actions_post_reactions_total_wow + page_actions_post_reactions_total_haha + page_actions_post_reactions_total_sorry + page_actions_post_reactions_total_anger + page_positive_feedback_by_type_comment + page_positive_feedback_by_type_link,0))"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "PlattformInteraktionen",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"${Plattform}\"\r\nWHEN \"Facebook\" THEN \"SUM(IFNULL(page_actions_post_reactions_total_like + page_actions_post_reactions_total_love + page_actions_post_reactions_total_wow + page_actions_post_reactions_total_haha + page_actions_post_reactions_total_sorry + page_actions_post_reactions_total_anger + page_positive_feedback_by_type_comment + page_positive_feedback_by_type_link,0))\"\r\nWHEN \"Instagram\" THEN \"SUM(IFNULL(imagesLikes + imagesComments + videosLikes + videosComments + carouselsLikes + carouselsComments + reelsLikes + reelsComments,0))\"\r\nWHEN \"Youtube\" THEN \"IFNULL(SUM(likes + dislikes + comments + shares),0)\"\r\nWHEN \"TikTok\" THEN \"SUM(ownVideosViews)\" END\r\n--ELSE \"1\" END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "SUM(IFNULL(imagesLikes + imagesComments + videosLikes + videosComments + carouselsLikes + carouselsComments + reelsLikes + reelsComments,0))",
+                        "value": "SUM(IFNULL(imagesLikes + imagesComments + videosLikes + videosComments + carouselsLikes + carouselsComments + reelsLikes + reelsComments,0))"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "VergleicsplattformInteraktionen",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"${Vergleichsplattform}\"\r\nWHEN \"Facebook\" THEN \"SUM(IFNULL(page_actions_post_reactions_total_like + page_actions_post_reactions_total_love + page_actions_post_reactions_total_wow + page_actions_post_reactions_total_haha + page_actions_post_reactions_total_sorry + page_actions_post_reactions_total_anger + page_positive_feedback_by_type_comment + page_positive_feedback_by_type_link,0))\"\r\nWHEN \"Instagram\" THEN \"SUM(IFNULL(imagesLikes + imagesComments + videosLikes + videosComments + carouselsLikes + carouselsComments + reelsLikes + reelsComments,0))\"\r\nWHEN \"Youtube\" THEN \"IFNULL(SUM(likes + dislikes + comments + shares),0)\"\r\nWHEN \"TikTok\" THEN \"SUM(ownVideosViews)\"\r\nELSE \"CAST(NULL AS INT64)\" END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "8.571428571428571",
+                        "value": "8.571428571428571"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "NumberOfWeeks",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"${Vorhersagezeitraum}\"\r\nWHEN \"Eine Woche\" THEN 1\r\nWHEN \"Zwei Wochen\" THEN 2\r\nWHEN \"Drei Wochen\" THEN 3\r\nWHEN \"Ein Monat\" THEN 30/7\r\nELSE 60/7 END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "message",
+                        "value": "message"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "PlattformPostField",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"${Plattform}\"\r\n  WHEN \"Facebook\" THEN \"message\"\r\n  WHEN \"Instagram\" THEN \"message\"\r\n  WHEN \"Youtube\" THEN \"title\"\r\n  WHEN \"TikTok\" THEN \"description\" END\r\n",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "description",
+                        "value": "description"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "VergleichsplattformPostField",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \"${Vergleichsplattform}\"\r\n  WHEN \"Facebook\" THEN \"message\"\r\n  WHEN \"Instagram\" THEN \"message\"\r\n  WHEN \"Youtube\" THEN \"title\"\r\n  WHEN \"TikTok\" THEN \"description\" END\r\n",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                }
+            ]
+        },
+        "time": {
+            "from": "now-6h",
+            "to": "now"
+        },
+        "timepicker": {},
+        "timezone": "",
+        "title": "ML-Dashboard",
+        "uid": "NefFwldSz",
+        "version": 2,
+        "weekStart": ""
+    }
+}

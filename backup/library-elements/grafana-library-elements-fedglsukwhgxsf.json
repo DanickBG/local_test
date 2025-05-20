@@ -1,0 +1,56 @@
+{
+  "id": 1759,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "fedglsukwhgxsf",
+  "name": "Piano TV Logos 4K",
+  "kind": 1,
+  "type": "text",
+  "description": "",
+  "model": {
+    "description": "",
+    "fieldConfig": {
+      "defaults": {},
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 10,
+      "w": 3,
+      "x": 0,
+      "y": 0
+    },
+    "id": 49,
+    "options": {
+      "code": {
+        "language": "plaintext",
+        "showLineNumbers": false,
+        "showMiniMap": false
+      },
+      "content": "<img width=\"240\" height=\"240\" src=${Image} />",
+      "mode": "html"
+    },
+    "pluginVersion": "11.3.1",
+    "title": "",
+    "transparent": true,
+    "type": "text"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 5,
+    "created": "2025-02-18T18:39:02Z",
+    "updated": "2025-02-18T18:40:55Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

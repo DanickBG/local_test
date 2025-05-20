@@ -1,0 +1,21 @@
+{
+  "id": 6,
+  "uid": "tFeSvSmIk",
+  "orgId": 1,
+  "name": "Elasticsearch",
+  "type": "elasticsearch",
+  "typeLogoUrl": "public/app/plugins/datasource/elasticsearch/img/elasticsearch.svg",
+  "access": "proxy",
+  "url": "",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 1,
+  "readOnly": false,
+  "apiVersion": ""
+}

@@ -1,0 +1,802 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "c8c0adc",
+    "url": "/d/eednma3w317nkf/c8c0adc",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-02-20T17:49:21Z",
+    "updated": "2025-02-20T17:53:23Z",
+    "updatedBy": "daniel hristov dev",
+    "createdBy": "daniel hristov dev",
+    "version": 2,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 1176,
+    "folderUid": "folder-8Bt7Gb8Vz",
+    "folderTitle": "TV_NDR",
+    "folderUrl": "/dashboards/f/folder-8Bt7Gb8Vz/tv-ndr",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1622,
+    "links": [],
+    "panels": [
+      {
+        "gridPos": {
+          "h": 8,
+          "w": 13,
+          "x": 0,
+          "y": 0
+        },
+        "id": 150,
+        "libraryPanel": {
+          "name": "App Laendervergleich Title 4K",
+          "uid": "dedn4ueiwjj7kf"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 13,
+          "y": 0
+        },
+        "id": 14,
+        "libraryPanel": {
+          "name": "App Laendervergleich Zeitraum KPI 4K",
+          "uid": "bedn4s184v8cga"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 17,
+          "y": 0
+        },
+        "id": 18,
+        "libraryPanel": {
+          "name": "App Laendervergleich Vergleichzeitraum KPI 4K",
+          "uid": "bedn4spml5q0we"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 8,
+          "w": 3,
+          "x": 21,
+          "y": 0
+        },
+        "id": 20,
+        "libraryPanel": {
+          "name": "App Laendervergleich Differenz KPI 4K",
+          "uid": "bedn4tn61kr9ce"
+        },
+        "title": ""
+      },
+      {
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 8
+        },
+        "id": 160,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": " ",
+          "mode": "html"
+        },
+        "pluginVersion": "11.3.1",
+        "title": "",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "gridPos": {
+          "h": 43,
+          "w": 24,
+          "x": 0,
+          "y": 10
+        },
+        "id": 157,
+        "libraryPanel": {
+          "name": "App Laendervergleich 4K",
+          "uid": "fedn4pvei92psb"
+        },
+        "title": ""
+      }
+    ],
+    "preload": false,
+    "refresh": false,
+    "schemaVersion": 40,
+    "tags": [
+      "4K"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "13",
+            "value": "13"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size",
+          "options": [
+            {
+              "selected": true,
+              "text": "13",
+              "value": "13"
+            }
+          ],
+          "query": "13",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "Vorletztes Wochenende",
+            "value": "Vorletztes Wochenende"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Vergleichszeitraumlabels",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  CASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN \"Gestern\"\r\n  WHEN \"Gestern\" THEN \"Gestern vor 7 Tagen\"\r\n  WHEN \"Letztes Wochenende\" THEN \"Vorletztes Wochenende\"\r\n  WHEN \"Letzte 7 Tage\" THEN \"Letzte 8-14 Tage\"\r\n  WHEN \"Letzte 30 Tage\" THEN \"Letzte 31-60 Tage\"\r\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "date >= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY),INTERVAL 7 DAY) as saturday) AND date <= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY), INTERVAL 7 DAY) as sunday)",
+            "value": "date >= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY),INTERVAL 7 DAY) as saturday) AND date <= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY), INTERVAL 7 DAY) as sunday)"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Vergleichszeitraum",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  CASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN \"date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)\"\r\n  WHEN \"Gestern\" THEN \"date = DATE_SUB(CURRENT_DATE(), INTERVAL 8 DAY)\"\r\n  WHEN \"Letztes Wochenende\" THEN \"date >= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY),INTERVAL 7 DAY) as saturday) AND date <= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY), INTERVAL 7 DAY) as sunday)\"\r\n  WHEN \"Letzte 7 Tage\" THEN \"date >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)\"\r\n  WHEN \"Letzte 30 Tage\" THEN \"date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  60 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY)\"\r\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "NDR",
+            "value": "NDR"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "LRA",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT distinct LRA FROM `ndr-code-bi-dashboard.Piano.Profiles_App`\nORDER BY LRA ASC",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "7",
+            "value": "7"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "time_shift",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\nCASE\r\nWHEN \"${Zeitraum:text}\" = \"Heute\" THEN 1\r\nWHEN \"${Zeitraum:text}\" = \"Gestern\" THEN 7\r\nWHEN \"${Zeitraum:text}\" = \"Letztes Wochenende\" THEN 7\r\nWHEN CONTAINS_SUBSTR(\"${Zeitraum:text}\", \"7\") THEN 7\r\nWHEN CONTAINS_SUBSTR(\"${Zeitraum:text}\", \"30\") THEN 30 END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "date >= (SELECT saturday FROM(SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 2 DAY) as saturday)) AND date <= (SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 1 DAY) as sunday)",
+            "value": "date >= (SELECT saturday FROM(SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 2 DAY) as saturday)) AND date <= (SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 1 DAY) as sunday)"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "Zeitraum",
+          "options": [
+            {
+              "selected": false,
+              "text": "Heute",
+              "value": "date = CURRENT_DATE()"
+            },
+            {
+              "selected": false,
+              "text": "Gestern",
+              "value": "date = DATE_SUB(CURRENT_DATE(), INTERVAL  1 DAY)"
+            },
+            {
+              "selected": true,
+              "text": "Letztes Wochenende",
+              "value": "date >= (SELECT saturday FROM(SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 2 DAY) as saturday)) AND date <= (SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 1 DAY) as sunday)"
+            },
+            {
+              "selected": false,
+              "text": "Letzte 7 Tage",
+              "value": "date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND date < CURRENT_DATE()"
+            },
+            {
+              "selected": false,
+              "text": "Letzte 30 Tage",
+              "value": "date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND date < CURRENT_DATE()"
+            }
+          ],
+          "query": "Heute : date = CURRENT_DATE(), Gestern : date = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Letztes Wochenende :  date >= (SELECT saturday FROM(SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\,WEEK(MONDAY)) - INTERVAL 2 DAY) as saturday)) AND date <= (SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\,WEEK(MONDAY)) - INTERVAL 1 DAY) as sunday), Letzte 7 Tage : date >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  7 DAY) AND date < CURRENT_DATE(), Letzte 30 Tage : date >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  30 DAY) AND date < CURRENT_DATE()",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "ndr-code-bi-dashboard.Piano.articles_joined_daily",
+            "value": "ndr-code-bi-dashboard.Piano.articles_joined_daily"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "table",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \n  CASE \"${Zeitraum:text}\"\n  WHEN \"Heute\" THEN \"ndr-code-bi-dashboard.Piano.articles_joined_today\"\n  ELSE \"ndr-code-bi-dashboard.Piano.articles_joined_daily\"\nEND",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2025-02-15",
+            "value": "2025-02-15"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "bq_timeframe_start",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  CASE \n    WHEN \"${Zeitraum:text}\" = \"Letzte Stunde\" THEN FORMAT_DATE('%Y-%m-%d', today)\n    WHEN \"${Zeitraum:text}\" = \"Heute\" THEN FORMAT_DATE('%Y-%m-%d', today)\n    WHEN \"${Zeitraum:text}\" = \"Heute -7d\" THEN FORMAT_DATE('%Y-%m-%d', today)\n    WHEN \"${Zeitraum:text}\" = \"Gestern\" THEN FORMAT_DATE('%Y-%m-%d', yesterday)\n    WHEN \"${Zeitraum:text}\" = \"Letztes Wochenende\" THEN FORMAT_DATE('%Y-%m-%d', last_saturday)\n    WHEN \"${Zeitraum:text}\" = \"Letzte 7 Tage\" THEN FORMAT_DATE('%Y-%m-%d', interval_7_day)\n    WHEN \"${Zeitraum:text}\" = \"Letzte 30 Tage\" THEN FORMAT_DATE('%Y-%m-%d', interval_30_day)\n    ELSE FORMAT_DATE('%Y-%m-%d', today)\n  END AS relevant_value\nFROM `grafana.current_date`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2025-02-16",
+            "value": "2025-02-16"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "bq_timeframe_end",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  CASE \n    WHEN \"${Zeitraum:text}\" = \"Letzte Stunde\" THEN FORMAT_DATE('%Y-%m-%d', today)\n    WHEN \"${Zeitraum:text}\" = \"Heute\" THEN FORMAT_DATE('%Y-%m-%d', today)\n    WHEN \"${Zeitraum:text}\" = \"Heute -7d\" THEN FORMAT_DATE('%Y-%m-%d', today)\n    WHEN \"${Zeitraum:text}\" = \"Gestern\" THEN FORMAT_DATE('%Y-%m-%d', yesterday)\n    WHEN \"${Zeitraum:text}\" = \"Letztes Wochenende\" THEN FORMAT_DATE('%Y-%m-%d', last_sunday)\n    WHEN \"${Zeitraum:text}\" = \"Letzte 7 Tage\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(today, INTERVAL 1 DAY))\n    WHEN \"${Zeitraum:text}\" = \"Letzte 30 Tage\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(today, INTERVAL 1 DAY))\n    ELSE FORMAT_DATE('%Y-%m-%d', today)\n  END AS relevant_value\nFROM `grafana.current_date`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2025-02-09",
+            "value": "2025-02-09"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "bq_comp_timeframe_end",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  CASE \n    WHEN \"${Zeitraum:text}\" = \"Letzte Stunde\" THEN FORMAT_DATE('%Y-%m-%d', today)\n    WHEN \"${Zeitraum:text}\" = \"Heute\" THEN FORMAT_DATE('%Y-%m-%d', yesterday)\n    WHEN \"${Zeitraum:text}\" = \"Heute -7d\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(today, INTERVAL 7 DAY))\n    WHEN \"${Zeitraum:text}\" = \"Gestern\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(yesterday, INTERVAL 7 DAY))\n    WHEN \"${Zeitraum:text}\" = \"Letztes Wochenende\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(last_sunday, INTERVAL 7 DAY))\n    WHEN \"${Zeitraum:text}\" = \"Letzte 7 Tage\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(interval_7_day, INTERVAL 1 DAY))\n    WHEN \"${Zeitraum:text}\" = \"Letzte 30 Tage\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(interval_30_day, INTERVAL 1 DAY))\n    ELSE FORMAT_DATE('%Y-%m-%d', today)\n  END AS relevant_value\nFROM `grafana.current_date`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2025-02-08",
+            "value": "2025-02-08"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "bq_comp_timeframe_start",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  CASE \n    WHEN \"${Zeitraum:text}\" = \"Letzte Stunde\" THEN FORMAT_DATE('%Y-%m-%d', today)\n    WHEN \"${Zeitraum:text}\" = \"Heute\" THEN FORMAT_DATE('%Y-%m-%d', yesterday)\n    WHEN \"${Zeitraum:text}\" = \"Heute -7d\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(today, INTERVAL 7 DAY))\n    WHEN \"${Zeitraum:text}\" = \"Gestern\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(yesterday, INTERVAL 7 DAY))\n    WHEN \"${Zeitraum:text}\" = \"Letztes Wochenende\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(last_saturday, INTERVAL 7 DAY))\n    WHEN \"${Zeitraum:text}\" = \"Letzte 7 Tage\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(interval_7_day, INTERVAL 7 DAY))\n    WHEN \"${Zeitraum:text}\" = \"Letzte 30 Tage\" THEN FORMAT_DATE('%Y-%m-%d', DATE_SUB(interval_30_day, INTERVAL 30 DAY))\n    ELSE FORMAT_DATE('%Y-%m-%d', today)\n  END AS relevant_value\nFROM `grafana.current_date`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "feverCurveDataset",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \nCASE \"${Zeitraum:text}\"\n  WHEN \"Heute\" THEN  \"_today_append\"\n  WHEN \"Heute -7d\" THEN  \"_today_append\"\n  WHEN \"Gestern\" THEN \"_today_append\"\n  WHEN \"Letzte Stunde\" THEN \"_today_append\"\n  ELSE \"\"\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "daily_data",
+            "value": "daily_data"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "dataset_not_fevercurve",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \nCASE \"${Zeitraum:text}\"\n  WHEN \"Heute\" THEN  \"adjusted_lagged_data\"\n  WHEN \"Heute -7d\" THEN \"adjusted_lagged_data\"\n  WHEN \"Letzte Stunde\" THEN \"adjusted_lagged_data\"\n  ELSE \"daily_data\"\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "2025-02-20 18:49:47.763463",
+            "value": "2025-02-20 18:49:47.763463"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "comp_fever",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  CASE \n    --WHEN \"${Zeitraum:text}\" = \"Letzte Stunde\" THEN CURRENT_DATETIME(\"Europe/Berlin\")\n    WHEN \"${Zeitraum:text}\" = \"Heute\" THEN  DATETIME_SUB(CURRENT_DATETIME(\"Europe/Berlin\"), INTERVAL 1 DAY)\n    WHEN \"${Zeitraum:text}\" = \"Heute -7d\" THEN  DATETIME_SUB(CURRENT_DATETIME(\"Europe/Berlin\"), INTERVAL 7 DAY)\n    ELSE CURRENT_DATETIME(\"Europe/Berlin\")\n  END AS relevant_value\nFROM `grafana.current_date`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Letztes Wochenende",
+            "value": "Letztes Wochenende"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Zeitraumlabels",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \n  CASE \"${Zeitraum:text}\"\n  WHEN \"Heute -7d\" THEN \"Heute\"\n  ELSE \"${Zeitraum:text}\"\n  END",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "2023-04-26T15:53:47.500Z",
+      "to": "2023-05-14T00:18:37.500Z"
+    },
+    "timepicker": {
+      "hidden": true
+    },
+    "timezone": "",
+    "title": "NDR SH App Ländervergleich | Letztes WE | Vorletztes WE 4K",
+    "uid": "eednma3w317nkf",
+    "version": 2,
+    "weekStart": ""
+  }
+}

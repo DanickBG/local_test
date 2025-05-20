@@ -1,0 +1,689 @@
+{
+    "meta": {
+        "type": "db",
+        "canSave": true,
+        "canEdit": true,
+        "canAdmin": true,
+        "canStar": true,
+        "canDelete": true,
+        "slug": "ndr-extra3-7c-tv-tiktok-7c-top-videos",
+        "url": "/d/DrOdPRlVz/ndr-extra3-7c-tv-tiktok-7c-top-videos",
+        "expires": "0001-01-01T00:00:00Z",
+        "created": "2024-06-20T11:46:57Z",
+        "updated": "2024-07-30T05:38:35Z",
+        "updatedBy": "Anonymous",
+        "createdBy": "Anonymous",
+        "version": 6,
+        "hasAcl": false,
+        "isFolder": false,
+        "folderId": 670,
+        "folderUid": "folder-Yli0Gb8Vk",
+        "folderTitle": "TV_NDR_QA",
+        "folderUrl": "/dashboards/f/folder-Yli0Gb8Vk/tv-ndr-qa",
+        "provisioned": false,
+        "provisionedExternalId": "",
+        "annotationsPermissions": {
+            "dashboard": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            },
+            "organization": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            }
+        }
+    },
+    "dashboard": {
+        "annotations": {
+            "list": [
+                {
+                    "builtIn": 1,
+                    "datasource": {
+                        "type": "grafana",
+                        "uid": "-- Grafana --"
+                    },
+                    "enable": true,
+                    "hide": true,
+                    "iconColor": "rgba(0, 211, 255, 1)",
+                    "name": "Annotations & Alerts",
+                    "target": {
+                        "limit": 100,
+                        "matchAny": false,
+                        "tags": [],
+                        "type": "dashboard"
+                    },
+                    "type": "dashboard"
+                }
+            ]
+        },
+        "description": "",
+        "editable": true,
+        "fiscalYearStartMonth": 0,
+        "graphTooltip": 0,
+        "id": 762,
+        "links": [],
+        "liveNow": true,
+        "panels": [
+            {
+                "gridPos": {
+                    "h": 3,
+                    "w": 2,
+                    "x": 0,
+                    "y": 0
+                },
+                "id": 40,
+                "libraryPanel": {
+                    "uid": "m6hjxNlVz"
+                }
+            },
+            {
+                "gridPos": {
+                    "h": 4,
+                    "w": 11,
+                    "x": 2,
+                    "y": 0
+                },
+                "id": 105,
+                "libraryPanel": {
+                    "uid": "wPmjbH_4z"
+                }
+            },
+            {
+                "gridPos": {
+                    "h": 4,
+                    "w": 4,
+                    "x": 13,
+                    "y": 0
+                },
+                "id": 126,
+                "libraryPanel": {
+                    "uid": "E9puxH_Vz"
+                }
+            },
+            {
+                "gridPos": {
+                    "h": 4,
+                    "w": 4,
+                    "x": 17,
+                    "y": 0
+                },
+                "id": 63,
+                "libraryPanel": {
+                    "uid": "GPK9bNl4z"
+                }
+            },
+            {
+                "gridPos": {
+                    "h": 2,
+                    "w": 3,
+                    "x": 21,
+                    "y": 0
+                },
+                "id": 43,
+                "libraryPanel": {
+                    "uid": "18SYJy8Vz"
+                }
+            },
+            {
+                "gridPos": {
+                    "h": 2,
+                    "w": 11,
+                    "x": 0,
+                    "y": 4
+                },
+                "id": 147,
+                "libraryPanel": {
+                    "uid": "WzG3bN_Vz"
+                }
+            },
+            {
+                "columns": [],
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "",
+                "fontSize": "150%",
+                "gridPos": {
+                    "h": 15,
+                    "w": 24,
+                    "x": 0,
+                    "y": 6
+                },
+                "id": 145,
+                "links": [],
+                "options": {
+                    "footer": {
+                        "enablePagination": true,
+                        "fields": [
+                            "post_engaged_users"
+                        ],
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": []
+                },
+                "pluginVersion": "9.2.3",
+                "showHeader": true,
+                "sort": {
+                    "desc": false
+                },
+                "styles": [
+                    {
+                        "$$hashKey": "object:50",
+                        "alias": "Datum",
+                        "align": "auto",
+                        "dateFormat": " DD.MM | HH:mm \\U\\h\\r",
+                        "pattern": "time",
+                        "type": "date"
+                    },
+                    {
+                        "$$hashKey": "object:51",
+                        "alias": "Post",
+                        "align": "",
+                        "colors": [
+                            "rgba(245, 54, 54, 0.9)",
+                            "rgba(237, 129, 40, 0.89)",
+                            "rgba(50, 172, 45, 0.97)"
+                        ],
+                        "decimals": 2,
+                        "pattern": "description",
+                        "thresholds": [],
+                        "type": "number",
+                        "unit": "short"
+                    },
+                    {
+                        "$$hashKey": "object:301",
+                        "alias": "\u25bcVideostarts",
+                        "align": "center",
+                        "colors": [
+                            "rgba(245, 54, 54, 0.9)",
+                            "rgba(237, 129, 40, 0.89)",
+                            "rgba(50, 172, 45, 0.97)"
+                        ],
+                        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                        "decimals": 2,
+                        "mappingType": 1,
+                        "pattern": "views",
+                        "thresholds": [],
+                        "type": "number",
+                        "unit": "locale"
+                    },
+                    {
+                        "$$hashKey": "object:312",
+                        "alias": "Likes",
+                        "align": "auto",
+                        "colors": [
+                            "rgba(245, 54, 54, 0.9)",
+                            "rgba(237, 129, 40, 0.89)",
+                            "rgba(50, 172, 45, 0.97)"
+                        ],
+                        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                        "decimals": 2,
+                        "mappingType": 1,
+                        "pattern": "likes",
+                        "thresholds": [],
+                        "type": "number",
+                        "unit": "locale"
+                    }
+                ],
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\ntime,\n  CASE\n    WHEN length(description) > 120 THEN SUBSTR(description, 0 , 120) || '...'\n    ELSE description\n  END AS Post,\n-- description,\nviews,\nlikes,\nFROM `ndr-code-bi-dashboard.Quintly.tiktokAnalyticsOwnPosts`\nWHERE profileId = $profileID \nAND $Zeitraum \nORDER BY views DESC",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "a8a9bbab-cdef-4012-b456-718379cf62c5": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "baa89b8b-0123-4456-b89a-b18379cf62c5",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsightsOwnPosts"
+                    }
+                ],
+                "transform": "table",
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "Post": false,
+                                "comments": true,
+                                "hashtags": true,
+                                "interactionRateSelf": true,
+                                "link": true,
+                                "shares": true,
+                                "videoCoverUrl": true,
+                                "videoLength": true
+                            },
+                            "indexByName": {},
+                            "renameByName": {}
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "table-old"
+            }
+        ],
+        "refresh": "5m",
+        "schemaVersion": 37,
+        "style": "dark",
+        "tags": [],
+        "templating": {
+            "list": [
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "NDR",
+                        "value": "NDR"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "LRA",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT DISTINCT LRA FROM `ndr-code-bi-dashboard.Quintly.profiles`\nWHERE tiktokID != 0\n",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "extra 3",
+                        "value": "extra 3"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Profil",
+                    "options": [],
+                    "query": {
+                        "dataset": "QuintlyTest",
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT DISTINCT profile FROM `ndr-code-bi-dashboard.Quintly.profiles`\r\nWHERE LRA = \"$LRA\" AND tiktokID != 0",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "profile",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        },
+                        "table": "profileTest"
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "Letzte 30 Tage",
+                        "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+                    },
+                    "description": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Zeitraum",
+                    "options": [
+                        {
+                            "selected": false,
+                            "text": "Gestern",
+                            "value": "EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE(), INTERVAL  1 DAY)"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Letztes Wochenende",
+                            "value": "DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Letzte 7 Tage",
+                            "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+                        },
+                        {
+                            "selected": true,
+                            "text": "Letzte 30 Tage",
+                            "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+                        }
+                    ],
+                    "query": "Gestern : EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Letztes Wochenende :  DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) ), Letzte 7 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE(), Letzte 30 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()",
+                    "queryValue": "",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "05.06.2023 | 13:58 Uhr",
+                        "value": "05.06.2023 | 13:58 Uhr"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "lastUpdate",
+                    "options": [],
+                    "query": {
+                        "dataset": "Quintly",
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \r\nCASE MAX(last_update)\r\n  WHEN NULL THEN \"N/A\"\r\n  ELSE FORMAT_DATETIME(\"%d.%m.%Y | %H:%M Uhr\", DATETIME(MAX(last_update),\"Europe/Berlin\"))\r\n  END\r\nFROM `ndr-code-bi-dashboard.Quintly.tiktokAnalyticsOwnPosts`\r\nWHERE profileId = $profileID  ",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "last_update",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        },
+                        "table": "facebookInsightsOwnPosts"
+                    },
+                    "refresh": 2,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "10",
+                        "value": "10"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "filled_size_big",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "10",
+                            "value": "10"
+                        }
+                    ],
+                    "query": "10",
+                    "queryValue": "",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "410253",
+                        "value": "410253"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "profileID",
+                    "options": [],
+                    "query": {
+                        "dataset": "QuintlyTest",
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT tiktokID FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil''' ",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "facebookID",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                },
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "instagramID",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                },
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "youtubeID",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        },
+                        "table": "profileTest"
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "13",
+                        "value": "13"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "filled_size",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "13",
+                            "value": "13"
+                        }
+                    ],
+                    "query": "13",
+                    "queryValue": "",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "48",
+                        "value": "48"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "filled_size_headline",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "48",
+                            "value": "48"
+                        }
+                    ],
+                    "query": "48",
+                    "queryValue": "48",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "20",
+                        "value": "20"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "filled_size_headline_small",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "20",
+                            "value": "20"
+                        }
+                    ],
+                    "query": "20",
+                    "queryValue": "",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                }
+            ]
+        },
+        "time": {
+            "from": "now",
+            "to": "now"
+        },
+        "timepicker": {
+            "hidden": true
+        },
+        "timezone": "",
+        "title": "NDR Extra3 | TV TikTok | Top Videos",
+        "uid": "DrOdPRlVz",
+        "version": 6,
+        "weekStart": ""
+    }
+}

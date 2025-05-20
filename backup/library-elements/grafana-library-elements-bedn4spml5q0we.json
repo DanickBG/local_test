@@ -1,0 +1,144 @@
+{
+  "id": 1767,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "bedn4spml5q0we",
+  "name": "App Laendervergleich Vergleichzeitraum KPI 4K",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "summe"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 9,
+      "w": 6,
+      "x": 5,
+      "y": 0
+    },
+    "id": 160,
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "percentChangeColorMode": "standard",
+      "reduceOptions": {
+        "calcs": [
+          "last"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "showPercentChange": false,
+      "textMode": "value_and_name",
+      "wideLayout": true
+    },
+    "pluginVersion": "11.3.1",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH adjusted_lagged_data AS (\r\n  SELECT\r\n    SUM(COALESCE(m_visits,0)) as summe FROM\r\n    ( \r\n    SELECT MAX(COALESCE(m_visits,0)) AS m_visits FROM\r\n     `Piano.total_visits${feverCurveDataset:raw}`\r\n  WHERE\r\n  site_level2 IN ('hh-app','sh-app','nds-app','mv-app')\r\n  AND page_chapter1 = \"Alle Kapitel 1\"\r\n  AND page_chapter2 = \"Alle Kapitel 2\"\r\n  AND sendungs_id = \"Alle Sendungs-ID\"\r\n  AND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\r\n  AND tmstp <= \"${comp_fever}\"\r\n  group by site_level2\r\n  )\r\n),\r\ndaily_data AS (SELECT\r\n  SUM(COALESCE(m_visits,0)) AS summe\r\nFROM\r\n  Piano.total_visits\r\nWHERE site_level2 IN ('hh-app','sh-app','nds-app','mv-app')\r\n  AND page_chapter1 = \"Alle Kapitel 1\"\r\n  AND page_chapter2 = \"Alle Kapitel 2\"\r\n  AND sendungs_id = \"Alle Sendungs-ID\"\r\n  AND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\r\n  )\r\nSELECT * FROM ${dataset_not_fevercurve}\r\n\r\n",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "${Vergleichszeitraumlabels:text}",
+            "summe": "${Vergleichszeitraumlabels:text}"
+          }
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 3,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 3,
+    "created": "2025-02-20T14:33:22Z",
+    "updated": "2025-05-09T13:17:17Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/9774780e31622dad09ce78835d06ec07",
+      "id": 39,
+      "name": "sa-1-fortestdaniel"
+    }
+  }
+}

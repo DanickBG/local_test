@@ -1,0 +1,11 @@
+{
+  "uid": "d41e82ab-74a9-4933-8474-00da6034745e",
+  "name": "MDR Thüringen",
+  "interval": "1m",
+  "items": [
+    {
+      "type": "dashboard_by_tag",
+      "value": "MDR TH"
+    }
+  ]
+}

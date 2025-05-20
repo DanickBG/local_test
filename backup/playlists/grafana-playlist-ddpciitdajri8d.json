@@ -1,0 +1,11 @@
+{
+  "uid": "ddpciitdajri8d",
+  "name": "NDR Niedersachsen",
+  "interval": "30s",
+  "items": [
+    {
+      "type": "dashboard_by_tag",
+      "value": "NDR NDS"
+    }
+  ]
+}

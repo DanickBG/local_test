@@ -1,0 +1,980 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "d95d8ff",
+    "url": "/d/dedtpdu7dvgu8e/d95d8ff",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-02-22T10:45:31Z",
+    "updated": "2025-02-24T09:36:43Z",
+    "updatedBy": "daniel hristov dev",
+    "createdBy": "daniel hristov dev",
+    "version": 5,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 1176,
+    "folderUid": "folder-8Bt7Gb8Vz",
+    "folderTitle": "TV_NDR",
+    "folderUrl": "/dashboards/f/folder-8Bt7Gb8Vz/tv-ndr",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1631,
+    "links": [],
+    "panels": [
+      {
+        "description": "",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 2,
+          "x": 0,
+          "y": 0
+        },
+        "id": 21,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<img width=\"170\" height=\"170\" src=\"data:image/png;base64,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\" />",
+          "mode": "html"
+        },
+        "pluginVersion": "11.3.1",
+        "title": "",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "description": "",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 11,
+          "x": 2,
+          "y": 0
+        },
+        "id": 75,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<span style=\"font-size: 120px; color: rgb(1, 101, 225);\">Facebook </span>\n<span style=\"font-size: 120px;\"> ${Profil} </span>\n",
+          "mode": "html"
+        },
+        "pluginVersion": "11.3.1",
+        "title": "",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "gridPos": {
+          "h": 9,
+          "w": 4,
+          "x": 13,
+          "y": 0
+        },
+        "id": 78,
+        "libraryPanel": {
+          "name": "Facebook KPI Aktive Nutzere",
+          "uid": "rwQ9Ty84z"
+        },
+        "title": ""
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#0165e1",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "noValue": "N/A",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 4,
+          "x": 17,
+          "y": 0
+        },
+        "id": 80,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {},
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size - CHAR_LENGTH(CAST(page_impressions_unique as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(page_impressions_unique) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\nSELECT\n  ROUND(SUM(a.page_impressions_unique) / ${day_count:value}) as page_impressions_unique\n  FROM\n  -- get page impressions\n  (SELECT page_impressions_unique\n  FROM ndr-code-bi-dashboard.Quintly.facebookInsights\n  WHERE profileId = $profileID \n  AND $Zeitraum\n  )\n  AS a\n  )",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "title": "",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "f0_": "Potenzielle Reichweite pro Tag – Gesamtprofil",
+                "page_impressions_unique": "⌀ pro Tag"
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "description": "",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 3,
+          "x": 21,
+          "y": 0
+        },
+        "id": 72,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<p style=\"font-size: 50px;\">Letztes Update: <br> ${lastUpdate}</p>\r\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.3.1",
+        "title": "",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "description": "",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 24,
+          "x": 0,
+          "y": 10
+        },
+        "id": 84,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<span style=\"font-family:Arial; font-size:4.6em;\">Top Posts | ${Zeitraum:text}</span>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.3.1",
+        "title": "",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "description": "",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 13,
+          "x": 11,
+          "y": 13
+        },
+        "id": 86,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<p style=\"text-align: right\"><font size=\"6\">Legende: &nbsp;🖼️ = Bild &nbsp;&nbsp; 🎥 = Video &nbsp;&nbsp; 🔗 = Link &nbsp;&nbsp; 📕 = Album &nbsp;&nbsp; 📄 = Status </font><font size=\"6\"> </font>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.3.1",
+        "title": "",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "time"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "time: DD.MM | HH:mm \\U\\h\\r"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Interaktionen"
+              },
+              "properties": []
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "post_impressions_unique"
+              },
+              "properties": []
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "post_activity_by_action_type_comment"
+              },
+              "properties": []
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Typ"
+              },
+              "properties": []
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Post"
+              },
+              "properties": []
+            },
+            {
+              "matcher": {
+                "id": "byType",
+                "options": "number"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 35,
+          "w": 24,
+          "x": 0,
+          "y": 15
+        },
+        "id": 88,
+        "options": {
+          "afterRender": "",
+          "content": "<!-- ```json\n{{{json @root}}}\n``` -->\n<table>\n  <thead>\n    <tr>\n      <th id=\"timestamp\">Datum</th>\n      <th id=\"post\">Post</th>\n      <th id=\"Interaktionen\">Interaktionen</th>\n      <th id=\"post_impressions_unique\">▼ Pot. Reichweite</th>\n      <th id=\"post_activity_by_action_type_comment\">Kommentare</th>\n      <th id=\"type\">Typ</th>\n    </tr>\n  </thead>\n  <tbody>\n    {{#each data}}\n    <tr>\n      <td class=\"time\" data-time=\"{{this.time}}\">{{this.time}}</td>\n      <td>{{this.message}}</td>\n      <td class = \"number\">{{this.Interaktionen}}</td>\n      <td class=\"number\">{{this.post_impressions_unique}}</td>\n      <td class=\"number\">{{this.post_activity_by_action_type_comment}}</td>\n      <td>\n        {{#if (eq this.Typ \"Photo\")}}\n          🖼️\n        {{else if (eq this.Typ \"Video\")}}\n          🎥\n        {{else if (eq this.Typ \"Album\")}}\n          📕\n        {{else if (eq this.Typ \"Status\")}}\n          📄\n        {{else if (eq this.Typ \"Link\")}}\n          🔗\n        {{else}}\n          {{this.Typ}}\n        {{/if}}\n      </td>\n    </tr>\n    {{/each}}\n  </tbody>\n</table>",
+          "contentPartials": [],
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "markdown"
+          },
+          "editors": [
+            "styles"
+          ],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "allRows",
+          "styles": "table {\n  font-size: 40px;\n  width: 3700px; /* Updated width */\n  border-collapse: collapse;\n}\n\nth {\n  font-size: 40px;\n  font-weight: bold;\n  text-align: left;\n}\n\ntd {\n  font-size: 40px;\n  padding: 8px;\n  height: 120px;\n}\n\n.number {\n  text-align: center;\n}\n\ntd.time {\n  font-weight: bold;\n  font-size: 40px;\n  width: 380px;\n}\n\n#Interaktionen {\n  width: auto; /* Adjusts dynamically */\n}\n\ntd.reach {\n  width: auto;\n}\n\ntd.videoViews {\n  width: auto;\n}\n\ntd.type {\n  width: auto;\n  text-align: center;\n}\n\ntd.post {\n  width: 100%; /* Makes sure it takes the most space */\n  max-width: 3000px; /* Ensures it does not grow too much */\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n",
+          "wrap": true
+        },
+        "pluginVersion": "5.6.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  post_reactions_by_type_total_anger,\r\npost_reactions_by_type_total_sorry,\r\npost_reactions_by_type_total_haha,\r\npost_reactions_by_type_total_like,\r\npost_reactions_by_type_total_wow,\r\npost_reactions_by_type_total_love,\r\npost_activity_by_action_type_share,\r\npost_activity_by_action_type_comment,\r\npost_impressions_unique,\r\npost_impressions_fan_unique,\r\npost_engaged_users,\r\nlink, \r\nCASE \r\n    WHEN LENGTH(REPLACE(SPLIT(message, '\\n')[SAFE_OFFSET(0)], '�', '')) > 105 \r\n    THEN CONCAT(LEFT(REPLACE(SPLIT(message, '\\n')[SAFE_OFFSET(0)], '�', ''), 105), '...')\r\n    ELSE REPLACE(SPLIT(message, '\\n')[SAFE_OFFSET(0)], '�', '')\r\nEND AS message,\r\ntime,\r\ntype, \r\ntime,\r\n  CASE \r\n    WHEN type = 'Video' AND post_video_length = 0\r\n    THEN 'Link' \r\n    ELSE type\r\n  END AS Typ\r\nFROM `ndr-code-bi-dashboard.Quintly.facebookInsightsOwnPosts`\r\nWHERE profileId = $profileID \r\nAND $Zeitraum \r\nAND last_update = \r\n  (SELECT MAX(last_update) \r\n  FROM `ndr-code-bi-dashboard.Quintly.facebookInsightsOwnPosts` \r\n  WHERE profileId = $profileID)\r\nORDER BY post_impressions_unique DESC LIMIT 10",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "",
+        "transformations": [
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Interaktionen",
+              "mode": "reduceRow",
+              "reduce": {
+                "include": [
+                  "post_reactions_by_type_total_anger",
+                  "post_reactions_by_type_total_haha",
+                  "post_reactions_by_type_total_wow",
+                  "post_activity_by_action_type_share",
+                  "post_reactions_by_type_total_sorry",
+                  "post_reactions_by_type_total_like",
+                  "post_reactions_by_type_total_love",
+                  "post_activity_by_action_type_comment"
+                ],
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Non-Follower Impressions",
+              "mode": "reduceRow",
+              "reduce": {
+                "include": [
+                  "post_impressions_unique",
+                  "post_impressions_fan_unique"
+                ],
+                "reducer": "range"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "binary": {
+                "left": {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Non-Follower Impressions"
+                  }
+                },
+                "operator": "*",
+                "right": {
+                  "fixed": "100"
+                }
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "% Non-Follower Impressions",
+              "binary": {
+                "left": {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Non-Follower Impressions * 100"
+                  }
+                },
+                "operator": "/",
+                "right": {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "post_impressions_unique"
+                  }
+                }
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "binary": {
+                "left": {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "post_engaged_users"
+                  }
+                },
+                "operator": "/",
+                "right": {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "post_impressions_unique"
+                  }
+                }
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "engagement_rate",
+              "binary": {
+                "left": {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "post_engaged_users / post_impressions_unique"
+                  }
+                },
+                "operator": "*",
+                "right": {
+                  "fixed": "100"
+                }
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "post_activity_by_action_type_share",
+                  "post_activity_by_action_type_comment",
+                  "post_impressions_unique",
+                  "link",
+                  "message",
+                  "time",
+                  "Typ",
+                  "Interaktionen",
+                  "% Non-Follower Impressions",
+                  "engagement_rate"
+                ]
+              }
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "% Non-Follower Impressions": true,
+                "engagement_rate": true,
+                "link": true,
+                "post_activity_by_action_type_share": true,
+                "post_engaged_users": false
+              },
+              "includeByName": {},
+              "indexByName": {
+                "% Non-Follower Impressions": 4,
+                "Interaktionen": 2,
+                "Typ": 7,
+                "engagement_rate": 5,
+                "link": 8,
+                "message": 1,
+                "post_activity_by_action_type_comment": 6,
+                "post_activity_by_action_type_share": 9,
+                "post_impressions_unique": 3,
+                "time": 0
+              },
+              "renameByName": {
+                "% Non-Follower Impressions": "",
+                "Interaktionen": "",
+                "engagement_rate": "",
+                "message": "",
+                "post_activity_by_action_type_comment": "",
+                "post_impressions_unique": "",
+                "time": ""
+              }
+            }
+          },
+          {
+            "id": "merge",
+            "options": {
+              "reducers": []
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "fields": {},
+              "sort": [
+                {
+                  "desc": true,
+                  "field": "Interaktionen"
+                }
+              ]
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      }
+    ],
+    "preload": false,
+    "refresh": false,
+    "schemaVersion": 40,
+    "tags": [
+      "TV FB Posts",
+      "4K"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "8",
+            "value": "8"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size",
+          "options": [
+            {
+              "selected": true,
+              "text": "8",
+              "value": "8"
+            }
+          ],
+          "query": "8",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "NDR Schleswig-Holstein",
+            "value": "NDR Schleswig-Holstein"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Profil",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT a.profile \nFROM \n(SELECT profile FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE LRA = '$LRA' AND facebookId != 0) as a,\n(SELECT  Profil_FB FROM `ndr-code-bi-dashboard.Quintly.default-settings` WHERE LRA = '$LRA') as b\nORDER BY( \nCASE WHEN a.profile = b.Profil_FB THEN 1\nELSE 2\nEND\n), a.profile ASC",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "22.02.2025 | 10:08 Uhr",
+            "value": "22.02.2025 | 10:08 Uhr"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "lastUpdate",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \nCASE MAX(last_update)\n  WHEN NULL THEN \"N/A\"\n  ELSE FORMAT_DATETIME(\"%d.%m.%Y | %H:%M Uhr\", DATETIME(MAX(last_update),\"Europe/Berlin\"))\n  END\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nWHERE profileId = 117213",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()",
+            "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "Zeitraum",
+          "options": [
+            {
+              "selected": false,
+              "text": "Gestern",
+              "value": "EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE(), INTERVAL  1 DAY)"
+            },
+            {
+              "selected": true,
+              "text": "Letzte 7 Tage",
+              "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+            },
+            {
+              "selected": false,
+              "text": "Letztes Wochenende",
+              "value": "DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )"
+            },
+            {
+              "selected": false,
+              "text": "Letzte 30 Tage",
+              "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+            }
+          ],
+          "query": "Gestern : EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Letzte 7 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE(), Letztes Wochenende :  DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) ), Letzte 30 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "106580",
+            "value": "106580"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "profileID",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CAST(facebookID AS STRING) FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil''' ",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "NDR",
+            "value": "NDR"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "LRA",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "Select a.LRA  FROM\n(\nSELECT DISTINCT LRA FROM `ndr-code-bi-dashboard.Quintly.profiles` \n) as a \nORDER BY(\nCASE WHEN a.LRA like  LEFT(\"${__user.login}\",3)\nTHEN 1\nELSE 0\nEND\n) DESC",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "8",
+            "value": "8"
+          },
+          "definition": "",
+          "hide": 2,
+          "name": "day_count",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT\n    CAST(COUNT(distinct time) as STRING)\n    FROM Quintly.facebookInsights\n    WHERE\n    CASE WHEN (EXTRACT(HOUR from TIMESTAMP('${__to:date:iso}')) = 23 AND EXTRACT(MINUTE FROM TIMESTAMP('${__to:date:iso}')) = 59 AND EXTRACT(SECOND FROM TIMESTAMP('${__to:date:iso}')) = 59) THEN \n    DATE(time) between DATE_ADD(DATE('${__from:date:iso}', \"Europe/Berlin\"),INTERVAL 1 DAY) AND  DATE('${__to:date:iso}', \"Europe/Berlin\") \n    ELSE   DATE(time) between DATE('${__from:date:iso}', \"Europe/Berlin\") AND  DATE('${__to:date:iso}', \"Europe/Berlin\") \n    END ;\n",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-7d",
+      "to": "now"
+    },
+    "timepicker": {
+      "hidden": true
+    },
+    "timezone": "",
+    "title": "NDR SH | TV Facebook | Top Posts | Letzte 7 Tage 4K",
+    "uid": "dedtpdu7dvgu8e",
+    "version": 5,
+    "weekStart": ""
+  }
+}

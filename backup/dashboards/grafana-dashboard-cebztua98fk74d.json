@@ -1,0 +1,776 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "tv-instagram-old-table-safe",
+    "url": "/d/cebztua98fk74d/tv-instagram-old-table-safe",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-02-03T23:40:19Z",
+    "updated": "2025-02-06T09:59:40Z",
+    "updatedBy": "daniel hristov dev",
+    "createdBy": "daniel hristov dev",
+    "version": 13,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 660,
+    "folderUid": "folder-F9a5Uxn4k",
+    "folderTitle": "Prototypes",
+    "folderUrl": "/dashboards/f/folder-F9a5Uxn4k/prototypes",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1599,
+    "links": [],
+    "liveNow": true,
+    "panels": [
+      {
+        "gridPos": {
+          "h": 4,
+          "w": 2,
+          "x": 0,
+          "y": 0
+        },
+        "id": 154,
+        "libraryPanel": {
+          "name": "Instagram Logo",
+          "uid": "Z2Vm_fU4k"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 4,
+          "w": 11,
+          "x": 2,
+          "y": 0
+        },
+        "id": 47,
+        "libraryPanel": {
+          "name": "TV Instagram Titel ",
+          "uid": "RKph_fUVz"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 13,
+          "y": 0
+        },
+        "id": 89,
+        "libraryPanel": {
+          "name": "TV Instagram Total Interaktionen ",
+          "uid": "IXIK_B84k"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 17,
+          "y": 0
+        },
+        "id": 94,
+        "libraryPanel": {
+          "name": "Instagram Pot. Reichweite pro Post ",
+          "uid": "b0gplfUVz"
+        },
+        "title": ""
+      },
+      {
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 3,
+          "x": 21,
+          "y": 0
+        },
+        "id": 51,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "Letztes Update: <br> \r\n${lastUpdate}",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.3.1",
+        "title": "",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "gridPos": {
+          "h": 2,
+          "w": 11,
+          "x": 0,
+          "y": 4
+        },
+        "id": 150,
+        "libraryPanel": {
+          "name": "Instragram TV Top Reels/Videos Title",
+          "uid": "q5cjhy8Vk"
+        },
+        "title": ""
+      },
+      {
+        "gridPos": {
+          "h": 2,
+          "w": 7,
+          "x": 17,
+          "y": 4
+        },
+        "id": 156,
+        "libraryPanel": {
+          "name": "Instagram Type Column Legend Video Reel",
+          "uid": "ocgGlfU4k"
+        },
+        "title": ""
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "time"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "time: DD.MM | HH:mm \\U\\h\\r"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 123
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Post"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                },
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "${__data.fields.link}",
+                      "url": "${__data.fields.link}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byType",
+                "options": "number"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "engagement"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 120
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "reach"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 122
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "videoViews"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 124
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Typ"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Reel": {
+                          "index": 0,
+                          "text": "🎞️"
+                        },
+                        "Video": {
+                          "index": 1,
+                          "text": "🎥"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 100
+                },
+                {
+                  "id": "custom.align",
+                  "value": "center"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 6
+        },
+        "id": 159,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true
+        },
+        "pluginVersion": "11.3.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  time,\r\n  videoViews,\r\n  reach,\r\n  type AS Typ,\r\n  REPLACE(message, '�', '') AS Post, \r\n  CASE\r\n    WHEN type = 'Reel' THEN totalInteractions\r\n    ELSE engagement\r\n  END AS engagement,FROM `ndr-code-bi-dashboard.Quintly.instagramInsightsOwnPosts`\r\nWHERE profileId = $profileID\r\nAND (type = 'Video' OR type = 'Reel')\r\nAND $Zeitraum \r\nAND last_update = \r\n  (SELECT MAX(last_update) \r\n  FROM `ndr-code-bi-dashboard.Quintly.instagramInsightsOwnPosts` \r\n  WHERE profileId = $profileID)\r\nORDER BY engagement DESC LIMIT 7\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "includeByName": {},
+              "indexByName": {
+                "Post": 1,
+                "Typ": 5,
+                "engagement": 2,
+                "reach": 3,
+                "time": 0,
+                "videoViews": 4
+              },
+              "renameByName": {
+                "Interaktionen": "▼ Interaktionen",
+                "engagement": "Engagment",
+                "reach": "pot. Reichweite",
+                "time": "Datum",
+                "type": "Typ",
+                "videoViews": " Videostarts"
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "gridPos": {
+          "h": 15,
+          "w": 24,
+          "x": 0,
+          "y": 14
+        },
+        "id": 158,
+        "libraryPanel": {
+          "name": "Instagram Top Reels/Videos Main Table",
+          "uid": "OmjzyGX4z"
+        },
+        "title": ""
+      }
+    ],
+    "preload": false,
+    "refresh": false,
+    "schemaVersion": 40,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "MDR",
+            "value": "MDR"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "LRA",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "Select a.LRA  FROM\n(\nSELECT DISTINCT LRA FROM `ndr-code-bi-dashboard.Quintly.profiles` \n) as a \nORDER BY(\nCASE WHEN a.LRA like  LEFT(\"${__user.login}\",3)\nTHEN 1\nELSE 0\nEND\n) DESC",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "MDR SACHSEN",
+            "value": "MDR SACHSEN"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "Profil",
+          "options": [],
+          "query": {
+            "dataset": "QuintlyTest",
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT a.profile \nFROM \n(SELECT profile FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE LRA = '$LRA' AND instagramId != 0) as a,\n(SELECT  Profil_IG FROM `ndr-code-bi-dashboard.Quintly.default-settings` WHERE LRA = '$LRA') as b\nORDER BY( \nCASE WHEN a.profile = b.Profil_IG THEN 1\nELSE 2\nEND\n), a.profile ASC",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "profile",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "profileTest"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()",
+            "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "Zeitraum",
+          "options": [
+            {
+              "selected": false,
+              "text": "Gestern",
+              "value": "EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE(), INTERVAL  1 DAY)"
+            },
+            {
+              "selected": true,
+              "text": "Letzte 7 Tage",
+              "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+            },
+            {
+              "selected": false,
+              "text": "Letztes Wochenende",
+              "value": "DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )"
+            },
+            {
+              "selected": false,
+              "text": "Letzte 30 Tage",
+              "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+            }
+          ],
+          "query": "Gestern : EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Letzte 7 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE(), Letztes Wochenende :  DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) ), Letzte 30 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "06.02.2025 | 10:07 Uhr",
+            "value": "06.02.2025 | 10:07 Uhr"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "lastUpdate",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE MAX(last_update)\r\n  WHEN NULL THEN \"N/A\"\r\n  ELSE FORMAT_DATETIME(\"%d.%m.%Y | %H:%M Uhr\", DATETIME(MAX(last_update),\"Europe/Berlin\"))\r\n  END\r\nFROM `ndr-code-bi-dashboard.Quintly.instagram`\r\nWHERE profileId = $profileID  ",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "8",
+            "value": "8"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size",
+          "options": [
+            {
+              "selected": true,
+              "text": "8",
+              "value": "8"
+            }
+          ],
+          "query": "8",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "10",
+            "value": "10"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size_big",
+          "options": [
+            {
+              "selected": true,
+              "text": "10",
+              "value": "10"
+            }
+          ],
+          "query": "10",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "414367",
+            "value": "414367"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "profileID",
+          "options": [],
+          "query": {
+            "dataset": "QuintlyTest",
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CAST(instagramID AS STRING) FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil''' ",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "facebookID",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "instagramID",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "youtubeID",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "profileTest"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "7",
+            "value": "7"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size_small",
+          "options": [
+            {
+              "selected": true,
+              "text": "7",
+              "value": "7"
+            }
+          ],
+          "query": "7",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "48",
+            "value": "48"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size_headline",
+          "options": [
+            {
+              "selected": true,
+              "text": "48",
+              "value": "48"
+            }
+          ],
+          "query": "48",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "40",
+            "value": "40"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "filled_size_headline_small",
+          "options": [
+            {
+              "selected": true,
+              "text": "40",
+              "value": "40"
+            }
+          ],
+          "query": "40",
+          "type": "custom"
+        }
+      ]
+    },
+    "time": {
+      "from": "now",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "TV Instagram Old table safe",
+    "uid": "cebztua98fk74d",
+    "version": 13,
+    "weekStart": ""
+  }
+}

@@ -1,0 +1,374 @@
+{
+  "id": 521,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "IQT5yel4k",
+  "name": "Facebook Top Post Main Table",
+  "kind": 1,
+  "type": "marcusolsson-dynamictext-panel",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "time"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "time: DD.MM | HH:mm \\U\\h\\r"
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "Interaktionen"
+          },
+          "properties": []
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "post_impressions_unique"
+          },
+          "properties": []
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "post_activity_by_action_type_comment"
+          },
+          "properties": []
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "Typ"
+          },
+          "properties": []
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "Post"
+          },
+          "properties": []
+        },
+        {
+          "matcher": {
+            "id": "byType",
+            "options": "number"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 20,
+      "w": 24,
+      "x": 0,
+      "y": 6
+    },
+    "id": 88,
+    "options": {
+      "afterRender": "",
+      "content": "<!-- ```json\n{{{json @root}}}\n``` -->\n<table>\n  <thead>\n    <tr>\n      <th id=\"timestamp\">Datum</th>\n      <th id=\"post\">Post</th>\n      <th id=\"Interaktionen\">▼ Interaktionen</th>\n      <th id=\"post_impressions_unique\">Pot. Reichweite</th>\n      <th id=\"post_activity_by_action_type_comment\">Kommentare</th>\n      <th id=\"type\">Typ</th>\n    </tr>\n  </thead>\n  <tbody>\n    {{#each data}}\n    <tr>\n      <td class=\"time\" data-time=\"{{this.time}}\">{{this.time}}</td>\n      <td>{{this.message}}</td>\n      <td class = \"number\">{{this.Interaktionen}}</td>\n      <td class=\"number\">{{this.post_impressions_unique}}</td>\n      <td class=\"number\">{{this.post_activity_by_action_type_comment}}</td>\n      <td>\n        {{#if (eq this.Typ \"Photo\")}}\n          🖼️\n        {{else if (eq this.Typ \"Video\")}}\n          🎥\n        {{else if (eq this.Typ \"Album\")}}\n          📕\n        {{else if (eq this.Typ \"Status\")}}\n          📄\n        {{else if (eq this.Typ \"Link\")}}\n          🔗\n        {{else}}\n          {{this.Typ}}\n        {{/if}}\n      </td>\n    </tr>\n    {{/each}}\n  </tbody>\n</table>",
+      "contentPartials": [],
+      "defaultContent": "The query didn't return any results.",
+      "editor": {
+        "format": "auto",
+        "language": "markdown"
+      },
+      "editors": [
+        "styles"
+      ],
+      "externalStyles": [],
+      "helpers": "",
+      "renderMode": "allRows",
+      "styles": "<style>\n  table {\n    font-size: 25px;\n    width: 1080px;\n    border-collapse: collapse;\n  }\n\n  th {\n    font-size: 20px;\n    font-weight: bold;\n    text-align: left;\n  }\n\n  td {\n    font-size: 25px;\n    padding: 8px;\n  }\n  .number{\n    text-align: center;\n  }\n\n  td.time {\n    font-weight: bold;\n    font-size: 20px;\n    width: 200px;\n  }\n\n  #Interaktionen {\n    width: 180px;\n  }\n  #post_impressions_unique{\n    width: 166.5px;\n  }\n  td.reach {\n    width: 122px;\n  }\n\n  td.videoViews {\n    width: 124px;\n  }\n\n  td.type {\n    width: 100px;\n  }\n\n  td.post {\n    width: auto;\n    word-wrap: break-word;\n    white-space: normal;\n  }\n</style>\n\n\n",
+      "wrap": true
+    },
+    "pluginVersion": "5.6.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT \r\n  post_reactions_by_type_total_anger,\r\npost_reactions_by_type_total_sorry,\r\npost_reactions_by_type_total_haha,\r\npost_reactions_by_type_total_like,\r\npost_reactions_by_type_total_wow,\r\npost_reactions_by_type_total_love,\r\npost_activity_by_action_type_share,\r\npost_activity_by_action_type_comment,\r\npost_impressions_unique,\r\npost_impressions_fan_unique,\r\npost_engaged_users,\r\nlink, \r\nCASE \r\n    WHEN LENGTH(REPLACE(SPLIT(message, '\\n')[SAFE_OFFSET(0)], '�', '')) > 105 \r\n    THEN CONCAT(LEFT(REPLACE(SPLIT(message, '\\n')[SAFE_OFFSET(0)], '�', ''), 105), '...')\r\n    ELSE REPLACE(SPLIT(message, '\\n')[SAFE_OFFSET(0)], '�', '')\r\nEND AS message,\r\ntime,\r\ntype, \r\ntime,\r\n  CASE \r\n    WHEN type = 'Video' AND post_video_length = 0\r\n    THEN 'Link' \r\n    ELSE type\r\n  END AS Typ\r\nFROM `ndr-code-bi-dashboard.Quintly.facebookInsightsOwnPosts`\r\nWHERE profileId = $profileID \r\nAND $Zeitraum \r\nORDER BY post_engaged_users DESC LIMIT 10",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "calculateField",
+        "options": {
+          "alias": "Interaktionen",
+          "mode": "reduceRow",
+          "reduce": {
+            "include": [
+              "post_reactions_by_type_total_anger",
+              "post_reactions_by_type_total_haha",
+              "post_reactions_by_type_total_wow",
+              "post_activity_by_action_type_share",
+              "post_reactions_by_type_total_sorry",
+              "post_reactions_by_type_total_like",
+              "post_reactions_by_type_total_love",
+              "post_activity_by_action_type_comment"
+            ],
+            "reducer": "sum"
+          }
+        }
+      },
+      {
+        "id": "calculateField",
+        "options": {
+          "alias": "Non-Follower Impressions",
+          "mode": "reduceRow",
+          "reduce": {
+            "include": [
+              "post_impressions_unique",
+              "post_impressions_fan_unique"
+            ],
+            "reducer": "range"
+          }
+        }
+      },
+      {
+        "id": "calculateField",
+        "options": {
+          "binary": {
+            "left": {
+              "matcher": {
+                "id": "byName",
+                "options": "Non-Follower Impressions"
+              }
+            },
+            "operator": "*",
+            "right": {
+              "fixed": "100"
+            }
+          },
+          "mode": "binary",
+          "reduce": {
+            "reducer": "sum"
+          }
+        }
+      },
+      {
+        "id": "calculateField",
+        "options": {
+          "alias": "% Non-Follower Impressions",
+          "binary": {
+            "left": {
+              "matcher": {
+                "id": "byName",
+                "options": "Non-Follower Impressions * 100"
+              }
+            },
+            "operator": "/",
+            "right": {
+              "matcher": {
+                "id": "byName",
+                "options": "post_impressions_unique"
+              }
+            }
+          },
+          "mode": "binary",
+          "reduce": {
+            "reducer": "sum"
+          }
+        }
+      },
+      {
+        "id": "calculateField",
+        "options": {
+          "binary": {
+            "left": {
+              "matcher": {
+                "id": "byName",
+                "options": "post_engaged_users"
+              }
+            },
+            "operator": "/",
+            "right": {
+              "matcher": {
+                "id": "byName",
+                "options": "post_impressions_unique"
+              }
+            }
+          },
+          "mode": "binary",
+          "reduce": {
+            "reducer": "sum"
+          }
+        }
+      },
+      {
+        "id": "calculateField",
+        "options": {
+          "alias": "engagement_rate",
+          "binary": {
+            "left": {
+              "matcher": {
+                "id": "byName",
+                "options": "post_engaged_users / post_impressions_unique"
+              }
+            },
+            "operator": "*",
+            "right": {
+              "fixed": "100"
+            }
+          },
+          "mode": "binary",
+          "reduce": {
+            "reducer": "sum"
+          }
+        }
+      },
+      {
+        "id": "filterFieldsByName",
+        "options": {
+          "include": {
+            "names": [
+              "post_activity_by_action_type_share",
+              "post_activity_by_action_type_comment",
+              "post_impressions_unique",
+              "link",
+              "message",
+              "time",
+              "Typ",
+              "Interaktionen",
+              "% Non-Follower Impressions",
+              "engagement_rate"
+            ]
+          }
+        }
+      },
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "% Non-Follower Impressions": true,
+            "engagement_rate": true,
+            "link": true,
+            "post_activity_by_action_type_share": true,
+            "post_engaged_users": false
+          },
+          "includeByName": {},
+          "indexByName": {
+            "% Non-Follower Impressions": 4,
+            "Interaktionen": 2,
+            "Typ": 7,
+            "engagement_rate": 5,
+            "link": 8,
+            "message": 1,
+            "post_activity_by_action_type_comment": 6,
+            "post_activity_by_action_type_share": 9,
+            "post_impressions_unique": 3,
+            "time": 0
+          },
+          "renameByName": {
+            "% Non-Follower Impressions": "",
+            "Interaktionen": "",
+            "engagement_rate": "",
+            "message": "",
+            "post_activity_by_action_type_comment": "",
+            "post_impressions_unique": "",
+            "time": ""
+          }
+        }
+      },
+      {
+        "id": "merge",
+        "options": {
+          "reducers": []
+        }
+      },
+      {
+        "id": "sortBy",
+        "options": {
+          "fields": {},
+          "sort": [
+            {
+              "desc": true,
+              "field": "Interaktionen"
+            }
+          ]
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "marcusolsson-dynamictext-panel"
+  },
+  "version": 12,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 28,
+    "created": "2024-06-20T11:45:44Z",
+    "updated": "2025-04-24T08:39:29Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/1d023dd0c27d88e623f989677b219756",
+      "id": 6,
+      "name": "adrian westphal dev"
+    }
+  }
+}

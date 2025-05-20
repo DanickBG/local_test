@@ -1,0 +1,51 @@
+{
+  "uid": "bdpciiuvlua68c",
+  "name": "NDR Niedersachsen Social",
+  "interval": "30s",
+  "items": [
+    {
+      "type": "dashboard_by_uid",
+      "value": "BN1pIO6Vz"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "iqENY564z"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "wI4To9e4z"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "N_rhSO64z"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "jHIDY5e4z"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "dVv2SO6Vz"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "Y_YDY56Vk"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "z_scxLr4k"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "NfrMYY94z"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "tOCTYL94k"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "NzSFLLr4z"
+    }
+  ]
+}

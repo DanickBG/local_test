@@ -1,0 +1,148 @@
+{
+  "id": 620,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "WFzoRInIk",
+  "name": "MDR/NDR TV Web Artikel Weekend/past weeked KPI Difference",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "f0_"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "percent"
+            },
+            {
+              "id": "decimals",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 20,
+      "y": 0
+    },
+    "id": 59,
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "percentChangeColorMode": "standard",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "showPercentChange": false,
+      "textMode": "value_and_name",
+      "wideLayout": true
+    },
+    "pluginVersion": "11.3.1",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH current_value AS (\r\nSELECT SUM(IFNULL(m_visits,0)) as current_sum \r\nFROM `ndr-code-bi-dashboard.Piano.total_visits${dataset_visits_zeitraum:raw}`\r\nWHERE site_level2 = ${LRA:doublequote} AND\r\n${Redaktionen:doublequote} = page_chapter1 AND\r\n${Unterkapitel:doublequote} = page_chapter2 AND\r\n${Sendung:doublequote} = sendungs_id \r\nAND date >= ${bq_saturday:doublequote} AND date <= ${bq_sunday:doublequote}\r\n\r\n), past_value AS (\r\nSELECT SUM(IFNULL(m_visits,0)) as past_sum \r\nFROM `ndr-code-bi-dashboard.Piano.total_visits`\r\nWHERE site_level2 = ${LRA:doublequote} AND\r\n${Redaktionen:doublequote} = page_chapter1 AND\r\n${Unterkapitel:doublequote} = page_chapter2 AND\r\n${Sendung:doublequote} = sendungs_id \r\nAND ${Vergleichszeitraum:raw}\r\n\r\n)\r\nSELECT CONCAT(REPLACE(CAST(ROUND(((current_sum-past_sum)/past_sum)*100,1) as string), \".\", \",\"), \"%\") FROM current_value,past_value as relative_difference",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "includeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "Differenz"
+          }
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 4,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 10,
+    "created": "2024-06-20T11:46:00Z",
+    "updated": "2025-03-28T06:52:50Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

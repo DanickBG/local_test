@@ -1,0 +1,23 @@
+{
+  "uid": "ff4c2ebd-0f6e-4978-8c8f-1dc79866c09d",
+  "name": "NDR MV Newscenter",
+  "interval": "15s",
+  "items": [
+    {
+      "type": "dashboard_by_uid",
+      "value": "eduwmuf9l4lq8b"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "dvlYQde4z"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "jIW6COeVk"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "NfrMYY94z"
+    }
+  ]
+}

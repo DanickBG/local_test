@@ -1,0 +1,160 @@
+{
+  "id": 553,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "O313Ty8Vk",
+  "name": "Facebook KPI Pot.Reichweite",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "#0165e1",
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "noValue": "N/A",
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            }
+          ]
+        },
+        "unit": "string"
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 17,
+      "y": 0
+    },
+    "id": 80,
+    "options": {
+      "colorMode": "background",
+      "graphMode": "none",
+      "justifyMode": "center",
+      "orientation": "horizontal",
+      "percentChangeColorMode": "standard",
+      "reduceOptions": {
+        "calcs": [
+          "last"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "showPercentChange": false,
+      "text": {},
+      "textMode": "value_and_name",
+      "wideLayout": true
+    },
+    "pluginVersion": "11.3.1",
+    "targets": [
+      {
+        "dataset": "Quintly",
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size - CHAR_LENGTH(CAST(page_impressions_unique as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(page_impressions_unique) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\nSELECT\n  ROUND(SUM(IFNULL(a.page_impressions_unique,0)) / MAX(b.days), 0) as page_impressions_unique\n  FROM\n  -- get page impressions\n  (SELECT page_impressions_unique\n  FROM ndr-code-bi-dashboard.Quintly.facebookInsights\n  WHERE profileId = $profileID \n  AND $Zeitraum \n  )\n  AS a,\n  -- get number of days to divide\n    (SELECT\n  CASE\n    WHEN CONTAINS_SUBSTR(\"${Zeitraum:text}\", \"7\") THEN 7\n    WHEN CONTAINS_SUBSTR(\"${Zeitraum:text}\", \"30\") THEN 30\n    ELSE 1\n  END AS days)\n  AS b\n  )",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [
+                {
+                  "name": "page_engaged_users",
+                  "type": "functionParameter"
+                }
+              ],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50,
+          "whereJsonTree": {
+            "children1": {
+              "baa899a9-cdef-4012-b456-718364767b70": {
+                "properties": {
+                  "field": "profileId",
+                  "operator": "equal",
+                  "value": [
+                    null
+                  ],
+                  "valueSrc": [
+                    "value"
+                  ],
+                  "valueType": [
+                    "number"
+                  ]
+                },
+                "type": "rule"
+              }
+            },
+            "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+            "type": "group"
+          }
+        },
+        "table": "facebookInsights"
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "Potenzielle Reichweite pro Tag – Gesamtprofil",
+            "page_impressions_unique": "⌀ pro Tag"
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "stat"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 21,
+    "created": "2024-06-20T11:45:49Z",
+    "updated": "2025-04-24T08:41:21Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/1d023dd0c27d88e623f989677b219756",
+      "id": 6,
+      "name": "adrian westphal dev"
+    }
+  }
+}

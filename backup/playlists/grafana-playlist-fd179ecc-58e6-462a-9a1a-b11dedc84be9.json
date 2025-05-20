@@ -1,0 +1,11 @@
+{
+  "uid": "fd179ecc-58e6-462a-9a1a-b11dedc84be9",
+  "name": "MDR SPIO | Social Newsroom",
+  "interval": "1m",
+  "items": [
+    {
+      "type": "dashboard_by_tag",
+      "value": "SPIO Social"
+    }
+  ]
+}

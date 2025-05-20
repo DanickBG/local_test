@@ -1,0 +1,77 @@
+{
+  "id": 520,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "IJYOi3QVk",
+  "name": "Maintenance Text",
+  "kind": 1,
+  "type": "text",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "gridPos": {
+      "h": 8,
+      "w": 12,
+      "x": 0,
+      "y": 0
+    },
+    "id": 155,
+    "libraryPanel": {
+      "meta": {
+        "connectedDashboards": 0,
+        "created": "2023-06-01T11:04:15Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/9372895bd2354d1612a45afc8704053a",
+          "id": 6,
+          "name": "b.kuch@ndr.de"
+        },
+        "folderName": "Panels Library",
+        "folderUid": "folder-PjWklf8Vz",
+        "updated": "2023-06-01T11:04:15Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/9372895bd2354d1612a45afc8704053a",
+          "id": 6,
+          "name": "b.kuch@ndr.de"
+        }
+      },
+      "name": "Maintenance Text",
+      "uid": "IJYOi3QVk",
+      "version": 1
+    },
+    "options": {
+      "code": {
+        "language": "plaintext",
+        "showLineNumbers": false,
+        "showMiniMap": false
+      },
+      "content": "<div style=\"background-color:rgba(38, 113, 198); text-align:center; vertical-align: middle; padding:20px 0; margin-top:0px; font-size: 15pt;\">\n<font color=\"#FFFFFF\"> <br> Im Moment kommt es zu teilweise deutlichen Abweichungen zwischen den Panels und den Piano-Daten. <br> Wir arbeiten bereits an der Behebung des Problems.<br>&nbsp </a>\n</div>",
+      "mode": "html"
+    },
+    "pluginVersion": "9.2.3",
+    "transparent": true,
+    "type": "text"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 2,
+    "created": "2024-06-20T11:45:44Z",
+    "updated": "2024-06-20T11:45:44Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

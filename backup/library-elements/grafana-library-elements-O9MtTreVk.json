@@ -1,0 +1,56 @@
+{
+  "id": 555,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "O9MtTreVk",
+  "name": "Facebook Top Videos Channel label",
+  "kind": 1,
+  "type": "text",
+  "description": "",
+  "model": {
+    "description": "",
+    "fieldConfig": {
+      "defaults": {},
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 3,
+      "w": 12,
+      "x": 1,
+      "y": 0
+    },
+    "id": 105,
+    "options": {
+      "code": {
+        "language": "plaintext",
+        "showLineNumbers": false,
+        "showMiniMap": false
+      },
+      "content": "<font size=\"8\" style=\"color:rgb(1, 101, 225);\">Facebook</font><font size=\"8\">  ${Profil} </font>",
+      "mode": "html"
+    },
+    "pluginVersion": "11.3.1",
+    "title": "",
+    "transparent": true,
+    "type": "text"
+  },
+  "version": 3,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 8,
+    "created": "2024-06-20T11:45:49Z",
+    "updated": "2025-02-01T16:51:26Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

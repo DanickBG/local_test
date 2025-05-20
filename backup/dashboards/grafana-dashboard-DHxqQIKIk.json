@@ -1,0 +1,999 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "tv-google-trends-7c-gesundheit",
+    "url": "/d/DHxqQIKIk/tv-google-trends-7c-gesundheit",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:41:37Z",
+    "updated": "2024-07-30T05:38:28Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 2,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 1181,
+    "folderUid": "folder-LfjQIrw4z",
+    "folderTitle": "Google Trends",
+    "folderUrl": "/dashboards/f/folder-LfjQIrw4z/google-trends",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "description": "",
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1240,
+    "links": [],
+    "liveNow": true,
+    "panels": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 0,
+          "y": 0
+        },
+        "id": 139,
+        "libraryPanel": {
+          "description": "",
+          "meta": {
+            "connectedDashboards": 11,
+            "created": "2023-05-31T10:49:01Z",
+            "createdBy": {
+              "avatarUrl": "/avatar/9372895bd2354d1612a45afc8704053a",
+              "id": 6,
+              "name": "b.kuch@ndr.de"
+            },
+            "folderName": "Panels Library",
+            "folderUid": "folder-PjWklf8Vz",
+            "updated": "2023-05-31T10:49:01Z",
+            "updatedBy": {
+              "avatarUrl": "/avatar/9372895bd2354d1612a45afc8704053a",
+              "id": 6,
+              "name": "b.kuch@ndr.de"
+            }
+          },
+          "name": "Google Trends Logo",
+          "type": "text",
+          "uid": "2VimoXQ4z",
+          "version": 1
+        },
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<img width=\"85\" height=\"85\" src=\"data:image/png;base64,\n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\" /> ",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "description": "",
+        "gridPos": {
+          "h": 4,
+          "w": 11,
+          "x": 2,
+          "y": 0
+        },
+        "id": 76,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<font size=\"8\" style=\"color:rgb(255, 0, 0);\">Google Trends</font><font size=\"8\">  ${category} </font>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "description": "",
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 21,
+          "y": 0
+        },
+        "id": 72,
+        "libraryPanel": {
+          "description": "",
+          "meta": {
+            "connectedDashboards": 7,
+            "created": "2023-07-05T11:20:16Z",
+            "createdBy": {
+              "avatarUrl": "",
+              "id": 4,
+              "name": ""
+            },
+            "folderName": "Template Dashboards",
+            "folderUid": "folder-o5ETCxr4z",
+            "updated": "2023-07-05T11:20:16Z",
+            "updatedBy": {
+              "avatarUrl": "",
+              "id": 4,
+              "name": ""
+            }
+          },
+          "name": "Google Trends Timestamp",
+          "type": "text",
+          "uid": "5-tUfYrVk",
+          "version": 1
+        },
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "Letztes Update: <br> \r\n${lastUpdate}",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "gridPos": {
+          "h": 2,
+          "w": 10,
+          "x": 0,
+          "y": 4
+        },
+        "id": 137,
+        "libraryPanel": {
+          "description": "",
+          "meta": {
+            "connectedDashboards": 7,
+            "created": "2023-07-05T11:20:45Z",
+            "createdBy": {
+              "avatarUrl": "",
+              "id": 4,
+              "name": ""
+            },
+            "folderName": "Template Dashboards",
+            "folderUid": "folder-o5ETCxr4z",
+            "updated": "2023-07-05T11:20:45Z",
+            "updatedBy": {
+              "avatarUrl": "",
+              "id": 4,
+              "name": ""
+            }
+          },
+          "name": "Google Trends Table Title",
+          "type": "text",
+          "uid": "xmOwBL9Vk",
+          "version": 1
+        },
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<span style=\"font-family:Arial; font-size:2.3em;\">Google Trends | Echtzeit</span>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT  CONCAT(REPEAT(\" \", 24 - CHAR_LENGTH('Top posts')), 'Top posts')\nFROM(\nSELECT 'Top posts' as Interaktionen\nFROM `ndr-code-bi-dashboard.Quintly.facebook`\nLIMIT 1\n)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "page_engaged_users",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": {
+                  "baa899a9-cdef-4012-b456-718364767b70": {
+                    "properties": {
+                      "field": "profileId",
+                      "operator": "equal",
+                      "value": [
+                        null
+                      ],
+                      "valueSrc": [
+                        "value"
+                      ],
+                      "valueType": [
+                        "number"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                },
+                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                "type": "group"
+              }
+            },
+            "table": "facebookInsights"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "f0_": false
+              },
+              "indexByName": {},
+              "renameByName": {
+                "f0_": " "
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "columns": [],
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "description": "",
+        "fontSize": "180%",
+        "gridPos": {
+          "h": 27,
+          "w": 24,
+          "x": 0,
+          "y": 6
+        },
+        "id": 133,
+        "libraryPanel": {
+          "description": "",
+          "meta": {
+            "connectedDashboards": 7,
+            "created": "2023-07-05T11:21:25Z",
+            "createdBy": {
+              "avatarUrl": "",
+              "id": 4,
+              "name": ""
+            },
+            "folderName": "Template Dashboards",
+            "folderUid": "folder-o5ETCxr4z",
+            "updated": "2023-09-14T18:40:32Z",
+            "updatedBy": {
+              "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+              "id": 27,
+              "name": "Daniel.Hristov"
+            }
+          },
+          "name": "Google Trends Table",
+          "type": "table-old",
+          "uid": "unJ_fL9Vk",
+          "version": 6
+        },
+        "options": {
+          "footer": {
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Veränderung Abonnenten"
+            }
+          ]
+        },
+        "pageSize": null,
+        "pluginVersion": "9.2.3",
+        "showHeader": true,
+        "sort": {
+          "col": 0,
+          "desc": false
+        },
+        "styles": [
+          {
+            "$$hashKey": "object:193",
+            "alias": "Rang",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 0,
+            "mappingType": 1,
+            "pattern": "rank",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "$$hashKey": "object:204",
+            "alias": "Veröffentlicht",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "time",
+            "thresholds": [],
+            "type": "string",
+            "unit": "short"
+          },
+          {
+            "$$hashKey": "object:225",
+            "alias": "",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "$$hashKey": "object:357",
+            "alias": "Schlagwörter",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "entityNames",
+            "thresholds": [],
+            "type": "string",
+            "unit": "short"
+          },
+          {
+            "$$hashKey": "object:378",
+            "alias": "Artikel",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "articleTitle",
+            "thresholds": [],
+            "type": "string",
+            "unit": "short"
+          },
+          {
+            "$$hashKey": "object:399",
+            "alias": "Quelle",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "source",
+            "thresholds": [],
+            "type": "string",
+            "unit": "short"
+          },
+          {
+            "$$hashKey": "object:420",
+            "alias": "URL",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "url",
+            "thresholds": [],
+            "type": "string",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "dataset": "Quintly",
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "EU",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT * \nFROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean` \nWHERE \n  category = '${category:text}'\nAND tmstp = \n  (SELECT MAX(tmstp) \n  FROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean`)\nORDER BY rank LIMIT 10",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "*",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "youtubeAnalyticsVideos"
+          }
+        ],
+        "transform": "table",
+        "transformations": [
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "json",
+              "source": "article"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Datum": false,
+                "Dauer": false,
+                "Veroeffentlichungsdatum": false,
+                "abo_change": true,
+                "article": true,
+                "averageViewDuration": true,
+                "averageViewPercentage": true,
+                "averageViewTime": true,
+                "category": true,
+                "dislikes": true,
+                "duration": true,
+                "estimatedMinutesWatched": true,
+                "externalId": true,
+                "importTime": true,
+                "last_update": true,
+                "link": true,
+                "profileId": true,
+                "publishTime": true,
+                "sehVolumen": true,
+                "shares": true,
+                "snippet": true,
+                "subscribersGained": true,
+                "subscribersLost": true,
+                "time": false,
+                "tmstp": true,
+                "url": true
+              },
+              "indexByName": {
+                "article": 6,
+                "articleTitle": 3,
+                "category": 7,
+                "entityNames": 2,
+                "rank": 0,
+                "snippet": 9,
+                "source": 4,
+                "time": 1,
+                "tmstp": 8,
+                "url": 5
+              },
+              "renameByName": {
+                "Dauer": "Videolänge in Min.",
+                "Veroeffentlichungsdatum": "Datum",
+                "abo_change": "Veränderung Abonnenten",
+                "article": "",
+                "articleTitle": "Artikel",
+                "averageViewDuration": " Ø Wiedergabedauer in Min.",
+                "averageViewPercentage": "% Wiedergabe",
+                "averageViewTime": "⌀ Wiedergabedauer",
+                "comments": "Kommentare",
+                "dislikes": "Dislikes",
+                "duration": "Dauer",
+                "entityNames": "Schlagwörter",
+                "estimatedMinutesWatched": "Sehvolumen",
+                "interactions": "Interaktionen",
+                "likes": "Likes",
+                "link": "Link",
+                "publishTime": "Datum",
+                "rank": "Rang",
+                "sehVolumen": " Sehvolumen in Stunden",
+                "shares": "Shares",
+                "source": "Quelle",
+                "subscribersGained": "",
+                "time": "Veröffentlicht",
+                "title": "Titel",
+                "url": "URL",
+                "views": "Videostarts"
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "table-old"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "description": "",
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 6,
+          "y": 33
+        },
+        "id": 70,
+        "libraryPanel": {
+          "description": "",
+          "meta": {
+            "connectedDashboards": 7,
+            "created": "2023-07-05T11:19:56Z",
+            "createdBy": {
+              "avatarUrl": "",
+              "id": 4,
+              "name": ""
+            },
+            "folderName": "Template Dashboards",
+            "folderUid": "folder-o5ETCxr4z",
+            "updated": "2023-07-05T11:19:56Z",
+            "updatedBy": {
+              "avatarUrl": "",
+              "id": 4,
+              "name": ""
+            }
+          },
+          "name": "Google Trends Title",
+          "type": "text",
+          "uid": "z0lsBYrVz",
+          "version": 1
+        },
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "# #",
+          "mode": "markdown"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "5RzC0pR4k"
+            },
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "post_video_view_time"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "facebookinsightsownposts",
+            "timeColumn": "\"time\"",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "text"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [
+      "Google Trends"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": " 2.01.2024 \n 12:52 Uhr",
+            "value": " 2.01.2024 \n 12:52 Uhr"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "lastUpdate",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  FORMAT_DATETIME(\"%e.%m.%Y %n %H:%M Uhr\", DATETIME(MAX(last_update),\"Europe/Berlin\"))  \r\nFROM `ndr-code-bi-dashboard.Quintly.youtube`",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "10",
+            "value": "10"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "filled_size",
+          "options": [
+            {
+              "selected": true,
+              "text": "15",
+              "value": "15"
+            }
+          ],
+          "query": "15",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "15",
+            "value": "15"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "filled_size_big",
+          "options": [
+            {
+              "selected": true,
+              "text": "10",
+              "value": "10"
+            }
+          ],
+          "query": "10",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "58",
+            "value": "58"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "filled_size_headline",
+          "options": [
+            {
+              "selected": true,
+              "text": "48",
+              "value": "48"
+            }
+          ],
+          "query": "48",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "24",
+            "value": "24"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "filled_size_headline_small",
+          "options": [
+            {
+              "selected": true,
+              "text": "48",
+              "value": "48"
+            }
+          ],
+          "query": "48",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "Health",
+            "value": "Gesundheit"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "category",
+          "options": [
+            {
+              "selected": false,
+              "text": "Business",
+              "value": "Business"
+            },
+            {
+              "selected": false,
+              "text": "Headlines",
+              "value": "Schlagzeilen"
+            },
+            {
+              "selected": false,
+              "text": "Science_Tech",
+              "value": "Wissen & Technik"
+            },
+            {
+              "selected": false,
+              "text": "Sport",
+              "value": "Sport"
+            },
+            {
+              "selected": false,
+              "text": "Entertainment",
+              "value": "Unterhaltung"
+            },
+            {
+              "selected": true,
+              "text": "Health",
+              "value": "Gesundheit"
+            }
+          ],
+          "query": "Business : Business, Headlines : Schlagzeilen, Science_Tech : Wissen & Technik, Sport : Sport, Entertainment :  Unterhaltung, Health : Gesundheit",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        }
+      ]
+    },
+    "time": {
+      "from": "2023-05-30T12:50:11.779Z",
+      "to": "2023-05-30T13:10:11.779Z"
+    },
+    "timepicker": {
+      "hidden": true,
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "timezone": "",
+    "title": "TV Google Trends | Gesundheit",
+    "uid": "DHxqQIKIk",
+    "version": 2,
+    "weekStart": ""
+  }
+}

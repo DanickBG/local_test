@@ -1,0 +1,134 @@
+{
+  "id": 573,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "qDEZa1MSz",
+  "name": "NDR TV Web Audio Gestern KPI",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "summe"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Wiedergaben ${Vergleichszeitraumlabels:text}"
+            },
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 16,
+      "y": 0
+    },
+    "id": 54,
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "percentChangeColorMode": "standard",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+      },
+      "showPercentChange": false,
+      "textMode": "value_and_name",
+      "wideLayout": true
+    },
+    "pluginVersion": "11.1.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as summe\r\nFROM \r\n  Piano.av_joined_daily\r\nWHERE \r\nsite_level2 = ${LRA:doublequote}  AND\r\n${Redaktionen:doublequote} IN UNNEST(bi_av_page_chapter1_tags) AND\r\n${Unterkapitel:doublequote} IN UNNEST(bi_av_page_chapter2_tags)\r\nAND ${Sendung:doublequote} IN UNNEST(sendungs_id_tags)\r\nAND date = ${bq_yesterday:doublequote}\r\n--AND CASE\r\n--    WHEN ${Zeitraum:doublequote} = \"Heute\" THEN date = ${bq_yesterday:doublequote}\r\n    -- Else date = ${bq_today:doublequote} \r\n--    END\r\nAND (av_content_type = \"audio\" OR av_content_type = \"Audio\")\r\n",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 8,
+    "created": "2024-06-20T11:45:52Z",
+    "updated": "2024-08-27T07:51:16Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "id": 597,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "TGJVXTiIz",
+  "name": "MDR AKTUELL Top Artikel Web Zeitraum",
+  "kind": 1,
+  "type": "table-old",
+  "description": "",
+  "model": {
+    "columns": [],
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fontSize": "200%",
+    "gridPos": {
+      "h": 22,
+      "w": 12,
+      "x": 0,
+      "y": 6
+    },
+    "id": 45,
+    "libraryPanel": {
+      "meta": {
+        "connectedDashboards": 1,
+        "created": "2023-09-15T18:51:34Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        },
+        "folderName": "",
+        "folderUid": "",
+        "updated": "2023-11-06T12:35:32.545310388Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+          "id": 27,
+          "name": "Daniel.Hristov"
+        }
+      },
+      "name": "MDR AKTUELL Top Artikel Web Zeitraum",
+      "uid": "TGJVXTiIz",
+      "version": 12
+    },
+    "options": {
+      "footer": {
+        "fields": "",
+        "reducer": [
+          "sum"
+        ],
+        "show": false
+      },
+      "showHeader": true
+    },
+    "pageSize": null,
+    "pluginVersion": "9.2.3",
+    "showHeader": true,
+    "sort": {
+      "col": 2,
+      "desc": true
+    },
+    "styles": [
+      {
+        "$$hashKey": "object:88",
+        "alias": "Titel",
+        "align": "left",
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "decimals": 2,
+        "link": false,
+        "pattern": "content_titel",
+        "preserveFormat": false,
+        "sanitize": false,
+        "thresholds": [],
+        "type": "string",
+        "unit": "short"
+      },
+      {
+        "$$hashKey": "object:132",
+        "alias": "Sophora ID",
+        "align": "left",
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "decimals": 2,
+        "mappingType": 1,
+        "pattern": "content_id_sophora",
+        "thresholds": [],
+        "type": "string",
+        "unit": "short"
+      },
+      {
+        "$$hashKey": "object:1706",
+        "alias": "Visits",
+        "align": "auto",
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "decimals": 2,
+        "mappingType": 1,
+        "pattern": "visits",
+        "thresholds": [],
+        "type": "number",
+        "unit": "locale"
+      }
+    ],
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT \r\n  CASE\r\n    WHEN length(content_titel) > 90 THEN SUBSTR(content_titel, 0 , 90) || '...'\r\n    ELSE content_titel\r\n  END AS content_titel,\r\n  -- content_titel,\r\nsum(m_visits) as visits FROM\r\n(\r\nSELECT\r\ncontent_id_sophora,\r\nFIRST_VALUE(content_titel) OVER (PARTITION BY uuid ORDER BY publishing_date DESC) as content_titel, \r\nm_visits, \r\nFROM `ndr-code-bi-dashboard.Piano.articles_joined_${dataset_zeitraum:raw}`\r\nWHERE site_level2 = ${LRA:doublequote} AND\r\n${Redaktionen:doublequote} IN UNNEST(page_chapter1_tags) AND\r\n${Unterkapitel:doublequote} IN UNNEST(page_chapter2_tags) AND \r\n${Sendung:doublequote} IN UNNEST(sendungs_id_tags)\r\nAND content_id_sophora NOT LIKE '%index%'\r\nAND content_id_sophora NOT LIKE '%N/A%'\r\nAND content_id_sophora NOT LIKE '%verteilseite%'\r\nAND content_id_sophora NOT LIKE '%nachrichtenfeed%'\r\nAND objekt_typ NOT LIKE 'indexPage'\r\nAND ${Zeitraum}\r\n)\r\nGROUP BY content_id_sophora, \r\ncontent_titel ORDER BY 2 DESC LIMIT 10",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "transform": "table",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "av_content_duration": true,
+            "av_content_type": true,
+            "bi_av_publication_date": false,
+            "device_type": true,
+            "wiedergaberate": true
+          },
+          "indexByName": {},
+          "renameByName": {
+            "bi_av_content": "Title",
+            "bi_av_publication_date": "Publiziert"
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "table-old"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 1,
+    "created": "2024-06-20T11:45:56Z",
+    "updated": "2024-06-20T11:45:56Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

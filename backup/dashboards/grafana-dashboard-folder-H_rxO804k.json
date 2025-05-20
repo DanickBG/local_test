@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "backup",
+    "url": "/dashboards/f/folder-H_rxO804k/backup",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:39:58Z",
+    "updated": "2024-07-29T12:39:58Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 1,
+    "hasAcl": false,
+    "isFolder": true,
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "id": 1179,
+    "schemaVersion": 17,
+    "title": "Backup",
+    "uid": "folder-H_rxO804k",
+    "version": 1
+  }
+}

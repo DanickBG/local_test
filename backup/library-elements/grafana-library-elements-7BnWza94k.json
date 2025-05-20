@@ -1,0 +1,172 @@
+{
+  "id": 441,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "7BnWza94k",
+  "name": "NDR TV Web Quellen Vergleichszeitraum",
+  "kind": 1,
+  "type": "table-old",
+  "description": "",
+  "model": {
+    "columns": [],
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fontSize": "150%",
+    "gridPos": {
+      "h": 15,
+      "w": 12,
+      "x": 12,
+      "y": 6
+    },
+    "id": 39,
+    "libraryPanel": {
+      "name": "NDR TV Web Quellen Vergleichszeitraum"
+    },
+    "options": {
+      "footer": {
+        "fields": "",
+        "reducer": [
+          "sum"
+        ],
+        "show": false
+      },
+      "showHeader": true
+    },
+    "pageSize": null,
+    "pluginVersion": "9.2.3",
+    "showHeader": true,
+    "sort": {
+      "col": 2,
+      "desc": true
+    },
+    "styles": [
+      {
+        "$$hashKey": "object:132",
+        "alias": "Quelle",
+        "align": "left",
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "decimals": 2,
+        "mappingType": 1,
+        "pattern": "src",
+        "thresholds": [],
+        "type": "string",
+        "unit": "short"
+      },
+      {
+        "$$hashKey": "object:1706",
+        "alias": "Visits",
+        "align": "auto",
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "decimals": 2,
+        "mappingType": 1,
+        "pattern": "summe",
+        "thresholds": [],
+        "type": "number",
+        "unit": "locale"
+      },
+      {
+        "$$hashKey": "object:801",
+        "alias": "Prozent",
+        "align": "auto",
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "decimals": 2,
+        "mappingType": 1,
+        "pattern": "summe_percent",
+        "thresholds": [],
+        "type": "number",
+        "unit": "percent"
+      }
+    ],
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH total_sum AS (\r\n  SELECT\r\n    SUM(m_visits) AS total_sum\r\n  FROM\r\n    Piano.distro\r\n  WHERE\r\n    site_level2 = ${LRA:doublequote}\r\n    AND page_chapter1 = ${Redaktionen:doublequote}\r\n    AND page_chapter2 = ${Unterkapitel:doublequote}\r\n    AND sendungs_id = ${Sendung:doublequote}\r\n    AND ${Vergleichszeitraum:raw}\r\n    AND src NOT LIKE '%N/A%'\r\n)\r\nSELECT\r\n  distro.src,\r\n  SUM(m_visits) AS summe,\r\n  SUM(m_visits) / total_sum.total_sum * 100 AS summe_percent\r\nFROM\r\n  Piano.distro,\r\n  total_sum\r\nWHERE\r\n    site_level2 = ${LRA:doublequote}\r\n    AND page_chapter1 = ${Redaktionen:doublequote}\r\n    AND page_chapter2 = ${Unterkapitel:doublequote}\r\n    AND sendungs_id = ${Sendung:doublequote}\r\n    AND ${Vergleichszeitraum:raw}\r\n  AND src NOT LIKE '%N/A%'\r\nGROUP BY\r\n  src, total_sum.total_sum",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "transform": "table",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "av_content_duration": true,
+            "av_content_type": true,
+            "bi_av_publication_date": false,
+            "device_type": true,
+            "wiedergaberate": true
+          },
+          "indexByName": {},
+          "renameByName": {
+            "bi_av_content": "Title",
+            "bi_av_publication_date": "Publiziert"
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "table-old"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 1,
+    "created": "2024-06-20T11:45:31Z",
+    "updated": "2025-05-09T13:13:45Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/9774780e31622dad09ce78835d06ec07",
+      "id": 39,
+      "name": "sa-1-fortestdaniel"
+    }
+  }
+}

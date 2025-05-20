@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "tv-ndr",
+    "url": "/dashboards/f/folder-8Bt7Gb8Vz/tv-ndr",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:39:57Z",
+    "updated": "2024-07-29T12:39:57Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 1,
+    "hasAcl": false,
+    "isFolder": true,
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "id": 1176,
+    "schemaVersion": 17,
+    "title": "TV_NDR",
+    "uid": "folder-8Bt7Gb8Vz",
+    "version": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": 10,
+  "uid": "2MKmjiVSk",
+  "orgId": 1,
+  "name": "ARD Podcast Feedgenerator",
+  "type": "grafana-simple-json-datasource",
+  "typeLogoUrl": "public/img/icn-datasource.svg",
+  "access": "proxy",
+  "url": "https://storage.googleapis.com/ardmt-dev-feed-generator/ard/demo-audio/ard-feed-0.json",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 1,
+  "readOnly": false,
+  "apiVersion": ""
+}

@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "panels-library",
+    "url": "/dashboards/f/folder-PjWklf8Vz/panels-library",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-06-20T11:45:27Z",
+    "updated": "2024-06-20T11:45:27Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 1,
+    "hasAcl": false,
+    "isFolder": true,
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "id": 668,
+    "schemaVersion": 17,
+    "title": "Panels Library",
+    "uid": "folder-PjWklf8Vz",
+    "version": 1
+  }
+}

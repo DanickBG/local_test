@@ -1,0 +1,92 @@
+{
+  "id": 623,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "wPmjbH_4z",
+  "name": "TikTok title Channel ",
+  "kind": 1,
+  "type": "text",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "postgres",
+      "uid": "5RzC0pR4k"
+    },
+    "description": "",
+    "gridPos": {
+      "h": 4,
+      "w": 11,
+      "x": 2,
+      "y": 0
+    },
+    "id": 105,
+    "libraryPanel": {
+      "name": "TikTok title Channel "
+    },
+    "options": {
+      "code": {
+        "language": "plaintext",
+        "showLineNumbers": false,
+        "showMiniMap": false
+      },
+      "content": "<font size=\"8\" style=\"color:rgb(37,244,238);\">TikTok</font><font size=\"8\">  ${Profil} </font>",
+      "mode": "html"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "format": "time_series",
+        "group": [],
+        "metricColumn": "none",
+        "rawQuery": false,
+        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+        "refId": "A",
+        "select": [
+          [
+            {
+              "params": [
+                "post_video_view_time"
+              ],
+              "type": "column"
+            }
+          ]
+        ],
+        "table": "facebookinsightsownposts",
+        "timeColumn": "\"time\"",
+        "timeColumnType": "timestamp",
+        "where": [
+          {
+            "name": "$__timeFilter",
+            "params": [],
+            "type": "macro"
+          }
+        ]
+      }
+    ],
+    "transparent": true,
+    "type": "text"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 1,
+    "created": "2024-06-20T11:46:00Z",
+    "updated": "2024-06-20T11:46:00Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

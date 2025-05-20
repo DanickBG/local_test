@@ -1,0 +1,197 @@
+{
+  "id": 606,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "unJ_fL9Vk",
+  "name": "Google Trends Table",
+  "kind": 1,
+  "type": "marcusolsson-dynamictext-panel",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 26,
+      "w": 24,
+      "x": 0,
+      "y": 5
+    },
+    "id": 133,
+    "options": {
+      "afterRender": "",
+      "content": "<!-- ```json\n{{{json @root}}}\n``` -->\n<table>\n  <thead>\n    <tr>\n      <th id=\"Rang\">Rang</th>\n      <th id=\"entityNames\">Schlagwörter</th>\n    </tr>\n  </thead>\n  <tbody>\n    {{#each data}}\n    <tr>\n      <td>{{this.Rang}}</td>\n      <td>{{this.entityNames}}</td>\n      </td>\n    </tr>\n    {{/each}}\n  </tbody>\n</table>",
+      "contentPartials": [],
+      "defaultContent": "The query didn't return any results.",
+      "editor": {
+        "format": "auto",
+        "language": "markdown"
+      },
+      "editors": [
+        "styles"
+      ],
+      "externalStyles": [],
+      "helpers": "",
+      "renderMode": "allRows",
+      "styles": "<style>\n  table {\n    font-size: 20px;\n    width: 14500px;\n    border-collapse: collapse;\n  }\n\n  th {\n    font-size: 15px;\n    font-weight: bold;\n    text-align: left;\n  }\n\n  td {\n    font-size: 20px;\n    padding: 4px;\n    height: 45px;\n  }\n\n  td.post {\n    width: auto;\n    word-wrap: break-word;\n    white-space: normal;\n  }\n</style>\n\n\n",
+      "wrap": true
+    },
+    "pluginVersion": "5.6.0",
+    "targets": [
+      {
+        "dataset": "Quintly",
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "EU",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT \n-- *\nrank AS Rang,\n  -- entityNames,\nCASE\n  WHEN length(entityNames) > 200 THEN SUBSTR(entityNames, 0 , 200) || '...'\n  ELSE entityNames\nEND AS entityNames,\n\nFROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean` \nWHERE \n  category = '${category:text}'\n  AND tmstp = (\n    SELECT MAX(tmstp) \n    FROM `ndr-code-bi-dashboard.GoogleTrends.realtime_trends_clean`\n  )\nORDER BY rank \nLIMIT 10;\n",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [
+                {
+                  "name": "*",
+                  "type": "functionParameter"
+                }
+              ],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        },
+        "table": "youtubeAnalyticsVideos"
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "extractFields",
+        "options": {
+          "format": "json"
+        }
+      },
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "Datum": false,
+            "Dauer": false,
+            "Veroeffentlichungsdatum": false,
+            "abo_change": true,
+            "article": true,
+            "averageViewDuration": true,
+            "averageViewPercentage": true,
+            "averageViewTime": true,
+            "category": true,
+            "dislikes": true,
+            "duration": true,
+            "estimatedMinutesWatched": true,
+            "externalId": true,
+            "importTime": true,
+            "last_update": true,
+            "link": true,
+            "profileId": true,
+            "publishTime": true,
+            "sehVolumen": true,
+            "shares": true,
+            "snippet": true,
+            "subscribersGained": true,
+            "subscribersLost": true,
+            "time": false,
+            "tmstp": true,
+            "url": true
+          },
+          "includeByName": {},
+          "indexByName": {
+            "Rang": 0,
+            "entityNames": 1
+          },
+          "renameByName": {
+            "Dauer": "Videolänge in Min.",
+            "Rang": "",
+            "Veroeffentlichungsdatum": "Datum",
+            "abo_change": "Veränderung Abonnenten",
+            "article": "",
+            "articleTitle": "Artikel",
+            "averageViewDuration": " Ø Wiedergabedauer in Min.",
+            "averageViewPercentage": "% Wiedergabe",
+            "averageViewTime": "⌀ Wiedergabedauer",
+            "comments": "Kommentare",
+            "dislikes": "Dislikes",
+            "duration": "Dauer",
+            "entityNames": "",
+            "estimatedMinutesWatched": "Sehvolumen",
+            "interactions": "Interaktionen",
+            "likes": "Likes",
+            "link": "Link",
+            "publishTime": "Datum",
+            "rank": "Rang",
+            "sehVolumen": " Sehvolumen in Stunden",
+            "shares": "Shares",
+            "source": "Quelle",
+            "subscribersGained": "",
+            "time": "Veröffentlicht",
+            "title": "Titel",
+            "url": "URL",
+            "views": "Videostarts"
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "marcusolsson-dynamictext-panel"
+  },
+  "version": 4,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 19,
+    "created": "2024-06-20T11:45:57Z",
+    "updated": "2025-05-09T13:09:54Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/9774780e31622dad09ce78835d06ec07",
+      "id": 39,
+      "name": "sa-1-fortestdaniel"
+    }
+  }
+}

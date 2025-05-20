@@ -1,0 +1,3435 @@
+{
+    "meta": {
+        "type": "db",
+        "canSave": true,
+        "canEdit": true,
+        "canAdmin": true,
+        "canStar": true,
+        "canDelete": true,
+        "slug": "youtube-offentliche-daten",
+        "url": "/d/ddve055zr6mtcc/youtube-offentliche-daten",
+        "expires": "0001-01-01T00:00:00Z",
+        "created": "2024-08-20T10:40:18Z",
+        "updated": "2024-09-25T12:21:30Z",
+        "updatedBy": "b.kuch@ndr.de",
+        "createdBy": "chamskhoury",
+        "version": 5,
+        "hasAcl": false,
+        "isFolder": false,
+        "folderId": 1187,
+        "folderUid": "folder-znKXwDF4k",
+        "folderTitle": "Social Media Dashboard",
+        "folderUrl": "/dashboards/f/folder-znKXwDF4k/social-media-dashboard",
+        "provisioned": false,
+        "provisionedExternalId": "",
+        "annotationsPermissions": {
+            "dashboard": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            },
+            "organization": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            }
+        }
+    },
+    "dashboard": {
+        "annotations": {
+            "list": [
+                {
+                    "builtIn": 1,
+                    "datasource": {
+                        "type": "grafana",
+                        "uid": "-- Grafana --"
+                    },
+                    "enable": true,
+                    "hide": true,
+                    "iconColor": "rgba(0, 211, 255, 1)",
+                    "name": "Annotations & Alerts",
+                    "target": {
+                        "limit": 100,
+                        "matchAny": false,
+                        "tags": [],
+                        "type": "dashboard"
+                    },
+                    "type": "dashboard"
+                }
+            ]
+        },
+        "description": " Anpassungen September 2024",
+        "editable": false,
+        "fiscalYearStartMonth": 0,
+        "graphTooltip": 0,
+        "id": 1512,
+        "links": [],
+        "liveNow": true,
+        "panels": [
+            {
+                "datasource": {
+                    "type": "postgres",
+                    "uid": "5RzC0pR4k"
+                },
+                "gridPos": {
+                    "h": 2,
+                    "w": 1,
+                    "x": 0,
+                    "y": 0
+                },
+                "id": 74,
+                "options": {
+                    "code": {
+                        "language": "plaintext",
+                        "showLineNumbers": false,
+                        "showMiniMap": false
+                    },
+                    "content": "<img width=\"45\" height=\"45\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAADsQAAA7EB9YPtSQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAx/SURBVHic7Z1rbBzVFYC/O/vwY52110nseJ0HqCKJcBoCDkKJgluEhIRIKG1SCI0otPyJImgshBAgtQkIwR8eeZRECFVtQ0mKoqgFEvGnVdMQkJCSUGiI2oJaSGI7thOPvXj9WO/O7Y/ZjdfPrL177+xjPsmax+7MOXvP8bkz93UEeYYEcRFCfgglICQhZCS3EmoEVAnwS6iR4BcQAKoAHxAC/NjnGLefwgvMmUJ8BEiMOxcFYgAC+iWMAGbyXFRCVEBMgCkhljw2BZhWcuuB3hiYC+1jmW0Z5RKhQ0gPVA9BWECdldwKaJCwAKgH6rCNFwJqdOjkIL3YDtQDdCX/2oFOCZ3C3u8qg/a5tkMqJWcOIMFog+8KaBGwElgKLMY2cnmu5JQYg8Al4DzwpYTPLDixEM4KsHIhIGsHuAirPPAo8CMJ4Rzo5HJt2oAjCfjNIvg8mxvN2gE64HsSdgLfz0YBl6z5G7AjDB/O5uIZO0A7LJbwuoD1sxHooox3LXhsIVycyUUzcoB2eAj4NRCcyXUu2ogA28LwdqYXGJl8SYKnDV4HDuAaP58JAn/ogD0SPJlccM0I8CWUBeAQ8MNstXPRypEobLkBhqf70rQRQIInAG/hGr8Q2RiAd6Td8DUl0zpAO+wBfpxTtVx08oMOeGW6L0xZBSQf+A7kXCUXJ9gShoOTfTCpA1yARg+cpfibZUuFiIQVjXBh/AeTVgFe2I9r/GIiKOzqfAITIkA7tAB/V66Si3YE3NEAx9PPTRYBntOjjotuLPjl+HNjIsBFWGXAp/pUctFNAm5K70AaEwE88HP9KrnoxAM/Sz++GgEkGJfggtulW/RcbIDFqZFJVyNAG6x0jV8SLOyEptTBVQcQsM4ZfVx0I+03PWCsA9zkjDouupFptk5/CLzBAV1cnGF5aifdAZY4oIiLMyxO7aQ7QL0Dirg4w4LUjgHwP7vdv8IxdVx0U94D1ZB0gLI0j3ApDQaTNjcAhOsAJYeR7gCW6wClSD2MRoAGZ3Vx0Y0cVwW4bwClx2gEkG4VUHKI9AiA6wAlhxznAPMd1MXFGebD6KSBWgcVUYKoqECUlyOCQfB4EIaBqK7O6FrZ14e0LEgkkJEIcnAQOTSkWGPt1MKoA4QcVGRqvF48dXUY9fUYDQ0YdXV46usRoRBG8m/MfnU1wuezja4AGYkgYzFkJIJlmlimiUxuLdNE9vSQ6OrC6urC6ujA6uwk0dUF8bgSfbIkBCAkeDrs9W4ymiiqCmP+fMo3bMC3di2+m2/G09iIUVcHQssqNuqQEquri0RbGyNnzhD76COGjx7FunzZac0SDeAXF6DWA1ec0qLszjsJtLZSdvfd4MloQmvhk0gwdPQo0V27iB0/7pga5VAjOuE7CfhKt3Dv0qUE9+6l7K67dIvOK4aPHSPS2kr8K+0mQMD1RsKB+r/iwQeZd+ZMyRsfoOyee5j36adUPPCAdtkWhAyp2QECra3UHDyICIxfvq90EVVV1Bw6ROW2bVrleuw1GPW9AlZs3kzw1Vd1iSsshKB6717KN23SJtKCkCE0RQBPOExw377Cf6pXiWFQ/eabeBYu1CUxZMjkyBDVVO3YgRHKz+aGfMKoqaHq6ae1yBJQYwCVygVVV1OxZYtqMUVDxSOPZNxqmSUBQ0xcTDnn+Fevdh/6ZoAIBPA1N+sQVaElAnhXrFAtoujwNTVd+0vZU6nHAfT8mKJCR5lJbQ7gQASwOju1y8wlOspMQMBAwzOA78YbVYuYQP+LL2Ju2kTi4oyWzs0bvHrKTH0EMGprdT3RTmDoyBG6ly2j/7nnkLGYIzrMllT3tkq0VAGeJc5OOZQDA3y7cydXbr2V2McfO6rLTPGqLzsNDnDddSpvnzEjn3/OlXXr6H344Xzoi88IDWVX/BFgDFIyeOAA3cuWEd2zB6ycZF1RhoayCxjY2baUobFdO2Osnh4i27dz5Y47iH/xhdPqTIln0SLVInwG11hNOluMefNU3j4rYidO0L1qFZHWVmR/v9PqTEDMnatahMcgw8QCs8VQ/yOyIx4nuns33cuXM3T4sNPajEFD2XmVO4CoLYwR54m2Nsz778e8914SX3/ttDqA/QqtGI/6KiDfI8A4ht5/n+6mprxoOyiOCDBnqiyt+Uuq7eByczOxkycd00PV/IY01D8DiLIylbdXSvzsWa60tNhtB11d2uULv1+1CK/yKkDDj1BLqu1g+XL9bQfqy059BNDwI7RgmSaR7du5fNttjJw6pUWmrgigdEqY8CltZ9LOyKlTXF6zhsiTTypvO9BQfXocnQ/o4jxe7DTkyhxBxmKI8uLJHu9bvZrq/fvxrV6tXJYcnjbnYy6IG0BCqYgC64efCiMUIrh7N/M++USL8QEd7RAJLxBHYYeQjMVmn6M+HxCCioceIvjyyxjzNS+kot4B4l4URwCnW9OywbtiBdX79+Nf50wqBR0RQHkVICMRlbdXgqisZM7Oncw7fdox44O9VI1i4qkqQBnWFcfWnpgV5Rs2ENy7Ny8Gsmgou4TyKsDq6VF5+5zhaWwkuGuX1tm510J12QktzwD5HgF8PgLbtjHnhRcQVVVOazMG1RFApr0FKCOfqwB/SwvV+/bl7cwlqT56xg1gRKWEfJyYYdTWUv3GG8w9fjxvjQ+QuDAh2XeuiXuBAZUSEt98o/L2MyP1Tv/KK3k9VjGFhrKLqneAPBle5Vu5kuD+/fjXrnValYzRUHYDRR8BRGUlVU89ReCZZwpubEJcfdmpdwCrpwfZ1+fI/MDyjRsJ7tqVl3MTroVlmjoagqJeIKpaysi5c/jXrFEtZgxVzz6LUV+4eTDi587pEDNgoDgCgD22TjeFbHzQVmaaHCCPp1/lKzrKTBRzBCh0RvT80+hxgNipU8io8keNokFGo4ycPq1D1IAhNTwEyr4+Bt96S7WYomHw97/X8QYAEDUE9OqQ9O3zzxdMz6CTWL299L/0kh5ZYBoCTC3COjro27oVpNQhrjCRksjWrdr6TwSYhqXJAQCGDh+m7/HHXSeYgsj27Qy+8442eUJnBEgx8PrrmPfdp6uOKwhkfz+9mzcT3btXq9wEmIZHswMADL33Ht3NzQwfO6ZbdN4x/MEHXG5u1vqfn8IA0/GkUf6WFgJPPEH5+vWllTTq2DGir73maNIoHwSFBKPDHhTibNq4uXMpW78e/+2347vlltG0cUXAmLRxJ0/mS9q4eAP4BUC7XQ3UOKzQRCZLHFlXN3XiyGAQfD6MGjU/xerthZGRKRNHWj09WN3dhZI48nIY5qcc4L/A9Q4rlFNEWRmistIe6JmcoTwhY0kqfU36W4mUtqHBNnZ/P3JgQMc8Pd18GYalqcUhTIrMAeTwsG00c/QZV+0kyIKjF0brff3rn7g4ioROSDqAhEvOquOiG5G0uZF+4FJSjDoAyXDgUjq4VUCJY6Q7gOE6QMkh06sANwKUHol0Bxh2HaDkKE/a/OryPe322MAKxzRy0clgOJkpJr0DyH0TKB06UjvpDnDeAUVcnOHqvPN0B/iPA4q4OMO/UjtXHUDCZ87o4qIbkWbrdAf40Bl1XBzgRGrn6ltAcmTQeaDREZVcdHGhAZYIkJAWAYS9aPQRx9Ry0cXhlPFh3DhAA94k7UOX4sOA3407HmUBnAWOa9THRS9/WQD/TD8x2UjgX2lSxkUzEnaOPzfBAcJwEnhXh0IuWjnSCB+NPznpUv7nIeyFL8jHoeIus6EvAU2LoG38B5NOBlkM7cBjytVy0YKErZMZH6aZDRSGtwXona3oooJdjfDHqT6cNpuLBKMdDgm4P/d6uWjgzw2wSUwzJWLa+YACrAH4KW4DUSFy2IQHpjM+XCMCpJDg6YBXgV/kRDUX1bzWAE8mW3enZUYJvdrhJ8A+QP+6ry6Z0CthayNkvNjAjKaEh+FgApqAP81YNRfVHIlD00yMDzOMAOm0wzoBOyXcOdt7uGSPgL9asGOyRp4Mr8+OS7DCgkeBjcCibO/nkhEXgMMG/DbZfzNrcpbUU4LohCYJLRJuApYCS4AFuKONZ8sg9mDdb4B/C/gHcGIBnBM56rXVktW1G+bEICygTkCDtJ2iTkBYQl1yPyQhhP1XrFnNLcAUYEp7TYYuAV3SbnntEnBJ2iN2u8ugfS4oz7qZl2l9e6B6GEIWhDzJLRAS9rYCqLSgSoAfu7/CDwTk2HMpKoGycSKqmJgveQToH3dumLFrKfdKiAnoFzAg7c97JcQM+9oBYDBpXNMAM5HcloFZC3m3Nt7/Af6y1bTQImbYAAAAAElFTkSuQmCC\" /> ",
+                    "mode": "markdown"
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "postgres",
+                            "uid": "5RzC0pR4k"
+                        },
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+                        "refId": "A",
+                        "select": [
+                            [
+                                {
+                                    "params": [
+                                        "post_video_view_time"
+                                    ],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "table": "facebookinsightsownposts",
+                        "timeColumn": "\"time\"",
+                        "timeColumnType": "timestamp",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "transparent": true,
+                "type": "text"
+            },
+            {
+                "datasource": {
+                    "type": "postgres",
+                    "uid": "5RzC0pR4k"
+                },
+                "gridPos": {
+                    "h": 2,
+                    "w": 12,
+                    "x": 1,
+                    "y": 0
+                },
+                "id": 76,
+                "options": {
+                    "code": {
+                        "language": "plaintext",
+                        "showLineNumbers": false,
+                        "showMiniMap": false
+                    },
+                    "content": "<font size=\"6\" style=\"color:rgb(255, 0, 0);\">Youtube (\u00f6ffentliche Daten)</font><font size=\"6\">  ${Profil} </font>",
+                    "mode": "markdown"
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "postgres",
+                            "uid": "5RzC0pR4k"
+                        },
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+                        "refId": "A",
+                        "select": [
+                            [
+                                {
+                                    "params": [
+                                        "post_video_view_time"
+                                    ],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "table": "facebookinsightsownposts",
+                        "timeColumn": "\"time\"",
+                        "timeColumnType": "timestamp",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "transparent": true,
+                "type": "text"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "gridPos": {
+                    "h": 4,
+                    "w": 10,
+                    "x": 14,
+                    "y": 0
+                },
+                "id": 145,
+                "options": {
+                    "code": {
+                        "language": "plaintext",
+                        "showLineNumbers": false,
+                        "showMiniMap": false
+                    },
+                    "content": " ${hinweis}",
+                    "mode": "markdown"
+                },
+                "pluginVersion": "11.1.3",
+                "transparent": true,
+                "type": "text"
+            },
+            {
+                "datasource": {
+                    "type": "postgres",
+                    "uid": "5RzC0pR4k"
+                },
+                "gridPos": {
+                    "h": 2,
+                    "w": 5,
+                    "x": 0,
+                    "y": 2
+                },
+                "id": 72,
+                "options": {
+                    "code": {
+                        "language": "plaintext",
+                        "showLineNumbers": false,
+                        "showMiniMap": false
+                    },
+                    "content": "Letztes Update: ${lastUpdate}",
+                    "mode": "markdown"
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "postgres",
+                            "uid": "5RzC0pR4k"
+                        },
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+                        "refId": "A",
+                        "select": [
+                            [
+                                {
+                                    "params": [
+                                        "post_video_view_time"
+                                    ],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "table": "facebookinsightsownposts",
+                        "timeColumn": "\"time\"",
+                        "timeColumnType": "timestamp",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "transparent": true,
+                "type": "text"
+            },
+            {
+                "collapsed": false,
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 4
+                },
+                "id": 78,
+                "panels": [],
+                "title": "KPIs",
+                "type": "row"
+            },
+            {
+                "datasource": {
+                    "type": "postgres",
+                    "uid": "5RzC0pR4k"
+                },
+                "gridPos": {
+                    "h": 1,
+                    "w": 3,
+                    "x": 0,
+                    "y": 5
+                },
+                "id": 110,
+                "options": {
+                    "code": {
+                        "language": "plaintext",
+                        "showLineNumbers": false,
+                        "showMiniMap": false
+                    },
+                    "content": " ",
+                    "mode": "html"
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "postgres",
+                            "uid": "5RzC0pR4k"
+                        },
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+                        "refId": "A",
+                        "select": [
+                            [
+                                {
+                                    "params": [
+                                        "post_video_view_time"
+                                    ],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "table": "facebookinsightsownposts",
+                        "timeColumn": "\"time\"",
+                        "timeColumnType": "timestamp",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "transparent": true,
+                "type": "text"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#f5f5f5",
+                            "mode": "fixed"
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "noValue": "N/A",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "string"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 2,
+                    "w": 6,
+                    "x": 3,
+                    "y": 5
+                },
+                "id": 127,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {
+                        "titleSize": 20
+                    },
+                    "textMode": "value_and_name",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT  CONCAT(REPEAT(\" \", 52 - CHAR_LENGTH('Videostarts')), 'Videostarts')\n",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {},
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": " "
+                            }
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#f5f5f5",
+                            "mode": "fixed"
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "noValue": "N/A",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "string"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 2,
+                    "w": 6,
+                    "x": 9,
+                    "y": 5
+                },
+                "id": 129,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {
+                        "titleSize": 20
+                    },
+                    "textMode": "value_and_name",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT  CONCAT(REPEAT(\" \", 52 - CHAR_LENGTH('Interaktionen')), 'Interaktionen')\n",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {},
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": " "
+                            }
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "postgres",
+                    "uid": "5RzC0pR4k"
+                },
+                "gridPos": {
+                    "h": 2,
+                    "w": 7,
+                    "x": 15,
+                    "y": 5
+                },
+                "id": 138,
+                "options": {
+                    "code": {
+                        "language": "plaintext",
+                        "showLineNumbers": false,
+                        "showMiniMap": false
+                    },
+                    "content": "Die Interaktionen enthalten hier nur die Likes und Kommentare.",
+                    "mode": "html"
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "postgres",
+                            "uid": "5RzC0pR4k"
+                        },
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+                        "refId": "A",
+                        "select": [
+                            [
+                                {
+                                    "params": [
+                                        "post_video_view_time"
+                                    ],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "table": "facebookinsightsownposts",
+                        "timeColumn": "\"time\"",
+                        "timeColumnType": "timestamp",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "transparent": true,
+                "type": "text"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "Ausgewiesen ist der aktuellste verf\u00fcgbare Wert.",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#ccccdc",
+                            "mode": "fixed"
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "noValue": "\u2013",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "string"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Interaktionen"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "\u2211 Interaktionen"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 4,
+                    "w": 3,
+                    "x": 0,
+                    "y": 6
+                },
+                "id": 141,
+                "options": {
+                    "colorMode": "value",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {},
+                    "textMode": "value_and_name",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size - CHAR_LENGTH(CAST(Abonnenten as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(Abonnenten) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\nSELECT \n  subscribers AS Abonnenten \nFROM `ndr-code-bi-dashboard.Quintly.youtube`\nWHERE profileId = $profileID \nAND time = (SELECT MAX(time) from ndr-code-bi-dashboard.Quintly.youtube WHERE profileId = $profileID and subscribers>0 and DATE(time) <= \"$FollowersTimeRangeLastDay\")\n  AND subscribers > 0 \n  )",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {},
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": "Abonnenten",
+                                "page_impressions_unique": "Potentielle Reichweite"
+                            }
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "Inhaltsbezogene Daten: Nur Inhalte, die im ausgew\u00e4hlten Zeitraum ver\u00f6ffentlicht wurden, sind ber\u00fccksichtigt.",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#ff0000",
+                            "mode": "fixed"
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "noValue": "\u2013",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "string"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 6,
+                    "w": 3,
+                    "x": 3,
+                    "y": 7
+                },
+                "id": 114,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {},
+                    "textMode": "auto",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size_big - CHAR_LENGTH(CAST(Views as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(Views) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\n  SELECT sum(views) as Views\nFROM `ndr-code-bi-dashboard.Quintly.youtubeVideos`\nWHERE   $zeitraum\n\nAND $profileID  = profileId\n\n)\n",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "f0_": false
+                            },
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": "Summe",
+                                "page_impressions_unique": "Potentielle Reichweite"
+                            }
+                        }
+                    },
+                    {
+                        "id": "labelsToFields",
+                        "options": {
+                            "mode": "columns"
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "Inhaltsbezogene Daten: Nur Inhalte, die im ausgew\u00e4hlten Zeitraum ver\u00f6ffentlicht wurden, sind ber\u00fccksichtigt.",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#ff0000",
+                            "mode": "fixed"
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "noValue": "\u2013",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "string"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 3,
+                    "w": 3,
+                    "x": 6,
+                    "y": 7
+                },
+                "id": 115,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {},
+                    "textMode": "value_and_name",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size - CHAR_LENGTH(CAST(Views as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(Views) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\nSELECT ROUND(sum(a.views) / ${day_count:value}) as Views\nFROM\n(SELECT *\nFROM `ndr-code-bi-dashboard.Quintly.youtubeVideos`\nWHERE   $zeitraum\n\nAND $profileID  = profileId\n) as a\n)\n",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "f0_": false
+                            },
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": " \u2300 pro Tag",
+                                "page_impressions_unique": "Potentielle Reichweite"
+                            }
+                        }
+                    },
+                    {
+                        "id": "labelsToFields",
+                        "options": {
+                            "mode": "columns"
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "Inhaltsbezogene Daten: Nur Inhalte, die im ausgew\u00e4hlten Zeitraum ver\u00f6ffentlicht wurden, sind ber\u00fccksichtigt.",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#ff0000",
+                            "mode": "fixed"
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "noValue": "\u2013",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "string"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 6,
+                    "w": 3,
+                    "x": 9,
+                    "y": 7
+                },
+                "id": 123,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {},
+                    "textMode": "auto",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size_big - CHAR_LENGTH(CAST(Interaktionen as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(Interaktionen) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\nSELECT SUM(likes + comments ) as Interaktionen FROM `ndr-code-bi-dashboard.Quintly.youtubeVideos` as Interaktionen\n  WHERE profileId = $profileID \n  AND  $zeitraum\n\n)\n\n",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "f0_": false
+                            },
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": "Summe",
+                                "page_impressions_unique": "Potentielle Reichweite"
+                            }
+                        }
+                    },
+                    {
+                        "id": "labelsToFields",
+                        "options": {
+                            "mode": "columns"
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "Inhaltsbezogene Daten: Nur Inhalte, die im ausgew\u00e4hlten Zeitraum ver\u00f6ffentlicht wurden, sind ber\u00fccksichtigt.",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#ff0000",
+                            "mode": "fixed"
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "noValue": "\u2013",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "string"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 3,
+                    "w": 3,
+                    "x": 12,
+                    "y": 7
+                },
+                "id": 124,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {},
+                    "textMode": "value_and_name",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size - CHAR_LENGTH(CAST(average as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(average) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\nSELECT ROUND(SUM(a.likes + a.comments ) / ${day_count:value}) average\nFROM \n(SELECT *\nFROM `ndr-code-bi-dashboard.Quintly.youtubeVideos` \n  WHERE profileId = $profileID \n  AND $zeitraum\n\n) as a\n)\n",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "f0_": false
+                            },
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": " \u2300 pro Tag",
+                                "page_impressions_unique": "Potentielle Reichweite"
+                            }
+                        }
+                    },
+                    {
+                        "id": "labelsToFields",
+                        "options": {
+                            "mode": "columns"
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "Inhaltsbezogene Daten: Nur Inhalte, die im ausgew\u00e4hlten Zeitraum ver\u00f6ffentlicht wurden, sind ber\u00fccksichtigt.",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#ff0000",
+                            "mode": "fixed"
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "noValue": "\u2013",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "string"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 3,
+                    "w": 3,
+                    "x": 15,
+                    "y": 7
+                },
+                "id": 135,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {},
+                    "textMode": "value_and_name",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size - CHAR_LENGTH(CAST(likes as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(likes) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\nSELECT SUM(likes) as likes FROM `ndr-code-bi-dashboard.Quintly.youtubeVideos` as Interaktionen\n  WHERE profileId = $profileID \nAND $zeitraum\n)\n\n",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "f0_": false
+                            },
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": "Likes",
+                                "page_impressions_unique": "Potentielle Reichweite"
+                            }
+                        }
+                    },
+                    {
+                        "id": "labelsToFields",
+                        "options": {
+                            "mode": "columns"
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#ff0000",
+                            "mode": "fixed"
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "noValue": "\u2013",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "string"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 6,
+                    "w": 3,
+                    "x": 18,
+                    "y": 7
+                },
+                "id": 132,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {},
+                    "textMode": "auto",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size_big - CHAR_LENGTH(CAST(publishedVideos as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(publishedVideos) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\nSELECT COUNT(profileId) as publishedVideos FROM `ndr-code-bi-dashboard.Quintly.youtubeVideos` \n  WHERE profileId = $profileID \nAND $zeitraum\n)\n\n",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "f0_": false
+                            },
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": "Ver\u00f6ffentlichte Videos",
+                                "page_impressions_unique": "Potentielle Reichweite"
+                            }
+                        }
+                    },
+                    {
+                        "id": "labelsToFields",
+                        "options": {
+                            "mode": "columns"
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "dark-red",
+                            "mode": "thresholds"
+                        },
+                        "displayName": "\u2206 Abonennten",
+                        "mappings": [],
+                        "noValue": "\u2013",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "#C4162A",
+                                    "value": null
+                                },
+                                {
+                                    "color": "#73BF69",
+                                    "value": 1
+                                }
+                            ]
+                        },
+                        "unit": "locale"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Ver\u00e4nderung  Abonnenten"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "\u00b1 Abonnenten"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 3,
+                    "w": 3,
+                    "x": 0,
+                    "y": 10
+                },
+                "id": 143,
+                "options": {
+                    "colorMode": "value",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "firstNotNull"
+                        ],
+                        "fields": "",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {},
+                    "textMode": "auto",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \tSUM(subscribersChange)as changesubscribers\nFROM `ndr-code-bi-dashboard.Quintly.youtube`\nWHERE  $zeitraum\nAND $profileID  = profileId\n",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "abo_change",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        },
+                        "table": "youtubeAnalytics"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "last_update": true,
+                                "profileId": true,
+                                "subscribersChange": true
+                            },
+                            "indexByName": {},
+                            "renameByName": {
+                                "aboChange": "\u00b1 Abonnenten",
+                                "changesubscribers": "Ver\u00e4nderung  Abonnenten",
+                                "subscribers": "Subscriber"
+                            }
+                        }
+                    },
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "Inhaltsbezogene Daten: Nur Inhalte, die im ausgew\u00e4hlten Zeitraum ver\u00f6ffentlicht wurden, sind ber\u00fccksichtigt.",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#ff0000",
+                            "mode": "fixed"
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "noValue": "\u2013",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "string"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 3,
+                    "w": 3,
+                    "x": 6,
+                    "y": 10
+                },
+                "id": 117,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {},
+                    "textMode": "value_and_name",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size - CHAR_LENGTH(CAST(Views as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(Views) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\nSELECT ROUND(AVG(views)) as Views\nFROM `ndr-code-bi-dashboard.Quintly.youtubeVideos`\nWHERE  $zeitraum\n\nAND $profileID  = profileId\n\n)\n",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "f0_": false
+                            },
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": " \u2300 pro Video",
+                                "page_impressions_unique": "Potentielle Reichweite"
+                            }
+                        }
+                    },
+                    {
+                        "id": "labelsToFields",
+                        "options": {
+                            "mode": "columns"
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "Inhaltsbezogene Daten: Nur Inhalte, die im ausgew\u00e4hlten Zeitraum ver\u00f6ffentlicht wurden, sind ber\u00fccksichtigt.",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#ff0000",
+                            "mode": "fixed"
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "noValue": "\u2013",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "string"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 3,
+                    "w": 3,
+                    "x": 12,
+                    "y": 10
+                },
+                "id": 125,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {},
+                    "textMode": "value_and_name",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size - CHAR_LENGTH(CAST(average as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(average) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\nSELECT ROUND(AVG(likes + comments)) as average FROM `ndr-code-bi-dashboard.Quintly.youtubeVideos` \n  WHERE profileId = $profileID \nAND $zeitraum\n\n\n)\n",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "f0_": false
+                            },
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": " \u2300 pro Video",
+                                "page_impressions_unique": "Potentielle Reichweite"
+                            }
+                        }
+                    },
+                    {
+                        "id": "labelsToFields",
+                        "options": {
+                            "mode": "columns"
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "Inhaltsbezogene Daten: Nur Inhalte, die im ausgew\u00e4hlten Zeitraum ver\u00f6ffentlich wurden, sind ber\u00fccksichtigt.",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#ff0000",
+                            "mode": "fixed"
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "noValue": "\u2013",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "string"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 3,
+                    "w": 3,
+                    "x": 15,
+                    "y": 10
+                },
+                "id": 136,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "percentChangeColorMode": "standard",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "showPercentChange": false,
+                    "text": {},
+                    "textMode": "value_and_name",
+                    "wideLayout": true
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT  CONCAT(REPEAT(\" \", $filled_size - CHAR_LENGTH(CAST(comments as STRING))), REPLACE(CAST(FORMAT(\"%'.0f\", CAST(ROUND(comments) as NUMERIC)) AS STRING), \",\", \".\"))FROM\n(\nSELECT SUM(comments) as comments FROM `ndr-code-bi-dashboard.Quintly.youtubeVideos` as Interaktionen\n  WHERE profileId = $profileID \nAND $zeitraum\n)\n\n",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_engaged_users",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "baa899a9-cdef-4012-b456-718364767b70": {
+                                        "properties": {
+                                            "field": "profileId",
+                                            "operator": "equal",
+                                            "value": [
+                                                null
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "number"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "b8aaaa8b-0123-4456-b89a-b18364767b70",
+                                "type": "group"
+                            }
+                        },
+                        "table": "facebookInsights"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "f0_": false
+                            },
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": "Kommentare",
+                                "page_impressions_unique": "Potentielle Reichweite"
+                            }
+                        }
+                    },
+                    {
+                        "id": "labelsToFields",
+                        "options": {
+                            "mode": "columns"
+                        }
+                    }
+                ],
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "postgres",
+                    "uid": "5RzC0pR4k"
+                },
+                "gridPos": {
+                    "h": 1,
+                    "w": 3,
+                    "x": 9,
+                    "y": 13
+                },
+                "id": 109,
+                "options": {
+                    "code": {
+                        "language": "plaintext",
+                        "showLineNumbers": false,
+                        "showMiniMap": false
+                    },
+                    "content": " ",
+                    "mode": "html"
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "postgres",
+                            "uid": "5RzC0pR4k"
+                        },
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+                        "refId": "A",
+                        "select": [
+                            [
+                                {
+                                    "params": [
+                                        "post_video_view_time"
+                                    ],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "table": "facebookinsightsownposts",
+                        "timeColumn": "\"time\"",
+                        "timeColumnType": "timestamp",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "transparent": true,
+                "type": "text"
+            },
+            {
+                "datasource": {
+                    "type": "postgres",
+                    "uid": "5RzC0pR4k"
+                },
+                "gridPos": {
+                    "h": 1,
+                    "w": 3,
+                    "x": 15,
+                    "y": 13
+                },
+                "id": 131,
+                "options": {
+                    "code": {
+                        "language": "plaintext",
+                        "showLineNumbers": false,
+                        "showMiniMap": false
+                    },
+                    "content": " ",
+                    "mode": "html"
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "postgres",
+                            "uid": "5RzC0pR4k"
+                        },
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+                        "refId": "A",
+                        "select": [
+                            [
+                                {
+                                    "params": [
+                                        "post_video_view_time"
+                                    ],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "table": "facebookinsightsownposts",
+                        "timeColumn": "\"time\"",
+                        "timeColumnType": "timestamp",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "transparent": true,
+                "type": "text"
+            },
+            {
+                "collapsed": false,
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 14
+                },
+                "id": 88,
+                "panels": [],
+                "title": "Videos",
+                "type": "row"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "filterable": true,
+                            "inspect": false,
+                            "minWidth": 350
+                        },
+                        "mappings": [],
+                        "noValue": "No Data",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "dark-red",
+                                    "value": null
+                                },
+                                {
+                                    "color": "green",
+                                    "value": 0
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Post"
+                            },
+                            "properties": [
+                                {
+                                    "id": "links",
+                                    "value": [
+                                        {
+                                            "targetBlank": true,
+                                            "title": "${__data.fields.link}",
+                                            "url": "${__data.fields.link}"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "custom.width"
+                                },
+                                {
+                                    "id": "displayName",
+                                    "value": "Video"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Datum"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 151
+                                },
+                                {
+                                    "id": "unit",
+                                    "value": "time: DD.MM.YY | HH:mm \\U\\h\\r"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Videostarts"
+                            },
+                            "properties": [
+                                {
+                                    "id": "unit",
+                                    "value": "locale"
+                                },
+                                {
+                                    "id": "custom.width",
+                                    "value": 118
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Likes"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 80
+                                },
+                                {
+                                    "id": "unit",
+                                    "value": "locale"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Shares"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 75
+                                },
+                                {
+                                    "id": "unit",
+                                    "value": "locale"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Kommentare"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 125
+                                },
+                                {
+                                    "id": "unit",
+                                    "value": "locale"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Dauer"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 79
+                                },
+                                {
+                                    "id": "unit",
+                                    "value": "dthms"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "link"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hidden",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Videol\u00e4nge in Min."
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 166
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Interaktionsrate"
+                            },
+                            "properties": [
+                                {
+                                    "id": "decimals",
+                                    "value": 1
+                                },
+                                {
+                                    "id": "custom.width",
+                                    "value": 145
+                                },
+                                {
+                                    "id": "custom.align",
+                                    "value": "right"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "#00b0de",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Interaktionen"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 145
+                                },
+                                {
+                                    "id": "unit",
+                                    "value": "locale"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 12,
+                    "w": 24,
+                    "x": 0,
+                    "y": 15
+                },
+                "id": 86,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Videostarts"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "dataset": "Quintly",
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\ntime as Datum,\nCONCAT(\n  CASE WHEN LENGTH(CAST(DIV(duration,60) AS String))<2 THEN CONCAT(\"0\",CAST(DIV(duration,60) AS String)) ELSE CAST(DIV(duration,60) AS String)  END ,\n  \":\",CASE WHEN LENGTH(CAST(MOD(duration,60) AS String))<2 THEN CONCAT(\"0\",CAST(MOD(duration,60) AS String)) ELSE CAST(MOD(duration,60) AS String)  END) as Dauer,\n   title,\nviews,\nlink,\nlikes,\ncomments,\nCONCAT(REPLACE(CAST(ROUND(SAFE_DIVIDE((likes + comments),views)*100,1) AS STRING),\".\",\",\"),\"%\") as interaction_rate\n FROM `ndr-code-bi-dashboard.Quintly.youtubeVideos` \nWHERE profileId = $profileID\nAND $zeitraum\nORDER BY time DESC",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "*",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        },
+                        "table": "youtubeAnalyticsVideos"
+                    }
+                ],
+                "title": "Videos",
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "Datum": false,
+                                "Veroeffentlichungsdatum": false,
+                                "abo_change": false,
+                                "averageViewDuration": true,
+                                "duration": true,
+                                "estimatedMinutesWatched": true,
+                                "externalId": true,
+                                "importTime": true,
+                                "internalId": true,
+                                "last_update": true,
+                                "link": false,
+                                "profileId": true,
+                                "publishTime": true,
+                                "subscribersGained": true,
+                                "subscribersLost": true,
+                                "time": true
+                            },
+                            "indexByName": {
+                                "Datum": 0,
+                                "Dauer": 18,
+                                "abo_change": 17,
+                                "averageViewDuration": 14,
+                                "averageViewPercentage": 13,
+                                "averageViewTime": 19,
+                                "comments": 11,
+                                "dislikes": 10,
+                                "duration": 16,
+                                "estimatedMinutesWatched": 15,
+                                "externalId": 7,
+                                "importTime": 4,
+                                "last_update": 3,
+                                "likes": 9,
+                                "link": 8,
+                                "profileId": 2,
+                                "sehVolumen": 20,
+                                "shares": 12,
+                                "time": 1,
+                                "title": 5,
+                                "views": 6
+                            },
+                            "renameByName": {
+                                "Dauer": "Videol\u00e4nge in Min.",
+                                "Veroeffentlichungsdatum": "Datum",
+                                "abo_change": "Ver\u00e4nderung Abonnenten",
+                                "averageViewDuration": " \u00d8 Wiedergabedauer in Min.",
+                                "averageViewPercentage": "% Wiedergabe",
+                                "averageViewTime": "\u2300 Wiedergabedauer",
+                                "comments": "Kommentare",
+                                "dislikes": "Dislikes",
+                                "duration": "Dauer",
+                                "estimatedMinutesWatched": "Sehvolumen",
+                                "interactions": "Interaktionen",
+                                "likes": "Likes",
+                                "link": "Link",
+                                "publishTime": "Datum",
+                                "sehVolumen": " Sehvolumen in Stunden",
+                                "shares": "Shares",
+                                "subscribersGained": "",
+                                "time": "Datum",
+                                "title": "Post",
+                                "views": "Videostarts"
+                            }
+                        }
+                    },
+                    {
+                        "id": "filterByValue",
+                        "options": {
+                            "filters": [
+                                {
+                                    "config": {
+                                        "id": "isNull",
+                                        "options": {}
+                                    },
+                                    "fieldName": "Videostarts"
+                                }
+                            ],
+                            "match": "any",
+                            "type": "exclude"
+                        }
+                    },
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "Interaktionen",
+                            "mode": "reduceRow",
+                            "reduce": {
+                                "include": [
+                                    "Likes",
+                                    "Kommentare"
+                                ],
+                                "reducer": "sum"
+                            }
+                        }
+                    },
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "Interaktionen": false,
+                                "Interaktionen / Videostarts": true
+                            },
+                            "indexByName": {
+                                "Datum": 0,
+                                "Interaktionen": 3,
+                                "Kommentare": 5,
+                                "Likes": 4,
+                                "Link": 8,
+                                "Post": 1,
+                                "Videol\u00e4nge in Min.": 7,
+                                "Videostarts": 2,
+                                "interaction_rate": 6
+                            },
+                            "renameByName": {
+                                "interaction_rate": "Interaktionsrate"
+                            }
+                        }
+                    },
+                    {
+                        "id": "convertFieldType",
+                        "options": {
+                            "conversions": [],
+                            "fields": {}
+                        }
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "postgres",
+                    "uid": "5RzC0pR4k"
+                },
+                "gridPos": {
+                    "h": 5,
+                    "w": 3,
+                    "x": 6,
+                    "y": 27
+                },
+                "id": 70,
+                "options": {
+                    "code": {
+                        "language": "plaintext",
+                        "showLineNumbers": false,
+                        "showMiniMap": false
+                    },
+                    "content": "# #",
+                    "mode": "markdown"
+                },
+                "pluginVersion": "11.1.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "postgres",
+                            "uid": "5RzC0pR4k"
+                        },
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+                        "refId": "A",
+                        "select": [
+                            [
+                                {
+                                    "params": [
+                                        "post_video_view_time"
+                                    ],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "table": "facebookinsightsownposts",
+                        "timeColumn": "\"time\"",
+                        "timeColumnType": "timestamp",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "transparent": true,
+                "type": "text"
+            }
+        ],
+        "refresh": false,
+        "schemaVersion": 39,
+        "tags": [],
+        "templating": {
+            "list": [
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "NDR",
+                        "value": "NDR"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 0,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "LRA",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT a.LRA\r\nFROM (\r\n  SELECT DISTINCT LRA FROM `ndr-code-bi-dashboard.Quintly.profiles`\r\n  WHERE youtubeID != 0\r\n) as a\r\nORDER BY (\r\n  CASE\r\n    WHEN REGEXP_CONTAINS(LOWER(\"${__user.email}\"), LOWER(a.LRA))\r\n    THEN 1\r\n    ELSE 0\r\n  END\r\n) DESC",
+                        "refId": "tempvar",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "extra 3",
+                        "value": "extra 3"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 0,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Profil",
+                    "options": [],
+                    "query": {
+                        "dataset": "QuintlyTest",
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT a.profile \nFROM \n(SELECT profile FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE LRA = '$LRA' AND youtubeId != 0) as a,\n(SELECT  Profil_YT FROM `ndr-code-bi-dashboard.Quintly.default-settings` WHERE LRA = '$LRA') as b\nORDER BY( \nCASE WHEN a.profile = b.Profil_YT THEN 1\nELSE 2\nEND\n), UPPER(a.profile) ASC",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "profile",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        },
+                        "table": "profileTest"
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "231281",
+                        "value": "231281"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "profileID",
+                    "options": [],
+                    "query": {
+                        "dataset": "QuintlyTest",
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CAST(youtubeID AS STRING) FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil''' ",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "facebookID",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                },
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "instagramID",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                },
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "youtubeID",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        },
+                        "table": "profileTest"
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": true,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "20.08.2024 \n 07:49 Uhr",
+                        "value": "20.08.2024 \n 07:49 Uhr"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "lastUpdate",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \r\n  FORMAT_DATETIME(\"%e.%m.%Y %n %H:%M Uhr\", DATETIME(MAX(last_update),\"Europe/Berlin\"))  \r\nFROM `ndr-code-bi-dashboard.Quintly.youtube`\r\nWHERE profileId = $profileID   ",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 2,
+                    "regex": "",
+                    "skipUrlSync": true,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "15",
+                        "value": "15"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "filled_size",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "15",
+                            "value": "15"
+                        }
+                    ],
+                    "query": "15",
+                    "queryValue": "",
+                    "skipUrlSync": true,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "10",
+                        "value": "10"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "filled_size_big",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "10",
+                            "value": "10"
+                        }
+                    ],
+                    "query": "10",
+                    "queryValue": "",
+                    "skipUrlSync": true,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "7",
+                        "value": "7"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "day_count",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\n    CASE WHEN (EXTRACT(HOUR from TIMESTAMP('${__to:date:iso}')) = 23 AND EXTRACT(MINUTE FROM TIMESTAMP('${__to:date:iso}')) = 59 AND EXTRACT(SECOND FROM TIMESTAMP('${__to:date:iso}')) = 59) THEN \n     CAST(date_diff(DATE('${__to:date:iso}'), DATE('${__from:date:iso}'), DAY) + 1 AS STRING)\n    ELSE CAST(date_diff(DATE('${__to:date:iso}'), DATE('${__from:date:iso}'), DAY) AS STRING)\n    END ;\n",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 2,
+                    "regex": "",
+                    "skipUrlSync": true,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "(EXTRACT(DATE from DATETIME(time, \"Europe/Berlin\")) BETWEEN DATE('2024-08-13T10:38:15.841Z', \"Europe/Berlin\") AND DATE_SUB(\"2024-08-20\", INTERVAL 1 DAY))",
+                        "value": "(EXTRACT(DATE from DATETIME(time, \"Europe/Berlin\")) BETWEEN DATE('2024-08-13T10:38:15.841Z', \"Europe/Berlin\") AND DATE_SUB(\"2024-08-20\", INTERVAL 1 DAY))"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "zeitraum",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": " SELECT CASE \n\n       --  case: \"Last 24 HOURS \"\n    WHEN DATE('${__from:date:iso}', \"Europe/Berlin\") >= CURRENT_DATE(\"Europe/Berlin\")  OR TIMESTAMP_DIFF(TIMESTAMP('${__to:date:iso}'), TIMESTAMP('${__from:date:iso}'), HOUR) = 24 AND EXTRACT(DAY FROM DATETIME('${__from:date:iso}', \"Europe/Berlin\")) != EXTRACT(DAY FROM DATETIME('${__to:date:iso}', \"Europe/Berlin\")) OR TIMESTAMP_DIFF(TIMESTAMP('${__to:date:iso}'), TIMESTAMP('${__from:date:iso}'), MINUTE) < 1439\n    THEN \"\"\"(EXTRACT(DATE from DATETIME(time, \"Europe/Berlin\"))  = DATE_ADD(CURRENT_DATE,INTERVAL 1 DAY))\"\"\"\n    -- case: CURRENT_DATE()\n    WHEN EXTRACT(DATE FROM TIMESTAMP('${__to:date:iso}')) >= CURRENT_DATE(\"Europe/Berlin\") \n    THEN  \"\"\"(EXTRACT(DATE from DATETIME(time, \"Europe/Berlin\")) BETWEEN DATE('${__from:date}', \"Europe/Berlin\") AND DATE_SUB(\"$HeuteDatum\", INTERVAL 1 DAY))\"\"\"\n    ELSE  \"\"\"(EXTRACT(DATE from DATETIME(time, \"Europe/Berlin\")) BETWEEN DATE('${__from:date}', \"Europe/Berlin\") AND DATE('${__to:date}', \"Europe/Berlin\"))\"\"\"\n\n    END \n",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 2,
+                    "regex": "",
+                    "skipUrlSync": true,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "2024-08-19",
+                        "value": "2024-08-19"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "FollowersTimeRangeLastDay",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \r\n-- case: last x<24 hours\r\n    WHEN TIMESTAMP_DIFF(TIMESTAMP('${__to:date:iso}'), TIMESTAMP('${__from:date:iso}'), HOUR) = 24 AND EXTRACT(DAY FROM DATETIME('${__from:date:iso}', \"Europe/Berlin\")) != EXTRACT(DAY FROM DATETIME('${__to:date:iso}', \"Europe/Berlin\")) OR TIMESTAMP_DIFF(TIMESTAMP('${__to:date:iso}'), TIMESTAMP('${__from:date:iso}'), MINUTE) < 1439\r\n    THEN   DATE_ADD(CURRENT_DATE,INTERVAL 1 DAY)\r\n-- SECOND case: today or bigger\r\n    WHEN EXTRACT(DATE FROM TIMESTAMP('${__to:date:iso}')) >= CURRENT_DATE(\"Europe/Berlin\") \r\n    THEN DATE_SUB(\"$HeuteDatum\", INTERVAL 1 DAY)\r\nELSE DATE_SUB(DATE('${__to:date}', \"Europe/Berlin\"), INTERVAL 0 DAY)\r\nEND \r\n\r\n",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 2,
+                    "regex": "",
+                    "skipUrlSync": true,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "## Der ausgewertete Zeitraum lautet: 13.08.24 - 19.08.24 ",
+                        "value": "## Der ausgewertete Zeitraum lautet: 13.08.24 - 19.08.24 "
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "hinweis",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE CONTAINS_SUBSTR(\"\"\"${zeitraum}\"\"\", \"DATE_ADD\")\r\nWHEN True  THEN \"# Hinweis: F\u00fcr den ausgew\u00e4hlten Zeitraum liegen keine Daten vor. Um Daten auswerten zu k\u00f6nnen, bitte gestern oder gr\u00f6\u00dfere Zeitr\u00e4ume ausw\u00e4hlen.\"\r\nELSE \"\"\"## Der ausgewertete Zeitraum lautet: $fromDay - $toDay \"\"\"\r\nEND",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 2,
+                    "regex": "",
+                    "skipUrlSync": true,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "19.08.24",
+                        "value": "19.08.24"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "toDay",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CASE \r\n-- case: last x<24 hours\r\n    WHEN TIMESTAMP_DIFF(TIMESTAMP('${__to:date:iso}'), TIMESTAMP('${__from:date:iso}'), HOUR) = 24 AND EXTRACT(DAY FROM DATETIME('${__from:date:iso}', \"Europe/Berlin\")) != EXTRACT(DAY FROM DATETIME('${__to:date:iso}', \"Europe/Berlin\")) OR TIMESTAMP_DIFF(TIMESTAMP('${__to:date:iso}'), TIMESTAMP('${__from:date:iso}'), MINUTE) < 1439\r\n    THEN   FORMAT_DATE(\"%d.%m.%y\",DATE_ADD(CURRENT_DATE,INTERVAL 1 DAY))\r\n-- SECOND case: today or bigger\r\n    WHEN EXTRACT(DATE FROM TIMESTAMP('${__to:date:iso}')) >= CURRENT_DATE(\"Europe/Berlin\") \r\n    THEN FORMAT_DATE(\"%d.%m.%y\",DATE_SUB(CURRENT_DATE(\"Europe/Berlin\"), INTERVAL 1 DAY))\r\nELSE FORMAT_DATE(\"%d.%m.%y\",DATE_SUB(DATE('${__to:date}', \"Europe/Berlin\"), INTERVAL 0 DAY))\r\nEND \r\n\r\n",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 2,
+                    "regex": "",
+                    "skipUrlSync": true,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "13.08.24",
+                        "value": "13.08.24"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "fromDay",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT FORMAT_DATE(\"%d.%m.%y\",DATE(TIMESTAMP('${__from:date:iso}'),'Europe/Berlin'))",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 2,
+                    "regex": "",
+                    "skipUrlSync": true,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "2024-08-20",
+                        "value": "2024-08-20"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "HeuteDatum",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT CURRENT_DATE(\"Europe/Berlin\")",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 2,
+                    "regex": "",
+                    "skipUrlSync": true,
+                    "sort": 0,
+                    "type": "query"
+                }
+            ]
+        },
+        "time": {
+            "from": "now-7d",
+            "to": "now"
+        },
+        "timepicker": {
+            "hidden": false,
+            "refresh_intervals": [
+                "5s",
+                "10s",
+                "30s",
+                "1m",
+                "5m",
+                "15m",
+                "30m",
+                "1h",
+                "2h",
+                "1d"
+            ]
+        },
+        "timezone": "",
+        "title": "Youtube (\u00f6ffentliche Daten)",
+        "uid": "ddve055zr6mtcc",
+        "version": 5,
+        "weekStart": ""
+    }
+}

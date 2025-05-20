@@ -1,0 +1,29 @@
+{
+  "id": 20,
+  "uid": "del5191pao5j4f",
+  "orgId": 1,
+  "name": "grafana-bigquery-datasource-debug-delete",
+  "type": "grafana-bigquery-datasource",
+  "typeLogoUrl": "public/plugins/grafana-bigquery-datasource/img/logo.png",
+  "access": "proxy",
+  "url": "",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {
+    "authenticationType": "gce",
+    "clientEmail": "bigquery-editor@ndr-code-bi-dashboard.iam.gserviceaccount.com",
+    "defaultProject": "ndr-code-bi-dashboard",
+    "processingLocation": "europe-west3",
+    "tokenUri": "https://oauth2.googleapis.com/token"
+  },
+  "secureJsonFields": {
+    "privateKey": true
+  },
+  "version": 11,
+  "readOnly": false,
+  "apiVersion": ""
+}

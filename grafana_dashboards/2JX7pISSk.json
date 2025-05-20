@@ -1,0 +1,1767 @@
+{
+    "meta": {
+        "type": "db",
+        "canSave": true,
+        "canEdit": true,
+        "canAdmin": true,
+        "canStar": true,
+        "canDelete": true,
+        "slug": "ndr-nds-app-landervergleich",
+        "url": "/d/2JX7pISSk/ndr-nds-app-landervergleich",
+        "expires": "0001-01-01T00:00:00Z",
+        "created": "2024-07-29T12:40:58Z",
+        "updated": "2024-07-30T05:37:40Z",
+        "updatedBy": "Anonymous",
+        "createdBy": "Anonymous",
+        "version": 2,
+        "hasAcl": false,
+        "isFolder": false,
+        "folderId": 1176,
+        "folderUid": "folder-8Bt7Gb8Vz",
+        "folderTitle": "TV_NDR",
+        "folderUrl": "/dashboards/f/folder-8Bt7Gb8Vz/tv-ndr",
+        "provisioned": false,
+        "provisionedExternalId": "",
+        "annotationsPermissions": {
+            "dashboard": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            },
+            "organization": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            }
+        }
+    },
+    "dashboard": {
+        "annotations": {
+            "list": [
+                {
+                    "builtIn": 1,
+                    "datasource": {
+                        "type": "grafana",
+                        "uid": "-- Grafana --"
+                    },
+                    "enable": true,
+                    "hide": true,
+                    "iconColor": "rgba(0, 211, 255, 1)",
+                    "name": "Annotations & Alerts",
+                    "target": {
+                        "limit": 100,
+                        "matchAny": false,
+                        "tags": [],
+                        "type": "dashboard"
+                    },
+                    "type": "dashboard"
+                }
+            ]
+        },
+        "editable": true,
+        "fiscalYearStartMonth": 0,
+        "graphTooltip": 0,
+        "id": 1201,
+        "links": [],
+        "liveNow": false,
+        "panels": [
+            {
+                "datasource": {
+                    "type": "postgres",
+                    "uid": "5RzC0pR4k"
+                },
+                "description": "",
+                "gridPos": {
+                    "h": 3,
+                    "w": 15,
+                    "x": 0,
+                    "y": 0
+                },
+                "id": 150,
+                "options": {
+                    "code": {
+                        "language": "plaintext",
+                        "showLineNumbers": false,
+                        "showMiniMap": false
+                    },
+                    "content": "<font size=\"8\">NDR App L\u00e4ndervergleich</font><font size=\"8\"> </font>",
+                    "mode": "html"
+                },
+                "pluginVersion": "9.2.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "postgres",
+                            "uid": "5RzC0pR4k"
+                        },
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+                        "refId": "A",
+                        "select": [
+                            [
+                                {
+                                    "params": [
+                                        "post_video_view_time"
+                                    ],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "table": "facebookinsightsownposts",
+                        "timeColumn": "\"time\"",
+                        "timeColumnType": "timestamp",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "transparent": true,
+                "type": "text"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "description": "",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "dark-blue",
+                            "mode": "fixed"
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                },
+                                {
+                                    "color": "red",
+                                    "value": 80
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "summe"
+                            },
+                            "properties": [
+                                {
+                                    "id": "unit",
+                                    "value": "locale"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 3,
+                    "w": 3,
+                    "x": 15,
+                    "y": 0
+                },
+                "id": 14,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "area",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "textMode": "value_and_name"
+                },
+                "pluginVersion": "9.2.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "hide": false,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\n  SUM(COALESCE(m_visits,0)) AS summe\nFROM   Piano.total_visits \nWHERE  site_level2 IN ('radio-app','orchester-app','hh-app',\n'kultur-app','ndrinfo-app','sh-app','nds-app','n-joy-app','mv-app','ndr2-app')  \nAND page_chapter1 = \"Alle Kapitel 1\" \nAND page_chapter2 = \"Alle Kapitel 2\"\nAND sendungs_id = \"Alle Sendungs-ID\" \nAND $Zeitraum",
+                        "refId": "B",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "f0_": false
+                            },
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": "${Zeitraum:text}",
+                                "summe": "${Zeitraum:text}",
+                                "visits": "${Zeitraum:text}"
+                            }
+                        }
+                    }
+                ],
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "dark-blue",
+                            "mode": "fixed"
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                },
+                                {
+                                    "color": "red",
+                                    "value": 80
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "summe"
+                            },
+                            "properties": [
+                                {
+                                    "id": "unit",
+                                    "value": "locale"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 3,
+                    "w": 3,
+                    "x": 18,
+                    "y": 0
+                },
+                "id": 18,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "area",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "reduceOptions": {
+                        "calcs": [
+                            "last"
+                        ],
+                        "fields": "/.*/",
+                        "values": false
+                    },
+                    "textMode": "value_and_name"
+                },
+                "pluginVersion": "9.2.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\r\n  SUM(COALESCE(m_visits,0)) AS summe\r\nFROM\r\n  Piano.total_visits\r\nWHERE  site_level2 IN ('radio-app','orchester-app','hh-app',\r\n'kultur-app','ndrinfo-app','sh-app','nds-app','n-joy-app','mv-app','ndr2-app') \r\n  AND page_chapter1 = \"Alle Kapitel 1\"\r\n  AND page_chapter2 = \"Alle Kapitel 2\"\r\n  AND sendungs_id = \"Alle Sendungs-ID\"\r\n  AND $Vergleichszeitraum",
+                        "refId": "A",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {},
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": "${Vergleichszeitraumlabels:text}",
+                                "summe": "${Vergleichszeitraumlabels:text}"
+                            }
+                        }
+                    }
+                ],
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "dark-blue",
+                            "mode": "fixed"
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                },
+                                {
+                                    "color": "red",
+                                    "value": 80
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Differenz"
+                            },
+                            "properties": [
+                                {
+                                    "id": "unit",
+                                    "value": "percent"
+                                },
+                                {
+                                    "id": "decimals",
+                                    "value": 1
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 3,
+                    "w": 3,
+                    "x": 21,
+                    "y": 0
+                },
+                "id": 20,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "area",
+                    "justifyMode": "center",
+                    "orientation": "auto",
+                    "reduceOptions": {
+                        "calcs": [
+                            "lastNotNull"
+                        ],
+                        "fields": "",
+                        "values": false
+                    },
+                    "textMode": "auto"
+                },
+                "pluginVersion": "9.2.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "hide": false,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "WITH past_value as(\nSELECT \n  SUM(COALESCE(m_visits,0)) as past_sum\nFROM \n  Piano.total_visits\nWHERE  site_level2 IN ('radio-app','orchester-app','hh-app',\n'kultur-app','ndrinfo-app','sh-app','nds-app','n-joy-app','mv-app','ndr2-app')\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\nAND $Vergleichszeitraum), current_value AS (\nSELECT \n  SUM(COALESCE(m_visits,0)) as current_sum\nFROM \n  Piano.total_visits\nWHERE  site_level2 IN ('radio-app','orchester-app','hh-app',\n'kultur-app','ndrinfo-app','sh-app','nds-app','n-joy-app','mv-app','ndr2-app')\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND $Zeitraum\n  )\nSELECT ((current_sum-past_sum)/past_sum)*100 FROM current_value,past_value as relative_difference",
+                        "refId": "C",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {},
+                            "indexByName": {},
+                            "renameByName": {
+                                "f0_": "Differenz",
+                                "relative_difference": "Differenz"
+                            }
+                        }
+                    }
+                ],
+                "type": "stat"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 3
+                },
+                "id": 160,
+                "options": {
+                    "code": {
+                        "language": "plaintext",
+                        "showLineNumbers": false,
+                        "showMiniMap": false
+                    },
+                    "content": " ",
+                    "mode": "html"
+                },
+                "pluginVersion": "9.2.3",
+                "transparent": true,
+                "type": "text"
+            },
+            {
+                "datasource": {
+                    "type": "grafana-bigquery-datasource",
+                    "uid": "qUaUqEk4k"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "fixed"
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "locale"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f0_"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "${Vergleichszeitraumlabels}"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "N-Joy Zeitraum N_Joy_Heute"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "N-Joy | Heute"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "semi-dark-green",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "hh-app-heute sum_hh_app"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Hamburg | Heute"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "semi-dark-red",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "hh-app-gestern sum_orchester_app_yesterday"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Hamburg | Gestern"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "dark-red",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "N-Joy Vergleichzeitraum f1_"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "N-Joy | Gestern"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "dark-green",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "NDR-2 Zeitraum sum_ndr_2"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "NDR 2 | Heute"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "#9e1212cc",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "ndr2 yesterday f1_"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "NDR 2 | Gestern"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "#ff001a",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "mv-app-heute sum_mv_app"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Mecklenburg-Vorpommern | Heute"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "#007384",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "mv-app-gestern sum_mv_app_yesterday"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Mecklenburg-Vorpommern | Gestern"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "#004049",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "nds-app-heute sum_nds_app"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Niedersachsen | Heute"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "#ff7600",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "nds-app-gestern sum_nds_app_yesterday"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Niedersachsen | Gestern"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "#864300",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "sh-app-heute sum_sh_app"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Schleswig-Holstein | Heute"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "#317cd7",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "sh-app-gestern sum_sh_app_yesterday"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Schleswig-Holstein | Gestern"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "#1a3b61",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "orchester-app-heute sum_orchester_app"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Elbphilharmonie Orchester | Heute"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "mode": "palette-classic"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "orchester-app-gestern sum_orchester_app_yesterday"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Elbphilharmonie Orchester | Gestern"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "mode": "palette-classic"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "ndrinfo-app heute sum_ndrinfo_app"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "NDR Info | Heute"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "purple",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "ndrinfo-app gestern sum_ndrinfo_app_yesterday"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "NDR Info | Gestern"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "dark-purple",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "kultur today sum_kultur_app"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Kultur | Heute"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "yellow",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "kultur gestern sum_kultur_app_yesterday"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Kultur | Gestern"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "dark-yellow",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "radio heute sum_radio_app"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Radio | Heute"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "#28f6fb",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "radio gestern sum_radio_app_yesterday"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Radio | Gestern"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "fixedColor": "#0d9089",
+                                        "mode": "fixed"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "sesamstrasse heute sum_sesamstrasse_app"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Sesamstra\u00dfe | Heute"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "mode": "continuous-BlYlRd"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "sesamstrasse gestern sum_sesamstrasse_app_yesterday"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Sesamstra\u00dfe | Gestern"
+                                },
+                                {
+                                    "id": "color",
+                                    "value": {
+                                        "mode": "continuous-BlYlRd"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 22,
+                    "w": 24,
+                    "x": 0,
+                    "y": 4
+                },
+                "id": 157,
+                "options": {
+                    "displayMode": "gradient",
+                    "minVizHeight": 20,
+                    "minVizWidth": 0,
+                    "orientation": "horizontal",
+                    "reduceOptions": {
+                        "calcs": [
+                            "lastNotNull"
+                        ],
+                        "fields": "",
+                        "values": false
+                    },
+                    "showUnfilled": false,
+                    "text": {}
+                },
+                "pluginVersion": "9.2.3",
+                "targets": [
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "hide": false,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "\nSELECT\n  TIMESTAMP(date), sum(m_visits) as sum_hh_app\nFROM\n  Piano.total_visits\nWHERE site_level2 = 'hh-app'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND $Zeitraum\nGROUP BY date",
+                        "refId": "hh-app-heute",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "hide": false,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\nDATE_ADD(TIMESTAMP(date), INTERVAL $time_shift DAY), sum(m_visits) as sum_orchester_app_yesterday FROM\n  Piano.total_visits\nWHERE site_level2 = 'hh-app'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND $Vergleichszeitraum\n  GROUP BY date",
+                        "refId": "hh-app-gestern",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "hide": false,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "\nSELECT\n  TIMESTAMP(date), sum(m_visits) as sum_ndrinfo_app\nFROM\n  Piano.total_visits\nWHERE site_level2 = 'ndrinfo-app'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND $Zeitraum\nGROUP BY date",
+                        "refId": "ndrinfo-app heute",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "hide": false,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\nDATE_ADD(TIMESTAMP(date), INTERVAL $time_shift DAY), sum(m_visits) as sum_ndrinfo_app_yesterday FROM\n  Piano.total_visits\nWHERE site_level2 = 'ndrinfo-app'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND $Vergleichszeitraum\n  GROUP BY date",
+                        "refId": "ndrinfo-app gestern",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "hide": false,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "\nSELECT\n  TIMESTAMP(date), sum(m_visits) as sum_mv_app\nFROM\n  Piano.total_visits\nWHERE site_level2 = 'mv-app'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND $Zeitraum\nGROUP BY date",
+                        "refId": "mv-app-heute",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "hide": false,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\nDATE_ADD(TIMESTAMP(date), INTERVAL $time_shift DAY), sum(m_visits) as sum_mv_app_yesterday FROM\n  Piano.total_visits\nWHERE site_level2 = 'mv-app'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND $Vergleichszeitraum\n  GROUP BY date",
+                        "refId": "mv-app-gestern",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "hide": false,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "\nSELECT\n  TIMESTAMP(date), sum(m_visits) as sum_nds_app\nFROM\n  Piano.total_visits\nWHERE site_level2 = 'nds-app'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND $Zeitraum\nGROUP BY date",
+                        "refId": "nds-app-heute",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "hide": false,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\nDATE_ADD(TIMESTAMP(date), INTERVAL $time_shift DAY), sum(m_visits) as sum_nds_app_yesterday FROM\n  Piano.total_visits\nWHERE site_level2 = 'nds-app'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND $Vergleichszeitraum\n  GROUP BY date",
+                        "refId": "nds-app-gestern",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "hide": false,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "\nSELECT\n  TIMESTAMP(date), sum(m_visits) as sum_sh_app\nFROM\n  Piano.total_visits\nWHERE site_level2 = 'sh-app'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND $Zeitraum\nGROUP BY date",
+                        "refId": "sh-app-heute",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    {
+                        "datasource": {
+                            "type": "grafana-bigquery-datasource",
+                            "uid": "qUaUqEk4k"
+                        },
+                        "editorMode": "code",
+                        "format": 1,
+                        "hide": false,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\nDATE_ADD(TIMESTAMP(date), INTERVAL $time_shift DAY), sum(m_visits) as sum_sh_app_yesterday FROM\n  Piano.total_visits\nWHERE site_level2 = 'sh-app'\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND $Vergleichszeitraum\n  GROUP BY date",
+                        "refId": "sh-app-gestern",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "filterFieldsByName",
+                        "options": {
+                            "include": {}
+                        }
+                    },
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "transparent": true,
+                "type": "bargauge"
+            }
+        ],
+        "refresh": false,
+        "schemaVersion": 37,
+        "style": "dark",
+        "tags": [
+            "NDR NDS"
+        ],
+        "templating": {
+            "list": [
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "13",
+                        "value": "13"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "filled_size",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "13",
+                            "value": "13"
+                        }
+                    ],
+                    "query": "13",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "Gestern",
+                        "value": "Gestern"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Vergleichszeitraumlabels",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \r\n  CASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN \"Gestern\"\r\n  WHEN \"Gestern\" THEN \"Gestern vor 7 Tagen\"\r\n  WHEN \"Letztes Wochenende\" THEN \"Vorletztes Wochenende\"\r\n  WHEN \"Letzte 7 Tage\" THEN \"Letzte 8-14 Tage\"\r\n  WHEN \"Letzte 30 Tage\" THEN \"Letzte 31-60 Tage\"\r\n  END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)",
+                        "value": "date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Vergleichszeitraum",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \r\n  CASE \"${Zeitraum:text}\"\r\n  WHEN \"Heute\" THEN \"date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)\"\r\n  WHEN \"Gestern\" THEN \"date = DATE_SUB(CURRENT_DATE(), INTERVAL 8 DAY)\"\r\n  WHEN \"Letztes Wochenende\" THEN \"date >= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY),INTERVAL 7 DAY) as saturday) AND date <= (SELECT DATE_SUB(DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY), INTERVAL 7 DAY) as sunday)\"\r\n  WHEN \"Letzte 7 Tage\" THEN \"date >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)\"\r\n  WHEN \"Letzte 30 Tage\" THEN \"date >=  DATE_SUB(CURRENT_DATE(), INTERVAL  60 DAY) AND date < DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY)\"\r\n  END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "NDR",
+                        "value": "NDR"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "LRA",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT distinct LRA FROM `ndr-code-bi-dashboard.Piano.Profiles_App`\nORDER BY LRA ASC",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "48",
+                        "value": "48"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "filled_size_headline",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "48",
+                            "value": "48"
+                        }
+                    ],
+                    "query": "48",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "1",
+                        "value": "1"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "time_shift",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\r\nCASE\r\nWHEN \"${Zeitraum:text}\" = \"Heute\" THEN 1\r\nWHEN \"${Zeitraum:text}\" = \"Gestern\" THEN 7\r\nWHEN \"${Zeitraum:text}\" = \"Letztes Wochenende\" THEN 7\r\nWHEN CONTAINS_SUBSTR(\"${Zeitraum:text}\", \"7\") THEN 7\r\nWHEN CONTAINS_SUBSTR(\"${Zeitraum:text}\", \"30\") THEN 30 END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "N-JOY",
+                        "value": "N-JOY"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "App",
+                    "options": [],
+                    "query": {
+                        "dataset": "Piano",
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT distinct app FROM `ndr-code-bi-dashboard.Piano.Profiles_App`\nWHERE LRA = \"$LRA\"\nORDER BY app ASC",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [
+                                        {
+                                            "name": "page_chapter1",
+                                            "type": "functionParameter"
+                                        }
+                                    ],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50,
+                            "whereJsonTree": {
+                                "children1": {
+                                    "998ab889-cdef-4012-b456-71866fb55755": {
+                                        "properties": {
+                                            "field": "LRA",
+                                            "operator": "equal",
+                                            "value": [
+                                                "$LRA"
+                                            ],
+                                            "valueSrc": [
+                                                "value"
+                                            ],
+                                            "valueType": [
+                                                "text"
+                                            ]
+                                        },
+                                        "type": "rule"
+                                    }
+                                },
+                                "id": "a8bbba98-0123-4456-b89a-b1866fb55755",
+                                "type": "group"
+                            },
+                            "whereString": "LRA = '$LRA'"
+                        },
+                        "table": "Profiles"
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 1,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "n-joy-app",
+                        "value": "n-joy-app"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "app_name",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\n  CASE\n    WHEN \"$LRA\" = 'MDR' THEN\n      (SELECT distinct product_app_name FROM `ndr-code-bi-dashboard.Piano.Profiles_App` WHERE app = \"$App\")\n    WHEN \"$LRA\" = 'NDR' THEN \n      (SELECT distinct site_level2 FROM `ndr-code-bi-dashboard.Piano.Profiles_App` WHERE app = \"$App\")\n  END",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "selected": true,
+                        "text": "Heute",
+                        "value": "date = CURRENT_DATE()"
+                    },
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "Zeitraum",
+                    "options": [
+                        {
+                            "selected": true,
+                            "text": "Heute",
+                            "value": "date = CURRENT_DATE()"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Gestern",
+                            "value": "date = DATE_SUB(CURRENT_DATE(), INTERVAL  1 DAY)"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Letztes Wochenende",
+                            "value": "date >= (SELECT\u00a0saturday\u00a0FROM(SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 2 DAY) as saturday)) AND date <= (SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(),WEEK(MONDAY)) - INTERVAL 1 DAY) as sunday)"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Letzte 7 Tage",
+                            "value": "date >=\u00a0 DATE_SUB(CURRENT_DATE(), INTERVAL\u00a0 7 DAY) AND date < CURRENT_DATE()"
+                        },
+                        {
+                            "selected": false,
+                            "text": "Letzte 30 Tage",
+                            "value": "date >=\u00a0 DATE_SUB(CURRENT_DATE(), INTERVAL\u00a0 30 DAY) AND date < CURRENT_DATE()"
+                        }
+                    ],
+                    "query": "Heute : date = CURRENT_DATE(), Gestern : date = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Letztes Wochenende : \u00a0date >= (SELECT\u00a0saturday\u00a0FROM(SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\,WEEK(MONDAY)) - INTERVAL 2 DAY) as saturday)) AND date <= (SELECT DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\,WEEK(MONDAY)) - INTERVAL 1 DAY) as sunday), Letzte 7 Tage : date >=\u00a0 DATE_SUB(CURRENT_DATE()\\, INTERVAL\u00a0 7 DAY) AND date < CURRENT_DATE(), Letzte 30 Tage : date >=\u00a0 DATE_SUB(CURRENT_DATE()\\, INTERVAL\u00a0 30 DAY) AND date < CURRENT_DATE()",
+                    "queryValue": "",
+                    "skipUrlSync": false,
+                    "type": "custom"
+                },
+                {
+                    "current": {
+                        "selected": false,
+                        "text": "ndr-code-bi-dashboard.Piano.articles_joined_today",
+                        "value": "ndr-code-bi-dashboard.Piano.articles_joined_today"
+                    },
+                    "datasource": {
+                        "type": "grafana-bigquery-datasource",
+                        "uid": "qUaUqEk4k"
+                    },
+                    "definition": "",
+                    "hide": 2,
+                    "includeAll": false,
+                    "multi": false,
+                    "name": "table",
+                    "options": [],
+                    "query": {
+                        "editorMode": "code",
+                        "format": 1,
+                        "location": "europe-west3",
+                        "project": "ndr-code-bi-dashboard",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \n  CASE \"${Zeitraum:text}\"\n  WHEN \"Heute\" THEN \"ndr-code-bi-dashboard.Piano.articles_joined_today\"\n  ELSE \"ndr-code-bi-dashboard.Piano.articles_joined_daily\"\nEND",
+                        "sql": {
+                            "columns": [
+                                {
+                                    "parameters": [],
+                                    "type": "function"
+                                }
+                            ],
+                            "groupBy": [
+                                {
+                                    "property": {
+                                        "type": "string"
+                                    },
+                                    "type": "groupBy"
+                                }
+                            ],
+                            "limit": 50
+                        }
+                    },
+                    "refresh": 1,
+                    "regex": "",
+                    "skipUrlSync": false,
+                    "sort": 0,
+                    "type": "query"
+                }
+            ]
+        },
+        "time": {
+            "from": "2023-04-26T15:53:47.500Z",
+            "to": "2023-05-14T00:18:37.500Z"
+        },
+        "timepicker": {
+            "hidden": true
+        },
+        "timezone": "",
+        "title": "NDR NDS App L\u00e4ndervergleich",
+        "uid": "2JX7pISSk",
+        "version": 2,
+        "weekStart": ""
+    }
+}

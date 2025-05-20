@@ -1,0 +1,153 @@
+{
+  "id": 607,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "UnQ3j6l4k",
+  "name": "Visits letzte Stunde KPI box Artikel ",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "summe"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Visits letzte Stunde"
+            },
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 16,
+      "y": 0
+    },
+    "id": 33,
+    "libraryPanel": {
+      "meta": {
+        "connectedDashboards": 0,
+        "created": "2023-06-14T14:42:02.552764387Z",
+        "createdBy": {
+          "avatarUrl": "/avatar/9372895bd2354d1612a45afc8704053a",
+          "id": 6,
+          "name": "b.kuch@ndr.de"
+        },
+        "folderName": "Panels Library",
+        "folderUid": "folder-PjWklf8Vz",
+        "updated": "2023-06-14T14:42:02.552764541Z",
+        "updatedBy": {
+          "avatarUrl": "/avatar/9372895bd2354d1612a45afc8704053a",
+          "id": 6,
+          "name": "b.kuch@ndr.de"
+        }
+      },
+      "name": "Visits letzte Stunde KPI box Artikel ",
+      "uid": "UnQ3j6l4k",
+      "version": 1
+    },
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+      },
+      "textMode": "value_and_name"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT SUM(IFNULL(m_visits,0)) as summe \r\nFROM Piano.total_visits_last_hour\r\nWHERE site_level2 = \"$LRA\" AND\r\n\"$Redaktionen\" = page_chapter1 AND\r\n\"$Unterkapitel\" = page_chapter2 AND\r\n\"$Sendung\" = sendungs_id \r\n--AND $Vergleichszeitraum \r\n",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 0,
+    "created": "2024-06-20T11:45:58Z",
+    "updated": "2024-06-20T11:45:58Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

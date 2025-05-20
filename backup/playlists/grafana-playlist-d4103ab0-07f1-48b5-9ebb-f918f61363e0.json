@@ -1,0 +1,11 @@
+{
+  "uid": "d4103ab0-07f1-48b5-9ebb-f918f61363e0",
+  "name": "NDR Info",
+  "interval": "1m",
+  "items": [
+    {
+      "type": "dashboard_by_tag",
+      "value": "NDR Info"
+    }
+  ]
+}

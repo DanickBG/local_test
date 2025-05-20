@@ -1,0 +1,148 @@
+{
+  "id": 1766,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "bedn4s184v8cga",
+  "name": "App Laendervergleich Zeitraum KPI 4K",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "summe"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 8,
+      "w": 12,
+      "x": 0,
+      "y": 0
+    },
+    "id": 159,
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "percentChangeColorMode": "standard",
+      "reduceOptions": {
+        "calcs": [
+          "last"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "showPercentChange": false,
+      "textMode": "value_and_name",
+      "wideLayout": true
+    },
+    "pluginVersion": "11.3.1",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "hide": false,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH adjusted_lagged_data AS (\n  SELECT\n    SUM(COALESCE(m_visits,0)) as summe FROM\n    ( \n    SELECT MAX(COALESCE(m_visits,0)) AS m_visits FROM\n     `Piano.total_visits${feverCurveDataset:raw}`\n  WHERE\n  site_level2 IN ('hh-app','sh-app','nds-app','mv-app')\n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\n  group by site_level2\n  )\n),\ndaily_data AS (SELECT\n  sum(m_visits) as summe\nFROM\n  Piano.total_visits\n-- WHERE site_level2 IN ('hh-app','sh-app','nds-app','mv-app')  \nWHERE site_level2 IN ('hh-app','sh-app','nds-app','mv-app') \n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\n  )\nSELECT * FROM ${dataset_not_fevercurve} ",
+        "refId": "B",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "f0_": false
+          },
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "${Zeitraum:text}",
+            "summe": "${Zeitraum:text}",
+            "visits": "${Zeitraum:text}"
+          }
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 3,
+    "created": "2025-02-20T14:33:09Z",
+    "updated": "2025-02-20T17:43:46Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "id": 506,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "GrlLUWpSk",
+  "name": "App Artikel Differenz KPI box",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "decimals": 1,
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "Differenz"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "percent"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 20,
+      "y": 0
+    },
+    "id": 51,
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "percentChangeColorMode": "standard",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "showPercentChange": false,
+      "textMode": "value_and_name",
+      "wideLayout": true
+    },
+    "pluginVersion": "11.3.1",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH past_value as(\r\nWITH adjusted_lagged_data AS (\r\n  SELECT\r\n    MAX(COALESCE(m_visits,0)) AS summe FROM\r\n     `Piano.total_visits${feverCurveDataset:raw}`\r\n  WHERE\r\n  site_level2 = '${app_name}'\r\n  AND page_chapter1 = \"Alle Kapitel 1\"\r\n  AND page_chapter2 = \"Alle Kapitel 2\"\r\n  AND sendungs_id = \"Alle Sendungs-ID\"\r\n  AND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\r\n  AND tmstp <= \"${comp_fever}\"\r\n  GROUP BY date\r\n),\r\ndaily_data AS (SELECT\r\n  SUM(COALESCE(m_visits,0)) AS summe\r\nFROM\r\n  Piano.total_visits\r\nWHERE site_level2 = '${app_name}'\r\n  AND page_chapter1 = \"Alle Kapitel 1\"\r\n  AND page_chapter2 = \"Alle Kapitel 2\"\r\n  AND sendungs_id = \"Alle Sendungs-ID\"\r\n  AND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\r\n  )\r\nSELECT summe as past_sum FROM ${dataset_not_fevercurve}\r\n), current_value AS (\r\n  WITH adjusted_lagged_data AS (\r\n  SELECT\r\n     MAX(m_visits) as summe FROM\r\n     `Piano.total_visits${feverCurveDataset:raw}`\r\n  WHERE\r\n  site_level2 = '${app_name}'\r\n  AND page_chapter1 = \"Alle Kapitel 1\"\r\n  AND page_chapter2 = \"Alle Kapitel 2\"\r\n  AND sendungs_id = \"Alle Sendungs-ID\"\r\n  AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\r\n),\r\ndaily_data AS (SELECT\r\n  sum(m_visits) as summe\r\nFROM\r\n  Piano.total_visits\r\nWHERE site_level2 = '${app_name}'\r\n  AND page_chapter1 = \"Alle Kapitel 1\"\r\n  AND page_chapter2 = \"Alle Kapitel 2\"\r\n  AND sendungs_id = \"Alle Sendungs-ID\"\r\n  AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\r\n  )\r\nSELECT summe as current_sum FROM ${dataset_not_fevercurve}\r\n)\r\nSELECT CONCAT(REPLACE(CAST(ROUND(((current_sum-past_sum)/past_sum)*100,1) as string), \".\", \",\"), \"%\") FROM current_value,past_value as relative_difference-- SELECT ((current_sum-past_sum)/past_sum)*100 FROM current_value,past_value as relative_difference",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "includeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "Differenz"
+          }
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 3,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 3,
+    "created": "2024-06-20T11:45:42Z",
+    "updated": "2025-03-28T07:02:57Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

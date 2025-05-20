@@ -1,0 +1,144 @@
+{
+  "id": 485,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "eyY5-yGIk",
+  "name": "NDR/MDR TV Web Quellen Heute/Gestern KPI Difference",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "decimals": 1,
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "Differenz"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "percent"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 20,
+      "y": 0
+    },
+    "id": 49,
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "percentChangeColorMode": "standard",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "showPercentChange": false,
+      "textMode": "value_and_name",
+      "wideLayout": true
+    },
+    "pluginVersion": "11.3.1",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH past_value as(\r\nWITH adjusted_lagged_data AS (\r\nSELECT\r\n        TIMESTAMP(tmstp) as time,\r\n        FIRST_VALUE(m_visits) OVER(ORDER by tmstp DESC) as summe\r\n  FROM\r\n    `Piano.total_visits${feverCurveDataset:raw}`  \r\n  WHERE TRUE\r\n     AND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\r\n    AND tmstp  <= DATETIME_SUB(\"${comp_fever}\", INTERVAL $time_shift DAY)\r\n    AND site_level2 = \"$LRA\"\r\n        AND page_chapter1 = \"$Redaktionen\"\r\n        AND page_chapter2 = \"$Unterkapitel\"\r\n        AND sendungs_id = \"$Sendung\"\r\n        AND CASE\r\n          \"$LRA\"\r\n          WHEN \"ndr.de\" THEN True\r\n          ELSE (\r\n            CASE\r\n              \"$Redaktionen\"\r\n              WHEN \"Brisant\" THEN origin = \"sendung\"\r\n              WHEN \"Jump\" THEN origin = \"sendung\"\r\n              WHEN \"Sputnik\" THEN origin = \"sendung\"\r\n              WHEN \"Alle Kapitel 1\" THEN origin = \"sendung\"\r\n              ELSE True\r\n            END\r\n          )\r\n        END\r\n        ORDER BY tmstp DESC\r\n        LIMIT 1\r\n),\r\ndaily_data AS (\r\n  SELECT \r\n  SUM(COALESCE(m_visits,0)) as summe\r\nFROM \r\n  `Piano.total_visits${dataset_vergleichs_zeitraum:raw}`\r\nWHERE \r\nsite_level2 = \"$LRA\"\r\nAND page_chapter1 = \"$Redaktionen\"\r\nAND page_chapter2 = \"$Unterkapitel\"\r\nAND sendungs_id = \"$Sendung\"\r\nAND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote} )\r\nSELECT summe as past_sum FROM ${dataset_kpi}\r\n)\r\n, current_value AS (\r\nSELECT \r\n  SUM(COALESCE(m_visits,0)) as current_sum\r\nFROM \r\n  `Piano.total_visits${dataset_zeitraum:raw}`\r\nWHERE \r\nsite_level2 = \"$LRA\"\r\nAND page_chapter1 = \"$Redaktionen\"\r\nAND page_chapter2 = \"$Unterkapitel\"\r\nAND sendungs_id = \"$Sendung\"\r\nAND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\r\n  )\r\nSELECT CONCAT(REPLACE(CAST(ROUND(((current_sum-past_sum)/past_sum)*100,1) as string), \".\", \",\"), \"%\") FROM current_value,past_value as relative_difference",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "Differenz"
+          }
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 13,
+    "created": "2024-06-20T11:45:38Z",
+    "updated": "2025-03-28T07:26:36Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

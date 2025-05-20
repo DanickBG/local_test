@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "google-trends",
+    "url": "/dashboards/f/folder-LfjQIrw4z/google-trends",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:39:59Z",
+    "updated": "2024-07-29T12:39:59Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 1,
+    "hasAcl": false,
+    "isFolder": true,
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "id": 1181,
+    "schemaVersion": 17,
+    "title": "Google Trends",
+    "uid": "folder-LfjQIrw4z",
+    "version": 1
+  }
+}

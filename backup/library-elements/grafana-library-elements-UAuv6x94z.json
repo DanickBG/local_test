@@ -1,0 +1,144 @@
+{
+  "id": 602,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "UAuv6x94z",
+  "name": "NDR TV Web Audio Total Visits Difference",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "decimals": 1,
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "Differenz"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "percent"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 20,
+      "y": 0
+    },
+    "id": 35,
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "percentChangeColorMode": "standard",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "showPercentChange": false,
+      "textMode": "value_and_name",
+      "wideLayout": true
+    },
+    "pluginVersion": "11.3.1",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "-- WITH current_value AS (\r\n-- SELECT \r\n--   SUM(COALESCE(m_av_playbacks,0)) as current_sum\r\n-- FROM \r\n--   Piano.av_joined_today\r\n-- WHERE \r\n-- site_level2 = ${LRA:doublequote}  AND\r\n-- ${Redaktionen:doublequote} IN UNNEST(bi_av_page_chapter1_tags) AND\r\n-- ${Unterkapitel:doublequote} IN UNNEST(bi_av_page_chapter2_tags)\r\n-- AND ${Sendung:doublequote} IN UNNEST(sendungs_id_tags)\r\n-- AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\r\n-- AND (av_content_type = \"Audio\" or av_content_type = \"audio\")\r\n-- ), past_value AS (\r\n-- SELECT \r\n--   SUM(COALESCE(m_av_playbacks,0)) as past_sum\r\n-- FROM \r\n--   Piano.av_joined_daily\r\n-- WHERE \r\n-- site_level2 = ${LRA:doublequote}  AND\r\n-- ${Redaktionen:doublequote} IN UNNEST(bi_av_page_chapter1_tags) AND\r\n-- ${Unterkapitel:doublequote} IN UNNEST(bi_av_page_chapter2_tags)\r\n-- AND ${Sendung:doublequote} IN UNNEST(sendungs_id_tags)\r\n-- AND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\r\n-- AND (av_content_type = \"Audio\" or av_content_type = \"audio\"))\r\n-- SELECT IFNULL(((current_sum-past_sum)/past_sum)*100,0) FROM current_value,past_value as relative_difference\r\n\r\n\r\n\r\n\r\nIF ${Zeitraum:doublequote} = \"date = CURRENT_DATE()\"\r\nTHEN\r\n WITH current_value AS (\r\n  SELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as current_sum\r\nFROM \r\n  ndr-code-bi-dashboard.Piano.av_joined_today\r\nWHERE \r\nsite_level2 = \"$LRA\" AND\r\n\"$Redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n\"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags)\r\nAND (\"$Sendung\" = sendungs_id OR \"$Sendung\" IN UNNEST(sendungs_id_tags))\r\nAND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\r\nAND (av_content_type = \"Audio\" or av_content_type = \"audio\")\r\n), past_value AS (\r\n  SELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as past_sum\r\nFROM \r\n  ndr-code-bi-dashboard.Piano.av_joined_daily\r\nWHERE \r\nsite_level2 = \"$LRA\" AND\r\n\"$Redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n\"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags)\r\nAND (\"$Sendung\" = sendungs_id OR \"$Sendung\" IN UNNEST(sendungs_id_tags))\r\nAND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\r\nAND (av_content_type = \"Audio\" or av_content_type = \"audio\")\r\n)\r\nSELECT CONCAT(REPLACE(CAST(ROUND(((current_sum-past_sum)/past_sum)*100,1) as string), \".\", \",\"), \"%\") FROM current_value,past_value as relative_difference; \r\nELSE\r\n WITH current_value AS (\r\n  SELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as current_sum\r\nFROM \r\n  ndr-code-bi-dashboard.Piano.av_joined_daily\r\nWHERE \r\nsite_level2 = \"$LRA\" AND\r\n\"$Redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n\"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags)\r\nAND (\"$Sendung\" = sendungs_id OR \"$Sendung\" IN UNNEST(sendungs_id_tags))\r\nAND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\r\nAND (av_content_type = \"audio\" OR av_content_type = \"Audio\")\r\n), past_value AS (\r\n  SELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as past_sum\r\nFROM \r\n  ndr-code-bi-dashboard.Piano.av_joined_daily\r\nWHERE \r\nsite_level2 = \"$LRA\" AND\r\n\"$Redaktionen\" IN UNNEST(bi_av_page_chapter1_tags) AND\r\n\"$Unterkapitel\" IN UNNEST(bi_av_page_chapter2_tags)\r\nAND (\"$Sendung\" = sendungs_id OR \"$Sendung\" IN UNNEST(sendungs_id_tags))\r\nAND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\r\nAND (av_content_type = \"Audio\" or av_content_type = \"audio\"))\r\nSELECT CONCAT(REPLACE(CAST(ROUND(((current_sum-past_sum)/past_sum)*100,1) as string), \".\", \",\"), \"%\") FROM current_value,past_value as relative_difference;\r\nEND IF\r\n;\r\n",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "Differenz"
+          }
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 3,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 10,
+    "created": "2024-06-20T11:45:56Z",
+    "updated": "2025-05-09T13:13:44Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/9774780e31622dad09ce78835d06ec07",
+      "id": 39,
+      "name": "sa-1-fortestdaniel"
+    }
+  }
+}

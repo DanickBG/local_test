@@ -1,0 +1,92 @@
+{
+  "id": 615,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "-vA8BsUVz",
+  "name": "Facebook type legende Full",
+  "kind": 1,
+  "type": "text",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "postgres",
+      "uid": "5RzC0pR4k"
+    },
+    "description": "",
+    "gridPos": {
+      "h": 2,
+      "w": 7,
+      "x": 17,
+      "y": 4
+    },
+    "id": 86,
+    "libraryPanel": {
+      "name": "Facebook type legende Full"
+    },
+    "options": {
+      "code": {
+        "language": "plaintext",
+        "showLineNumbers": false,
+        "showMiniMap": false
+      },
+      "content": "<p style=\"text-align: right\"><font size=\"2\">Legende: &nbsp;🖼️ = Bild &nbsp;&nbsp; 🎥 = Video &nbsp;&nbsp; 🔗 = Link &nbsp;&nbsp; 📕 = Album &nbsp;&nbsp; 📄 = Status </font><font size=\"6\"> </font>",
+      "mode": "markdown"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "format": "time_series",
+        "group": [],
+        "metricColumn": "none",
+        "rawQuery": false,
+        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+        "refId": "A",
+        "select": [
+          [
+            {
+              "params": [
+                "post_video_view_time"
+              ],
+              "type": "column"
+            }
+          ]
+        ],
+        "table": "facebookinsightsownposts",
+        "timeColumn": "\"time\"",
+        "timeColumnType": "timestamp",
+        "where": [
+          {
+            "name": "$__timeFilter",
+            "params": [],
+            "type": "macro"
+          }
+        ]
+      }
+    ],
+    "transparent": true,
+    "type": "text"
+  },
+  "version": 1,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 29,
+    "created": "2024-06-20T11:45:59Z",
+    "updated": "2024-06-20T11:45:59Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    }
+  }
+}

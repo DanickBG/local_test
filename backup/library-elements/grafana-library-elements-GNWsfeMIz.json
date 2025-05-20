@@ -1,0 +1,209 @@
+{
+  "id": 500,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "GNWsfeMIz",
+  "name": "NDR TV Web Artikel Heute (Zeitraum)",
+  "kind": 1,
+  "type": "table",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "custom": {
+          "align": "auto",
+          "cellOptions": {
+            "type": "auto",
+            "wrapText": true
+          },
+          "inspect": false
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "content_titel"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Titel"
+            },
+            {
+              "id": "unit",
+              "value": "short"
+            },
+            {
+              "id": "decimals",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "content_id_sophora"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Sophora ID"
+            },
+            {
+              "id": "unit",
+              "value": "short"
+            },
+            {
+              "id": "decimals",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "visits"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Visits"
+            },
+            {
+              "id": "unit",
+              "value": "locale"
+            },
+            {
+              "id": "decimals",
+              "value": 2
+            },
+            {
+              "id": "custom.align",
+              "value": "center"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 25,
+      "w": 24,
+      "x": 0,
+      "y": 6
+    },
+    "id": 59,
+    "options": {
+      "cellHeight": "sm",
+      "footer": {
+        "countRows": false,
+        "fields": "",
+        "reducer": [
+          "sum"
+        ],
+        "show": false
+      },
+      "showHeader": true
+    },
+    "pluginVersion": "11.1.1",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT content_titel,\r\ncontent_id_sophora, \r\n-- CASE\r\n--     WHEN length(content_id_sophora) > 18 THEN SUBSTR(content_id_sophora, 0 , 18) || '...'\r\n--     ELSE content_id_sophora\r\n--   END AS content_id_sophora,\r\nsum(m_visits) as visits FROM\r\n(\r\nSELECT\r\ncontent_id_sophora,\r\nFIRST_VALUE(content_titel) OVER (PARTITION BY uuid ORDER BY publishing_date DESC) as content_titel, \r\nm_visits, \r\nFROM `ndr-code-bi-dashboard.Piano.articles_joined_today`\r\nWHERE site_level2 = ${LRA:doublequote} AND\r\n${Redaktionen:doublequote} IN UNNEST(page_chapter1_tags) AND\r\n${Unterkapitel:doublequote} IN UNNEST(page_chapter2_tags) AND \r\n${Sendung:doublequote} IN UNNEST(sendungs_id_tags)\r\nAND date = ${bq_today:doublequote}\r\n)\r\nGROUP BY content_id_sophora, \r\ncontent_titel ORDER BY 3 DESC LIMIT 10",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "av_content_duration": true,
+            "av_content_type": true,
+            "bi_av_publication_date": false,
+            "device_type": true,
+            "wiedergaberate": true
+          },
+          "indexByName": {},
+          "renameByName": {
+            "bi_av_content": "Title",
+            "bi_av_publication_date": "Publiziert",
+            "content_titel": "",
+            "visits": ""
+          }
+        }
+      },
+      {
+        "id": "merge",
+        "options": {
+          "reducers": []
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "table"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 14,
+    "created": "2024-06-20T11:45:41Z",
+    "updated": "2024-07-29T12:58:23Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
+      "id": 1,
+      "name": "admin"
+    }
+  }
+}

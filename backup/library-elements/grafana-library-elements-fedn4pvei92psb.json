@@ -1,0 +1,507 @@
+{
+  "id": 1765,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "fedn4pvei92psb",
+  "name": "App Laendervergleich 4K",
+  "kind": 1,
+  "type": "bargauge",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "mode": "fixed"
+        },
+        "mappings": [],
+        "min": 1,
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            }
+          ]
+        },
+        "unit": "locale"
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "hh-app-heute sum_hh_app"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Hamburg | ${Zeitraumlabels:text}"
+            },
+            {
+              "id": "color",
+              "value": {
+                "fixedColor": "semi-dark-red",
+                "mode": "fixed"
+              }
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "hh-app-gestern sum_nds_app"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Hamburg | ${Vergleichszeitraumlabels:text}"
+            },
+            {
+              "id": "color",
+              "value": {
+                "fixedColor": "dark-red",
+                "mode": "fixed"
+              }
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "mv-app-heute sum_mv_app"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Mecklenburg-Vorpommern | ${Zeitraumlabels:text}"
+            },
+            {
+              "id": "color",
+              "value": {
+                "fixedColor": "#007384",
+                "mode": "fixed"
+              }
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "mv-app-gestern sum_nds_app"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Mecklenburg-Vorpommern | ${Vergleichszeitraumlabels:text}"
+            },
+            {
+              "id": "color",
+              "value": {
+                "fixedColor": "#004049",
+                "mode": "fixed"
+              }
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "nds-app-heute sum_nds_app"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Niedersachsen | ${Zeitraumlabels:text}"
+            },
+            {
+              "id": "color",
+              "value": {
+                "fixedColor": "#ff7600",
+                "mode": "fixed"
+              }
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "nds-app-gestern sum_nds_app"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Niedersachsen | ${Vergleichszeitraumlabels:text}"
+            },
+            {
+              "id": "color",
+              "value": {
+                "fixedColor": "#864300",
+                "mode": "fixed"
+              }
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "sh-app-heute sum_sh_app"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Schleswig-Holstein | ${Zeitraumlabels:text}"
+            },
+            {
+              "id": "color",
+              "value": {
+                "fixedColor": "#317cd7",
+                "mode": "fixed"
+              }
+            }
+          ]
+        },
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "sh-app-gestern sum_nds_app"
+          },
+          "properties": [
+            {
+              "id": "displayName",
+              "value": "Schleswig-Holstein | ${Vergleichszeitraumlabels:text}"
+            },
+            {
+              "id": "color",
+              "value": {
+                "fixedColor": "#1a3b61",
+                "mode": "fixed"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 43,
+      "w": 24,
+      "x": 0,
+      "y": 10
+    },
+    "id": 157,
+    "options": {
+      "displayMode": "gradient",
+      "legend": {
+        "calcs": [],
+        "displayMode": "list",
+        "placement": "bottom",
+        "showLegend": false
+      },
+      "maxVizHeight": 300,
+      "minVizHeight": 20,
+      "minVizWidth": 0,
+      "namePlacement": "auto",
+      "orientation": "horizontal",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+      },
+      "showUnfilled": false,
+      "sizing": "auto",
+      "text": {},
+      "valueMode": "color"
+    },
+    "pluginVersion": "11.3.1",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "hide": false,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH adjusted_lagged_data AS (\n  SELECT\n     MAX(m_visits) as sum_sh_app FROM\n     `Piano.total_visits${feverCurveDataset:raw}`\n  WHERE site_level2 IN ('sh-app')  \n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\n),\ndaily_data AS (SELECT\n  -- TIMESTAMP(date), \n  sum(m_visits) as sum_sh_app\nFROM\n  Piano.total_visits\nWHERE site_level2 IN ('sh-app')  \n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\n  -- GROUP BY date\n  )\nSELECT * FROM ${dataset_not_fevercurve} \n-- SELECT\n--   TIMESTAMP(date), sum(m_visits) as sum_sh_app\n-- FROM\n--   Piano.total_visits\n-- WHERE site_level2 = 'sh-app'\n--   AND page_chapter1 = \"Alle Kapitel 1\"\n--   AND page_chapter2 = \"Alle Kapitel 2\"\n--   AND sendungs_id = \"Alle Sendungs-ID\"\n--   AND $Zeitraum\n-- GROUP BY date\n\n",
+        "refId": "sh-app-heute",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "hide": false,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH adjusted_lagged_data AS (\n  SELECT\n     MAX(m_visits) as sum_nds_app FROM\n     `Piano.total_visits${feverCurveDataset:raw}`\n  WHERE site_level2 IN ('sh-app')  \n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\n  AND tmstp <= \"${comp_fever}\"\n),\ndaily_data AS (SELECT\nsum(m_visits) as sum_nds_app\nFROM\n  Piano.total_visits\nWHERE site_level2 IN ('sh-app')  \n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\n  )\nSELECT * FROM ${dataset_not_fevercurve} ",
+        "refId": "sh-app-gestern",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "hide": false,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH adjusted_lagged_data AS (\n  SELECT\n    MAX(m_visits) as sum_nds_app\n  FROM\n    `Piano.total_visits${feverCurveDataset:raw}`\n  WHERE\n    site_level2 = 'nds-app'\n    AND page_chapter1 = \"Alle Kapitel 1\"\n    AND page_chapter2 = \"Alle Kapitel 2\"\n    AND sendungs_id = \"Alle Sendungs-ID\"\n    AND date >= ${bq_timeframe_start:doublequote}\n    AND date <= ${bq_timeframe_end:doublequote}\n),\ndaily_data AS (\n  SELECT\n    -- TIMESTAMP(date),\n    sum(m_visits) as sum_nds_app\n  FROM\n    Piano.total_visits\n  WHERE\n    site_level2 = 'nds-app'\n    AND page_chapter1 = \"Alle Kapitel 1\"\n    AND page_chapter2 = \"Alle Kapitel 2\"\n    AND sendungs_id = \"Alle Sendungs-ID\"\n    AND date >= ${bq_timeframe_start:doublequote}\n    AND date <= ${bq_timeframe_end:doublequote}\n  -- GROUP BY\n  --   date\n)\nSELECT\n  *\nFROM\n  ${dataset_not_fevercurve} ",
+        "refId": "nds-app-heute",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "hide": false,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH adjusted_lagged_data AS (\n  SELECT\n    MAX(m_visits) as sum_nds_app\n  FROM\n    `Piano.total_visits${feverCurveDataset:raw}`\n  WHERE\n    site_level2 IN ('nds-app')\n    AND page_chapter1 = \"Alle Kapitel 1\"\n    AND page_chapter2 = \"Alle Kapitel 2\"\n    AND sendungs_id = \"Alle Sendungs-ID\"\n    AND date >= ${bq_comp_timeframe_start:doublequote}\n    AND date <= ${bq_comp_timeframe_end:doublequote}\n    AND tmstp <= \"${comp_fever}\"\n),\ndaily_data AS (\n  SELECT\n    -- DATE_ADD(TIMESTAMP(date), INTERVAL $time_shift DAY),\n    sum(m_visits) as sum_nds_app\n  FROM\n    Piano.total_visits\n  WHERE\n    site_level2 IN ('nds-app')\n    AND page_chapter1 = \"Alle Kapitel 1\"\n    AND page_chapter2 = \"Alle Kapitel 2\"\n    AND sendungs_id = \"Alle Sendungs-ID\"\n    AND date >= ${bq_comp_timeframe_start:doublequote}\n    AND date <= ${bq_comp_timeframe_end:doublequote}\n  -- GROUP BY\n  --   date\n)\nSELECT\n  *\nFROM\n  ${dataset_not_fevercurve}",
+        "refId": "nds-app-gestern",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "hide": false,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH adjusted_lagged_data AS (\n  SELECT\n     MAX(m_visits) as sum_hh_app FROM\n     `Piano.total_visits${feverCurveDataset:raw}`\n  WHERE site_level2 IN ('hh-app')  \n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\n),\ndaily_data AS (SELECT\n  --TIMESTAMP(date),\n   sum(m_visits) as sum_hh_app\nFROM\n  Piano.total_visits\nWHERE site_level2 IN ('hh-app')  \n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\n -- GROUP BY date\n  )\nSELECT * FROM ${dataset_not_fevercurve} \n\n-- SELECT\n--   TIMESTAMP(date), sum(m_visits) as sum_hh_app\n-- FROM\n--   Piano.total_visits\n-- WHERE site_level2 = 'hh-app'\n--   AND page_chapter1 = \"Alle Kapitel 1\"\n--   AND page_chapter2 = \"Alle Kapitel 2\"\n--   AND sendungs_id = \"Alle Sendungs-ID\"\n--   AND $Zeitraum\n-- GROUP BY date",
+        "refId": "hh-app-heute",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "hide": false,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH adjusted_lagged_data AS (\n  SELECT\n     MAX(m_visits) as sum_nds_app FROM\n     `Piano.total_visits${feverCurveDataset:raw}`\n  WHERE site_level2 IN ('hh-app')  \n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\n  AND tmstp <= \"${comp_fever}\"\n),\ndaily_data AS (SELECT\n--DATE_ADD(TIMESTAMP(date), INTERVAL $time_shift DAY), \nsum(m_visits) as sum_nds_app\nFROM\n  Piano.total_visits\nWHERE site_level2 IN ('hh-app')  \n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\n  --GROUP BY date\n  )\nSELECT * FROM ${dataset_not_fevercurve} ",
+        "refId": "hh-app-gestern",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "hide": false,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH adjusted_lagged_data AS (\n  SELECT\n     MAX(m_visits) as sum_mv_app FROM\n     `Piano.total_visits${feverCurveDataset:raw}`\n  WHERE site_level2 IN ('mv-app')  \n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\n),\ndaily_data AS (SELECT\n  --TIMESTAMP(date), \n  sum(m_visits) as sum_mv_app\nFROM\n  Piano.total_visits\nWHERE site_level2 IN ('mv-app')  \n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_timeframe_start:doublequote} AND date <= ${bq_timeframe_end:doublequote}\n  --GROUP BY date\n  )\nSELECT * FROM ${dataset_not_fevercurve} \n-- SELECT\n--   TIMESTAMP(date), sum(m_visits) as sum_mv_app\n-- FROM\n--   Piano.total_visits\n-- WHERE site_level2 = 'mv-app'\n--   AND page_chapter1 = \"Alle Kapitel 1\"\n--   AND page_chapter2 = \"Alle Kapitel 2\"\n--   AND sendungs_id = \"Alle Sendungs-ID\"\n--   AND $Zeitraum\n-- GROUP BY date",
+        "refId": "mv-app-heute",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "hide": false,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH adjusted_lagged_data AS (\n  SELECT\n     MAX(m_visits) as sum_nds_app FROM\n     `Piano.total_visits${feverCurveDataset:raw}`\n  WHERE site_level2 IN ('mv-app')  \n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\n  AND tmstp <= \"${comp_fever}\"\n),\ndaily_data AS (SELECT\n--DATE_ADD(TIMESTAMP(date), INTERVAL $time_shift DAY), \nsum(m_visits) as sum_nds_app\nFROM\n  Piano.total_visits\nWHERE site_level2 IN ('mv-app')  \n  AND page_chapter1 = \"Alle Kapitel 1\"\n  AND page_chapter2 = \"Alle Kapitel 2\"\n  AND sendungs_id = \"Alle Sendungs-ID\"\n  AND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\n  --GROUP BY date\n  )\nSELECT * FROM ${dataset_not_fevercurve} ",
+        "refId": "mv-app-gestern",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "filterFieldsByName",
+        "options": {
+          "include": {}
+        }
+      },
+      {
+        "id": "organize",
+        "options": {}
+      }
+    ],
+    "transparent": true,
+    "type": "bargauge"
+  },
+  "version": 3,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 3,
+    "created": "2025-02-20T14:32:29Z",
+    "updated": "2025-02-20T17:53:06Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

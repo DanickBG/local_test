@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "archive-delete-30-09-2024",
+    "url": "/dashboards/f/folder-eyYMKsQIk/archive-delete-30-09-2024",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-07-29T12:40:00Z",
+    "updated": "2024-07-29T12:40:00Z",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 1,
+    "hasAcl": false,
+    "isFolder": true,
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "id": 1185,
+    "schemaVersion": 17,
+    "title": "Archive_delete_30-09-2024",
+    "uid": "folder-eyYMKsQIk",
+    "version": 1
+  }
+}

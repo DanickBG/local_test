@@ -1,0 +1,177 @@
+{
+  "id": 554,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "o4acT96Vz",
+  "name": "Facebook Top Videos Main Table zeitraum",
+  "kind": 1,
+  "type": "marcusolsson-dynamictext-panel",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byType",
+            "options": "number"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 22,
+      "w": 24,
+      "x": 0,
+      "y": 6
+    },
+    "id": 127,
+    "options": {
+      "afterRender": "",
+      "content": "<table>\n  <thead>\n    <tr>\n      <th id=\"timestamp\">Datum</th>\n      <th id=\"post\">Post</th>\n      <th id=\"total_video_10s_views\">▼ Videostarts ab 10 Sek.</th>\n      <th id=\"total_video_views\">Videostarts ab 3 Sek.</th>\n      <th id=\"length_formatted\">Videolänge in Min.</th>\n    </tr>\n  </thead>\n  <tbody>\n    {{#each data}}\n    <tr>\n      <td class=\"time\" data-time=\"{{this.Datum}}\">{{this.Datum}}</td>\n      <td id=\"post\" >{{this.description}}</td>\n      <td class=\"number\">{{this.total_video_10s_views}}</td>\n      <td class=\"number\">{{this.total_video_views}}</td>\n      <td class=\"number\"> {{this.length_formatted}}</td>\n    </tr>\n    {{/each}}\n  </tbody>\n</table>",
+      "contentPartials": [],
+      "defaultContent": "The query didn't return any results.",
+      "editor": {
+        "format": "auto",
+        "language": "markdown"
+      },
+      "editors": [
+        "styles"
+      ],
+      "externalStyles": [],
+      "helpers": "",
+      "renderMode": "allRows",
+      "styles": "table {\n  font-size: 25px;\n  width: 1900px; /* Preserved width */\n  border-collapse: collapse;\n}\n\nth {\n  font-size: 20px;\n  font-weight: bold;\n  text-align: left;\n}\n\ntd {\n  font-size: 25px;\n  padding: 8px;\n}\n\ntd.time {\n  font-weight: bold;\n  font-size: 20px;\n  width: 200px;\n}\n\n.number {\n  text-align: center;\n}\n\ntd#post {\n  width: 100px;\n  max-width: 800px; /* Adjusted max width for better readability */\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\nth#total_video_10s_views, \nth#total_video_views, \nth#length_formatted {\n  text-align: center;\n}\n\ntd.videoViews {\n  width: auto;\n  text-align: center;\n}\n",
+      "wrap": true
+    },
+    "pluginVersion": "5.6.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT ownPosts.time as Datum, ownVideos.* FROM\r\n(SELECT \r\n  -- time,\r\n    FORMAT_TIMESTAMP('%d.%m | %H:%M Uhr', TIMESTAMP(time)) AS time,\r\n  objectId,\r\n  CASE \r\n    WHEN type = 'Video' AND post_video_length = 0\r\n    THEN 'Link' \r\n    ELSE type\r\n  END AS Typ\r\nFROM `ndr-code-bi-dashboard.Quintly.facebookInsightsOwnPosts`\r\nWHERE profileId = $profileID \r\nAND $Zeitraum \r\n--AND NOT(message = \"\")\r\nAND last_update = \r\n  (SELECT MAX(last_update) \r\n  FROM `ndr-code-bi-dashboard.Quintly.facebookInsightsOwnPosts` \r\n  WHERE profileId =  $profileID )\r\n) as ownPosts, \r\n(SELECT \r\n  total_video_10s_views,\r\ntotal_video_views,\r\ntotal_video_views_by_distribution_type_page_owned,\r\ntotal_video_views_by_distribution_type_shared,\r\ntotal_video_avg_time_watched,\r\ntotal_video_view_total_time,\r\ntotal_video_views_by_distribution_type_page_owned,\r\n  REPLACE(description, '�', '') AS description,\r\n--   CASE \r\n--     WHEN LENGTH(REPLACE(description, '�', '')) > 120 \r\n--     THEN CONCAT(LEFT(REPLACE(description, '�', ''), 120), '...')\r\n--     ELSE REPLACE(description, '�', '')\r\n-- END AS description,\r\nlink,\r\nlive_status,\r\nexternalId,\r\nFORMAT(\"%02d:%02d\", CAST(FLOOR(length/20) as INT), mod(CAST(length as INT),20)) as length_formatted\r\nFROM `ndr-code-bi-dashboard.Quintly.facebookInsightsOwnVideos`\r\nWHERE profileId = $profileID\r\nAND NOT(title =\"\") \r\nAND last_update = \r\n  (SELECT MAX(last_update) \r\n  FROM `ndr-code-bi-dashboard.Quintly.facebookInsightsOwnVideos` \r\n  WHERE profileId = $profileID )\r\n) as ownVideos \r\nWHERE ownPosts.objectId = ownVideos.externalId\r\nORDER BY ownVideos.total_video_10s_views DESC ",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "% Non-Follower Impressions": true,
+            "description": false,
+            "engagement_rate": true,
+            "externalId": true,
+            "length_formatted": false,
+            "link": true,
+            "live_status": true,
+            "post_activity_by_action_type_share": true,
+            "post_engaged_users": false,
+            "total_video_avg_time_watched": true,
+            "total_video_view_total_time": true,
+            "total_video_views": false,
+            "total_video_views_by_distribution_type_page_owned": true,
+            "total_video_views_by_distribution_type_page_owned_1": true,
+            "total_video_views_by_distribution_type_shared": true
+          },
+          "includeByName": {},
+          "indexByName": {
+            "Datum": 1,
+            "description": 2,
+            "externalId": 11,
+            "length_formatted": 12,
+            "link": 0,
+            "live_status": 10,
+            "total_video_10s_views": 3,
+            "total_video_avg_time_watched": 7,
+            "total_video_view_total_time": 8,
+            "total_video_views": 4,
+            "total_video_views_by_distribution_type_page_owned": 5,
+            "total_video_views_by_distribution_type_page_owned_1": 9,
+            "total_video_views_by_distribution_type_shared": 6
+          },
+          "renameByName": {
+            "Interaktionen": "",
+            "description": "",
+            "engagement_rate": "",
+            "externalId": "",
+            "length_formatted": "",
+            "total_video_10s_views": "",
+            "total_video_views": ""
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "marcusolsson-dynamictext-panel"
+  },
+  "version": 16,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 9,
+    "created": "2024-06-20T11:45:49Z",
+    "updated": "2025-04-04T08:32:14Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "id": 638,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "z0lsBYrVz",
+  "name": "Google Trends Title",
+  "kind": 1,
+  "type": "text",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "postgres",
+      "uid": "5RzC0pR4k"
+    },
+    "description": "",
+    "gridPos": {
+      "h": 5,
+      "w": 3,
+      "x": 6,
+      "y": 25
+    },
+    "id": 70,
+    "libraryPanel": {
+      "name": "Google Trends Title"
+    },
+    "options": {
+      "code": {
+        "language": "plaintext",
+        "showLineNumbers": false,
+        "showMiniMap": false
+      },
+      "content": "# #",
+      "mode": "markdown"
+    },
+    "pluginVersion": "9.2.3",
+    "targets": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "5RzC0pR4k"
+        },
+        "format": "time_series",
+        "group": [],
+        "metricColumn": "none",
+        "rawQuery": false,
+        "rawSql": "SELECT\n  \"time\" AS \"time\",\n  post_video_view_time\nFROM facebookinsightsownposts\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+        "refId": "A",
+        "select": [
+          [
+            {
+              "params": [
+                "post_video_view_time"
+              ],
+              "type": "column"
+            }
+          ]
+        ],
+        "table": "facebookinsightsownposts",
+        "timeColumn": "\"time\"",
+        "timeColumnType": "timestamp",
+        "where": [
+          {
+            "name": "$__timeFilter",
+            "params": [],
+            "type": "macro"
+          }
+        ]
+      }
+    ],
+    "transparent": true,
+    "type": "text"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 20,
+    "created": "2024-06-20T11:46:02Z",
+    "updated": "2025-05-09T13:09:54Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/9774780e31622dad09ce78835d06ec07",
+      "id": 39,
+      "name": "sa-1-fortestdaniel"
+    }
+  }
+}

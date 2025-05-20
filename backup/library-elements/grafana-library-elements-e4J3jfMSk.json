@@ -1,0 +1,144 @@
+{
+  "id": 479,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "e4J3jfMSk",
+  "name": "NDR TV Web Audio Last 7 days/14-8 days ago KPI Difference",
+  "kind": 1,
+  "type": "stat",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "fixedColor": "dark-blue",
+          "mode": "fixed"
+        },
+        "decimals": 1,
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byName",
+            "options": "Differenz"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "percent"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 4,
+      "w": 4,
+      "x": 20,
+      "y": 0
+    },
+    "id": 35,
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "center",
+      "orientation": "auto",
+      "percentChangeColorMode": "standard",
+      "reduceOptions": {
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": "/.*/",
+        "values": false
+      },
+      "showPercentChange": false,
+      "textMode": "value_and_name",
+      "wideLayout": true
+    },
+    "pluginVersion": "11.3.1",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "WITH current_value AS (\r\nSELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as current_sum\r\nFROM \r\n  Piano.av_joined_daily\r\nWHERE \r\nsite_level2 = ${LRA:doublequote}  AND\r\n${Redaktionen:doublequote} IN UNNEST(bi_av_page_chapter1_tags) AND\r\n${Unterkapitel:doublequote} IN UNNEST(bi_av_page_chapter2_tags)\r\nAND ${Sendung:doublequote} IN UNNEST(sendungs_id_tags)\r\nAND date >= ${bq_interval_7_day:doublequote} AND date < ${bq_today:doublequote}\r\nAND av_content_type = \"Audio\"\r\n), past_value AS (\r\nSELECT \r\n  SUM(COALESCE(m_av_playbacks,0)) as past_sum\r\nFROM \r\n  Piano.av_joined_daily\r\nWHERE \r\nsite_level2 = ${LRA:doublequote}  AND\r\n${Redaktionen:doublequote} IN UNNEST(bi_av_page_chapter1_tags) AND\r\n${Unterkapitel:doublequote} IN UNNEST(bi_av_page_chapter2_tags)\r\nAND ${Sendung:doublequote} IN UNNEST(sendungs_id_tags)\r\nAND date >= ${bq_comp_timeframe_start:doublequote} AND date <= ${bq_comp_timeframe_end:doublequote}\r\nAND av_content_type = \"Audio\"\r\n)\r\nSELECT CONCAT(REPLACE(CAST(ROUND(((current_sum-past_sum)/past_sum)*100,1) as string), \".\", \",\"), \"%\") FROM current_value,past_value as relative_difference",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "f0_": "Differenz"
+          }
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  "version": 2,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 3,
+    "created": "2024-06-20T11:45:37Z",
+    "updated": "2025-03-28T07:43:12Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/aecb468cb76f7c30d1d59a32a15dbb5e",
+      "id": 2,
+      "name": "sa-1-test-importer"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

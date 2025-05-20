@@ -1,0 +1,3751 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "wip-sb-monatsbericht-online",
+    "url": "/d/ce0tpliqh8n40c/wip-sb-monatsbericht-online",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2024-10-14T07:00:26Z",
+    "updated": "2024-10-24T07:54:13Z",
+    "updatedBy": "silke beyer dev",
+    "createdBy": "silke beyer dev",
+    "version": 144,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 660,
+    "folderUid": "folder-F9a5Uxn4k",
+    "folderTitle": "Prototypes",
+    "folderUrl": "/dashboards/f/folder-F9a5Uxn4k/prototypes",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1538,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 9,
+          "x": 15,
+          "y": 0
+        },
+        "id": 51,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "### Dieses Dashboard hat erstmal nur explorative Zwecke, es ist *nicht* Teil eines Tickets.\n\nZuständigkeit: Silke",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 3
+        },
+        "id": 41,
+        "title": "Übersicht",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 17,
+          "x": 2,
+          "y": 4
+        },
+        "id": 38,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<center><font size=\"8\" style=\"font-weight:bold;\">$SichtLang Web + App + HbbTV</font></center>\r\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "Visits",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 3,
+          "x": 1,
+          "y": 7
+        },
+        "id": 35,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "Entry Rate",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 3,
+          "x": 4,
+          "y": 7
+        },
+        "id": 4,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "Verweildauer / Besuch",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 7,
+          "y": 7
+        },
+        "id": 5,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "Page views / Visit",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 11,
+          "y": 7
+        },
+        "id": 6,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "noValue": "AV - Playbacks",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 6,
+          "x": 15,
+          "y": 7
+        },
+        "id": 7,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 1,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 1,
+          "y": 9
+        },
+        "id": 1,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^visits$/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "with by_day as(\r\n  SELECT\r\n    MAX(m_visits) as visits\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.NDR_total_visits`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    AND EXTRACT(MONTH from date) = $Monat\r\n    AND EXTRACT(\r\n      year\r\n      from\r\n        date\r\n    ) = $Jahr\r\n  GROUP BY\r\n    date, site_level2\r\n)\r\nSELECt\r\n  SUM(visits) as visits\r\nfrom\r\n  by_day",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 4,
+          "y": 9
+        },
+        "id": 2,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^entry$/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "\r\n  SELECT\r\n    CONCAT(REPLACE(CAST(ROUND(avg(m_bounce_rate)*100,0) AS STRING),'.',','),'%') as entry\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.NDR_total_visits`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    AND EXTRACT(MONTH from date) = $Monat\r\n    AND EXTRACT(\r\n      year\r\n      from\r\n        date\r\n    ) = $Jahr\r\n\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "orange",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "dthms"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 7,
+          "y": 9
+        },
+        "id": 50,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^time_spent$/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "  SELECT\r\n    --SUM(m_visits * m_time_spent_per_visits/1000) / SUM(m_visits) AS time_spent, \r\n    AVG(m_time_spent_per_visits)/1000 AS time_spent,\r\n    '$Sicht' as LRA\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.NDR_total_visits_site`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    AND EXTRACT(MONTH from date) = $Monat\r\n    AND EXTRACT(year from  date) = $Jahr",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 11,
+          "y": 9
+        },
+        "id": 9,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^p_views$/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "\r\n  SELECT\r\n    SUM(m_page_loads)/SUM(m_visits) as p_views\r\n   --SUM(m_impressions_per_visit)/sum(m_visits) as p_views\r\n   --avg(m_impressions_per_visit) as p_views \r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.NDR_total_visits_site`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    AND EXTRACT(MONTH from date) = $Monat\r\n    AND EXTRACT(year from  date) = $Jahr\r\n\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "displayName": "Video Web",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 15,
+          "y": 9
+        },
+        "id": 10,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "\r\n  SELECT\r\n    SUM(m_av_playbacks) as p_views\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.av_joined_daily`\r\n  WHERE\r\n    site_level2 IN $siteArrayWeb\r\n    --AND NOT (site_level2 LIKE '%app%')\r\n    AND EXTRACT(MONTH from date) = $Monat\r\n    AND EXTRACT(year from  date) = $Jahr\r\n    AND (av_content_type = 'Video' OR av_content_type = 'video')\r\n    and bi_av_broadcasting_type = 'ondemand'\r\n\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "displayName": "Audio Web",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 18,
+          "y": 9
+        },
+        "id": 12,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "\r\n  SELECT\r\n    SUM(m_av_playbacks) as p_views\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.av_joined_daily`\r\n  WHERE\r\n    site_level2 IN $siteArrayWeb\r\n    --AND NOT (site_level2 LIKE '%app%')\r\n    AND EXTRACT(MONTH from date) = $Monat\r\n    AND EXTRACT(year from  date) = $Jahr\r\n    AND (av_content_type = 'Audio' OR av_content_type = 'audio')#\r\n    and bi_av_broadcasting_type = 'ondemand'\r\n\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "differenz"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "/[-]\\S*/gm",
+                        "result": {
+                          "color": "red",
+                          "index": 0
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 3,
+          "x": 1,
+          "y": 12
+        },
+        "id": 19,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [],
+            "fields": "/^differenz$/",
+            "values": true
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 32
+          },
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "with aktuell as (\r\n  with by_day as(\r\n  SELECT\r\n    MAX(m_visits) as visits\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.total_visits`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    AND EXTRACT(MONTH from date) = $Monat\r\n    AND EXTRACT(\r\n      year\r\n      from\r\n        date\r\n    ) = $Jahr\r\n  GROUP BY\r\n    date, site_level2\r\n)\r\nSELECt\r\n  SUM(visits) as visits,'$Sicht' as LRA\r\nfrom\r\n  by_day\r\n),\r\nvormonat as (\r\n  with by_day as(\r\n  SELECT\r\n    MAX(m_visits) as visits\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.total_visits`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    AND EXTRACT(MONTH from date_add(date, INTERVAL 1 MONTH)) = $Monat\r\n    AND EXTRACT(\r\n      year\r\n      from\r\n        date_add(date, INTERVAL 1 MONTH)\r\n    ) = $Jahr\r\n  GROUP BY\r\n    date, site_level2\r\n)\r\nSELECt\r\n  SUM(visits) as visits,\r\n  '$Sicht' as LRA\r\nfrom\r\n  by_day\r\n)\r\nSELECT --(aktuell.visits - vormonat.visits)/vormonat.visits as differenz,\r\nCASE\r\nWHEN aktuell.visits / vormonat.visits - 1 > 0 THEN CONCAT(\"+\",REPLACE(CAST(ROUND((aktuell.visits / vormonat.visits - 1) * 100,0) AS STRING),\".\",\",\"),\"%\")\r\n    ELSE CONCAT(REPLACE(CAST(ROUND((aktuell.visits / vormonat.visits - 1) * 100,0) AS STRING),\".\",\",\"),\"%\") END as differenz\r\nFROM aktuell\r\njoin vormonat on vormonat.LRA = aktuell.LRA\r\n",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "differenz"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "/[-]\\S*/gm",
+                        "result": {
+                          "color": "red",
+                          "index": 0
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 3,
+          "x": 4,
+          "y": 12
+        },
+        "id": 20,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^differenz$/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 32
+          },
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "with aktuell as (\r\n  \r\n  SELECT\r\n    avg(m_bounce_rate) as entry,'$Sicht' as LRA\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.total_visits`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    AND EXTRACT(MONTH from date) = $Monat\r\n    AND EXTRACT(\r\n      year\r\n      from\r\n        date\r\n    ) = $Jahr\r\n),\r\nvormonat as (\r\n  SELECT\r\n    avg(m_bounce_rate) as entry,\r\n    '$Sicht' as LRA\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.total_visits`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    AND EXTRACT(MONTH from date_add(date, INTERVAL 1 MONTH)) = $Monat\r\n    AND EXTRACT(\r\n      year\r\n      from\r\n        date_add(date, INTERVAL 1 MONTH)) = $Jahr\r\n)\r\nSELECT --(aktuell.visits - vormonat.visits)/vormonat.visits as differenz,\r\nCASE\r\nWHEN aktuell.entry / vormonat.entry - 1 > 0 THEN CONCAT(\"+\",REPLACE(CAST(ROUND((aktuell.entry / vormonat.entry - 1) * 100,0) AS STRING),\".\",\",\"),\"%\")\r\n    ELSE CONCAT(REPLACE(CAST(ROUND((aktuell.entry / vormonat.entry - 1) * 100,0) AS STRING),\".\",\",\"),\"%\") END as differenz\r\nFROM aktuell\r\njoin vormonat on vormonat.LRA = aktuell.LRA",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "differenz"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "/[-]\\S*/gm",
+                        "result": {
+                          "color": "red",
+                          "index": 0
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 4,
+          "x": 7,
+          "y": 12
+        },
+        "id": 21,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^differenz$/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 32
+          },
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "with aktuell as (\r\n  SELECT\r\n    AVG(m_time_spent_per_visits)/1000 AS time_spent,\r\n    '$Sicht' as LRA\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.NDR_total_visits_site`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    AND EXTRACT(MONTH from date) = $Monat\r\n    AND EXTRACT(year from  date) = $Jahr\r\n),\r\nvormonat as (\r\n  SELECT\r\n    AVG(m_time_spent_per_visits)/1000 AS time_spent,\r\n    '$Sicht' as LRA\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.NDR_total_visits_site`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    AND EXTRACT(MONTH from date_add(date, INTERVAL 1 MONTH)) = $Monat\r\n    AND EXTRACT(year from  date_add(date, INTERVAL 1 MONTH)) = $Jahr\r\n)\r\nSELECt CASE \r\n WHEN aktuell.time_spent / vormonat.time_spent - 1 > 0 THEN CONCAT(\"+\",REPLACE(CAST(ROUND((aktuell.time_spent / vormonat.time_spent - 1) * 100,0) AS STRING),\".\",\",\"),\"%\")\r\n    ELSE CONCAT(REPLACE(CAST(ROUND((aktuell.time_spent / vormonat.time_spent - 1) * 100,0) AS STRING),\".\",\",\"),\"%\") END as differenz\r\nFROM aktuell join vormonat on aktuell.LRA = vormonat.LRA",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "differenz"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "/[-]\\S*/gm",
+                        "result": {
+                          "color": "red",
+                          "index": 0
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 4,
+          "x": 11,
+          "y": 12
+        },
+        "id": 28,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^differenz$/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 32
+          },
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "with aktuell as (\r\n    SELECT\r\n    SUM(m_page_loads)/SUM(m_visits) as p_views, '$Sicht' as LRA\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.NDR_total_visits_site`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    --    AND CONTAINS_SUBSTR(page_chapter1, 'Alle Kapitel 1') \r\n    --AND CONTAINS_SUBSTR(page_chapter2, 'Alle Kapitel 2'  )\r\n    --AND CONTAINS_SUBSTR(sendungs_id, 'Alle Sendungs-ID')\r\n    AND EXTRACT(MONTH from date) = $Monat\r\n    AND EXTRACT(year from  date) = $Jahr\r\n\r\n),\r\nvormonat as (\r\n    SELECT\r\n    SUM(m_page_loads)/SUM(m_visits) as p_views, '$Sicht' as LRA\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.NDR_total_visits_site`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    --    AND CONTAINS_SUBSTR(page_chapter1, 'Alle Kapitel 1') \r\n    --AND CONTAINS_SUBSTR(page_chapter2, 'Alle Kapitel 2'  )\r\n    --AND CONTAINS_SUBSTR(sendungs_id, 'Alle Sendungs-ID')\r\n    AND EXTRACT(MONTH from date_add(date, INTERVAL 1 MONTH)) = $Monat\r\n    AND EXTRACT(year from  date_add(date, INTERVAL 1 MONTH)) = $Jahr\r\n)\r\nSELECt CASE \r\n WHEN aktuell.p_views / vormonat.p_views - 1 > 0 THEN CONCAT(\"+\",REPLACE(CAST(ROUND((aktuell.p_views / vormonat.p_views - 1) * 100,1) AS STRING),\".\",\",\"),\"%\")\r\n    ELSE CONCAT(REPLACE(CAST(ROUND((aktuell.p_views / vormonat.p_views - 1) * 100,0) AS STRING),\".\",\",\"),\"%\") END as differenz\r\nFROM aktuell join vormonat on aktuell.LRA = vormonat.LRA",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "differenz"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "/[-]\\S*/gm",
+                        "result": {
+                          "color": "red",
+                          "index": 0
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 3,
+          "x": 15,
+          "y": 12
+        },
+        "id": 29,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^differenz$/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 32
+          },
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "with aktuell as (\r\n    SELECT\r\n    SUM(m_av_playbacks) as p_views, '$Sicht' as LRA\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.av_joined_daily`\r\n  WHERE\r\n    site_level2 IN $siteArrayWeb\r\n    --AND NOT (site_level2 LIKE '%app%')\r\n    AND EXTRACT(MONTH from date) = $Monat\r\n    AND EXTRACT(year from  date) = $Jahr\r\n    AND (av_content_type = 'Video' OR av_content_type = 'video')\r\n    and bi_av_broadcasting_type = 'ondemand'\r\n\r\n),\r\nvormonat as (\r\n    SELECT\r\n    SUM(m_av_playbacks) as p_views, '$Sicht' as LRA\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.av_joined_daily`\r\n  WHERE\r\n    site_level2 IN $siteArrayWeb\r\n    AND EXTRACT(MONTH from date_add(date, INTERVAL 1 MONTH)) = $Monat\r\n    AND EXTRACT(year from  date_add(date, INTERVAL 1 MONTH)) = $Jahr\r\n    AND (av_content_type = 'Video' OR av_content_type = 'video')\r\n    and bi_av_broadcasting_type = 'ondemand'\r\n)\r\nSELECt CASE \r\n WHEN aktuell.p_views / vormonat.p_views - 1 > 0 THEN CONCAT(\"+\",REPLACE(CAST(ROUND((aktuell.p_views / vormonat.p_views - 1) * 100,1) AS STRING),\".\",\",\"),\"%\")\r\n    ELSE CONCAT(REPLACE(CAST(ROUND((aktuell.p_views / vormonat.p_views - 1) * 100,0) AS STRING),\".\",\",\"),\"%\") END as differenz\r\nFROM aktuell join vormonat on aktuell.LRA = vormonat.LRA",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "differenz"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "/[-]\\S*/gm",
+                        "result": {
+                          "color": "red",
+                          "index": 0
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 3,
+          "x": 18,
+          "y": 12
+        },
+        "id": 30,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^differenz$/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 32
+          },
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "with aktuell as (\r\n  SELECT\r\n    SUM(m_av_playbacks) as p_views, '$Sicht' as LRA\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.av_joined_daily`\r\n  WHERE\r\n    site_level2 IN $siteArrayWeb\r\n    --AND NOT (site_level2 LIKE '%app%')\r\n    AND EXTRACT(MONTH from date) = $Monat\r\n    AND EXTRACT(year from  date) = $Jahr\r\n    AND (av_content_type = 'Audio' OR av_content_type = 'audio')\r\n    and bi_av_broadcasting_type = 'ondemand'\r\n\r\n),\r\nvormonat as (\r\n    SELECT\r\n    SUM(m_av_playbacks) as p_views, '$Sicht' as LRA\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.av_joined_daily`\r\n  WHERE\r\n    site_level2 IN $siteArrayWeb\r\n    AND EXTRACT(MONTH from date_add(date, INTERVAL 1 MONTH)) = $Monat\r\n    AND EXTRACT(year from  date_add(date, INTERVAL 1 MONTH)) = $Jahr\r\n    AND (av_content_type = 'Audio' OR av_content_type = 'audio')\r\n    and bi_av_broadcasting_type = 'ondemand'\r\n)\r\nSELECt CASE \r\n WHEN aktuell.p_views / vormonat.p_views - 1 > 0 THEN CONCAT(\"+\",REPLACE(CAST(ROUND((aktuell.p_views / vormonat.p_views - 1) * 100,1) AS STRING),\".\",\",\"),\"%\")\r\n    ELSE CONCAT(REPLACE(CAST(ROUND((aktuell.p_views / vormonat.p_views - 1) * 100,0) AS STRING),\".\",\",\"),\"%\") END as differenz\r\nFROM aktuell join vormonat on aktuell.LRA = vormonat.LRA",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "noValue": " ",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "transparent",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 6,
+          "x": 14,
+          "y": 13
+        },
+        "id": 33,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "transparent": true,
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 22,
+          "x": 0,
+          "y": 14
+        },
+        "id": 49,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<center><font size=\"8\" style=\"font-weight:bold;\"></font></center>\r\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 1,
+          "y": 15
+        },
+        "id": 34,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto"
+          },
+          "editorMode": "visual",
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "const series = context.panel.data.series.map((s) => {\n  const sData = s.fields.find((f) => f.type === 'number').values.buffer || s.fields.find((f) => f.type === 'number').values;\n  const sTime = s.fields.find((f) => f.type === 'time').values.buffer || s.fields.find((f) => f.type === 'time').values;\n  \n  return {\n    name: s.refId,\n    type: 'line',\n    showSymbol: false,\n    areaStyle: {\n      opacity: 0.1,\n    },\n    lineStyle: {\n      width: 1,\n    },\n    data: sData.map((d, i) => [sTime[i], d.toFixed(2)]),\n  };\n});\n\n/**\n * Enable Data Zoom by default\n */\nsetTimeout(() => context.panel.chart.dispatchAction({\n  type: 'takeGlobalCursor',\n  key: 'dataZoomSelect',\n  dataZoomSelectActive: true,\n}), 500);\n\n/**\n * Update Time Range on Zoom\n */\ncontext.panel.chart.on('datazoom', function (params) {\n  const startValue = params.batch[0]?.startValue;\n  const endValue = params.batch[0]?.endValue;\n  locationService.partial({ from: startValue, to: endValue });\n});\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip: {\n    trigger: 'axis',\n  },\n  legend: {\n    left: '0',\n    bottom: '0',\n    data: context.panel.data.series.map((s) => s.refId),\n    textStyle: {\n      color: 'rgba(128, 128, 128, .9)',\n    },\n  },\n  toolbox: {\n    feature: {\n      dataZoom: {\n        yAxisIndex: 'none',\n        icon: {\n          zoom: 'path://',\n          back: 'path://',\n        },\n      },\n      saveAsImage: {},\n    }\n  },\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n  grid: {\n    left: '2%',\n    right: '2%',\n    top: '2%',\n    bottom: 24,\n    containLabel: true,\n  },\n  series,\n};",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "canvas",
+          "themeEditor": {
+            "config": "{}",
+            "name": "default"
+          },
+          "visualEditor": {
+            "code": "\n// Initialen Daten holen\nconst visitsField = context.panel.data.series[0].fields.find((f) => f.name === 'Visits');\nconst timeField = context.panel.data.series[0].fields.find((f) => f.name === 'date');\nconst lraField = context.panel.data.series[0].fields.find((f) => f.name === 'LRA');\nconst zeitField = context.panel.data.series[0].fields.find((f) => f.name === 'zeit');\n\nlet visits = [];\nlet time = [];\nlet lra = [];\nlet zeit = [];\n\nvisits = visitsField.values.toArray();\ntime = timeField.values.toArray();\nlra = lraField.values.toArray();\nzeit = zeitField.values.toArray();\n\nlet header = lra[0] + ' | Visits | ' + zeit[0]\n\nlet formattedTime = [];\ntime.forEach(function (item) {\n  let oldDate = item;\n  let newDate = oldDate.slice(8) + \"/\" + oldDate.slice(5, 7) + \"/\" + oldDate.slice(2, 4);\n  formattedTime.push(newDate);\n});\n\nconst series = [\n  {\n    name: 'Visits',\n    type: 'line',\n    colorBy: 'series',\n    lineStyle: {\n      width: 3,\n    },\n    symbol: 'none',\n    data: time.map((t, i) => {\n      const v = visits[i];\n      return {\n        value: v,\n        name: t,\n      }\n    }),\n  },\n];\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip: {\n    trigger: 'axis',\n    valueFormatter: function (value) {\n      let labelContent = '';\n      let number = value.toFixed(0);\n      let formattedNumber = new Intl.NumberFormat('de-DE').format(number);;\n      labelContent = formattedNumber;\n      return labelContent\n    }\n  },\n  legend: {\n    orient: 'horizontal',\n    bottom: '0',\n    show: false\n  },\n  xAxis: {\n    data: formattedTime,\n    show: true,\n    type: 'category',\n    axisTick: {\n      alignWithLabel: true,\n      show: true,\n      interval: 0\n    }\n  },\n  yAxis:\n  {\n    type: 'value',\n    axisLabel: {\n      formatter: function (value, index) {\n        let formattedNumber = new Intl.NumberFormat('de-DE').format(value);\n        return formattedNumber\n      }\n    }\n  },\n  series,\n  toolbox: {\n    feature: {\n      dataZoom: {\n        yAxisIndex: 'none'\n      },\n      saveAsImage: {}\n    }\n  },\n  grid: {\n    left: '2%',\n    right: '5%',\n    top: 40,\n    bottom: 15,\n    containLabel: true,\n  },\n  title: {\n    show: true,\n    text: header,\n    left: 'center'\n  }\n};",
+            "dataset": [],
+            "series": []
+          }
+        },
+        "pluginVersion": "6.1.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "with by_day as(\r\n  SELECT\r\n    MAX(m_visits) as visits,\r\n    date\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.total_visits`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    AND EXTRACT(MONTH from date) = $Monat\r\n    AND EXTRACT(\r\n      year\r\n      from\r\n        date\r\n    ) = $Jahr\r\n  GROUP BY\r\n    date, site_level2\r\n)\r\nSELECt\r\n sum(visits) as Visits,\r\n date,\r\n '$Sicht' as LRA,\r\n CONCAT('${Monat:text}',' ','$Jahr') as zeit\r\n --timestamp(date)\r\nfrom\r\n  by_day\r\ngroup by date\r\norder by date asc",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto",
+                "wrapText": false
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "bi_av_content_id"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Minerva - AV - Inhalt-ID"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "pb"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "AV - Playbacks"
+                },
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 127
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Minerva - AV - Inhalt-ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 305
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 14,
+          "y": 15
+        },
+        "id": 14,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT bi_av_content_id, sum(m_av_playbacks) as pb\r\nFROM `ndr-code-bi-dashboard.Piano.av`\r\nWHERE site_level2 IN $siteArrayWeb \r\nAND (av_content_type = 'Video' or av_content_type = 'video')\r\nAND EXTRACT(month from date) = $Monat\r\nAND EXTRACT(year from date) = $Jahr\r\nand bi_av_broadcasting_type = 'ondemand'\r\ngroup by bi_av_content_id\r\nORDER by pb DESC\r\nLIMIT 5",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Top 5 Videos Web nach Sophora-ID",
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "bi_av_content_id"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Minerva - AV - Inhalt-ID"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "pb"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "AV - Playbacks"
+                },
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 130
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 14,
+          "y": 23
+        },
+        "id": 15,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT bi_av_content_id, sum(m_av_playbacks) as pb\r\nFROM `ndr-code-bi-dashboard.Piano.av`\r\nWHERE site_level2 IN $siteArrayWeb \r\nAND (av_content_type = 'Audio' or av_content_type = 'audio')\r\nAND EXTRACT(month from date) = $Monat\r\nAND EXTRACT(year from date) = $Jahr\r\nand bi_av_broadcasting_type = 'ondemand'\r\ngroup by bi_av_content_id\r\nORDER by pb DESC\r\nLIMIT 5",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Top 5 Audios Web nach Sophora-ID",
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 12,
+          "x": 1,
+          "y": 24
+        },
+        "id": 32,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "</br><center><font size=\"5\" style=\"font-weight:bold;\">Endgeräte nach Visits in %</font></center>\r\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "decimals": 2,
+            "mappings": [],
+            "unit": "locale"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Mobile Phone"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Desktop"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "purple",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Tablet"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "yellow",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Media Player"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "dark-blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Games Console"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "dark-purple",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 6,
+          "x": 1,
+          "y": 27
+        },
+        "id": 18,
+        "options": {
+          "displayLabels": [
+            "percent"
+          ],
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true,
+            "values": [
+              "percent"
+            ]
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^visits$/",
+            "values": true
+          },
+          "tooltip": {
+            "mode": "none",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  SUM(m_visits) as visits, \r\n  device_type \r\nFROM\r\n  --Piano.distro_joined_daily\r\n  Piano.NDR_distro\r\nWHERE \r\nsite_level2 IN $siteArray \r\nAND EXTRACT(month from date) = $Monat AND EXTRACT(year from date) = $Jahr\r\nAND device_type NOT LIKE '%N/A%'\r\nGROUP BY device_type \r\nORDER BY visits DESC\r\nLIMIT 5",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Web + App + HbbTV",
+        "transparent": true,
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "decimals": 2,
+            "mappings": [],
+            "unit": "locale"
+          },
+          "overrides": [
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "visits",
+                    "Media Player"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Mobile Phone"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Desktop"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "purple",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Tablet"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "yellow",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Media Player"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "dark-blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Games Console"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "dark-purple",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 6,
+          "x": 7,
+          "y": 27
+        },
+        "id": 17,
+        "options": {
+          "displayLabels": [
+            "percent"
+          ],
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true,
+            "values": [
+              "percent"
+            ]
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^visits$/",
+            "values": true
+          },
+          "tooltip": {
+            "mode": "none",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  SUM(m_visits) as visits, \r\n  device_type \r\nFROM\r\n  --Piano.distro_joined_daily\r\n  Piano.NDR_distro\r\nWHERE \r\nsite_level2 IN $siteArrayWeb \r\nAND EXTRACT(month from date) = $Monat AND EXTRACT(year from date) = $Jahr\r\nAND device_type NOT LIKE '%N/A%'\r\nGROUP BY device_type \r\nORDER BY visits DESC\r\nLIMIT 5",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Web",
+        "transparent": true,
+        "type": "piechart"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 36
+        },
+        "id": 37,
+        "panels": [],
+        "title": "Tabellen",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 17,
+          "x": 2,
+          "y": 37
+        },
+        "id": 25,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<center><font size=\"5\" style=\"font-weight:bold;\">Top 10 Inhaltsseiten (ohne Indexseiten)</font></center>\r\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "content_titel"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Content-Titel"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "sophora"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Content-ID (Sophora)"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "m_visits"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Visits"
+                },
+                {
+                  "id": "unit",
+                  "value": "locale"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 100
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Content-Titel"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 587
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Content-ID (Sophora)"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 223
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 12,
+          "x": 2,
+          "y": 39
+        },
+        "id": 26,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Visits"
+            }
+          ]
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT content_titel, ANY_VALUE(content_id_sophora) as sophora, sum(m_visits) as m_visits\r\nFROM `ndr-code-bi-dashboard.Piano.articles`\r\nWHERE site_level2 IN $siteArray \r\nAND EXTRACT(month from date) = $Monat\r\nANd EXTRACT(year from date) = $Jahr\r\nAND objekt_typ NOT LIKE 'indexPage'\r\n    AND content_id_sophora NOT LIKE '%index%'\r\n    AND content_id_sophora NOT LIKE '%N/A%'\r\n    AND content_id_sophora NOT LIKE '%verteilseite%'\r\n    AND content_id_sophora NOT LIKE '%nachrichtenfeed%'\r\n    AND content_id_sophora NOT LIKE '%Aktueller-Titel%'\r\nGROUP BY content_titel\r\nORDER BY m_visits DESC\r\nLIMIT 10",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "nach Titel",
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "sophora"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Content-ID (Sophora)"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "m_visits"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Visits"
+                },
+                {
+                  "id": "unit",
+                  "value": "locale"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "m_visits"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 130
+                },
+                {
+                  "id": "custom.align",
+                  "value": "right"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 6,
+          "x": 14,
+          "y": 39
+        },
+        "id": 31,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Visits"
+            }
+          ]
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT content_id_sophora as sophora, sum(m_visits) as m_visits\r\nFROM `ndr-code-bi-dashboard.Piano.articles`\r\nWHERE site_level2 IN $siteArray \r\nAND EXTRACT(month from date) = $Monat\r\nANd EXTRACT(year from date) = $Jahr\r\nAND objekt_typ NOT LIKE 'indexPage'\r\n    AND content_id_sophora NOT LIKE '%index%'\r\n    AND content_id_sophora NOT LIKE '%N/A%'\r\n    AND content_id_sophora NOT LIKE '%verteilseite%'\r\n    AND content_id_sophora NOT LIKE '%nachrichtenfeed%'\r\n    AND content_id_sophora NOT LIKE '%Aktueller-Titel%'\r\nGROUP BY content_id_sophora\r\nORDER BY m_visits DESC\r\nLIMIT 10",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "nach Sophora-ID",
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 51
+        },
+        "id": 42,
+        "panels": [],
+        "title": "Langzeittrends",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 2,
+          "y": 52
+        },
+        "id": 39,
+        "options": {
+          "alwaysVisibleFilter": false,
+          "autoScroll": false,
+          "customValue": false,
+          "displayMode": "button",
+          "emptyValue": false,
+          "favorites": false,
+          "filter": false,
+          "groupSelection": false,
+          "header": true,
+          "padding": 10,
+          "persistent": false,
+          "saveSelectedGroup": false,
+          "saveSelectedGroupKey": "",
+          "showLabel": false,
+          "showName": false,
+          "statusSort": false,
+          "sticky": true,
+          "variable": "Datensicht"
+        },
+        "title": "Datensicht",
+        "transparent": true,
+        "type": "volkovlabs-variable-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 6,
+          "x": 6,
+          "y": 52
+        },
+        "id": 43,
+        "options": {
+          "alwaysVisibleFilter": false,
+          "autoScroll": false,
+          "customValue": false,
+          "displayMode": "minimize",
+          "emptyValue": false,
+          "favorites": false,
+          "filter": false,
+          "groupSelection": false,
+          "header": true,
+          "padding": 10,
+          "persistent": false,
+          "saveSelectedGroup": false,
+          "saveSelectedGroupKey": "",
+          "showLabel": false,
+          "showName": false,
+          "statusSort": false,
+          "sticky": true,
+          "variable": "Trend"
+        },
+        "title": "Visualisierung",
+        "transparent": true,
+        "type": "volkovlabs-variable-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 7,
+          "x": 12,
+          "y": 52
+        },
+        "id": 45,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "</br></br><font size=\"2\" >$fussnote</font>\r\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.3",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#a50e00c9",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 16,
+          "x": 2,
+          "y": 55
+        },
+        "id": 48,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECt '$Datensicht'",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 16,
+          "w": 5,
+          "x": 18,
+          "y": 55
+        },
+        "id": 47,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "Zu klären:\r\n\r\nVerortungssicht:\r\n- **Nachrichten Startseite**\r\n  - Indexseiten werden nicht von Piano in bigQuery ingestiert\r\n- **Nachrichten Übergreifend**\r\n  - bekomme ich einfach nicht reproduziert, bei identisch zu Data Query gesetzten Filtern starke Abweichung\r\n  - vergleiche in Data Query summe Visits Sep. 2024 3.322.826 vs. in Big Query, Tabelle articles 1.115.985\r\n  - Workaround nicht möglich wegen o.g. fehlerhafter Daten\r\n  - beste Näherung aktuell: Filterung nach Kapitel 1 &2 aber nicht nach Content ID\r\n\r\n\r\nErstellersicht:\r\n- **NDR Info Crossmediale Marke Web**\r\n  - Marke bzw. crossbrand läuft nicht in bigQuery ein",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.3",
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "gridPos": {
+          "h": 15,
+          "w": 16,
+          "x": 2,
+          "y": 57
+        },
+        "id": 44,
+        "options": {
+          "baidu": {
+            "callback": "bmapReady",
+            "key": ""
+          },
+          "editor": {
+            "format": "auto"
+          },
+          "editorMode": "visual",
+          "gaode": {
+            "key": "",
+            "plugin": "AMap.Scale,AMap.ToolBar"
+          },
+          "getOption": "const series = context.panel.data.series.map((s) => {\n  const sData = s.fields.find((f) => f.type === 'number').values.buffer || s.fields.find((f) => f.type === 'number').values;\n  const sTime = s.fields.find((f) => f.type === 'time').values.buffer || s.fields.find((f) => f.type === 'time').values;\n  \n  return {\n    name: s.refId,\n    type: 'line',\n    showSymbol: false,\n    areaStyle: {\n      opacity: 0.1,\n    },\n    lineStyle: {\n      width: 1,\n    },\n    data: sData.map((d, i) => [sTime[i], d.toFixed(2)]),\n  };\n});\n\n/**\n * Enable Data Zoom by default\n */\nsetTimeout(() => context.panel.chart.dispatchAction({\n  type: 'takeGlobalCursor',\n  key: 'dataZoomSelect',\n  dataZoomSelectActive: true,\n}), 500);\n\n/**\n * Update Time Range on Zoom\n */\ncontext.panel.chart.on('datazoom', function (params) {\n  const startValue = params.batch[0]?.startValue;\n  const endValue = params.batch[0]?.endValue;\n  locationService.partial({ from: startValue, to: endValue });\n});\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip: {\n    trigger: 'axis',\n  },\n  legend: {\n    left: '0',\n    bottom: '0',\n    data: context.panel.data.series.map((s) => s.refId),\n    textStyle: {\n      color: 'rgba(128, 128, 128, .9)',\n    },\n  },\n  toolbox: {\n    feature: {\n      dataZoom: {\n        yAxisIndex: 'none',\n        icon: {\n          zoom: 'path://',\n          back: 'path://',\n        },\n      },\n      saveAsImage: {},\n    }\n  },\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n  grid: {\n    left: '2%',\n    right: '2%',\n    top: '2%',\n    bottom: 24,\n    containLabel: true,\n  },\n  series,\n};",
+          "google": {
+            "callback": "gmapReady",
+            "key": ""
+          },
+          "map": "none",
+          "renderer": "canvas",
+          "themeEditor": {
+            "config": "{}",
+            "name": "default"
+          },
+          "visualEditor": {
+            "code": "/*var categoryColors = {\n  'Info': { 'Web': '#0277BF', 'App': '#a3c8ef' },\n  'Sport': { 'Web': '#2568b4', 'App': '#abc3ed' },\n  'Hamburg': { 'Web': '#D11426', 'App': '#faaea0' },\n  'Niedersachsen': { 'Web': '#F06600', 'App': '#ffbe96' },\n  'Schleswig-Holstein': { 'Web': '#009AD2', 'App': '#9bd5f3' },\n  'Mecklenburg-Vorpommern': { 'Web': '#009F9F', 'App': '#90dad8' },\n  'Kultur': { 'Web': '#b63929', 'App': '#f1b09f' },\n};*/\n\n\n\n// Initialen Daten holen\nconst visitsField = context.panel.data.series[0].fields.find((f) => f.name === 'Visits');\nconst timeField = context.panel.data.series[0].fields.find((f) => f.name === 'date');\nconst trendField = context.panel.data.series[0].fields.find((f) => f.name === 'trend');\n\nlet visits = [];\nlet time = [];\nlet trend = [];\n\nvisits = visitsField.values.toArray();\ntime = timeField.values.toArray();\ntrend = trendField.values.toArray();\n\nheader = trend[0] + ' | Monate | Visits'\n\n//const colorIndicator = redaktion[0];\n\nlet formattedTime = [];\ntime.forEach(function (item) {\n  let oldDate = item;\n  //let newDate = oldDate;\n  let newDate = oldDate.slice(5, 7) + \"/\" + oldDate.slice(2, 4);\n  formattedTime.push(newDate);\n});\n\nconst series = [\n  {\n    name: 'Visits',\n    type: 'line',\n    colorBy: 'series',\n    lineStyle: {\n      width: 3, \n    },\n    symbol: 'none',\n    data: time.map((t, i) => {\n      const v = visits[i];\n      return {\n        value: v,\n        name: t,\n      }\n    }),\n  },\n];\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip: {\n    trigger: 'axis',\n    valueFormatter: function (value) {\n      let labelContent = '';\n      let number = value.toFixed(0);\n      let formattedNumber = new Intl.NumberFormat('de-DE').format(number);;\n      labelContent = formattedNumber;\n      return labelContent\n    }\n  },\n  legend: {\n    orient: 'horizontal',\n    bottom: '0',\n    show: false\n  },\n  xAxis: {\n    data: formattedTime,\n    show: true,\n    type: 'category',\n    axisTick: {\n      alignWithLabel: true,\n      show: true,\n      interval: 0\n    }\n  },\n  yAxis:\n  {\n    type: 'value',\n    axisLabel: {\n      formatter: function (value, index) {\n        let formattedNumber = new Intl.NumberFormat('de-DE').format(value / 1000000);\n        return formattedNumber + ' Mio.'\n      },\n      showMinLabel: false,\n    }\n  },\n  series,\n  toolbox: {\n    feature: {\n      dataZoom: {\n        yAxisIndex: 'none'\n      },\n      saveAsImage: {}\n    }\n  },\n  grid: {\n    left: '2%',\n    right: '5%',\n    top: 40,\n    bottom: 15,\n    containLabel: true,\n  },\n  title: {\n    show: true,\n    text: header,\n    left: 'center'\n  }\n};",
+            "dataset": [],
+            "series": []
+          }
+        },
+        "pluginVersion": "6.1.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "grafana-bigquery-datasource",
+              "uid": "qUaUqEk4k"
+            },
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "with by_day as(\r\n  SELECT\r\n    CASE '$Datensicht'\r\n      WHEn 'Verortungssicht' THEN \r\n        CASE WHEN '$Trend' = 'Nachrichten übergreifend' THEN MAX(m_visits)\r\n        ELSE MAX(m_visits) \r\n        END\r\n      WHEN 'Erstellersicht' THEN SUM(m_visits)\r\n    END as visits,\r\n    date\r\n  FROM\r\n    `ndr-code-bi-dashboard.Piano.${tableVisits}`\r\n  WHERE\r\n    site_level2 IN $siteArray\r\n    AND $visualisierung\r\n    --ANd date >= DATE(2023,04,01)\r\n    AND $startDate\r\n    ANd date <= LAST_DAY(DATE($Jahr,$Monat,01), MONTH)\r\n  GROUP BY\r\n    $grouper\r\n)\r\nSELECT\r\n sum(visits) as Visits,\r\n DATE_TRUNC(date, MONTH) as date,\r\n '$Trend' as trend\r\nfrom\r\n  by_day\r\ngroup by date\r\norder by date asc",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "volkovlabs-echarts-panel"
+      },
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "noValue": " ",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "transparent"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 6,
+          "x": 7,
+          "y": 72
+        },
+        "id": 40,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "transparent": true,
+        "type": "timeseries"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 39,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "NDR",
+            "value": "NDR"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Sicht",
+          "options": [
+            {
+              "selected": true,
+              "text": "NDR",
+              "value": "NDR"
+            },
+            {
+              "selected": false,
+              "text": "Tagesschau",
+              "value": "Tagesschau"
+            }
+          ],
+          "query": "NDR,Tagesschau",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "September",
+            "value": "9"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Monat",
+          "options": [
+            {
+              "selected": false,
+              "text": "Januar",
+              "value": "1"
+            },
+            {
+              "selected": false,
+              "text": "Februar",
+              "value": "2"
+            },
+            {
+              "selected": false,
+              "text": "März",
+              "value": "3"
+            },
+            {
+              "selected": false,
+              "text": "April",
+              "value": "4"
+            },
+            {
+              "selected": false,
+              "text": "Mai",
+              "value": "5"
+            },
+            {
+              "selected": false,
+              "text": "Juni",
+              "value": "6"
+            },
+            {
+              "selected": false,
+              "text": "Juli",
+              "value": "7"
+            },
+            {
+              "selected": false,
+              "text": "August",
+              "value": "8"
+            },
+            {
+              "selected": true,
+              "text": "September",
+              "value": "9"
+            },
+            {
+              "selected": false,
+              "text": "Oktober",
+              "value": "10"
+            },
+            {
+              "selected": false,
+              "text": "November",
+              "value": "11"
+            },
+            {
+              "selected": false,
+              "text": "Dezember",
+              "value": "12"
+            }
+          ],
+          "query": "Januar : 1,Februar : 2,März : 3,April : 4,Mai : 5,Juni : 6,Juli : 7,August : 8,September : 9,Oktober : 10,November : 11,Dezember : 12",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "2024",
+            "value": "2024"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "Jahr",
+          "options": [
+            {
+              "selected": false,
+              "text": "2023",
+              "value": "2023"
+            },
+            {
+              "selected": true,
+              "text": "2024",
+              "value": "2024"
+            }
+          ],
+          "query": "2023,2024",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "UNNEST(['ardquiz-app','auschwitzundich.ard.de','daserste.ndr.de','eurovision.de','hbbtv','hh-app','kultur-app','mv-app','n-joy-app','n-joy.de','ndr.de','ndr2-app','ndrinfo-app','nds-app','orchester-app','radio-app','radiopreis.de','sesamstrasse.de','sesamstraßen-app','sh-app','Sport Livecenter','sportschau.ndr.de'])",
+            "value": "UNNEST(['ardquiz-app','auschwitzundich.ard.de','daserste.ndr.de','eurovision.de','hbbtv','hh-app','kultur-app','mv-app','n-joy-app','n-joy.de','ndr.de','ndr2-app','ndrinfo-app','nds-app','orchester-app','radio-app','radiopreis.de','sesamstrasse.de','sesamstraßen-app','sh-app','Sport Livecenter','sportschau.ndr.de'])"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "siteArray",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE '$Sicht'\r\nWHEN 'NDR' THEN \"UNNEST(['ardquiz-app','auschwitzundich.ard.de','daserste.ndr.de','eurovision.de','hbbtv','hh-app','kultur-app','mv-app','n-joy-app','n-joy.de','ndr.de','ndr2-app','ndrinfo-app','nds-app','orchester-app','radio-app','radiopreis.de','sesamstrasse.de','sesamstraßen-app','sh-app','Sport Livecenter','sportschau.ndr.de'])\"\r\nWHEN 'Tagesschau' THEN \"UNNEST(['atlas.tagesschau.de','beta.tagesschau.de','blog.tagesschau.de','Faktenfinder','intern.tagesschau.de','korrespondenten.tagesschau.de','meta.tagesschau.de','spiel.tagesschau.de','tagesschau app','tagesschau hbb TV','wahl.tagesschau.de','wetter.tagesschau.de','www.ard-hauptstadtstudio.de','www.tagesschau.de'])\"\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "UNNEST(['auschwitzundich.ard.de','daserste.ndr.de','eurovision.de','n-joy.de','ndr.de','radiopreis.de','sesamstrasse.de','Sport Livecenter','sportschau.ndr.de'])",
+            "value": "UNNEST(['auschwitzundich.ard.de','daserste.ndr.de','eurovision.de','n-joy.de','ndr.de','radiopreis.de','sesamstrasse.de','Sport Livecenter','sportschau.ndr.de'])"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "siteArrayWeb",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\nCASE '$Sicht'\r\nWHEN 'NDR' THEN \"UNNEST(['auschwitzundich.ard.de','daserste.ndr.de','eurovision.de','n-joy.de','ndr.de','radiopreis.de','sesamstrasse.de','Sport Livecenter','sportschau.ndr.de'])\"\r\nWHEN 'Tagesschau' THEN \"UNNEST(['atlas.tagesschau.de','beta.tagesschau.de','blog.tagesschau.de','Faktenfinder','intern.tagesschau.de','korrespondenten.tagesschau.de','meta.tagesschau.de','spiel.tagesschau.de','wahl.tagesschau.de','wetter.tagesschau.de','www.ard-hauptstadtstudio.de','www.tagesschau.de'])\"\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "NDR Online",
+            "value": "NDR Online"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "SichtLang",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$Sicht'\r\nWHEn 'NDR' THEN 'NDR Online'\r\nWHEN 'Tagesschau' THEN 'Tagesschau'\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "Verortungssicht",
+            "value": "Verortungssicht"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "Datensicht",
+          "options": [
+            {
+              "selected": true,
+              "text": "Verortungssicht",
+              "value": "Verortungssicht"
+            },
+            {
+              "selected": false,
+              "text": "Erstellersicht",
+              "value": "Erstellersicht"
+            }
+          ],
+          "query": "Verortungssicht,Erstellersicht",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "Sport Web",
+            "value": "Sport Web"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "Trend",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "IF ('$Datensicht' = 'Verortungssicht' AND '$Sicht' = 'NDR')\r\nTHEN (\r\n  SELECT 'NDR Online (Web + App + HbbTV)'\r\n  UNION ALL\r\n  SELECT 'NDR Online Web'\r\n  UNION ALL\r\n  SELECT 'NDR Online Apps'\r\n  UNION ALL\r\n  SELECT 'NDR.de Web'\r\n  UNION ALL\r\n  SELECT 'Nachrichten Web'\r\n  UNION ALL\r\n  SELECT 'Sport Web'\r\n  UNION ALL\r\n  SELECT 'Ratgeber Web'\r\n  UNION ALL\r\n  SELECT 'Kultur Web'\r\n  UNION ALL\r\n  SELECT 'Fernsehen Web'\r\n  UNION ALL\r\n  SELECT 'Radio Web'\r\n  UNION ALL\r\n  SELECT 'Geschichte Web'\r\n  UNION ALL\r\n  SELECT 'NDR 2-App'\r\n  UNION ALL\r\n  SELECT 'N-JOY-App'\r\n  UNION ALL\r\n  SELECT 'NDS-App'\r\n  UNION ALL\r\n  SELECT 'SH-App'\r\n  UNION ALL\r\n  SELECT 'MV-App'\r\n  UNION ALL\r\n  SELECT 'HH-App'\r\n  UNION ALL\r\n  SELECT 'EO-App'\r\n  UNION ALL\r\n  SELECT 'NDR Kultur-App'\r\n  UNION ALL\r\n  SELECT 'Radio-App'\r\n  UNION ALL\r\n  SELECT 'Sesamstraßen-App'\r\n  UNION ALL\r\n  SELECT 'NDR Info-App'\r\n  UNION ALL\r\n  SELECT 'ARD Quiz-App'\r\n  UNION ALL\r\n  SELECT 'Nachrichten Startseite'\r\n  UNION ALL\r\n  SELECT 'Nachrichten NDS Web'\r\n  UNION ALL\r\n  SELECT 'Nachrichte SH Web'\r\n  UNION ALL\r\n  SELECT 'Nachrichten MV Web'\r\n  UNION ALL\r\n  SELECT 'Nachrichten HH Web'\r\n  UNION ALL\r\n  SELECT 'Nachrichten übergreifend'\r\n  UNION ALL\r\n  SELECT 'Nachrichten Wetter Web'\r\n  UNION ALL\r\n  SELECT 'Nachrichten Verkehr Web'\r\n);\r\nELSEIF ('$Datensicht' = 'Erstellersicht' AND '$Sicht' = 'NDR')\r\nTHEN (\r\n  SELECT 'NDR 2 Web'\r\n  UNION ALL\r\n  SELECT 'N-JOY Web'\r\n  UNION ALL\r\n  SELECT 'NDR Info Crossmediale Marke Web'\r\n  UNION ALL\r\n  SELECT 'NDR Info Spezial Web'\r\n  UNION ALL\r\n  SELECT 'NDR Info Radio Web'\r\n  UNION ALL\r\n  SELECT 'NDR Kultur Web'\r\n  UNION ALL\r\n  SELECT 'NDR Blue Web'\r\n  UNION ALL\r\n  SELECT 'NDR Schlager Web'\r\n  UNION ALL\r\n  SELECT 'NDR 1 NDS Web'\r\n  UNION ALL\r\n  SELECT 'NDR 1 WN Web'\r\n  UNION ALL\r\n  SELECT 'NDR 1 Radio MV Web'\r\n  UNION ALL\r\n  SELECT 'NDR 1 90,3 Web'\r\n  UNION ALL\r\n  SELECT 'NDR Fernsehen Web'\r\n  UNION ALL\r\n  SELECT 'Tracking NDS Web'\r\n  UNION ALL\r\n  SELECT 'Tracking SH Web'\r\n  UNION ALL\r\n  SELECT 'Tracking MV Web'\r\n  UNION ALL\r\n  SELECT 'Tracking HH Web'\r\n);\r\nENd IF;",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (CONTAINS_SUBSTR(page_chapter1, \"sport\") OR CONTAINS_SUBSTR(page_chapter1, \"Sport\"))",
+            "value": "site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (CONTAINS_SUBSTR(page_chapter1, \"sport\") OR CONTAINS_SUBSTR(page_chapter1, \"Sport\"))"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "visualisierung",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$Datensicht'\r\nWHEN 'Verortungssicht' THEN \r\n  CASE '$Trend'\r\n    WHEN 'NDR Online (Web + App + HbbTV)' THEN 'True'\r\n    WHEN 'NDR Online Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\"'\r\n    WHEN 'NDR Online Apps' THEN 'CONTAINS_SUBSTR(site_level2, \"app\")'\r\n    WHEN 'NDR.de Web' THEN 'site_level2 = \"ndr.de\"'\r\n    WHEn 'Nachrichten Web' THEN '(CONTAINS_SUBSTR(page_chapter1, \"nachrichten\") OR CONTAINS_SUBSTR(page_chapter1, \"Nachrichten\")) AND site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\"'\r\n    WHEN 'Sport Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (CONTAINS_SUBSTR(page_chapter1, \"sport\") OR CONTAINS_SUBSTR(page_chapter1, \"Sport\"))'\r\n    WHEn 'Ratgeber Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (CONTAINS_SUBSTR(page_chapter1, \"ratgeber\") OR CONTAINS_SUBSTR(page_chapter1, \"Ratgeber\"))'\r\n    WHEn 'Kultur Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (CONTAINS_SUBSTR(page_chapter1, \"kultur\") OR CONTAINS_SUBSTR(page_chapter1, \"Kultur\"))'\r\n    WHEn 'Fernsehen Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" aND (CONTAINS_SUBSTR(page_chapter1, \"fernsehen\") OR CONTAINS_SUBSTR(page_chapter1, \"Fernsehen\"))'\r\n    WHEn 'Radio Web' THEN 'site_level2 = \"ndr.de\" AND page_chapter1 = \"radio\"'\r\n    WHEn 'Geschichte Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (CONTAINS_SUBSTR(page_chapter1, \"geschichte\") OR CONTAINS_SUBSTR(page_chapter1, \"Geschichte\"))'\r\n    WHEn 'NDR 2-App' THEN 'site_level2 LIKE \"ndr2-app\"'\r\n    WHEn 'N-JOY-App' THEN 'site_level2 LIKE \"n-joy-app\"'\r\n    WHEn 'NDS-App' THEN 'site_level2 LIKE \"nds-app\"'\r\n    WHEn 'SH-App' THEN 'site_level2 LIKE \"sh-app\"'\r\n    WHEn 'MV-App' THEN 'site_level2 LIKE \"mv-app\"'\r\n    WHEn 'HH-App' THEN 'site_level2 LIKE \"hh-app\"'\r\n    WHEn 'EO-App' THEN 'site_level2 LIKE \"orchester-app\"'\r\n    WHEn 'NDR Kultur-App' THEN 'site_level2 LIKE \"kultur-app\"'\r\n    WHEn 'Radio-App' THEN 'site_level2 LIKE \"radio-app\"'\r\n    WHEn 'Sesamstraßen-App' THEN 'site_level2 LIKE \"sesamstraßen-app\"'\r\n    WHEn 'NDR Info-App' THEN 'site_level2 LIKE \"ndrinfo-app\"'\r\n    WHEn 'ARD Quiz-App' THEN 'site_level2 LIKE \"ardquiz-app\"'\r\n    WHEn 'Nachrichten Startseite' THEN 'contains_substr(content_id_sophora, \"ndrinfostart100\")'\r\n    WHEn 'Nachrichten NDS Web' THEN '(CONTAINS_SUBSTR(page_chapter1, \"nachrichten\") OR CONTAINS_SUBSTR(page_chapter1, \"Nachrichten\")) AND site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND page_chapter2 LIKE \"niedersachsen\"'\r\n    WHEn 'Nachrichte SH Web' THEN '(CONTAINS_SUBSTR(page_chapter1, \"nachrichten\") OR CONTAINS_SUBSTR(page_chapter1, \"Nachrichten\")) AND site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND page_chapter2 LIKE \"schleswig-holstein\"'\r\n    WHEn 'Nachrichten MV Web' THEN '(CONTAINS_SUBSTR(page_chapter1, \"nachrichten\") OR CONTAINS_SUBSTR(page_chapter1, \"Nachrichten\")) AND site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND page_chapter2 LIKE \"mecklenburg-vorpommern\"'\r\n    WHEn 'Nachrichten HH Web' THEN '(CONTAINS_SUBSTR(page_chapter1, \"nachrichten\") OR CONTAINS_SUBSTR(page_chapter1, \"Nachrichten\")) AND site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND page_chapter2 LIKE \"hamburg\"'\r\n    --WHEn 'Nachrichten übergreifend' THEN 'site_level2 = \"ndr.de\" AND (CONTAINS_SUBSTR(page_chapter1_tags, \"nachrichten\") OR page_chapter1 = \"nachrichten\" ) AND NOT CONTAINS_SUBSTR(page_chapter2_tags,\"hamburg\") AND NOT CONTAINS_SUBSTR(page_chapter2_tags,\"niedersachsen\") AND NOT CONTAINS_SUBSTR(page_chapter2_tags,\"schleswig-holstein\") AND NOT CONTAINS_SUBSTR(page_chapter2_tags,\"mecklenburg-vorpommern\") AND NOT CONTAINS_SUBSTR(page_chapter2_tags,\"wetter\") AND NOT CONTAINS_SUBSTR(page_chapter2_tags,\"verkehr\") AND NOT CONTAINS_SUBSTR(content_id_sophora, \"ndrinfostart100\")'\r\n    --WHEn 'Nachrichten übergreifend' THEN 'site_level2 = \"ndr.de\" AND (CONTAINS_SUBSTR(page_chapter1_tags, \"nachrichten\") OR page_chapter1 = \"nachrichten\" ) AND page_chapter2 NOT IN UNNEST([\"hamburg\",\"niedersachsen\",\"schleswig-holstein\",\"mecklenburg-vorpommern\",\"wetter\",\"verkehr\"]) AND NOT CONTAINS_SUBSTR(content_id_sophora, \"ndrinfostart100\")'\r\n    WHEN 'Nachrichten übergreifend' THEN 'site_level2 = \"ndr.de\" AND page_chapter1 = \"nachrichten\" AND page_chapter2 NOT IN UNNEST([\"hamburg\",\"hamburg%20\",\"Hamburg\",\"niedersachsen\",\"Niedersachsen\",\"niedersachsen%20\",\"schleswig-holstein\",\"schleswig-hOlstein\",\"Schleswig-holstein\",\"schleswig-Holstein\",\"Schleswig-Holstein\",\"mecklenburg-vorpommern\",\"mecklenburg-Vorpommern\",\"mecklenburg-vorpommern%20\",\"Mecklenburg-Vorpommern\",\"Mecklenburg-vorpommern\",\"wetter\",\"Wetter\",\"verkehr\",\"Verkehr\",\"N/A\"])'\r\n    WHEn 'Nachrichten Wetter Web' THEN '(CONTAINS_SUBSTR(page_chapter1, \"nachrichten\") OR CONTAINS_SUBSTR(page_chapter1, \"Nachrichten\")) AND site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND page_chapter2 LIKE \"wetter\"'\r\n    WHEn 'Nachrichten Verkehr Web' THEN '(CONTAINS_SUBSTR(page_chapter1, \"nachrichten\") OR CONTAINS_SUBSTR(page_chapter1, \"Nachrichten\")) AND site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND page_chapter2 LIKE \"verkehr\"'\r\n    ELSE 'True'\r\n    END\r\nWHEN 'Erstellersicht' THEN \r\n  CASE '$Trend'\r\n    WHEN 'NDR 2 Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (branding = \"ndr2\")'\r\n    WHEN 'N-JOY Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (branding = \"njoy\")'\r\n    WHEN 'NDR Info Crossmediale Marke Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND branding IN UNNEST([\"ndrinfo\",\"ndrtv\",\"ndr1niedersachsen\",\"ndrinfospezial\",\"ardgesund\",\"ndr1wellenord\",\"ndr903\",\"NDR 90,3\",\"NDR Fernsehen\",\"njoy\",\"der_ndr\"])'\r\n    WHEN 'NDR Info Spezial Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (branding = \"ndrinfospezial\")'\r\n    WHEN 'NDR Info Radio Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND branding = \"ndrinfo\"'\r\n    WHEN 'NDR Kultur Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (branding = \"ndrkultur\")'\r\n    WHEN 'NDR Blue Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (branding = \"ndrblue\")'\r\n    WHEN 'NDR Schlager Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (branding = \"ndrplus\")'\r\n    WHEN 'NDR 1 NDS Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (branding = \"ndr1niedersachsen\")'\r\n    WHEN 'NDR 1 WN Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (branding = \"ndr1wellenord\")'\r\n    WHEN 'NDR 1 Radio MV Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (branding = \"ndr1radiomv\")'\r\n    WHEN 'NDR 1 90,3 Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (branding = \"ndr903\")'\r\n    WHEN 'NDR Fernsehen Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND (branding = \"ndrtv\")'\r\n    WHEN 'Tracking NDS Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND bundesland = \"Niedersachsen\"'\r\n    WHEN 'Tracking SH Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND bundesland = \"Schleswig-Holstein\"'\r\n    WHEN 'Tracking MV Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND bundesland = \"Mecklenburg-Vorpommern\"'\r\n    WHEN 'Tracking HH Web' THEN 'site_level2 NOT LIKE \"%app%\" ANd site_level2 NOT LIKE \"hbbtv\" AND bundesland = \"Hamburg\"'\r\n    ELSE 'True'\r\n    END\r\nELSE 'True'\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "fussnote",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECt CASE '$Trend'\r\nWHEn 'NDR Online Apps' THEn '*ohne ARD Quiz App'\r\nWHEN 'Nachrichten übergreifend' THEN '* inklusive Nachrichten Startseite'\r\nELSE ''\r\nENd",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "total_visits",
+            "value": "total_visits"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "tableVisits",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE \r\n    WHEN '$Trend' = 'Nachrichten Startseite' THEN 'NDR_articles_meta'\r\n    WHEN '$Trend' = 'NDR Online Apps' THEN 'NDR_total_visits'\r\n    WHEN '$Trend' ='NDR 2 Web' THEN 'NDR_total_visits_branding'\r\n    WHEN '$Trend' = 'Tracking NDS Web' THEN 'NDR_total_visits_bundesland'\r\n    WHEN '$Trend' = 'Tracking SH Web' THEN 'NDR_total_visits_bundesland'\r\n    WHEN '$Trend' = 'Tracking MV Web' THEN 'NDR_total_visits_bundesland'\r\n    WHEN '$Trend' = 'Tracking HH Web' THEN 'NDR_total_visits_bundesland'\r\n    WHEn '$Trend' = 'Nachrichten Web' THEN 'NDR_total_visits_chapter1'\r\n    WHEN '$Trend' = 'Sport Web' THEN 'NDR_total_visits_chapter1'\r\n    WHEn '$Trend' = 'Ratgeber Web' THEN 'NDR_total_visits_chapter1'\r\n    WHEn '$Trend' = 'Kultur Web' THEN 'NDR_total_visits_chapter1'\r\n    WHEn '$Trend' = 'Fernsehen Web' THEN 'NDR_total_visits_chapter1'\r\n    WHEn '$Trend' = 'Radio Web' THEN 'NDR_total_visits_chapter1'\r\n    WHEn '$Trend' = 'Geschichte Web' THEN 'NDR_total_visits_chapter1'\r\n    WHEN '$Trend' = 'Nachrichten übergreifend' THEN 'NDR_total_visits_chapter2'\r\n  WHEN '$Datensicht' = 'Erstellersicht' THEN \r\n    CASE WHEN '$Trend' = 'NDR Info Radio Web' THEn 'NDR_total_visits_branding_daily'\r\n    ELSE 'NDR_total_visits_branding_daily'\r\n    END\r\n  ELSE 'NDR_total_visits'\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "date",
+            "value": "date"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "grouper",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$Datensicht'\r\nWHEN 'Verortungssicht' THEN \r\n  CASE WHEN '$Trend' = 'Nachrichten übergreifend' THEN 'date'\r\n  ELSE 'date, site_level2'\r\n  END\r\nWHEN 'Erstellersicht' THEN 'date'\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "date >= DATE(2023,08,01)",
+            "value": "date >= DATE(2023,08,01)"
+          },
+          "datasource": {
+            "type": "grafana-bigquery-datasource",
+            "uid": "qUaUqEk4k"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "startDate",
+          "options": [],
+          "query": {
+            "editorMode": "code",
+            "format": 1,
+            "location": "europe-west3",
+            "project": "ndr-code-bi-dashboard",
+            "rawQuery": true,
+            "rawSql": "SELECT CASE '$Datensicht'\r\n  WHEN 'Verortungssicht' THEN \r\n    CASE WHEN '$Trend' = 'ARD Quiz-App' THEN 'date >= DATE(2023,10,01)'\r\n    ELSE 'date >= DATE(2023,04,01)'\r\n    END\r\n  WHEN 'Erstellersicht' THEN 'date >= DATE(2023,08,01)'\r\nEND",
+            "refId": "tempvar",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "WIP_SB_Monatsbericht_Online",
+    "uid": "ce0tpliqh8n40c",
+    "version": 144,
+    "weekStart": ""
+  }
+}

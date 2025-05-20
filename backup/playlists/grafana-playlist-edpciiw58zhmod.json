@@ -1,0 +1,27 @@
+{
+  "uid": "edpciiw58zhmod",
+  "name": "NDR Niedersachsen Web ",
+  "interval": "30s",
+  "items": [
+    {
+      "type": "dashboard_by_uid",
+      "value": "3i4xuQVIk"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "1lVqzqISz"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "2ToB4qSSz"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "_dcyYre4z"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "NfrMYY94z"
+    }
+  ]
+}

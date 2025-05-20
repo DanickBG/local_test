@@ -1,0 +1,148 @@
+{
+  "id": 1770,
+  "orgId": 1,
+  "folderId": 668,
+  "folderUid": "folder-PjWklf8Vz",
+  "uid": "fednmy1hp6osgf",
+  "name": "NDR TV App Artikel Heute (Zeitraum) 4K",
+  "kind": 1,
+  "type": "marcusolsson-dynamictext-panel",
+  "description": "",
+  "model": {
+    "datasource": {
+      "type": "grafana-bigquery-datasource",
+      "uid": "qUaUqEk4k"
+    },
+    "description": "",
+    "fieldConfig": {
+      "defaults": {
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
+        }
+      },
+      "overrides": [
+        {
+          "matcher": {
+            "id": "byType",
+            "options": "number"
+          },
+          "properties": [
+            {
+              "id": "unit",
+              "value": "locale"
+            }
+          ]
+        }
+      ]
+    },
+    "gridPos": {
+      "h": 39,
+      "w": 12,
+      "x": 0,
+      "y": 15
+    },
+    "id": 47,
+    "options": {
+      "afterRender": "",
+      "content": "<!-- ```json\n{{{json @root}}}\n``` -->\n<table>\n  <thead>\n    <tr>\n      <th id=\"content_titel\">Titel</th>\n      <th id=\"content_id_sophora\">Sophora ID</th>\n      <th id=\"visits\"> Visits</th>\n    </tr>\n  </thead>\n  <tbody>\n    {{#each data}}\n    <tr>\n      <td>{{this.content_titel}}</td>\n      <td id=\"content_id_sophora\">{{this.content_id_sophora}}</td>\n      <td id=\"visits\" class=\"number\">{{this.visits}}</td>\n      </td>\n    </tr>\n    {{/each}}\n  </tbody>\n</table>",
+      "contentPartials": [],
+      "defaultContent": "The query didn't return any results.",
+      "editor": {
+        "format": "auto",
+        "language": "markdown"
+      },
+      "editors": [
+        "styles"
+      ],
+      "externalStyles": [],
+      "helpers": "",
+      "renderMode": "allRows",
+      "styles": "table {\n  font-size: 40px;\n  width: 1900px;\n  border-collapse: collapse;\n  table-layout: fixed;\n}\n\nth {\n  font-size: 40px;\n  font-weight: bold;\n  text-align: left;\n}\n\ntd {\n  font-size: 40px;\n  padding: 8px;\n  height: 90px;\n  vertical-align: middle;\n  word-wrap: break-word;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\ntd.number {\n  text-align: center;\n}\n\n#visits {\n  text-align: center;\n  width: 190px;\n}\n\n#content_id_sophora {\n  width: 500px;\n  vertical-align: middle;\n  word-wrap: break-word;\n  overflow: visible;\n  white-space: normal;\n}\n",
+      "wrap": true
+    },
+    "pluginVersion": "5.6.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "editorMode": "code",
+        "format": 1,
+        "hide": false,
+        "location": "europe-west3",
+        "project": "ndr-code-bi-dashboard",
+        "rawQuery": true,
+        "rawSql": "SELECT\n  content_titel,content_id_sophora, sum(m_visits) as visits \nFROM\n  (\n    SELECT\n      --publishing_date,\n      FIRST_VALUE(publishing_date) OVER (PARTITION BY uuid ORDER BY publishing_date DESC) as publishing_date, \n      FIRST_VALUE(content_id_sophora) OVER (PARTITION BY uuid ORDER BY publishing_date DESC) as content_id_sophora, \n      m_visits,\n      m_page_loads,\n      FIRST_VALUE(content_titel) OVER ( PARTITION BY uuid ORDER BY publishing_date DESC) as content_titel\n    FROM\n      `ndr-code-bi-dashboard.Piano.articles_joined_${dataset_zeitraum:raw}`\n    WHERE\n      site_level2 = '${app_name}'\n      AND content_id_sophora NOT LIKE '%index%'\n      AND content_id_sophora NOT LIKE '%N/A%'\n      AND (\n        CASE \n            WHEN \"$LRA\" = 'NDR' THEN\n                content_titel NOT LIKE '%Video Livestream%'\n            AND content_titel NOT LIKE '%Startteaser%'\n            AND content_titel NOT LIKE '%startteaser%'\n            AND content_titel NOT LIKE '%-Anmelden%'\n            AND content_titel NOT LIKE '%_Start'\n            AND content_titel != 'Anmelden'\n            AND content_titel != 'Jetzt läuft'\n        ELSE\n          TRUE\n        END)\n      AND date = ${bq_today:doublequote}\n  )\nGROUP BY\n  content_id_sophora,\n  content_titel,\n  publishing_date\nORDER BY\n  3 DESC\nLIMIT\n  14",
+        "refId": "B",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "",
+    "transformations": [
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {
+            "av_content_duration": true,
+            "av_content_type": true,
+            "bi_av_publication_date": false,
+            "device_type": true,
+            "wiedergaberate": true
+          },
+          "indexByName": {},
+          "renameByName": {
+            "bi_av_content": "Title",
+            "bi_av_publication_date": "Publiziert"
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "marcusolsson-dynamictext-panel"
+  },
+  "version": 4,
+  "meta": {
+    "folderName": "Panels Library",
+    "folderUid": "folder-PjWklf8Vz",
+    "connectedDashboards": 1,
+    "created": "2025-02-20T17:56:48Z",
+    "updated": "2025-03-10T11:36:36Z",
+    "createdBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    },
+    "updatedBy": {
+      "avatarUrl": "/avatar/4ef2b7e98da8c15cab10263342d3f9d1",
+      "id": 12,
+      "name": "daniel hristov dev"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "uid": "fdpclmvuqcjk0b",
+  "name": "NDR MV Newscenter",
+  "interval": "25s",
+  "items": [
+    {
+      "type": "dashboard_by_uid",
+      "value": "dvlYQde4z"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "jIW6COeVk"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "e9UsCOeVk"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "eduwmuf9l4lq8b"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "fdvds029kcy68a"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "3BRyzKeVz"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "2AxyzFe4z"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "nn3ykK64z"
+    },
+    {
+      "type": "dashboard_by_uid",
+      "value": "RiJ-DwCVz"
+    }
+  ]
+}
