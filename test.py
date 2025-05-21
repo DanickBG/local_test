@@ -4,10 +4,6 @@ from pydantic_ai.models.openai import OpenAIModel
 import dotenv, os
 dotenv.load_dotenv()             # loads .env into os.environ
 
-# client = OpenAI(
-#   api_key="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"
-# )
-
 from pydantic_ai import Agent, RunContext
 
 roulette_agent = Agent(  
