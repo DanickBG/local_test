@@ -3,7 +3,7 @@ from __future__ import annotations
 import json, re, subprocess, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-DASH_PATH = ROOT / "demo.libsonnet"   # adjust
+DASH_PATH = ROOT / "main.libsonnet"   # adjust
 
 class Panel:
     def __init__(self, node: dict):

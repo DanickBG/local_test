@@ -1,7 +1,7 @@
 # agent/tools.py
 from pydantic import BaseModel, Field
 from pydantic_ai import Tool
-from .ast import Dashboard
+from .dashboard_ast import Dashboard
 
 class ChangePanelColorArgs(BaseModel):
     panel_title: str = Field(..., description="Exact Grafana panel title")
@@ -13,6 +13,7 @@ def change_panel_color(args: ChangePanelColorArgs) -> str:
     Change the fixed background colour of a Stat panel in demo.libsonnet
     """
     db = Dashboard.load()
+    print(f"Loaded dashboard {db}")
     panel = db.find_stat_by_title(args.panel_title)
     if panel is None:
         return f"Panel '{args.panel_title}' not found."
