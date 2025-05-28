@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "dependencies": [
+    {
+      "source": {
+        "git": {
+          "remote": "https://github.com/grafana/grafonnet.git",
+          "subdir": ""
+        }
+      },
+      "version": "5a8f3d6aa89b7e7513528371d2d1265aedc844bc",
+      "sum": "gCnbkNDYaBXsOe4i4tBLYu2laXTU8LKujh0tRL6nvqo="
+    },
+    {
+      "source": {
+        "git": {
+          "remote": "https://github.com/jsonnet-libs/xtd.git",
+          "subdir": ""
+        }
+      },
+      "version": "4eee017d21cb63a303925d1dcd9fc5c496809b46",
+      "sum": "Kh0GbIycNmJPzk6IOMXn1BbtLNyaiiimclYk7+mvsns="
+    }
+  ],
+  "legacyImports": false
+}

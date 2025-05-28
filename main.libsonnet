@@ -324,7 +324,6 @@ g.panel.stat.new("KPI Visits") // stat Panel
   + g.panel.stat.options.reduceOptions.withValues(false)
   + g.panel.stat.panelOptions.withDescription("")
   + g.panel.stat.panelOptions.withTransparent(true)
-  + g.panel.stat.panelOptions.withTitle("")
   + g.panel.stat.queryOptions.withTargets([
       {
         "dataset": "Quintly",
