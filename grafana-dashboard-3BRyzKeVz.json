@@ -1,71 +1,5 @@
 {
-  "meta": {
-    "type": "db",
-    "canSave": true,
-    "canEdit": true,
-    "canAdmin": true,
-    "canStar": true,
-    "canDelete": true,
-    "slug": "ndr-mv-7c-tv-instagram-7c-top-reels-und-videos",
-    "url": "/d/3BRyzKeVz/ndr-mv-7c-tv-instagram-7c-top-reels-und-videos",
-    "expires": "0001-01-01T00:00:00Z",
-    "created": "2024-07-29T12:41:03Z",
-    "updated": "2024-07-30T07:30:16Z",
-    "updatedBy": "thomas koester dev",
-    "createdBy": "Anonymous",
-    "version": 3,
-    "hasAcl": false,
-    "isFolder": false,
-    "folderId": 1176,
-    "folderUid": "folder-8Bt7Gb8Vz",
-    "folderTitle": "TV_NDR",
-    "folderUrl": "/dashboards/f/folder-8Bt7Gb8Vz/tv-ndr",
-    "provisioned": false,
-    "provisionedExternalId": "",
-    "annotationsPermissions": {
-      "dashboard": {
-        "canAdd": true,
-        "canEdit": true,
-        "canDelete": true
-      },
-      "organization": {
-        "canAdd": true,
-        "canEdit": true,
-        "canDelete": true
-      }
-    }
-  },
-  "dashboard": {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": {
-            "type": "grafana",
-            "uid": "-- Grafana --"
-          },
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "target": {
-            "limit": 100,
-            "matchAny": false,
-            "tags": [],
-            "type": "dashboard"
-          },
-          "type": "dashboard"
-        }
-      ]
-    },
-    "description": "",
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "graphTooltip": 0,
-    "id": 1206,
-    "links": [],
-    "liveNow": true,
-    "panels": [
+  "panels": [
     {
       "datasource": {
         "type": "datasource",
@@ -229,15 +163,6 @@
           "table": "facebookInsights"
         }
       ],
-      "thresholds": {
-        "mode": "absolute",
-        "steps": [
-          {
-            "color": "green",
-            "value": null
-          }
-        ]
-      },
       "title": "KPI Visits",
       "transformations": [
         {
@@ -368,15 +293,6 @@
           "table": "facebookInsights"
         }
       ],
-      "thresholds": {
-        "mode": "absolute",
-        "steps": [
-          {
-            "color": "green",
-            "value": null
-          }
-        ]
-      },
       "title": "",
       "transparent": true,
       "type": "stat"
@@ -589,397 +505,328 @@
       "transparent": true,
       "type": "marcusolsson-dynamictext-panel"
     }
-    ],
-    "refresh": false,
-    "schemaVersion": 39,
-    "tags": [
-      "TV Insta ReVi",
-      "NDR MV"
-    ],
-    "templating": {
-      "list": [
-        {
-          "current": {
+  ],
+  "schemaVersion": 39,
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "NDR",
+          "value": "NDR"
+        },
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "hide": 2,
+        "name": "LRA",
+        "query": {
+          "editorMode": "code",
+          "format": 1,
+          "location": "europe-west3",
+          "project": "ndr-code-bi-dashboard",
+          "rawQuery": true,
+          "rawSql": "Select a.LRA  FROM\n(\nSELECT DISTINCT LRA FROM `ndr-code-bi-dashboard.Quintly.profiles` \n) as a \nORDER BY(\nCASE WHEN a.LRA like  LEFT(\"${__user.login}\",3)\nTHEN 1\nELSE 0\nEND\n) DESC",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "NDR Mecklenburg-Vorpommern",
+          "value": "NDR Mecklenburg-Vorpommern"
+        },
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "hide": 2,
+        "name": "Profil",
+        "query": {
+          "dataset": "QuintlyTest",
+          "editorMode": "code",
+          "format": 1,
+          "location": "europe-west3",
+          "project": "ndr-code-bi-dashboard",
+          "rawQuery": true,
+          "rawSql": "SELECT a.profile \nFROM \n(SELECT profile FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE LRA = '$LRA' AND instagramId != 0) as a,\n(SELECT  Profil_IG FROM `ndr-code-bi-dashboard.Quintly.default-settings` WHERE LRA = '$LRA') as b\nORDER BY( \nCASE WHEN a.profile = b.Profil_IG THEN 1\nELSE 2\nEND\n), a.profile ASC",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "profile",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "profileTest"
+        },
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "Letzte 7 Tage",
+          "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+        },
+        "hide": 2,
+        "name": "Zeitraum",
+        "options": [
+          {
+            "selected": true,
+            "text": "Gestern",
+            "value": "EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY)"
+          },
+          {
             "selected": false,
-            "text": "NDR",
-            "value": "NDR"
-          },
-          "datasource": {
-            "type": "grafana-bigquery-datasource",
-            "uid": "qUaUqEk4k"
-          },
-          "definition": "",
-          "hide": 2,
-          "includeAll": false,
-          "multi": false,
-          "name": "LRA",
-          "options": [],
-          "query": {
-            "editorMode": "code",
-            "format": 1,
-            "location": "europe-west3",
-            "project": "ndr-code-bi-dashboard",
-            "rawQuery": true,
-            "rawSql": "Select a.LRA  FROM\n(\nSELECT DISTINCT LRA FROM `ndr-code-bi-dashboard.Quintly.profiles` \n) as a \nORDER BY(\nCASE WHEN a.LRA like  LEFT(\"${__user.login}\",3)\nTHEN 1\nELSE 0\nEND\n) DESC",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            }
-          },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "type": "query"
-        },
-        {
-          "allValue": "",
-          "current": {
-            "selected": true,
-            "text": "NDR Mecklenburg-Vorpommern",
-            "value": "NDR Mecklenburg-Vorpommern"
-          },
-          "datasource": {
-            "type": "grafana-bigquery-datasource",
-            "uid": "qUaUqEk4k"
-          },
-          "definition": "",
-          "hide": 2,
-          "includeAll": false,
-          "multi": false,
-          "name": "Profil",
-          "options": [],
-          "query": {
-            "dataset": "QuintlyTest",
-            "editorMode": "code",
-            "format": 1,
-            "location": "europe-west3",
-            "project": "ndr-code-bi-dashboard",
-            "rawQuery": true,
-            "rawSql": "SELECT a.profile \nFROM \n(SELECT profile FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE LRA = '$LRA' AND instagramId != 0) as a,\n(SELECT  Profil_IG FROM `ndr-code-bi-dashboard.Quintly.default-settings` WHERE LRA = '$LRA') as b\nORDER BY( \nCASE WHEN a.profile = b.Profil_IG THEN 1\nELSE 2\nEND\n), a.profile ASC",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [
-                    {
-                      "name": "profile",
-                      "type": "functionParameter"
-                    }
-                  ],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            },
-            "table": "profileTest"
-          },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "type": "query"
-        },
-        {
-          "current": {
-            "selected": true,
             "text": "Letzte 7 Tage",
-            "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+            "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
           },
-          "hide": 2,
-          "includeAll": false,
-          "multi": false,
-          "name": "Zeitraum",
-          "options": [
-            {
-              "selected": false,
-              "text": "Gestern",
-              "value": "EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE(), INTERVAL  1 DAY)"
-            },
-            {
-              "selected": true,
-              "text": "Letzte 7 Tage",
-              "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
-            },
-            {
-              "selected": false,
-              "text": "Letztes Wochenende",
-              "value": "DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )"
-            },
-            {
-              "selected": false,
-              "text": "Letzte 30 Tage",
-              "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE(), INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
-            }
-          ],
-          "query": "Gestern : EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Letzte 7 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE(), Letztes Wochenende :  DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) ), Letzte 30 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()",
-          "queryValue": "",
-          "skipUrlSync": false,
-          "type": "custom"
-        },
-        {
-          "current": {
+          {
             "selected": false,
-            "text": "07.08.2023 | 13:58 Uhr",
-            "value": "07.08.2023 | 13:58 Uhr"
+            "text": "Letztes Wochenende",
+            "value": "DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )"
           },
-          "datasource": {
-            "type": "grafana-bigquery-datasource",
-            "uid": "qUaUqEk4k"
-          },
-          "definition": "",
-          "hide": 2,
-          "includeAll": false,
-          "multi": false,
-          "name": "lastUpdate",
-          "options": [],
-          "query": {
-            "editorMode": "code",
-            "format": 1,
-            "location": "europe-west3",
-            "project": "ndr-code-bi-dashboard",
-            "rawQuery": true,
-            "rawSql": "SELECT \r\nCASE MAX(last_update)\r\n  WHEN NULL THEN \"N/A\"\r\n  ELSE FORMAT_DATETIME(\"%d.%m.%Y | %H:%M Uhr\", DATETIME(MAX(last_update),\"Europe/Berlin\"))\r\n  END\r\nFROM `ndr-code-bi-dashboard.Quintly.instagram`\r\nWHERE profileId = $profileID  ",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            }
-          },
-          "refresh": 2,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "type": "query"
+          {
+            "selected": false,
+            "text": "Letzte 30 Tage",
+            "value": "EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()"
+          }
+        ],
+        "query": "Gestern : EXTRACT(DATE from time) = DATE_SUB(CURRENT_DATE()\\, INTERVAL  1 DAY), Letzte 7 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  7 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE(), Letztes Wochenende :  DATE(time) >= (  SELECT    saturday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) )  AND DATE(time) <= (  SELECT    sunday  FROM (    SELECT      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 1 DAY) AS sunday\\,      DATE(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP()\\, WEEK(MONDAY)) - INTERVAL 2 DAY) AS saturday ) ), Letzte 30 Tage : EXTRACT(DATE from time) >=  DATE_SUB(CURRENT_DATE()\\, INTERVAL  30 DAY) AND EXTRACT(DATE from time) < CURRENT_DATE()",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "07.08.2023 | 13:58 Uhr",
+          "value": "07.08.2023 | 13:58 Uhr"
         },
-        {
-          "current": {
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
+        },
+        "hide": 2,
+        "name": "lastUpdate",
+        "query": {
+          "editorMode": "code",
+          "format": 1,
+          "location": "europe-west3",
+          "project": "ndr-code-bi-dashboard",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\nCASE MAX(last_update)\r\n  WHEN NULL THEN \"N/A\"\r\n  ELSE FORMAT_DATETIME(\"%d.%m.%Y | %H:%M Uhr\", DATETIME(MAX(last_update),\"Europe/Berlin\"))\r\n  END\r\nFROM `ndr-code-bi-dashboard.Quintly.instagram`\r\nWHERE profileId = $profileID  ",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "8",
+          "value": "8"
+        },
+        "hide": 2,
+        "name": "filled_size",
+        "options": [
+          {
             "selected": true,
             "text": "8",
             "value": "8"
-          },
-          "hide": 2,
-          "includeAll": false,
-          "multi": false,
-          "name": "filled_size",
-          "options": [
-            {
-              "selected": true,
-              "text": "8",
-              "value": "8"
-            }
-          ],
-          "query": "8",
-          "queryValue": "",
-          "skipUrlSync": false,
-          "type": "custom"
+          }
+        ],
+        "query": "8 : 8",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "10",
+          "value": "10"
         },
-        {
-          "current": {
+        "hide": 2,
+        "name": "filled_size_big",
+        "options": [
+          {
             "selected": true,
             "text": "10",
             "value": "10"
-          },
-          "hide": 2,
-          "includeAll": false,
-          "multi": false,
-          "name": "filled_size_big",
-          "options": [
-            {
-              "selected": true,
-              "text": "10",
-              "value": "10"
-            }
-          ],
-          "query": "10",
-          "queryValue": "",
-          "skipUrlSync": false,
-          "type": "custom"
+          }
+        ],
+        "query": "10 : 10",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "403292",
+          "value": "403292"
         },
-        {
-          "current": {
-            "selected": false,
-            "text": "403292",
-            "value": "403292"
-          },
-          "datasource": {
-            "type": "grafana-bigquery-datasource",
-            "uid": "qUaUqEk4k"
-          },
-          "definition": "",
-          "hide": 2,
-          "includeAll": false,
-          "multi": false,
-          "name": "profileID",
-          "options": [],
-          "query": {
-            "dataset": "QuintlyTest",
-            "editorMode": "code",
-            "format": 1,
-            "location": "europe-west3",
-            "project": "ndr-code-bi-dashboard",
-            "rawQuery": true,
-            "rawSql": "SELECT CAST(instagramID AS STRING) FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil''' ",
-            "refId": "tempvar",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [
-                    {
-                      "name": "facebookID",
-                      "type": "functionParameter"
-                    }
-                  ],
-                  "type": "function"
-                },
-                {
-                  "parameters": [
-                    {
-                      "name": "instagramID",
-                      "type": "functionParameter"
-                    }
-                  ],
-                  "type": "function"
-                },
-                {
-                  "parameters": [
-                    {
-                      "name": "youtubeID",
-                      "type": "functionParameter"
-                    }
-                  ],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            },
-            "table": "profileTest"
-          },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "type": "query"
+        "datasource": {
+          "type": "grafana-bigquery-datasource",
+          "uid": "qUaUqEk4k"
         },
-        {
-          "current": {
+        "hide": 2,
+        "name": "profileID",
+        "query": {
+          "dataset": "QuintlyTest",
+          "editorMode": "code",
+          "format": 1,
+          "location": "europe-west3",
+          "project": "ndr-code-bi-dashboard",
+          "rawQuery": true,
+          "rawSql": "SELECT CAST(instagramID AS STRING) FROM `ndr-code-bi-dashboard.Quintly.profiles` WHERE profile = '''$Profil''' ",
+          "refId": "tempvar",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "facebookID",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "instagramID",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "youtubeID",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "profileTest"
+        },
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "7",
+          "value": "7"
+        },
+        "hide": 2,
+        "name": "filled_size_small",
+        "options": [
+          {
             "selected": true,
             "text": "7",
             "value": "7"
-          },
-          "hide": 2,
-          "includeAll": false,
-          "multi": false,
-          "name": "filled_size_small",
-          "options": [
-            {
-              "selected": true,
-              "text": "7",
-              "value": "7"
-            }
-          ],
-          "query": "7",
-          "queryValue": "",
-          "skipUrlSync": false,
-          "type": "custom"
+          }
+        ],
+        "query": "7 : 7",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "48",
+          "value": "48"
         },
-        {
-          "current": {
+        "hide": 2,
+        "name": "filled_size_headline",
+        "options": [
+          {
             "selected": true,
             "text": "48",
             "value": "48"
-          },
-          "hide": 2,
-          "includeAll": false,
-          "multi": false,
-          "name": "filled_size_headline",
-          "options": [
-            {
-              "selected": true,
-              "text": "48",
-              "value": "48"
-            }
-          ],
-          "query": "48",
-          "queryValue": "",
-          "skipUrlSync": false,
-          "type": "custom"
+          }
+        ],
+        "query": "48 : 48",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "40",
+          "value": "40"
         },
-        {
-          "current": {
+        "hide": 2,
+        "name": "filled_size_headline_small",
+        "options": [
+          {
             "selected": true,
             "text": "40",
             "value": "40"
-          },
-          "hide": 2,
-          "includeAll": false,
-          "multi": false,
-          "name": "filled_size_headline_small",
-          "options": [
-            {
-              "selected": true,
-              "text": "40",
-              "value": "40"
-            }
-          ],
-          "query": "40",
-          "queryValue": "",
-          "skipUrlSync": false,
-          "type": "custom"
-        }
-      ]
-    },
-    "time": {
-      "from": "now",
-      "to": "now"
-    },
-    "timepicker": {
-      "hidden": true
-    },
-    "timezone": "",
-    "title": "NDR MV | TV Instagram | Top Reels und Videos",
-    "uid": "3BRyzKeVz",
-    "version": 3,
-    "weekStart": ""
-  }
+          }
+        ],
+        "query": "40 : 40",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timezone": "utc",
+  "title": "NDR MV | TV Instagram | Top Reels und Videos"
 }

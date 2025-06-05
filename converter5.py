@@ -3,7 +3,6 @@ import os
 import sys
 import unicodedata
 import glob
-#To do: Add a way to handle the "libraryPanels" as dictionary - there is a problem with the type of panels when they are libraryPanels
 
 # --- mapping for grafonnet.panel.stat --- #
 STAT_OPTION_MAP = {
@@ -439,5 +438,5 @@ def convert_grafana_json_to_grafonnet(json_file, output_file):
 
 
 
-convert_grafana_json_to_grafonnet("real_example_dashboard.json", "main.libsonnet")
+# convert_grafana_json_to_grafonnet("real_example_dashboard.json", "grafana-dashboard-3BRyzKeVz.libsonnet")
 
